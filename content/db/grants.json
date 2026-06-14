@@ -1,0 +1,32 @@
+[
+  {
+    "id": "grant-001",
+    "title": "日本財団 特別支援教育支援員養成助成",
+    "type": "助成金",
+    "category": "特別支援教育",
+    "description": "特別支援教育に携わる支援員の養成・研修活動を行うNPO・学校法人を対象とした助成プログラム。上限500万円。例年4〜6月に公募。",
+    "tags": ["日本財団", "支援員", "NPO", "養成"],
+    "source": "https://www.nippon-foundation.or.jp/",
+    "updatedAt": "2025-06-01"
+  },
+  {
+    "id": "grant-002",
+    "title": "LITALICO財団 インクルーシブな社会の実現を目指す活動助成",
+    "type": "助成金",
+    "category": "特別支援教育",
+    "description": "障害のある子どもの教育・就労支援活動を行う団体への助成。活動費・ICT機器の購入費等に活用可能。",
+    "tags": ["LITALICO", "インクルーシブ", "障害", "ICT機器"],
+    "source": "https://litalico.foundation/",
+    "updatedAt": "2025-05-15"
+  },
+  {
+    "id": "grant-003",
+    "title": "特別支援教育就学奨励費（国制度）",
+    "type": "助成金",
+    "category": "特別支援教育",
+    "description": "特別支援学校・特別支援学級に就学する児童生徒の保護者に対して、学用品費・給食費・交通費等を援助する国の制度。在籍校に申請。",
+    "tags": ["文部科学省", "就学奨励費", "保護者", "交通費"],
+    "source": "https://www.mext.go.jp/",
+    "updatedAt": "2025-04-01"
+  }
+]

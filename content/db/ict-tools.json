@@ -1,0 +1,32 @@
+[
+  {
+    "id": "tool-001",
+    "title": "DropTalk（AAC アプリ）",
+    "type": "ツール",
+    "category": "ICT活用",
+    "description": "写真・イラストを使ったAAC（拡大代替コミュニケーション）アプリ。言語障害・ASDのある子どものコミュニケーション支援に活用。iOS/Android対応。",
+    "tags": ["AAC", "コミュニケーション", "ASD", "iPad", "言語障害"],
+    "source": "https://www.droptalk.net/",
+    "updatedAt": "2025-05-20"
+  },
+  {
+    "id": "tool-002",
+    "title": "Microsoft Immersive Reader（没入型リーダー）",
+    "type": "ツール",
+    "category": "ICT活用",
+    "description": "Microsoftの無料読み上げ・読解支援ツール。テキストの読み上げ・文節分割・音節表示など、LD・ディスレクシアの学習者に有効。Microsoft 365 Education等に統合。",
+    "tags": ["Microsoft", "読み上げ", "LD", "ディスレクシア", "無料"],
+    "source": "https://www.onenote.com/learningtools",
+    "updatedAt": "2025-05-10"
+  },
+  {
+    "id": "tool-003",
+    "title": "Google Workspace for Education（教育版）",
+    "type": "ツール",
+    "category": "ICT活用",
+    "description": "Googleの教育機関向けクラウドサービス。Classroomでの課題管理・音声入力・翻訳機能等が特別支援教育でも活用される。K-12向けは基本無料。",
+    "tags": ["Google", "Classroom", "音声入力", "無料", "クラウド"],
+    "source": "https://edu.google.com/",
+    "updatedAt": "2025-04-25"
+  }
+]
