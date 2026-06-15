@@ -3,7 +3,7 @@ import { getAllArticles } from '@/lib/articles';
 import { CATEGORIES, CATEGORY_TO_SLUG } from '@/lib/categories';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://edu-dx-navi.vercel.app';
+  const base = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://edu-ai-platform-delta.vercel.app';
 
   const articleEntries: MetadataRoute.Sitemap = getAllArticles().map((a) => ({
     url: `${base}/articles/${a.slug}`,
