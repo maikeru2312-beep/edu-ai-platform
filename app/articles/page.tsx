@@ -7,6 +7,8 @@ import ArticleCard from '@/components/ArticleCard';
 export const metadata: Metadata = {
   title: '記事一覧',
   description: '特別支援教育・ICT活用・AI校務改善など教育DXに関する記事一覧です。',
+  alternates: { canonical: '/articles' },
+  openGraph: { type: 'website', url: '/articles', title: '記事一覧 | 教育DXナビ', description: '特別支援教育・ICT活用・AI校務改善など教育DXに関する記事一覧です。' },
 };
 
 export default function ArticlesPage() {

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { getAllArticleSlugs, getArticle } from '@/lib/articles';
+import { getAllArticleSlugs, getArticle, getArticlesByCategory } from '@/lib/articles';
 import CategoryBadge from '@/components/CategoryBadge';
 
 export function generateStaticParams() {
@@ -55,6 +55,10 @@ export default async function ArticleDetailPage({
     notFound();
   }
 
+  const relatedArticles = getArticlesByCategory(article.category)
+    .filter((a) => a.slug !== slug)
+    .slice(0, 3);
+
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10">
       <nav className="text-sm text-gray-500 mb-6 flex items-center gap-2 flex-wrap">
@@ -95,7 +99,28 @@ export default async function ArticleDetailPage({
         dangerouslySetInnerHTML={{ __html: article.contentHtml }}
       />
 
-      <div className="mt-12 pt-6 border-t border-gray-200">
+      {relatedArticles.length > 0 && (
+        <aside className="mt-12 pt-8 border-t border-gray-200">
+          <h2 className="text-lg font-bold text-gray-900 mb-4">関連記事</h2>
+          <ul className="space-y-3">
+            {relatedArticles.map((r) => (
+              <li key={r.slug}>
+                <Link
+                  href={`/articles/${r.slug}`}
+                  className="group flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 hover:text-blue-600 transition-colors"
+                >
+                  <span className="text-sm font-medium text-gray-800 group-hover:text-blue-600 leading-snug">
+                    {r.title}
+                  </span>
+                  <span className="text-xs text-gray-400 shrink-0">{r.publishedAt}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      )}
+
+      <div className="mt-8 pt-6 border-t border-gray-200">
         <Link href="/articles" className="text-blue-600 hover:text-blue-800 font-medium">
           ← 記事一覧に戻る
         </Link>

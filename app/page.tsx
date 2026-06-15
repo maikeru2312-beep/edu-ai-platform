@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllArticles } from '@/lib/articles';
 import { getAllDBItems } from '@/lib/db';
@@ -9,6 +10,11 @@ import {
 } from '@/lib/categories';
 import ArticleCard from '@/components/ArticleCard';
 import DBItemCard from '@/components/DBItemCard';
+
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+  openGraph: { type: 'website', url: '/' },
+};
 
 export default function HomePage() {
   const latestArticles = getAllArticles().slice(0, 6);

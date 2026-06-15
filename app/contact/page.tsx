@@ -28,9 +28,10 @@ export default function ContactPage() {
             それまでの間は以下の方法でご連絡いただけます。
           </p>
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-5">
-            <p className="text-sm font-medium text-blue-900 mb-1">メールでのお問い合わせ</p>
+            <p className="text-sm font-medium text-blue-900 mb-1">お問い合わせフォーム（準備中）</p>
             <p className="text-sm text-blue-700">
-              サイト運営者のメールアドレスはプロフィールまたは各記事末尾に記載しています。
+              現在、Googleフォームによるお問い合わせ窓口を準備しています。
+              公開次第このページに掲載します。しばらくお待ちください。
             </p>
           </div>
         </section>

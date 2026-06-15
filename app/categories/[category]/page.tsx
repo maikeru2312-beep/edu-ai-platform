@@ -21,6 +21,13 @@ export async function generateMetadata({
   return {
     title: `${category}の記事一覧`,
     description: `${category}に関する教育DXの記事をまとめています。`,
+    alternates: { canonical: `/categories/${slug}` },
+    openGraph: {
+      type: 'website',
+      url: `/categories/${slug}`,
+      title: `${category}の記事一覧 | 教育DXナビ`,
+      description: `${category}に関する教育DXの記事をまとめています。`,
+    },
   };
 }
 
