@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'プライバシーポリシー',
   description: '教育DXナビのプライバシーポリシーです。',
+  alternates: { canonical: '/privacy' },
+  openGraph: { type: 'website', url: '/privacy', title: 'プライバシーポリシー', description: '教育DXナビのプライバシーポリシーです。' },
 };
 
 export default function PrivacyPage() {
@@ -22,11 +24,11 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-gray-900 mb-3">2. 収集する情報</h2>
+          <h2 className="text-xl font-bold text-gray-900 mb-3">2. アクセス解析ツールについて</h2>
           <p className="mb-3">
-            当サイトでは現在、利用者の個人情報を収集・保存していません。
-            将来的にアクセス解析ツール（Google Analytics等）を導入する場合、
-            以下の情報が自動的に収集される可能性があります。
+            当サイトはアクセス状況の把握・改善のため、Google Analytics 4（GA4）を使用しています。
+            GA4はCookieを使用し、以下の情報を自動収集します。
+            収集した情報は個人を特定するものではなく、統計情報としてのみ利用します。
           </p>
           <ul className="list-disc list-inside space-y-1 text-sm">
             <li>アクセス日時・閲覧ページ</li>
@@ -35,17 +37,24 @@ export default function PrivacyPage() {
             <li>IPアドレス（個人を特定しない統計情報として利用）</li>
           </ul>
           <p className="mt-3 text-sm text-gray-500">
-            アクセス解析ツール導入時はこのページで告知します。
+            詳細は
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-700">
+              Google のプライバシーポリシー
+            </a>
+            をご確認ください。計測を停止したい場合は
+            <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-700">
+              Google Analytics オプトアウトアドオン
+            </a>
+            をご利用ください。
           </p>
         </section>
 
         <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">3. Cookieについて</h2>
           <p>
-            当サイトは現在、Cookie（クッキー）を使用していません。
-            将来的にアクセス解析や利便性向上のためCookieを使用する場合は、
-            その目的・内容をこのページで告知します。
-            なお、ブラウザの設定でCookieを無効にしても当サイトの閲覧に支障はありません。
+            当サイトはGoogle Analytics 4のためCookieを使用しています。
+            ブラウザの設定でCookieを無効にしても当サイトの閲覧に支障はありませんが、
+            アクセス計測が行われなくなります。
           </p>
         </section>
 
@@ -61,9 +70,21 @@ export default function PrivacyPage() {
 
         <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">5. 広告・アフィリエイトについて</h2>
-          <p>
+          <p className="mb-3">
             当サイトは現在、広告・アフィリエイトリンクを掲載していません。
-            将来的に導入する場合は、該当箇所に明示し、このページでも告知します。
+          </p>
+          <p className="mb-3">
+            将来的に Google AdSense による広告を掲載する場合、Google およびその提携企業が
+            Cookie を使用してパーソナライズ広告を表示することがあります。
+            収集されるデータは Google の広告サービスの提供にのみ使用され、当サイトが
+            個人を特定できる情報を受け取ることはありません。
+          </p>
+          <p className="mb-3">
+            将来的にアフィリエイトリンクを掲載する場合は、当該リンクに「PR」「広告」等の
+            表記を行い、利用者が明確に識別できるよう表示します。
+          </p>
+          <p className="text-sm text-gray-500">
+            広告・アフィリエイトを導入した場合、その時点でこのページを更新します。
           </p>
         </section>
 
@@ -81,7 +102,8 @@ export default function PrivacyPage() {
           <h2 className="text-xl font-bold text-gray-900 mb-3">7. お問い合わせ</h2>
           <p>
             プライバシーに関するご質問がある場合は、
-            当サイトトップページ記載の連絡先までお問い合わせください。
+            <a href="/contact" className="text-blue-600 hover:underline">お問い合わせページ</a>
+            よりご連絡ください。
           </p>
         </section>
       </div>

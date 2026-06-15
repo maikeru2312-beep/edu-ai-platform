@@ -23,6 +23,12 @@ export default function Header() {
             >
               教育情報DB
             </Link>
+            <Link
+              href="/about"
+              className="text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors"
+            >
+              サイトについて
+            </Link>
           </nav>
         </div>
         <div className="flex items-center gap-4 pb-2 overflow-x-auto">

@@ -3,13 +3,15 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: '免責事項',
   description: '教育DXナビの免責事項です。',
+  alternates: { canonical: '/disclaimer' },
+  openGraph: { type: 'website', url: '/disclaimer', title: '免責事項', description: '教育DXナビの免責事項です。' },
 };
 
 export default function DisclaimerPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
       <h1 className="text-3xl font-bold text-gray-900 mb-2">免責事項</h1>
-      <p className="text-sm text-gray-400 mb-10">最終更新日：2025年6月15日</p>
+      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年6月15日</p>
 
       <div className="space-y-10 text-gray-700 leading-relaxed">
         <section>
@@ -74,7 +76,7 @@ export default function DisclaimerPage() {
           <p>
             当サイトの一部コンテンツはAIを補助ツールとして活用して作成されています。
             公開前に編集者が内容を確認していますが、誤りが含まれる可能性があります。
-            誤情報を発見された場合は、トップページの連絡先よりお知らせください。
+            誤情報を発見された場合は、<a href="/contact" className="text-blue-600 hover:underline">お問い合わせページ</a>よりお知らせください。
           </p>
         </section>
 

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 export default function Footer() {
+  const year = new Date().getFullYear();
   return (
     <footer className="bg-gray-900 text-gray-400 mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
@@ -31,26 +32,26 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="text-white font-semibold mb-3 text-sm">カテゴリ</h3>
+            <h3 className="text-white font-semibold mb-3 text-sm">サイト情報</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/categories/tokubetsu-shien" className="hover:text-white transition-colors">
-                  特別支援教育
+                <Link href="/about" className="hover:text-white transition-colors">
+                  このサイトについて
                 </Link>
               </li>
               <li>
-                <Link href="/categories/ict" className="hover:text-white transition-colors">
-                  ICT活用
+                <Link href="/privacy" className="hover:text-white transition-colors">
+                  プライバシーポリシー
                 </Link>
               </li>
               <li>
-                <Link href="/categories/ai-koomu" className="hover:text-white transition-colors">
-                  AI校務改善
+                <Link href="/disclaimer" className="hover:text-white transition-colors">
+                  免責事項
                 </Link>
               </li>
               <li>
-                <Link href="/categories/joseikin" className="hover:text-white transition-colors">
-                  助成金・補助金
+                <Link href="/contact" className="hover:text-white transition-colors">
+                  お問い合わせ
                 </Link>
               </li>
             </ul>
@@ -59,17 +60,8 @@ export default function Footer() {
         <div className="border-t border-gray-800 mt-8 pt-8 text-xs">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
             <p>
-              © 2025 教育DXナビ.
-              掲載情報の正確性には万全を期していますが、利用の際は必ず一次情報をご確認ください。
+              © {year} 教育DXナビ — 個人運営の教育情報サイト。勤務先・自治体・学校を代表するものではありません。
             </p>
-            <div className="flex items-center gap-4 whitespace-nowrap">
-              <Link href="/privacy" className="hover:text-white transition-colors">
-                プライバシーポリシー
-              </Link>
-              <Link href="/disclaimer" className="hover:text-white transition-colors">
-                免責事項
-              </Link>
-            </div>
           </div>
         </div>
       </div>

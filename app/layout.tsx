@@ -2,20 +2,43 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://edu-dx-navi.vercel.app';
+const SITE_NAME = '教育DXナビ';
+const SITE_DESCRIPTION =
+  '教員向けに、ICT活用・校務効率化・生成AI活用・特別支援教育の実践知をわかりやすく整理するサイト。';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: '教育DXナビ | 特別支援教育・ICT・AI校務改善の情報メディア',
-    template: '%s | 教育DXナビ',
+    default: `${SITE_NAME} | 教員向けICT活用・校務効率化・生成AI活用情報`,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    '特別支援教育、ICT活用、AI校務改善、教材・助成金・研修情報を分かりやすく届ける教育情報メディア。',
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    type: 'website',
+    locale: 'ja_JP',
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} | 教員向けICT活用・校務効率化・生成AI活用情報`,
+    description: SITE_DESCRIPTION,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${SITE_NAME} | 教員向けICT活用・校務効率化・生成AI活用情報`,
+    description: SITE_DESCRIPTION,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja">
       <body className="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
+        <GoogleAnalytics />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

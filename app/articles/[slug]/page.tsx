@@ -16,7 +16,26 @@ export async function generateMetadata({
   const { slug } = await params;
   try {
     const article = await getArticle(slug);
-    return { title: article.title, description: article.description };
+    return {
+      title: article.title,
+      description: article.description,
+      alternates: {
+        canonical: `/articles/${slug}`,
+      },
+      openGraph: {
+        type: 'article',
+        url: `/articles/${slug}`,
+        title: article.title,
+        description: article.description,
+        ...(article.publishedAt && { publishedTime: article.publishedAt }),
+        ...(article.updatedAt && { modifiedTime: article.updatedAt }),
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: article.title,
+        description: article.description,
+      },
+    };
   } catch {
     return { title: '記事が見つかりません' };
   }

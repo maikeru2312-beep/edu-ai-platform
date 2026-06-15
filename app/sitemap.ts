@@ -3,7 +3,7 @@ import { getAllArticles } from '@/lib/articles';
 import { CATEGORIES, CATEGORY_TO_SLUG } from '@/lib/categories';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = process.env.SITE_URL ?? 'https://edu-dx-navi.vercel.app';
+  const base = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://edu-dx-navi.vercel.app';
 
   const articleEntries: MetadataRoute.Sitemap = getAllArticles().map((a) => ({
     url: `${base}/articles/${a.slug}`,
@@ -24,7 +24,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/db`, changeFrequency: 'weekly', priority: 0.8 },
     ...categoryEntries,
     ...articleEntries,
+    { url: `${base}/about`, changeFrequency: 'yearly', priority: 0.4 },
     { url: `${base}/privacy`, changeFrequency: 'yearly', priority: 0.3 },
     { url: `${base}/disclaimer`, changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${base}/contact`, changeFrequency: 'yearly', priority: 0.3 },
   ];
 }
