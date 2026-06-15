@@ -1,9 +1,10 @@
 import type { MetadataRoute } from 'next';
 import { getAllArticles } from '@/lib/articles';
 import { CATEGORIES, CATEGORY_TO_SLUG } from '@/lib/categories';
+import { getSiteUrl } from '@/lib/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://edu-ai-platform-delta.vercel.app';
+  const base = getSiteUrl();
 
   const articleEntries: MetadataRoute.Sitemap = getAllArticles().map((a) => ({
     url: `${base}/articles/${a.slug}`,

@@ -3,8 +3,9 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
+import { getSiteUrl } from '@/lib/site';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://edu-ai-platform-delta.vercel.app';
+const SITE_URL = getSiteUrl();
 const SITE_NAME = '教育DXナビ';
 const SITE_DESCRIPTION =
   '教員向けに、ICT活用・校務効率化・生成AI活用・特別支援教育の実践知をわかりやすく整理するサイト。';
