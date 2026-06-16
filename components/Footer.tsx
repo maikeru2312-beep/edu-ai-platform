@@ -40,6 +40,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/operator" className="hover:text-white transition-colors">
+                  運営者情報
+                </Link>
+              </li>
+              <li>
                 <Link href="/privacy" className="hover:text-white transition-colors">
                   プライバシーポリシー
                 </Link>

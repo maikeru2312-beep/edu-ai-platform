@@ -26,6 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...categoryEntries,
     ...articleEntries,
     { url: `${base}/about`, changeFrequency: 'yearly', priority: 0.4 },
+    { url: `${base}/operator`, changeFrequency: 'yearly', priority: 0.4 },
     { url: `${base}/privacy`, changeFrequency: 'yearly', priority: 0.3 },
     { url: `${base}/disclaimer`, changeFrequency: 'yearly', priority: 0.3 },
     { url: `${base}/contact`, changeFrequency: 'yearly', priority: 0.3 },
