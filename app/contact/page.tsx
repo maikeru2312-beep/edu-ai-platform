@@ -37,6 +37,16 @@ export default function ContactPage() {
         </section>
 
         <section>
+          <h2 className="text-xl font-bold text-gray-900 mb-3">お問い合わせにあたってのお願い</h2>
+          <ul className="list-disc list-inside space-y-2 text-sm">
+            <li>児童生徒の氏名・学校名・家庭の状況など、個人が特定できる情報はお送りにならないようお願いします。</li>
+            <li>法的判断・医療的判断・行政上の手続きに関する個別のご相談へは回答できません。</li>
+            <li>お問い合わせへの返信をお約束するものではありません。あらかじめご了承ください。</li>
+            <li>具体的な支援や判断が必要な場合は、所属校・自治体の担当窓口・専門機関にご相談ください。</li>
+          </ul>
+        </section>
+
+        <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">対応について</h2>
           <ul className="list-disc list-inside space-y-2 text-sm">
             <li>誤情報・事実確認に関するご指摘には優先的に対応します。</li>

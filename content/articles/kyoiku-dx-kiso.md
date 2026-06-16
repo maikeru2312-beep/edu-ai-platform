@@ -177,6 +177,7 @@ DXは「魔法の解決策」ではありません。導入した当初は使い
 **記事**
 - [AIで変わる校務改善：教員の残業を減らす5つの活用法](/articles/ai-koomu-kaizen-nyumon)
 - [特別支援教育でICTを活用する：タブレット・AAC・読み上げソフトの選び方](/articles/tokubetsu-shien-ict)
+- [タブレット1台で始める授業ICT活用【GIGAスクール対応】](/articles/tablet-ict-jugyo-giga)
 
 **カテゴリ**
 - [ICT活用](/categories/ict) — 授業・学習支援でのICT実践
