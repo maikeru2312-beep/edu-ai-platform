@@ -5,15 +5,17 @@ import { getSiteUrl } from '@/lib/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = getSiteUrl();
+  const articles = getAllArticles();
 
-  const articleEntries: MetadataRoute.Sitemap = getAllArticles().map((a) => ({
+  const articleEntries: MetadataRoute.Sitemap = articles.map((a) => ({
     url: `${base}/articles/${a.slug}`,
     lastModified: a.updatedAt ?? a.publishedAt,
     changeFrequency: 'monthly',
     priority: 0.7,
   }));
 
-  const categoryEntries: MetadataRoute.Sitemap = CATEGORIES.map((cat) => ({
+  const activeCategories = CATEGORIES.filter((cat) => articles.some((a) => a.category === cat));
+  const categoryEntries: MetadataRoute.Sitemap = activeCategories.map((cat) => ({
     url: `${base}/categories/${CATEGORY_TO_SLUG[cat]}`,
     changeFrequency: 'weekly',
     priority: 0.6,

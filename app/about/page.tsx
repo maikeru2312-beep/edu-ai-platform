@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -66,6 +67,16 @@ export default function AboutPage() {
           </p>
         </section>
       </div>
+
+      <nav className="mt-12 pt-6 border-t border-gray-200 text-sm text-gray-600">
+        <p className="mb-2 font-medium text-gray-700">関連ページ</p>
+        <ul className="space-y-1">
+          <li><Link href="/operator" className="text-blue-600 hover:underline">運営者情報</Link></li>
+          <li><Link href="/privacy" className="text-blue-600 hover:underline">プライバシーポリシー</Link></li>
+          <li><Link href="/disclaimer" className="text-blue-600 hover:underline">免責事項</Link></li>
+          <li><Link href="/contact" className="text-blue-600 hover:underline">お問い合わせ</Link></li>
+        </ul>
+      </nav>
     </div>
   );
 }

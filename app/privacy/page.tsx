@@ -92,7 +92,7 @@ export default function PrivacyPage() {
         <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">6. お問い合わせフォームで取得する情報</h2>
           <p className="mb-3">
-            当サイトのお問い合わせページからご連絡いただく場合、入力フォームを通じてメッセージ内容を取得します。
+            当サイトのお問い合わせページからご連絡いただく場合、メッセージ内容を取得することがあります。
             取得した情報はお問い合わせへの対応のみに使用し、第三者に提供・開示しません。
           </p>
           <p className="mb-3">以下の点についてご注意ください：</p>

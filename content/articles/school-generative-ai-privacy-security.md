@@ -4,6 +4,7 @@ description: "ChatGPTなど生成AIを学校現場で使う際に注意すべき
 category: "AI校務改善"
 tags: ["生成AI", "個人情報", "セキュリティ", "ChatGPT", "校務改善", "ガイドライン", "学校AI"]
 publishedAt: "2026-06-16"
+updatedAt: "2026-06-17"
 ---
 
 ## はじめに

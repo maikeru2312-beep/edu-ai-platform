@@ -1,7 +1,10 @@
 import Link from 'next/link';
 import { CATEGORIES, CATEGORY_TO_SLUG } from '@/lib/categories';
+import { getAllArticles } from '@/lib/articles';
 
 export default function Header() {
+  const articles = getAllArticles();
+  const activeCategories = CATEGORIES.filter(cat => articles.some(a => a.category === cat));
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -32,7 +35,7 @@ export default function Header() {
           </nav>
         </div>
         <div className="flex items-center gap-4 pb-2 overflow-x-auto">
-          {CATEGORIES.map((cat) => (
+          {activeCategories.map((cat) => (
             <Link
               key={cat}
               href={`/categories/${CATEGORY_TO_SLUG[cat]}`}

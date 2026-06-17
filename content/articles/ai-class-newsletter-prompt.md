@@ -4,6 +4,7 @@ description: "学年だよりや学級通信をChatGPTなどの生成AIで効率
 category: "AI校務改善"
 tags: ["学級通信", "学年だより", "ChatGPT", "生成AI", "AI校務改善", "プロンプト", "校務効率化", "保護者向け文書"]
 publishedAt: "2026-06-17"
+updatedAt: "2026-06-17"
 ---
 
 ## はじめに

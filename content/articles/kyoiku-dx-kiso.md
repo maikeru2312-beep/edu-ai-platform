@@ -4,6 +4,7 @@ description: "教育DX・学校DX・校務DXの意味とICT活用との違いを
 category: "ICT活用"
 tags: ["教育DX", "ICT活用", "校務DX", "生成AI", "GIGAスクール", "特別支援教育"]
 publishedAt: "2026-06-16"
+updatedAt: "2026-06-17"
 ---
 
 ## はじめに
