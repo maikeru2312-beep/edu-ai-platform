@@ -11,7 +11,7 @@ export default function PrivacyPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
       <h1 className="text-3xl font-bold text-gray-900 mb-2">プライバシーポリシー</h1>
-      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年6月15日</p>
+      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年6月17日</p>
 
       <div className="space-y-10 text-gray-700 leading-relaxed">
         <section>
@@ -29,6 +29,7 @@ export default function PrivacyPage() {
             当サイトはアクセス状況の把握・改善のため、Google Analytics 4（GA4）を使用しています。
             GA4はCookieを使用し、以下の情報を自動収集します。
             収集した情報は個人を特定するものではなく、統計情報としてのみ利用します。
+            また、Google Search Consoleを使用してサイトのインデックス状況・検索パフォーマンスを確認しています。Google Search Consoleではユーザーの個人情報を収集しません。
           </p>
           <ul className="list-disc list-inside space-y-1 text-sm">
             <li>アクセス日時・閲覧ページ</li>
@@ -89,7 +90,33 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-gray-900 mb-3">6. プライバシーポリシーの変更</h2>
+          <h2 className="text-xl font-bold text-gray-900 mb-3">6. お問い合わせフォームで取得する情報</h2>
+          <p className="mb-3">
+            当サイトのお問い合わせページからご連絡いただく場合、入力フォームを通じてメッセージ内容を取得します。
+            取得した情報はお問い合わせへの対応のみに使用し、第三者に提供・開示しません。
+          </p>
+          <p className="mb-3">以下の点についてご注意ください：</p>
+          <ul className="list-disc list-inside space-y-1 text-sm">
+            <li>児童生徒の氏名・学校名・家庭状況など、個人を特定できる情報は送付しないでください</li>
+            <li>個別の法的・医療的・行政的判断を求める内容には回答できません</li>
+            <li>いただいたお問い合わせへの返信を保証するものではありません</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-bold text-gray-900 mb-3">7. 著作権について</h2>
+          <p className="mb-3">
+            当サイトに掲載する文章・図表・構成等の著作権は運営者に帰属します。
+            引用・転載の際は出典を明記し、過度な引用はお控えください。
+          </p>
+          <p>
+            なお、当サイトが引用・参照する外部資料（文部科学省資料・研究機関の報告書等）の
+            著作権はそれぞれの権利者に帰属します。
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-bold text-gray-900 mb-3">8. プライバシーポリシーの変更</h2>
           <p>
             当サイトは、法令の改正や運営方針の変更等により、
             予告なくこのプライバシーポリシーを変更することがあります。
@@ -99,7 +126,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-gray-900 mb-3">7. お問い合わせ</h2>
+          <h2 className="text-xl font-bold text-gray-900 mb-3">9. お問い合わせ</h2>
           <p>
             プライバシーに関するご質問がある場合は、
             <a href="/contact" className="text-blue-600 hover:underline">お問い合わせページ</a>
