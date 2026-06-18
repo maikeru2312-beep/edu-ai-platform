@@ -3,6 +3,7 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
+import GoogleAdSense from '@/components/GoogleAdSense';
 import { getSiteUrl } from '@/lib/site';
 
 const SITE_URL = getSiteUrl();
@@ -52,6 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ja">
       <body className="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
         <GoogleAnalytics />
+        <GoogleAdSense />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
