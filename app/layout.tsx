@@ -3,8 +3,9 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
-import GoogleAdSense from '@/components/GoogleAdSense';
 import { getSiteUrl } from '@/lib/site';
+
+const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT;
 
 const SITE_URL = getSiteUrl();
 const SITE_NAME = '教育DXナビ';
@@ -51,9 +52,17 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja">
+      {ADSENSE_CLIENT && (
+        <head>
+          <script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
+            crossOrigin="anonymous"
+          />
+        </head>
+      )}
       <body className="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
         <GoogleAnalytics />
-        <GoogleAdSense />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
