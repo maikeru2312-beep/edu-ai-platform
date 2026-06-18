@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   openGraph: { type: 'website', url: '/contact', title: 'お問い合わせ', description: '教育DXナビへのお問い合わせ・誤情報のご報告はこちらから。' },
 };
 
-const contactFormUrl = process.env.NEXT_PUBLIC_CONTACT_FORM_URL;
-
 export default function ContactPage() {
+  const contactFormUrl = process.env.NEXT_PUBLIC_CONTACT_FORM_URL?.trim() || '';
+
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
       <h1 className="text-3xl font-bold text-gray-900 mb-2">お問い合わせ</h1>
-      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年6月15日</p>
+      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年6月17日</p>
 
       <div className="space-y-8 text-gray-700 leading-relaxed">
         <section>
@@ -28,7 +28,9 @@ export default function ContactPage() {
           <h2 className="text-xl font-bold text-gray-900 mb-3">お問い合わせ方法</h2>
           {contactFormUrl ? (
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-5">
-              <p className="text-sm font-medium text-blue-900 mb-3">お問い合わせフォーム</p>
+              <p className="text-sm font-medium text-blue-900 mb-3">
+                以下のフォームからお問い合わせいただけます。
+              </p>
               <a
                 href={contactFormUrl}
                 target="_blank"
@@ -41,8 +43,8 @@ export default function ContactPage() {
           ) : (
             <div className="bg-gray-50 border border-gray-200 rounded-lg p-5">
               <p className="text-sm text-gray-700">
-                現在、お問い合わせはメール（サイト内記事の誤情報報告・ご意見等）にて受け付けています。
-                下記の「お問い合わせにあたってのお願い」をご確認のうえ、お気軽にご連絡ください。
+                お問い合わせ窓口の準備を進めています。
+                お急ぎの場合は、サイト内各記事のコメント欄等をご利用ください。
               </p>
             </div>
           )}
