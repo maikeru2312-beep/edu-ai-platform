@@ -282,4 +282,5 @@ ICT活用の実践については[GIGAスクール端末のICT活用](/articles/
 - [ICT教材・支援ツールの選び方](/articles/ict-teaching-tools-selection-guide)
 - [助成金・補助金カテゴリ](/categories/joseikin)
 - [ICT活用カテゴリ](/categories/ict)
+- [教員が教育助成金を探す方法](/articles/education-grant-search-guide)
 - [特別支援教育カテゴリ](/categories/tokubetsu-shien)
