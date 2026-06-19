@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: [
       {
-        url: `${SITE_URL}/og-image.svg`,
+        url: `${SITE_URL}/opengraph-image`,
         width: 1200,
         height: 630,
         alt: '教育DXナビ',
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: `${SITE_NAME} | 教員向けICT活用・校務効率化・生成AI活用情報`,
     description: SITE_DESCRIPTION,
-    images: [`${SITE_URL}/og-image.svg`],
+    images: [`${SITE_URL}/opengraph-image`],
   },
   robots: {
     index: true,

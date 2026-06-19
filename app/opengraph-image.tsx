@@ -1,34 +1,186 @@
-export const runtime = 'edge';
+import { ImageResponse } from 'next/og';
 
+export const runtime = 'edge';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
+export const alt = '教育DXナビ';
 
 export default function Image() {
-  return new Response(
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
-  <rect width="1200" height="630" fill="#1a2744"/>
-  <rect x="0" y="0" width="1200" height="8" fill="#3b82f6"/>
-  <rect x="0" y="622" width="1200" height="8" fill="#3b82f6"/>
-  <rect x="80" y="60" width="4" height="510" fill="#3b82f6"/>
-  <circle cx="1050" cy="315" r="200" fill="#3b82f6" fill-opacity="0.08"/>
-  <circle cx="1050" cy="315" r="140" fill="#3b82f6" fill-opacity="0.06"/>
-  <text x="108" y="290" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="700" fill="#ffffff" letter-spacing="2">EduDX NAVI</text>
-  <text x="112" y="350" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="400" fill="#93c5fd" letter-spacing="6">&#x6559;&#x80B2;DX&#x30CA;&#x30D3;</text>
-  <line x1="108" y1="380" x2="900" y2="380" stroke="#3b82f6" stroke-width="1.5" opacity="0.5"/>
-  <rect x="108" y="405" width="220" height="48" rx="6" fill="#3b82f6" fill-opacity="0.25" stroke="#3b82f6" stroke-width="1"/>
-  <text x="218" y="435" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" fill="#93c5fd" text-anchor="middle">ICT in Education</text>
-  <rect x="348" y="405" width="240" height="48" rx="6" fill="#3b82f6" fill-opacity="0.25" stroke="#3b82f6" stroke-width="1"/>
-  <text x="468" y="435" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" fill="#93c5fd" text-anchor="middle">AI School Support</text>
-  <rect x="608" y="405" width="280" height="48" rx="6" fill="#3b82f6" fill-opacity="0.25" stroke="#3b82f6" stroke-width="1"/>
-  <text x="748" y="435" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" fill="#93c5fd" text-anchor="middle">Special Ed. Support</text>
-  <text x="108" y="520" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#cbd5e1" letter-spacing="1">For Teachers - Practical knowledge for Digital Transformation</text>
-  <text x="108" y="568" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#64748b" letter-spacing="1">edu-dx-navi.com</text>
-</svg>`,
-    {
-      headers: {
-        'Content-Type': 'image/svg+xml',
-        'Cache-Control': 'public, max-age=86400',
-      },
-    },
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          width: '1200px',
+          height: '630px',
+          display: 'flex',
+          flexDirection: 'column',
+          backgroundColor: '#1a2744',
+          padding: '60px 80px',
+          position: 'relative',
+          fontFamily: 'Arial, Helvetica, sans-serif',
+        }}
+      >
+        {/* Top accent bar */}
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '1200px',
+            height: '8px',
+            backgroundColor: '#3b82f6',
+            display: 'flex',
+          }}
+        />
+        {/* Bottom accent bar */}
+        <div
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            width: '1200px',
+            height: '8px',
+            backgroundColor: '#3b82f6',
+            display: 'flex',
+          }}
+        />
+        {/* Left accent bar */}
+        <div
+          style={{
+            position: 'absolute',
+            top: '60px',
+            left: '76px',
+            width: '4px',
+            height: '510px',
+            backgroundColor: '#3b82f6',
+            display: 'flex',
+          }}
+        />
+
+        {/* Main content area */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            marginLeft: '28px',
+            marginTop: '120px',
+          }}
+        >
+          {/* Title */}
+          <div
+            style={{
+              fontSize: '78px',
+              fontWeight: 700,
+              color: '#ffffff',
+              letterSpacing: '2px',
+              display: 'flex',
+            }}
+          >
+            EduDX NAVI
+          </div>
+          {/* Japanese subtitle */}
+          <div
+            style={{
+              fontSize: '32px',
+              color: '#93c5fd',
+              letterSpacing: '6px',
+              marginTop: '10px',
+              display: 'flex',
+            }}
+          >
+            教育DXナビ
+          </div>
+
+          {/* Divider */}
+          <div
+            style={{
+              width: '792px',
+              height: '2px',
+              backgroundColor: '#3b82f6',
+              opacity: 0.5,
+              marginTop: '30px',
+              display: 'flex',
+            }}
+          />
+
+          {/* Tags row */}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              gap: '20px',
+              marginTop: '25px',
+            }}
+          >
+            <div
+              style={{
+                display: 'flex',
+                padding: '10px 30px',
+                borderRadius: '6px',
+                backgroundColor: 'rgba(59,130,246,0.25)',
+                border: '1px solid #3b82f6',
+              }}
+            >
+              <span style={{ fontSize: '20px', fontWeight: 600, color: '#93c5fd' }}>
+                ICT活用
+              </span>
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                padding: '10px 30px',
+                borderRadius: '6px',
+                backgroundColor: 'rgba(59,130,246,0.25)',
+                border: '1px solid #3b82f6',
+              }}
+            >
+              <span style={{ fontSize: '20px', fontWeight: 600, color: '#93c5fd' }}>
+                AI校務改善
+              </span>
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                padding: '10px 30px',
+                borderRadius: '6px',
+                backgroundColor: 'rgba(59,130,246,0.25)',
+                border: '1px solid #3b82f6',
+              }}
+            >
+              <span style={{ fontSize: '20px', fontWeight: 600, color: '#93c5fd' }}>
+                特別支援教育
+              </span>
+            </div>
+          </div>
+
+          {/* Tagline */}
+          <div
+            style={{
+              fontSize: '22px',
+              color: '#cbd5e1',
+              letterSpacing: '1px',
+              marginTop: '40px',
+              display: 'flex',
+            }}
+          >
+            教員向け ICT・AI・特別支援の実践知
+          </div>
+
+          {/* URL */}
+          <div
+            style={{
+              fontSize: '18px',
+              color: '#64748b',
+              letterSpacing: '1px',
+              marginTop: '20px',
+              display: 'flex',
+            }}
+          >
+            edu-dx-navi.com
+          </div>
+        </div>
+      </div>
+    ),
+    { ...size },
   );
 }
