@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import ChifuyuProfileCard from '@/components/ChifuyuProfileCard';
 
 export const metadata: Metadata = {
   title: 'このサイトについて',
@@ -47,6 +48,15 @@ export default function AboutPage() {
             <li>引用・参照には出所を明記します。正確性に努めますが、必ず一次情報もご確認ください。</li>
             <li>コンテンツの一部はAIを補助ツールとして作成し、公開前に編集者が確認しています。</li>
           </ul>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-bold text-gray-900 mb-3">千冬先生＠教育DXについて</h2>
+          <ChifuyuProfileCard variant="full" />
+          <p className="mt-4 text-sm text-gray-700 leading-relaxed">
+            千冬先生＠教育DXは、教育DXナビの案内役です。ICT活用、生成AI、校務改善、特別支援教育について、学校現場で安全に使うための視点をやさしく整理します。
+            実在の学校・自治体・教員個人を代表するものではなく、教育DXナビの編集キャラクターとして、サイト内記事やSNSで情報発信を行います。
+          </p>
         </section>
 
         <section>

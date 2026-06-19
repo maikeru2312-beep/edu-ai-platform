@@ -66,6 +66,24 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 千冬先生からのひとこと */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 py-6">
+        <div className="bg-blue-50 border border-blue-100 rounded-2xl p-5 flex flex-col sm:flex-row gap-4 items-start">
+          <div className="shrink-0 w-12 h-12 rounded-full bg-blue-200 flex items-center justify-center text-blue-700 font-bold text-lg">
+            千
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-semibold text-gray-900 mb-1">千冬先生からのひとこと</p>
+            <p className="text-sm text-gray-700 leading-relaxed">
+              ICTや生成AIは、使うこと自体が目的ではありません。授業や校務で安心して使えるように、まずは「何に使うか」「何を入力しないか」を一緒に整理していきましょう。
+            </p>
+            <p className="mt-2 text-xs text-gray-400">
+              ※ 千冬先生は教育DXナビの編集キャラクターです。実在の学校・教員個人を代表するものではありません。
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* 最新記事 */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
         <div className="flex items-center justify-between mb-6">

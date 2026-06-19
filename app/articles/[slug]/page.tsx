@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getAllArticleSlugs, getArticle, getArticlesByCategory } from '@/lib/articles';
 import CategoryBadge from '@/components/CategoryBadge';
+import ChifuyuProfileCard from '@/components/ChifuyuProfileCard';
 
 export function generateStaticParams() {
   return getAllArticleSlugs().map((slug) => ({ slug }));
@@ -98,6 +99,11 @@ export default async function ArticleDetailPage({
         className="prose prose-lg max-w-none prose-headings:font-bold prose-a:text-blue-600 prose-img:rounded-lg prose-code:bg-gray-100 prose-code:px-1 prose-code:rounded"
         dangerouslySetInnerHTML={{ __html: article.contentHtml }}
       />
+
+      {/* 案内役 */}
+      <div className="mt-10">
+        <ChifuyuProfileCard variant="compact" />
+      </div>
 
       {relatedArticles.length > 0 && (
         <aside className="mt-12 pt-8 border-t border-gray-200">
