@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 
 type Props = {
@@ -9,20 +10,39 @@ type Props = {
 const AVATAR_PATH = '/images/chifuyu/chifuyu-avatar.png';
 const X_URL = process.env.NEXT_PUBLIC_X_PROFILE_URL ?? '';
 
+function Avatar({ size }: { size: 'sm' | 'lg' }) {
+  const [failed, setFailed] = useState(false);
+  const px = size === 'sm' ? 48 : 64;
+  const textClass = size === 'sm' ? 'text-sm' : 'text-xl';
+  const sizeClass = size === 'sm' ? 'w-12 h-12' : 'w-16 h-16';
+
+  return (
+    <div
+      className={`${sizeClass} rounded-full overflow-hidden bg-blue-200 shrink-0 flex items-center justify-center`}
+    >
+      {failed ? (
+        <span className={`text-blue-700 font-bold ${textClass}`} aria-hidden="true">
+          千
+        </span>
+      ) : (
+        <Image
+          src={AVATAR_PATH}
+          alt="教育DXナビの案内役、千冬先生のイラスト"
+          width={px}
+          height={px}
+          className="object-cover w-full h-full"
+          onError={() => setFailed(true)}
+        />
+      )}
+    </div>
+  );
+}
+
 export default function ChifuyuProfileCard({ variant = 'full' }: Props) {
   if (variant === 'compact') {
     return (
       <div className="flex items-center gap-3 p-4 bg-blue-50 border border-blue-100 rounded-xl">
-        <div className="relative w-12 h-12 rounded-full overflow-hidden bg-blue-200 shrink-0 flex items-center justify-center">
-          <Image
-            src={AVATAR_PATH}
-            alt="教育DXナビの案内役、千冬先生のイラスト"
-            width={48}
-            height={48}
-            className="object-cover w-full h-full"
-            onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-          />
-        </div>
+        <Avatar size="sm" />
         <div className="min-w-0">
           <p className="text-sm font-semibold text-gray-900">千冬先生＠教育DX</p>
           <p className="text-xs text-gray-500 leading-tight">教育DXナビの案内役</p>
@@ -34,16 +54,7 @@ export default function ChifuyuProfileCard({ variant = 'full' }: Props) {
   return (
     <div className="bg-blue-50 border border-blue-100 rounded-2xl p-6">
       <div className="flex items-start gap-4">
-        <div className="relative w-16 h-16 rounded-full overflow-hidden bg-blue-200 shrink-0 flex items-center justify-center">
-          <Image
-            src={AVATAR_PATH}
-            alt="教育DXナビの案内役、千冬先生のイラスト"
-            width={64}
-            height={64}
-            className="object-cover w-full h-full"
-            onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-          />
-        </div>
+        <Avatar size="lg" />
         <div className="flex-1 min-w-0">
           <p className="font-bold text-gray-900 text-lg leading-tight">千冬先生＠教育DX</p>
           <p className="text-sm text-blue-600 font-medium mt-0.5">教育DXナビの案内役</p>
@@ -58,7 +69,7 @@ export default function ChifuyuProfileCard({ variant = 'full' }: Props) {
               className="inline-flex items-center gap-1 mt-3 text-sm text-blue-600 hover:text-blue-800 font-medium"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
               </svg>
               X（旧Twitter）で見る
             </a>
