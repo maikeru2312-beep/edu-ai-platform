@@ -451,3 +451,4 @@ ICT活用も生成AIの活用も、最初から完璧にできる必要はあり
 - [情報モラル教育の進め方](/articles/information-morals-education-themes) — 情報モラルの授業設計と実践テーマ
 - [ICT活用カテゴリの記事一覧](/categories/ict) — ICT活用に関する全記事を確認
 - [AI校務改善カテゴリの記事一覧](/categories/ai-koomu) — AI校務改善に関する全記事を確認
+- [生成AI校内研修の進め方](/articles/generative-ai-school-training-guide)

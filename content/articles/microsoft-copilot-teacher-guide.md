@@ -473,3 +473,4 @@ Microsoft Copilotは、Word・Excel・PowerPoint・Teamsといった学校現場
 - [学校で生成AIを使うときの個人情報・セキュリティの注意点](/articles/school-generative-ai-privacy-security) — 入力してはいけない情報・安全な使い方を詳しく整理
 - [学年だより・学級通信をAIで時短する実践例](/articles/ai-class-newsletter-prompt) — 学級通信の作成にAIを使う具体的なプロンプト例
 - [AI校務改善カテゴリの記事一覧](/categories/ai-koomu) — AI校務改善に関する全記事を確認
+- [生成AI校内研修の進め方](/articles/generative-ai-school-training-guide)
