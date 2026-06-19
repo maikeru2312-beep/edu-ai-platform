@@ -535,6 +535,7 @@ ICTの活用に関する詳しい内容は [特別支援教育でICTを活用す
 - [特別支援教育でICTを活用する：タブレット・AAC・読み上げソフトの選び方](/articles/tokubetsu-shien-ict)
 - [学校で生成AIを使うときの個人情報・セキュリティの注意点](/articles/school-generative-ai-privacy-security)
 - [教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/kyoiku-dx-kiso)
+- [特別支援教育の保護者連携](/articles/special-needs-parent-collaboration)
 - [カテゴリ：特別支援教育](/categories/tokubetsu-shien)
 
 ---

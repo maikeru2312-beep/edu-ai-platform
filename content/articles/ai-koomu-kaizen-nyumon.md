@@ -227,6 +227,8 @@ AIの出力はあくまで出発点です。内容が正確かどうか、表現
 - [学校で生成AIを使うときの個人情報・セキュリティの注意点](/articles/school-generative-ai-privacy-security)
 - [学年だより・学級通信をAIで時短する実践例【プロンプト付き】](/articles/ai-class-newsletter-prompt)
 - [カテゴリ：AI校務改善](/categories/ai-koomu)
+- [教員向けMicrosoft Copilot活用ガイド](/articles/microsoft-copilot-teacher-guide)
+- [授業準備をAIで時短する方法](/articles/ai-lesson-preparation-prompt)
 
 ---
 
