@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 
 type Props = {
@@ -8,27 +10,18 @@ const AVATAR_PATH = '/images/chifuyu/chifuyu-avatar.png';
 const X_URL = process.env.NEXT_PUBLIC_X_PROFILE_URL ?? '';
 
 export default function ChifuyuProfileCard({ variant = 'full' }: Props) {
-  // Check image existence at build time is not possible in RSC without fs,
-  // so we use a boolean flag driven by a build-time env or just try/catch in Image.
-  // We render the image only if the avatar path resolves; fallback to initials.
-  const showAvatar = true; // Image component handles 404 gracefully via onError in client; for SSR we always attempt
-
   if (variant === 'compact') {
     return (
       <div className="flex items-center gap-3 p-4 bg-blue-50 border border-blue-100 rounded-xl">
         <div className="relative w-12 h-12 rounded-full overflow-hidden bg-blue-200 shrink-0 flex items-center justify-center">
-          {showAvatar ? (
-            <Image
-              src={AVATAR_PATH}
-              alt="教育DXナビの案内役、千冬先生のイラスト"
-              width={48}
-              height={48}
-              className="object-cover w-full h-full"
-              onError={() => {}}
-            />
-          ) : (
-            <span className="text-blue-700 font-bold text-sm">千</span>
-          )}
+          <Image
+            src={AVATAR_PATH}
+            alt="教育DXナビの案内役、千冬先生のイラスト"
+            width={48}
+            height={48}
+            className="object-cover w-full h-full"
+            onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+          />
         </div>
         <div className="min-w-0">
           <p className="text-sm font-semibold text-gray-900">千冬先生＠教育DX</p>
@@ -42,18 +35,14 @@ export default function ChifuyuProfileCard({ variant = 'full' }: Props) {
     <div className="bg-blue-50 border border-blue-100 rounded-2xl p-6">
       <div className="flex items-start gap-4">
         <div className="relative w-16 h-16 rounded-full overflow-hidden bg-blue-200 shrink-0 flex items-center justify-center">
-          {showAvatar ? (
-            <Image
-              src={AVATAR_PATH}
-              alt="教育DXナビの案内役、千冬先生のイラスト"
-              width={64}
-              height={64}
-              className="object-cover w-full h-full"
-              onError={() => {}}
-            />
-          ) : (
-            <span className="text-blue-700 font-bold text-xl">千</span>
-          )}
+          <Image
+            src={AVATAR_PATH}
+            alt="教育DXナビの案内役、千冬先生のイラスト"
+            width={64}
+            height={64}
+            className="object-cover w-full h-full"
+            onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+          />
         </div>
         <div className="flex-1 min-w-0">
           <p className="font-bold text-gray-900 text-lg leading-tight">千冬先生＠教育DX</p>
