@@ -4,7 +4,7 @@ import ChifuyuProfileCard from '@/components/ChifuyuProfileCard';
 
 export const metadata: Metadata = {
   title: 'このサイトについて',
-  description: '教育DXナビの運営方針・目的・運営者情報をご紹介します。',
+  description: '教育DXナビの目的、運営方針、千冬先生＠教育DXの位置づけ、広告・収益化に関する考え方を紹介します。',
   alternates: { canonical: '/about' },
   openGraph: { type: 'website', url: '/about', title: 'このサイトについて', description: '教育DXナビの運営方針・目的・運営者情報をご紹介します。' },
 };

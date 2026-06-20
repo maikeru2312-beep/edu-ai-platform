@@ -126,9 +126,9 @@ export default function HomePage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-8">
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-semibold text-gray-700">ニュースまとめ</h2>
-          <a href="/news" className="text-blue-600 hover:text-blue-800 text-sm font-medium">
+          <Link href="/news" className="text-blue-600 hover:text-blue-800 text-sm font-medium">
             一覧を見る →
-          </a>
+          </Link>
         </div>
         <p className="text-sm text-gray-500 mt-1">
           教育DX・生成AI・ICT活用に関する動きを、学校現場向けに整理しています。
