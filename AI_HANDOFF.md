@@ -45,6 +45,8 @@ node -e 'const fs=require("fs"),p=require("path"),d="content/articles";const s=n
 
 ## 直近の作業
 
+> **運用フェーズへ移行**（2026-06-27〜）。コード変更中心の開発は一段落。Search Console 運用・X投稿・本番モニタリングが中心。手順は [docs/ops/operations-memo.md](docs/ops/operations-memo.md)。
+
 ### フェーズ5（2026-06-27、GA4本番発火確認）
 - ユーザーが Vercel Production に `NEXT_PUBLIC_GA_ID=G-XCORRZCZM5` を設定・再デプロイ。本番をローカルから確認し、**GA4の本番発火を確認（解消）**：トップ・記事サブページとも `googletagmanager.com/gtag/js?id=G-XCORRZCZM5` 出力。AdSense（ca-pub-3801092904087307）・Search Console verification・canonical・robots・sitemap（記事30件）すべて維持、記事表示に影響なし。
 - ドキュメント追記のみ（コード・記事・設定ファイルは無変更）。
