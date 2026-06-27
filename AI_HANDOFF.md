@@ -45,6 +45,13 @@ node -e 'const fs=require("fs"),p=require("path"),d="content/articles";const s=n
 
 ## 直近の作業
 
+### フェーズ3（2026-06-27、push後）
+- フェーズ1・2の2コミットを `origin/main` へ push 済み（GitHub: maikeru2312-beep/edu-ai-platform、Vercel連携）。
+- 新規記事1本追加：[教育AIサービスを学校で使う前に確認したいこと](content/articles/education-ai-service-checklist-before-use.md)（カテゴリ：教材・支援ツール）。AIサービス特有の確認観点＋導入前チェックリスト。free-ict-tools-safety-checklist と差別化。
+- 既存5記事へ相互内部リンク追加（free-ict-tools-safety-checklist / school-generative-ai-privacy-security / generative-ai-guideline-v2-school-reading / ai-koomu-kaizen-nyumon / special-needs-ict-reasonable-accommodation）。
+- build(51ページ) / validate(記事30) / 内部リンク / sitemap すべて確認済み。今回はコンテンツ記事のみ変更（page.tsx・保護対象は無変更）。
+- PROJECT_STATUS.md に「Vercel 本番反映後の確認チェックリスト」を追加。
+
 ### フェーズ2（2026-06-27、commit後）
 - フェーズ1成果をコミット（`c6f9fd2` Add AdSense review period content updates）。
 - 新規記事1本追加：[特別支援教育におけるICT活用と合理的配慮](content/articles/special-needs-ict-reasonable-accommodation.md)（特別支援教育カテゴリ）。合理的配慮と教育課程上の指導・支援の区別＋計画・記録への接続＋チェックリスト。既存4記事と角度で差別化。
@@ -62,9 +69,9 @@ node -e 'const fs=require("fs"),p=require("path"),d="content/articles";const s=n
 
 ## 次の候補タスク
 
-- テーマD（教育AIサービス導入チェック記事。free-ict-tools-safety-checklist と差別化）。
-- ESLint 設定の整備（非対話化）。
+- **ESLint 設定の整備（非対話化）** ← 未対応の最優先。`next lint` が eslintrc 不在で対話化するため、自動チェックに組み込めていない。
 - 記事一覧（/articles）への更新日表示・ソートの検討。
+- 新規テーマ案：校務でのAI活用の具体手順、情報セキュリティ研修、保護者向けICT説明など（既存記事と重複しない角度で）。
 
 ## 内部リンク運用メモ
 - 既存記事に関連リンクを追加する軽微な編集では、frontmatter の `updatedAt` をあえて据え置いている（更新日のインフレを避けるため）。「最近更新した記事」は実質的な内容更新を反映する想定。方針変更時はこのメモを更新すること。

@@ -154,6 +154,7 @@ ICT活用を一人の教員の工夫で終わらせず、**継続する仕組み
 - [個別の教育支援計画・個別の指導計画の書き方](/articles/individual-education-plan-writing-guide)
 - [デジタル教科書の本格導入で学校現場は何が変わるか](/articles/digital-textbook-introduction-school-changes)
 - [GIGAスクール端末を授業でどう使い分けるか](/articles/giga-device-lesson-use-guide)
+- [教育AIサービスを学校で使う前に確認したいこと](/articles/education-ai-service-checklist-before-use)
 - [カテゴリ：特別支援教育](/categories/tokubetsu-shien)
 - [カテゴリ：ICT活用](/categories/ict)
 

@@ -151,6 +151,7 @@ AIが生成した文章や画像が、既存の著作物に似てしまう可能
 - [AIで変わる校務改善：教員の残業を減らす5つの活用法](/articles/ai-koomu-kaizen-nyumon)
 - [生成AIの校内研修の進め方：学校でどう学び合うか](/articles/generative-ai-school-training-guide)
 - [情報モラル教育の進め方：授業で扱う5つのテーマ](/articles/information-morals-education-themes)
+- [教育AIサービスを学校で使う前に確認したいこと｜個人情報・規約・安全性のチェックリスト](/articles/education-ai-service-checklist-before-use)
 - [カテゴリ：AI校務改善](/categories/ai-koomu)
 
 ---

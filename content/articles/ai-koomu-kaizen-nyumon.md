@@ -226,6 +226,7 @@ AIの出力はあくまで出発点です。内容が正確かどうか、表現
 - [ChatGPTで通知表所見を作る方法と注意点【教員向け】](/articles/chatgpt-tsuchihyo-shoken)
 - [学校で生成AIを使うときの個人情報・セキュリティの注意点](/articles/school-generative-ai-privacy-security)
 - [生成AIガイドラインVer.2.0を学校現場向けに読む：先生が押さえたい5つの視点](/articles/generative-ai-guideline-v2-school-reading)
+- [教育AIサービスを学校で使う前に確認したいこと｜個人情報・規約・安全性のチェックリスト](/articles/education-ai-service-checklist-before-use)
 - [学年だより・学級通信をAIで時短する実践例【プロンプト付き】](/articles/ai-class-newsletter-prompt)
 - [カテゴリ：AI校務改善](/categories/ai-koomu)
 - [教員向けMicrosoft Copilot活用ガイド](/articles/microsoft-copilot-teacher-guide)

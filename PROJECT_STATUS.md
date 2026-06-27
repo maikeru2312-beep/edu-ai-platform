@@ -1,6 +1,6 @@
 # 教育DXナビ — PROJECT_STATUS
 
-最終更新: 2026-06-27（フェーズ2）
+最終更新: 2026-06-27（フェーズ3）
 
 ## 概要
 
@@ -12,10 +12,37 @@
 
 ## コンテンツ現況（2026-06-27 時点）
 
-- 記事: **29本**（フェーズ1で+2本、フェーズ2で+1本）
+- 記事: **30本**（フェーズ1で+2本、フェーズ2で+1本、フェーズ3で+1本）
 - 教育情報DB: 11件（grants 3 / ict-tools 3 / laws 3 / training 2）
 - ニュースダイジェスト: 1本
 - カテゴリ: 特別支援教育 / ICT活用 / AI校務改善 / 教材・支援ツール / 助成金・補助金 / 研修・セミナー
+
+## 2026-06-27 フェーズ3（push後の追加改善）
+
+### push
+- フェーズ1・2の2コミット（`c6f9fd2` / `973468a`）を `origin/main`（GitHub: maikeru2312-beep/edu-ai-platform）へ push 済み。Vercel連携で本番反映想定。
+
+### 新規記事 1本（テーマD）
+- [教育AIサービスを学校で使う前に確認したいこと｜個人情報・規約・安全性のチェックリスト](content/articles/education-ai-service-checklist-before-use.md)
+  - カテゴリ: 教材・支援ツール / slug: `education-ai-service-checklist-before-use`
+  - 特定サービスの宣伝・企業発表紹介にせず、導入前に教員・管理職が確認すべき観点を整理。**AIサービス特有の確認事項**（入力データの保存・学習利用とオプトアウト／生成物の著作権と責任／AIの誤り・偏りと説明責任／管理者設定・利用範囲／年齢制限と保護者説明／無料・有料プラン差）に寄せ、導入前チェックリストを掲載。
+  - `free-ict-tools-safety-checklist`（一般ツールの安全確認）と重複しないよう、一般論はそちらへ委ね、AI固有の層に絞って差別化。
+
+### 内部リンク改善
+- 新規記事 → free-ict-tools-safety-checklist / school-generative-ai-privacy-security / generative-ai-guideline-v2-school-reading / ai-koomu-kaizen-nyumon / special-needs-ict-reasonable-accommodation
+- 上記5記事の関連記事欄から新規記事への戻りリンクを追加。
+
+### 品質確認（フェーズ3）
+| 項目 | 結果 |
+|---|---|
+| `node scripts/validate.mjs` | ✅ 通過（記事30 / DB 11） |
+| 内部リンク解決チェック | ✅ 破損0（30記事すべて解決） |
+| `npm run build` | ✅ 成功（51ページ生成、新規記事もSSG） |
+| sitemap.xml への反映 | ✅ 新規記事反映（記事30件） |
+| AdSense / GA4 / Search Console / robots / canonical / 固定ページ / page.tsx | ✅ 変更なし（git status で確認、今回はコンテンツ記事のみ変更） |
+| `npm run lint` | ⚠ 未設定（前回同様。別フェーズで対応） |
+
+---
 
 ## 2026-06-27 フェーズ2（コミット後の追加改善）
 
@@ -81,6 +108,37 @@
 | `npm run lint` | ⚠ 未設定（eslintrc不在で対話プロンプト化。今回は構成変更を避け未実行。build内型チェックで代替） |
 | AdSense / GA4 / Search Console / robots / canonical | ✅ 変更なし（git diff で layout.tsx・GoogleAnalytics.tsx・robots.ts・sitemap.ts は無変更を確認） |
 
+## Vercel 本番反映後の確認チェックリスト
+
+push後、Vercel の自動デプロイ完了を待ってから本番URL（https://edu-ai-platform-delta.vercel.app ）で確認する。
+
+**デプロイ成否**
+- [ ] Vercel ダッシュボードで対象コミットのデプロイが Ready（ビルド失敗なし）
+- [ ] 本番トップページが表示される
+
+**新規記事の反映**
+- [ ] `/articles/education-ai-service-checklist-before-use` が表示される（フェーズ3）
+- [ ] `/articles/special-needs-ict-reasonable-accommodation` が表示される（フェーズ2）
+- [ ] `/articles/generative-ai-guideline-v2-school-reading` / `/articles/digital-textbook-introduction-school-changes`（フェーズ1）
+- [ ] 各記事の title / description / OGP / canonical が正しい（ページソースで確認）
+- [ ] 記事一覧 `/articles`・該当カテゴリページに新規記事が出る
+- [ ] トップの「最近更新した記事」「特別支援教育 × ICT」節が表示される
+
+**サイトマップ・クロール**
+- [ ] `/sitemap.xml` に新規記事30件が含まれる
+- [ ] `/robots.txt` が想定どおり（sitemap参照・index許可）
+- [ ] 内部リンクの遷移（新旧記事の相互リンク）が本番で切れていない
+
+**審査保護対象に意図しない変更がないか**
+- [ ] AdSense スクリプトがトップ/記事で従来どおり読み込まれる（`pagead2.googlesyndication.com`）
+- [ ] GA4 が従来どおり発火する
+- [ ] Search Console の `verification.google` メタが残っている
+- [ ] canonical が各ページで正しい
+
+**運用**
+- [ ] Search Console で sitemap 再送信／新規URLのインデックス状況を後日確認
+- [ ] 体感パフォーマンス・崩れがないか主要ページを目視
+
 ## 触っていないファイル（審査保護対象）
 - `app/layout.tsx`（AdSenseスクリプト、Search Console verification、canonical/metadata）
 - `components/GoogleAnalytics.tsx`
@@ -90,7 +148,7 @@
 ## 次にやること（候補）
 - ~~テーマC「特別支援教育におけるICT活用と合理的配慮」~~ → フェーズ2で実装済み
 - ~~トップに「最近更新した記事（updatedAt順）」~~ → フェーズ2で実装済み
-- テーマD「教育AIサービスを学校で使う前に確認したいこと」の追加（free-ict-tools-safety-checklist と差別化）
-- ESLint設定の整備（`next lint` 非対話化、または ESLint CLI へ移行）
+- ~~テーマD「教育AIサービスを学校で使う前に確認したいこと」~~ → フェーズ3で実装済み
+- ESLint設定の整備（`next lint` 非対話化、または ESLint CLI へ移行）← 未対応の最優先候補
 - 記事一覧ページ（/articles）側にも更新日表示やソートを検討
 - 内部リンクを既存記事に追加した際、updatedAt をあえて据え置いている点の運用方針（軽微変更は更新日を変えない）を継続するか検討
