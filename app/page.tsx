@@ -20,6 +20,11 @@ export default function HomePage() {
   const latestArticles = getAllArticles().slice(0, 6);
   const latestDBItems = getAllDBItems().slice(0, 4);
   const specialNeedsArticles = getArticlesByCategory('特別支援教育').slice(0, 3);
+  const recentlyUpdated = [...getAllArticles()]
+    .sort((a, b) =>
+      (b.updatedAt ?? b.publishedAt).localeCompare(a.updatedAt ?? a.publishedAt),
+    )
+    .slice(0, 4);
 
   return (
     <div>
@@ -103,6 +108,37 @@ export default function HomePage() {
           </div>
         )}
       </section>
+
+      {/* 最近更新した記事 */}
+      {recentlyUpdated.length > 0 && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+          <div className="bg-white border border-gray-100 rounded-2xl p-5">
+            <div className="flex items-center justify-between mb-3">
+              <h2 className="text-lg font-semibold text-gray-700">最近更新した記事</h2>
+              <Link href="/articles" className="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                記事一覧 →
+              </Link>
+            </div>
+            <ul className="divide-y divide-gray-100">
+              {recentlyUpdated.map((article) => (
+                <li key={article.slug}>
+                  <Link
+                    href={`/articles/${article.slug}`}
+                    className="group flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-3 py-2 hover:text-blue-600 transition-colors"
+                  >
+                    <span className="text-sm font-medium text-gray-800 group-hover:text-blue-600 leading-snug line-clamp-1">
+                      {article.title}
+                    </span>
+                    <span className="text-xs text-gray-400 shrink-0">
+                      更新: {article.updatedAt ?? article.publishedAt}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
 
       {/* 特別支援教育 × ICT */}
       {specialNeedsArticles.length > 0 && (

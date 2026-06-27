@@ -43,16 +43,28 @@ node -e 'const fs=require("fs"),p=require("path"),d="content/articles";const s=n
 - `npm run lint` は eslintrc 未設定のため対話プロンプトが出て**非対話実行できない**。CIや自動チェックでは型チェック（`npm run build`）を使うか、ESLint を別途設定する必要がある。整備する場合は審査保護対象の挙動を変えないこと。
 - ビルドは静的生成（記事はSSG、`generateStaticParams`）。記事追加後は必ず再ビルドで反映確認。
 
-## 直近の作業（2026-06-27）
+## 直近の作業
 
+### フェーズ2（2026-06-27、commit後）
+- フェーズ1成果をコミット（`c6f9fd2` Add AdSense review period content updates）。
+- 新規記事1本追加：[特別支援教育におけるICT活用と合理的配慮](content/articles/special-needs-ict-reasonable-accommodation.md)（特別支援教育カテゴリ）。合理的配慮と教育課程上の指導・支援の区別＋計画・記録への接続＋チェックリスト。既存4記事と角度で差別化。
+- 既存5記事へ相互内部リンク追加。
+- トップに「最近更新した記事（updatedAt降順・最大4件）」を追加（`app/page.tsx`）。
+- build(51ページ) / validate(記事29) / 内部リンク / sitemap すべて確認済み。
+
+### フェーズ1（2026-06-27）
 - 新規記事2本追加（生成AIガイドラインVer.2.0 / デジタル教科書本格導入）。
 - 既存7記事へ相互内部リンク追加。
 - トップに「特別支援教育 × ICT」導線を追加（`app/page.tsx`）。
 - X投稿文10件を `docs/sns/` に保存（md + Buffer CSV）。
-- build / validate / 内部リンク / sitemap すべて確認済み。詳細は [PROJECT_STATUS.md](PROJECT_STATUS.md)。
+
+詳細は [PROJECT_STATUS.md](PROJECT_STATUS.md)。
 
 ## 次の候補タスク
 
-- テーマC（特別支援×ICT×合理的配慮のチェックリスト記事）、テーマD（教育AIサービス導入チェック記事）。
+- テーマD（教育AIサービス導入チェック記事。free-ict-tools-safety-checklist と差別化）。
 - ESLint 設定の整備（非対話化）。
-- 「最近更新した記事（updatedAt順）」セクションの追加検討。
+- 記事一覧（/articles）への更新日表示・ソートの検討。
+
+## 内部リンク運用メモ
+- 既存記事に関連リンクを追加する軽微な編集では、frontmatter の `updatedAt` をあえて据え置いている（更新日のインフレを避けるため）。「最近更新した記事」は実質的な内容更新を反映する想定。方針変更時はこのメモを更新すること。

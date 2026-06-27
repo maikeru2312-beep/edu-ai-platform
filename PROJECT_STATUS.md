@@ -1,6 +1,6 @@
 # 教育DXナビ — PROJECT_STATUS
 
-最終更新: 2026-06-27
+最終更新: 2026-06-27（フェーズ2）
 
 ## 概要
 
@@ -12,12 +12,42 @@
 
 ## コンテンツ現況（2026-06-27 時点）
 
-- 記事: **28本**（今回 +2本）
+- 記事: **29本**（フェーズ1で+2本、フェーズ2で+1本）
 - 教育情報DB: 11件（grants 3 / ict-tools 3 / laws 3 / training 2）
 - ニュースダイジェスト: 1本
 - カテゴリ: 特別支援教育 / ICT活用 / AI校務改善 / 教材・支援ツール / 助成金・補助金 / 研修・セミナー
 
-## 2026-06-27 の更新（AdSense審査中の品質改善フェーズ）
+## 2026-06-27 フェーズ2（コミット後の追加改善）
+
+### コミット
+- フェーズ1の成果を `Add AdSense review period content updates`（commit `c6f9fd2`）としてコミット済み。
+
+### 新規記事 1本
+- [特別支援教育におけるICT活用と合理的配慮｜現場で確認したい視点](content/articles/special-needs-ict-reasonable-accommodation.md)
+  - カテゴリ: 特別支援教育 / slug: `special-needs-ict-reasonable-accommodation`
+  - ICTを「できないことの補助」だけでなく「分かる・選べる・伝えられる場面を増やす支援」として整理。**合理的配慮（アクセス保障）と教育課程上の指導・支援（自立活動など）を分けて考える**ことを核に、個別の教育支援計画・個別の指導計画・記録への位置づけと、明日から使えるチェックリストを掲載。
+  - 既存の tokubetsu-shien-ict（ツール入門）/ special-needs-ict-support-tools-checklist（目的別ツール選定）/ reasonable-accommodation-school-record（申請・記録の手続き）/ free-ict-tools-safety-checklist（安全確認）と重複しないよう、「配慮と指導の区別・計画と記録への接続」という概念整理の角度で差別化。
+
+### 内部リンク改善（既存5記事に相互リンク追加）
+- 新規記事 → tokubetsu-shien-ict / special-needs-ict-support-tools-checklist / reasonable-accommodation-school-record / individual-education-plan-writing-guide / free-ict-tools-safety-checklist / giga-device-lesson-use-guide
+- 既存5記事（tokubetsu-shien-ict / reasonable-accommodation-school-record / individual-education-plan-writing-guide / free-ict-tools-safety-checklist / giga-device-lesson-use-guide）の関連記事欄から新規記事への戻りリンクを追加。
+
+### トップページ導線
+- `app/page.tsx` に「最近更新した記事」コンパクト節（updatedAt降順で最大4件、テキストリスト）を追加。既存節・デザインは維持。
+
+### 品質確認（フェーズ2）
+| 項目 | 結果 |
+|---|---|
+| `node scripts/validate.mjs` | ✅ 通過（記事29 / DB 11） |
+| 内部リンク解決チェック | ✅ 破損0（29記事すべて解決） |
+| `npm run build` | ✅ 成功（51ページ生成、新規記事もSSG） |
+| sitemap.xml への反映 | ✅ 新規記事反映（記事29件） |
+| AdSense / GA4 / Search Console / robots / canonical / 固定ページ | ✅ 変更なし（git status で保護対象に変更なしを確認） |
+| `npm run lint` | ⚠ 未設定（前回同様。次回改善案として継続記録） |
+
+---
+
+## 2026-06-27 フェーズ1（AdSense審査中の品質改善フェーズ）
 
 ### 新規記事 2本
 1. [生成AIガイドラインVer.2.0を学校現場向けに読む：先生が押さえたい5つの視点](content/articles/generative-ai-guideline-v2-school-reading.md)
@@ -58,7 +88,9 @@
 - `app/privacy` / `app/disclaimer` / `app/about` / `app/contact` / `app/operator`
 
 ## 次にやること（候補）
-- テーマC「特別支援教育におけるICT活用と合理的配慮（チェックリスト形式）」の追加
+- ~~テーマC「特別支援教育におけるICT活用と合理的配慮」~~ → フェーズ2で実装済み
+- ~~トップに「最近更新した記事（updatedAt順）」~~ → フェーズ2で実装済み
 - テーマD「教育AIサービスを学校で使う前に確認したいこと」の追加（free-ict-tools-safety-checklist と差別化）
 - ESLint設定の整備（`next lint` 非対話化、または ESLint CLI へ移行）
-- カテゴリページ／記事一覧の「最近更新した記事（updatedAt順）」表示の検討
+- 記事一覧ページ（/articles）側にも更新日表示やソートを検討
+- 内部リンクを既存記事に追加した際、updatedAt をあえて据え置いている点の運用方針（軽微変更は更新日を変えない）を継続するか検討

@@ -533,6 +533,7 @@ ICTの活用に関する詳しい内容は [特別支援教育でICTを活用す
 
 - [合理的配慮の申請と記録：学校現場での進め方ガイド](/articles/reasonable-accommodation-school-record)
 - [特別支援教育でICTを活用する：タブレット・AAC・読み上げソフトの選び方](/articles/tokubetsu-shien-ict)
+- [特別支援教育におけるICT活用と合理的配慮｜現場で確認したい視点](/articles/special-needs-ict-reasonable-accommodation)
 - [学校で生成AIを使うときの個人情報・セキュリティの注意点](/articles/school-generative-ai-privacy-security)
 - [教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/kyoiku-dx-kiso)
 - [特別支援教育の保護者連携](/articles/special-needs-parent-collaboration)
