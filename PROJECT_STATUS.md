@@ -1,6 +1,50 @@
 # 教育DXナビ — PROJECT_STATUS
 
-最終更新: 2026-06-27（フェーズ3）
+最終更新: 2026-06-27（フェーズ4）
+
+## 2026-06-27 フェーズ4（本番反映確認 + ESLint非対話化）
+
+### 本番反映確認（https://edu-ai-platform-delta.vercel.app ）
+3コミット（`c6f9fd2` / `973468a` / `20170c3`）push済み・`main`と`origin/main`は同期（0/0）。本番をローカルから確認した結果：
+
+| 確認項目 | 結果 |
+|---|---|
+| トップページ表示 | ✅ 正常。h2が `カテゴリから探す / 最新記事 / 最近更新した記事 / 特別支援教育 × ICT / 教育情報DB — 新着 / ニュースまとめ` の順で表示、崩れなし |
+| 記事一覧 `/articles` | ✅ 「全 30 件」表示 |
+| 新規4記事 | ✅ sitemapに4本とも掲載。`education-ai-service-checklist-before-use` と `special-needs-ict-reasonable-accommodation` は直接 HTTP 200・per-page canonical/title 正しいことを確認 |
+| `/sitemap.xml` | ✅ 新規記事を含む（base: edu-ai-platform-delta.vercel.app） |
+| `/robots.txt` | ✅ `User-agent: *` / `Allow: /` / `Sitemap:` 行 正常 |
+| AdSense | ✅ `adsbygoogle.js?client=ca-pub-3801092904087307` が本番HTMLで読込 |
+| Search Console verification | ✅ `google-site-verification: yaStdF17kEUufx3_NTiTUuTYpRB1wilz2R8Vxssyf-I` が本番HTMLに存在（コードと一致） |
+| canonical | ✅ 各ページで正しい（トップ / 記事ページとも確認） |
+| GA4 | ⚠ 本番HTMLに gtag/G- が**出ていない**。`components/GoogleAnalytics.tsx` は `NEXT_PUBLIC_GA_ID` 未設定時に何も描画しない仕様。**Vercel環境変数 `NEXT_PUBLIC_GA_ID` 未設定が原因**（コード変更ではない）。→ ユーザー確認事項 |
+
+#### ユーザー確認事項（ローカルから確認不可）
+- **GA4を有効化したい場合**、Vercelに `NEXT_PUBLIC_GA_ID` を設定して再デプロイ（コードは対応済み・無変更）。意図的に未設定なら対応不要。
+- Vercel ダッシュボードでの各デプロイ Ready 状態・ビルドログ。
+- Search Console での sitemap 再送信・新規4URLのインデックス状況。
+- AdSense 審査の進捗（管理画面）。
+
+### ESLint 非対話化（最小変更で実装）
+- **原因**: ESLint設定ファイルが一切存在せず（`.eslintrc*` / `eslint.config.*` なし）、`next lint` が初回セットアップの対話プロンプトを表示していた。
+- **環境**: Next `^15.3.0` / eslint `9.39.4`（flat config 既定）/ eslint-config-next `15.5.19` がインストール済み。`package.json` の lint script は `next lint`。
+- **実装**: ルートに `.eslintrc.json`（`{"extends": "next/core-web-vitals"}`、3行）を追加するのみ。script・next.config・アプリコードは無変更。
+- **結果**: `npm run lint` が対話なしで `✔ No ESLint warnings or errors`・exit 0。既存コードのlintエラーは **0件**（大量修正は不要だった）。`next build` 内のLintステップも通過。
+- **補足**: `next lint` は Next 16 で廃止予定の deprecation 警告が出る（情報メッセージ・エラーではない）。将来的に ESLint CLI（flat config）への移行が推奨だが、今回は最小変更を優先し見送り。
+
+### 品質確認（フェーズ4）
+| 項目 | 結果 |
+|---|---|
+| `npm run lint` | ✅ 非対話で通過（0 warnings / 0 errors、exit 0） |
+| `node scripts/validate.mjs` | ✅ 通過（記事30 / DB 11） |
+| 内部リンク解決チェック | ✅ 破損0（30記事） |
+| `npm run build` | ✅ 成功（Lint+型チェック込み、51ページ、exit 0） |
+| git diff | ✅ 追加は `.eslintrc.json` のみ |
+| AdSense / GA4 / SC / robots / sitemap / canonical / 固定ページ / 記事本文 / page.tsx | ✅ 変更なし |
+
+---
+
+## 2026-06-27 フェーズ3（push後の追加改善）
 
 ## 概要
 
@@ -149,6 +193,9 @@ push後、Vercel の自動デプロイ完了を待ってから本番URL（https:
 - ~~テーマC「特別支援教育におけるICT活用と合理的配慮」~~ → フェーズ2で実装済み
 - ~~トップに「最近更新した記事（updatedAt順）」~~ → フェーズ2で実装済み
 - ~~テーマD「教育AIサービスを学校で使う前に確認したいこと」~~ → フェーズ3で実装済み
-- ESLint設定の整備（`next lint` 非対話化、または ESLint CLI へ移行）← 未対応の最優先候補
+- ~~ESLint設定の整備（`next lint` 非対話化）~~ → フェーズ4で `.eslintrc.json` 追加により実装済み
+- GA4を有効化する場合：Vercel に `NEXT_PUBLIC_GA_ID` を設定（コードは対応済み）
+- 将来：`next lint`（Next 16で廃止予定）→ ESLint CLI / flat config への移行
+- 記事一覧（/articles）への更新日表示・ソートの検討
 - 記事一覧ページ（/articles）側にも更新日表示やソートを検討
 - 内部リンクを既存記事に追加した際、updatedAt をあえて据え置いている点の運用方針（軽微変更は更新日を変えない）を継続するか検討

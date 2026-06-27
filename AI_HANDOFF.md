@@ -40,10 +40,15 @@ node -e 'const fs=require("fs"),p=require("path"),d="content/articles";const s=n
 
 ## 既知の注意点
 
-- `npm run lint` は eslintrc 未設定のため対話プロンプトが出て**非対話実行できない**。CIや自動チェックでは型チェック（`npm run build`）を使うか、ESLint を別途設定する必要がある。整備する場合は審査保護対象の挙動を変えないこと。
+- ~~`npm run lint` は eslintrc 未設定のため対話化~~ → **フェーズ4で解決**。ルート `.eslintrc.json`（`extends: next/core-web-vitals`）を追加し、`npm run lint` は非対話で 0エラー通過。`next build` 内のLintも有効化された。なお `next lint` 自体は Next 16 で廃止予定（deprecation警告のみ・現状エラーなし）。将来は ESLint CLI / flat config への移行が必要。
 - ビルドは静的生成（記事はSSG、`generateStaticParams`）。記事追加後は必ず再ビルドで反映確認。
 
 ## 直近の作業
+
+### フェーズ4（2026-06-27、本番確認 + ESLint）
+- 本番（edu-ai-platform-delta.vercel.app）をローカルから確認：トップ正常・記事一覧「全30件」・新規4記事sitemap掲載（2本は200/canonical直接確認）・robots/sitemap正常・AdSense（ca-pub-3801092904087307）・Search Console verification・canonical すべて維持を確認。
+- **GA4は本番HTMLに未出力**。`components/GoogleAnalytics.tsx` は `NEXT_PUBLIC_GA_ID` 未設定なら描画しない仕様 → Vercel環境変数未設定が原因（コード無変更）。有効化したいならVercelに `NEXT_PUBLIC_GA_ID` を設定。
+- **ESLint非対話化を実装**：原因は設定ファイル皆無で `next lint` が対話化していたこと。ルートに `.eslintrc.json`（`{"extends":"next/core-web-vitals"}`）を追加。`npm run lint` が0エラーで非対話通過、build も通過。最小変更（このファイル追加のみ）。
 
 ### フェーズ3（2026-06-27、push後）
 - フェーズ1・2の2コミットを `origin/main` へ push 済み（GitHub: maikeru2312-beep/edu-ai-platform、Vercel連携）。
@@ -69,7 +74,9 @@ node -e 'const fs=require("fs"),p=require("path"),d="content/articles";const s=n
 
 ## 次の候補タスク
 
-- **ESLint 設定の整備（非対話化）** ← 未対応の最優先。`next lint` が eslintrc 不在で対話化するため、自動チェックに組み込めていない。
+- ~~ESLint 設定の整備（非対話化）~~ → フェーズ4で完了（`.eslintrc.json` 追加）。
+- 将来：`next lint`（Next 16で廃止予定）→ ESLint CLI / flat config への移行。
+- GA4を使うなら Vercel に `NEXT_PUBLIC_GA_ID` を設定（コードは対応済み）。
 - 記事一覧（/articles）への更新日表示・ソートの検討。
 - 新規テーマ案：校務でのAI活用の具体手順、情報セキュリティ研修、保護者向けICT説明など（既存記事と重複しない角度で）。
 
