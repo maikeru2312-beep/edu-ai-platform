@@ -466,6 +466,7 @@ AI操作の習熟をゴールにすると、「安全な使い方を理解した
 - [授業準備をAIで時短する方法](/articles/ai-lesson-preparation-prompt) — 授業準備での生成AI活用とプロンプトの実例
 - [AI学級通信プロンプト](/articles/ai-class-newsletter-prompt) — 学級通信・学年だより作成での活用例とプロンプト
 - [学校における生成AIの安全な使い方](/articles/school-generative-ai-privacy-security) — 個人情報・セキュリティ・著作権の注意点を詳しく解説
+- [生成AIガイドラインVer.2.0を学校現場向けに読む](/articles/generative-ai-guideline-v2-school-reading) — 文科省ガイドラインを現場の5つの視点で整理
 - [教育DXの基礎知識](/articles/kyoiku-dx-kiso) — 教育DX・校務DXの基本概念と現場での意味を整理
 - [研修・セミナーカテゴリの記事一覧](/categories/kenshu) — 校内研修・セミナーに関する全記事
 - [AI校務改善カテゴリの記事一覧](/categories/ai-koomu) — AI校務改善に関する全記事

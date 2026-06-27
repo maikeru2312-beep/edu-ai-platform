@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { getAllArticles } from '@/lib/articles';
+import { getAllArticles, getArticlesByCategory } from '@/lib/articles';
 import { getAllDBItems } from '@/lib/db';
 import {
   CATEGORIES,
@@ -19,6 +19,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   const latestArticles = getAllArticles().slice(0, 6);
   const latestDBItems = getAllDBItems().slice(0, 4);
+  const specialNeedsArticles = getArticlesByCategory('特別支援教育').slice(0, 3);
 
   return (
     <div>
@@ -102,6 +103,29 @@ export default function HomePage() {
           </div>
         )}
       </section>
+
+      {/* 特別支援教育 × ICT */}
+      {specialNeedsArticles.length > 0 && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+          <div className="flex items-center justify-between mb-2">
+            <h2 className="text-2xl font-bold text-gray-900">特別支援教育 × ICT</h2>
+            <Link
+              href="/categories/tokubetsu-shien"
+              className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+            >
+              すべて見る →
+            </Link>
+          </div>
+          <p className="text-sm text-gray-500 mb-6">
+            タブレット・読み上げ・デジタル教科書など、一人ひとりに合った学び方の選択肢を広げるICT活用を整理しています。
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {specialNeedsArticles.map((article) => (
+              <ArticleCard key={article.slug} article={article} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* 教育情報DB 新着 */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-8 pb-16">
