@@ -1,6 +1,28 @@
 # 教育DXナビ — PROJECT_STATUS
 
-最終更新: 2026-06-27（フェーズ4）
+最終更新: 2026-06-27（フェーズ5）
+
+## 2026-06-27 フェーズ5（GA4 本番発火確認）
+
+ユーザーが Vercel Production に `NEXT_PUBLIC_GA_ID = G-XCORRZCZM5` を設定し再デプロイ。本番をローカルから確認した結果、**Phase 4 唯一の保留事項だったGA4が本番で発火**することを確認。
+
+| 確認項目 | 結果 |
+|---|---|
+| GA4 gtag/js ローダー（トップ） | ✅ `googletagmanager.com/gtag/js?id=G-XCORRZCZM5` を本番HTMLで確認 |
+| 測定ID | ✅ `G-XCORRZCZM5` 出力 |
+| GA4（記事サブページ） | ✅ 記事ページにも出力（HTTP 200） |
+| AdSense | ✅ 維持（`ca-pub-3801092904087307`） |
+| Search Console verification | ✅ 維持（`yaStdF17kEUufx3_NTiTUuTYpRB1wilz2R8Vxssyf-I`） |
+| canonical | ✅ 正常（`https://edu-ai-platform-delta.vercel.app`） |
+| robots.txt | ✅ 正常（`User-Agent: * / Allow: / / Sitemap:`） |
+| sitemap.xml | ✅ 正常（記事URL 30件維持） |
+| 記事30件表示 | ✅ 影響なし |
+| コード | ✅ 変更なし（`git status` clean、確認のみ） |
+
+- 本番HTMLのバイト長 84762 → 84859（+97）に増加し、GA4入りの新ビルド反映を裏付け（`Age: 0`）。
+- **結論：GA4 / AdSense / Search Console / canonical / robots / sitemap すべて本番で正常稼働。AdSense審査待機中の保護対象も全て維持。**
+
+---
 
 ## 2026-06-27 フェーズ4（本番反映確認 + ESLint非対話化）
 
@@ -17,10 +39,10 @@
 | AdSense | ✅ `adsbygoogle.js?client=ca-pub-3801092904087307` が本番HTMLで読込 |
 | Search Console verification | ✅ `google-site-verification: yaStdF17kEUufx3_NTiTUuTYpRB1wilz2R8Vxssyf-I` が本番HTMLに存在（コードと一致） |
 | canonical | ✅ 各ページで正しい（トップ / 記事ページとも確認） |
-| GA4 | ⚠ 本番HTMLに gtag/G- が**出ていない**。`components/GoogleAnalytics.tsx` は `NEXT_PUBLIC_GA_ID` 未設定時に何も描画しない仕様。**Vercel環境変数 `NEXT_PUBLIC_GA_ID` 未設定が原因**（コード変更ではない）。→ ユーザー確認事項 |
+| GA4 | ⚠（Phase 4時点）本番HTMLに gtag/G- が出ていない。`components/GoogleAnalytics.tsx` は `NEXT_PUBLIC_GA_ID` 未設定時に何も描画しない仕様で、Vercel環境変数未設定が原因（コード変更ではない）。→ **Phase 5 で `NEXT_PUBLIC_GA_ID=G-XCORRZCZM5` 設定＋再デプロイにより発火確認済み（解消）** |
 
 #### ユーザー確認事項（ローカルから確認不可）
-- **GA4を有効化したい場合**、Vercelに `NEXT_PUBLIC_GA_ID` を設定して再デプロイ（コードは対応済み・無変更）。意図的に未設定なら対応不要。
+- ~~GA4を有効化したい場合、Vercelに `NEXT_PUBLIC_GA_ID` を設定して再デプロイ~~ → **Phase 5 で対応済み（`G-XCORRZCZM5` 設定・本番発火確認）**
 - Vercel ダッシュボードでの各デプロイ Ready 状態・ビルドログ。
 - Search Console での sitemap 再送信・新規4URLのインデックス状況。
 - AdSense 審査の進捗（管理画面）。
@@ -194,7 +216,7 @@ push後、Vercel の自動デプロイ完了を待ってから本番URL（https:
 - ~~トップに「最近更新した記事（updatedAt順）」~~ → フェーズ2で実装済み
 - ~~テーマD「教育AIサービスを学校で使う前に確認したいこと」~~ → フェーズ3で実装済み
 - ~~ESLint設定の整備（`next lint` 非対話化）~~ → フェーズ4で `.eslintrc.json` 追加により実装済み
-- GA4を有効化する場合：Vercel に `NEXT_PUBLIC_GA_ID` を設定（コードは対応済み）
+- ~~GA4を有効化する場合：Vercel に `NEXT_PUBLIC_GA_ID` を設定~~ → 完了（`G-XCORRZCZM5`、Phase 5で本番発火確認）
 - 将来：`next lint`（Next 16で廃止予定）→ ESLint CLI / flat config への移行
 - 記事一覧（/articles）への更新日表示・ソートの検討
 - 記事一覧ページ（/articles）側にも更新日表示やソートを検討

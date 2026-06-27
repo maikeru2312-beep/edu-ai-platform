@@ -45,9 +45,13 @@ node -e 'const fs=require("fs"),p=require("path"),d="content/articles";const s=n
 
 ## 直近の作業
 
+### フェーズ5（2026-06-27、GA4本番発火確認）
+- ユーザーが Vercel Production に `NEXT_PUBLIC_GA_ID=G-XCORRZCZM5` を設定・再デプロイ。本番をローカルから確認し、**GA4の本番発火を確認（解消）**：トップ・記事サブページとも `googletagmanager.com/gtag/js?id=G-XCORRZCZM5` 出力。AdSense（ca-pub-3801092904087307）・Search Console verification・canonical・robots・sitemap（記事30件）すべて維持、記事表示に影響なし。
+- ドキュメント追記のみ（コード・記事・設定ファイルは無変更）。
+
 ### フェーズ4（2026-06-27、本番確認 + ESLint）
 - 本番（edu-ai-platform-delta.vercel.app）をローカルから確認：トップ正常・記事一覧「全30件」・新規4記事sitemap掲載（2本は200/canonical直接確認）・robots/sitemap正常・AdSense（ca-pub-3801092904087307）・Search Console verification・canonical すべて維持を確認。
-- **GA4は本番HTMLに未出力**。`components/GoogleAnalytics.tsx` は `NEXT_PUBLIC_GA_ID` 未設定なら描画しない仕様 → Vercel環境変数未設定が原因（コード無変更）。有効化したいならVercelに `NEXT_PUBLIC_GA_ID` を設定。
+- **GA4は本番HTMLに未出力**（Phase 4時点）。`components/GoogleAnalytics.tsx` は `NEXT_PUBLIC_GA_ID` 未設定なら描画しない仕様 → Vercel環境変数未設定が原因（コード無変更）。→ **Phase 5 で `G-XCORRZCZM5` 設定・再デプロイにより発火確認済み**。
 - **ESLint非対話化を実装**：原因は設定ファイル皆無で `next lint` が対話化していたこと。ルートに `.eslintrc.json`（`{"extends":"next/core-web-vitals"}`）を追加。`npm run lint` が0エラーで非対話通過、build も通過。最小変更（このファイル追加のみ）。
 
 ### フェーズ3（2026-06-27、push後）
@@ -76,7 +80,7 @@ node -e 'const fs=require("fs"),p=require("path"),d="content/articles";const s=n
 
 - ~~ESLint 設定の整備（非対話化）~~ → フェーズ4で完了（`.eslintrc.json` 追加）。
 - 将来：`next lint`（Next 16で廃止予定）→ ESLint CLI / flat config への移行。
-- GA4を使うなら Vercel に `NEXT_PUBLIC_GA_ID` を設定（コードは対応済み）。
+- ~~GA4を使うなら Vercel に `NEXT_PUBLIC_GA_ID` を設定~~ → 設定済み（`G-XCORRZCZM5`、Phase 5で本番発火確認）。GA4測定IDを変更する場合は Vercel 環境変数を更新し再デプロイ。
 - 記事一覧（/articles）への更新日表示・ソートの検討。
 - 新規テーマ案：校務でのAI活用の具体手順、情報セキュリティ研修、保護者向けICT説明など（既存記事と重複しない角度で）。
 
