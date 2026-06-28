@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>学校で生成AIを使う前に確認したい10のチェックリスト</title>
+<style>
+  @page { size: A4 portrait; margin: 18mm 16mm 16mm 16mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body{
+    font-family: "Yu Gothic","YuGothic","Meiryo","Hiragino Kaku Gothic ProN",sans-serif;
+    color:#1f2937; font-size:10.5pt; line-height:1.75; margin:0;
+  }
+  .page{ page-break-after: always; }
+  .page:last-child{ page-break-after: auto; }
+
+  /* ---- Cover ---- */
+  .cover{ display:flex; flex-direction:column; min-height:245mm; }
+  .cover .brand{ font-size:10pt; letter-spacing:.08em; color:#2563eb; font-weight:700; }
+  .cover .rule{ height:3px; background:#2563eb; width:64px; margin:10mm 0 0; }
+  .cover .titlewrap{ margin-top:38mm; }
+  .cover h1{
+    font-size:25pt; line-height:1.45; font-weight:800; color:#111827; margin:0 0 6mm;
+    letter-spacing:.01em;
+  }
+  .cover .sub{ font-size:12.5pt; color:#374151; font-weight:600; }
+  .cover .lead{ font-size:10pt; color:#4b5563; margin-top:5mm; }
+  .cover .spacer{ flex:1; }
+  .cover .provider{ font-size:10.5pt; color:#374151; font-weight:600; }
+  .disclaimer{
+    border:1px solid #cbd5e1; background:#f8fafc; border-left:4px solid #2563eb;
+    padding:5mm 6mm; font-size:9pt; color:#475569; line-height:1.7; border-radius:3px;
+    margin-top:6mm;
+  }
+  .disclaimer b{ color:#1e3a8a; }
+
+  /* ---- Body ---- */
+  h2{
+    font-size:15pt; color:#1e3a8a; font-weight:800; margin:0 0 6mm;
+    border-bottom:2px solid #bfdbfe; padding-bottom:2.5mm;
+  }
+  h2 .num{ color:#2563eb; }
+  .intro p{ margin:0 0 4mm; }
+  .premise{ counter-reset:pre; margin:2mm 0 0; padding:0; list-style:none; }
+  .premise li{
+    position:relative; padding:4mm 5mm 4mm 14mm; margin-bottom:4mm;
+    background:#f8fafc; border:1px solid #e2e8f0; border-radius:4px;
+  }
+  .premise li::before{
+    counter-increment:pre; content:counter(pre);
+    position:absolute; left:5mm; top:4mm; width:7mm; height:7mm; line-height:7mm;
+    text-align:center; background:#2563eb; color:#fff; border-radius:50%; font-weight:700; font-size:10pt;
+  }
+  .premise b{ color:#111827; }
+
+  .item{ break-inside:avoid; margin-bottom:6mm; }
+  .item h3{
+    font-size:11.5pt; color:#111827; font-weight:800; margin:0 0 1mm;
+  }
+  .item .check{
+    font-size:10.5pt; color:#1e3a8a; font-weight:600; background:#eff6ff;
+    border:1px solid #bfdbfe; border-radius:4px; padding:2.5mm 4mm; margin:1.5mm 0 2.5mm;
+  }
+  .item .check .box{ font-size:12pt; margin-right:2mm; }
+  .item .note{ margin:0 0 .5mm; padding-left:1mm; }
+  .item .note .lbl{ color:#2563eb; font-weight:700; }
+
+  .closing p{ margin:0 0 4mm; }
+  .next{ list-style:none; padding:0; margin:0; }
+  .next li{
+    padding:4mm 5mm; margin-bottom:3.5mm; background:#f8fafc;
+    border:1px solid #e2e8f0; border-left:4px solid #60a5fa; border-radius:4px; font-size:10pt;
+  }
+  .next b{ color:#1e3a8a; }
+  .softnote{ font-size:9pt; color:#64748b; margin-top:4mm; }
+
+  /* ---- Printable sheet ---- */
+  .sheet-title{ font-size:13pt; color:#1e3a8a; font-weight:800; margin:0 0 2mm; }
+  .sheet-help{ font-size:9.5pt; color:#475569; margin:0 0 4mm; }
+  .sheet{
+    border:2px solid #1e3a8a; border-radius:6px; padding:7mm 7mm 6mm;
+  }
+  .sheet .hd{
+    display:flex; justify-content:space-between; gap:6mm; font-size:10pt; color:#374151;
+    border-bottom:1px dashed #94a3b8; padding-bottom:3mm; margin-bottom:4mm; flex-wrap:wrap;
+  }
+  .sheet ul{ list-style:none; margin:0; padding:0; }
+  .sheet li{
+    font-size:11pt; padding:2.2mm 0; border-bottom:1px dotted #e2e8f0; line-height:1.5;
+  }
+  .sheet li .box{ font-size:13pt; margin-right:3mm; color:#1e3a8a; }
+  .sheet li .n{ color:#2563eb; font-weight:700; margin-right:2mm; }
+  .sheet .done{ margin-top:5mm; font-size:10.5pt; color:#166534; font-weight:600; }
+  .sheet .foot{
+    margin-top:4mm; padding-top:3mm; border-top:1px dashed #94a3b8;
+    font-size:9pt; color:#64748b;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ P1: COVER ============ -->
+<section class="page cover">
+  <div class="brand">教育DXナビ</div>
+  <div class="rule"></div>
+  <div class="titlewrap">
+    <h1>学校で生成AIを<br>使う前に確認したい<br>10のチェックリスト</h1>
+    <div class="sub">— 安心して一歩を踏み出すための、使う前の確認 —</div>
+    <div class="lead">難しい知識は不要。一つずつ確認すれば、「ここまでは安心して使える」「ここは止めておく」の線引きが自分でできます。</div>
+  </div>
+  <div class="spacer"></div>
+  <div class="provider">提供：教育DXナビ ／ 無料配布版</div>
+  <div class="disclaimer">
+    この資料は一般的な確認観点の整理です。実際に生成AIを使えるかどうか・何に使えるかは、<b>所属校・教育委員会の方針が最優先</b>です。最新の利用規約・プライバシーポリシーとあわせて、組織として判断してください。「無料だから安全」「有名だから大丈夫」とは限りません。
+  </div>
+</section>
+
+<!-- ============ P2: はじめに + 前提 ============ -->
+<section class="page">
+  <h2>はじめに</h2>
+  <div class="intro">
+    <p>「生成AIで校務を効率化できるらしい」——そう聞いても、いざ使おうとすると不安が先に立ちます。「個人情報は大丈夫?」「校内ルール的にOK?」「出てきた文章をそのまま使っていいの?」。</p>
+    <p>このチェックリストは、<b>生成AIを学校の仕事に使う"前"に、自分で判断するための10項目</b>です。使い方はかんたん。最後の1ページ印刷用シートを手元に置き、AIを使う前に □ をたどってください。</p>
+  </div>
+  <h2 style="margin-top:9mm;">このチェックリストの3つの前提</h2>
+  <ol class="premise">
+    <li><b>AIは下書きの道具。仕上げと判断は教員がする。</b> AIが校務を代行するのではなく、AIがたたき台を出し、教員が確認・修正・決定します。</li>
+    <li><b>子どもの理解をAIに丸投げしない。</b> 実際の子どもを見ているのは教員です。AIは見ていません。</li>
+    <li><b>迷ったら、校内・自治体のルールが優先。</b> この資料の内容よりも、所属先の方針が常に上位です。</li>
+  </ol>
+</section>
+
+<!-- ============ P3: ①②③ ============ -->
+<section class="page">
+  <h2>10のチェックリスト <span style="font-size:10pt;color:#64748b;font-weight:600;">（①〜③）</span></h2>
+
+  <div class="item">
+    <h3>① 校内・自治体のルールを確認したか</h3>
+    <div class="check"><span class="box">□</span>所属校・教育委員会に、生成AI利用に関する方針・ガイドラインがあるか確認した</div>
+    <p class="note"><span class="lbl">なぜ大事か：</span>同じ使い方でも、自治体や学校によって可否が分かれます。個人の判断より組織の方針が優先されます。</p>
+    <p class="note"><span class="lbl">現場での見方：</span>方針が見当たらないときは「使ってよい」ではなく、管理職に確認するのが安全です。</p>
+  </div>
+
+  <div class="item">
+    <h3>② 個人情報を入力しない設計か</h3>
+    <div class="check"><span class="box">□</span>児童生徒・保護者の氏名・成績・障害名・家庭環境などを入力しないと決めている</div>
+    <p class="note"><span class="lbl">なぜ大事か：</span>入力した内容はサービス側に送られ、保存・学習に使われる場合があります。特に要配慮個人情報は原則入力しません。</p>
+    <p class="note"><span class="lbl">現場での見方：</span>「Aさん」ではなく「ある児童」、固有名は伏字や一般化。具体例は架空で十分です。</p>
+  </div>
+
+  <div class="item">
+    <h3>③ 児童生徒の実態をAIに断定させていないか</h3>
+    <div class="check"><span class="box">□</span>「この子はどんな障害か」「どう評価すべきか」などをAIに判断させていない</div>
+    <p class="note"><span class="lbl">なぜ大事か：</span>AIは子どもを見ていません。実態の把握・評価・見立ては教員と関係者の専門的判断です。</p>
+    <p class="note"><span class="lbl">現場での見方：</span>AIに頼むのは「文章の整え」まで。判断そのものは任せません。</p>
+  </div>
+</section>
+
+<!-- ============ P4: ④⑤⑥ ============ -->
+<section class="page">
+  <div class="item">
+    <h3>④ 生成物を必ず教員が確認するか</h3>
+    <div class="check"><span class="box">□</span>AIが出した文章・案を、そのまま使わず必ず読み直して修正する</div>
+    <p class="note"><span class="lbl">なぜ大事か：</span>AIは事実と異なる内容や、不適切な表現を出すことがあります（もっともらしい誤りに注意）。</p>
+    <p class="note"><span class="lbl">現場での見方：</span>「自分が一から書いたら、この表現を使うか?」を最終チェックの基準にします。</p>
+  </div>
+
+  <div class="item">
+    <h3>⑤ 保護者向け文書をそのまま出していないか</h3>
+    <div class="check"><span class="box">□</span>学級通信・お便り・連絡文などを、AI出力のまま配布していない</div>
+    <p class="note"><span class="lbl">なぜ大事か：</span>保護者向け文書は学校の公式な発信です。事実確認・トーン・配慮を教員が責任を持って整えます。</p>
+    <p class="note"><span class="lbl">現場での見方：</span>AIは「たたき台・言い換え・要約」まで。固有の出来事や個別配慮は自分の言葉で。</p>
+  </div>
+
+  <div class="item">
+    <h3>⑥ 著作権・引用に問題はないか</h3>
+    <div class="check"><span class="box">□</span>教材・資料にAI生成物や引用を使うとき、権利・出典に配慮している</div>
+    <p class="note"><span class="lbl">なぜ大事か：</span>生成物の扱いや引用元の権利は、用途によって配慮が必要です。</p>
+    <p class="note"><span class="lbl">現場での見方：</span>長文転載は避け、出典明示・最小限の引用・自作を基本にします。</p>
+  </div>
+</section>
+
+<!-- ============ P5: ⑦⑧⑨ ============ -->
+<section class="page">
+  <div class="item">
+    <h3>⑦ 利用規約・データの保存／学習利用を確認したか</h3>
+    <div class="check"><span class="box">□</span>そのサービスが入力内容を保存・学習に使うか、規約で確認した</div>
+    <p class="note"><span class="lbl">なぜ大事か：</span>「データを預ける」だけでなく「データがどう使われるか」がサービスごとに違います。</p>
+    <p class="note"><span class="lbl">現場での見方：</span>学習利用をオフにできる設定や、業務向けプランの有無も確認ポイントです。</p>
+  </div>
+
+  <div class="item">
+    <h3>⑧ アカウント・年齢制限・管理者設定を確認したか</h3>
+    <div class="check"><span class="box">□</span>利用するアカウントの種別・年齢制限・管理者の許可を確認した</div>
+    <p class="note"><span class="lbl">なぜ大事か：</span>児童生徒に使わせる場合、年齢制限や保護者・管理者の同意・設定が関わります。</p>
+    <p class="note"><span class="lbl">現場での見方：</span>個人の私的アカウントと、学校が管理するアカウントを混同しないことが大切です。</p>
+  </div>
+
+  <div class="item">
+    <h3>⑨ 使う目的と「任せない範囲」を決めたか</h3>
+    <div class="check"><span class="box">□</span>「何に使うか」と同じくらい「何には使わないか」を先に決めた</div>
+    <p class="note"><span class="lbl">なぜ大事か：</span>線引きを先に決めておくと、つい踏み込みすぎることを防げます。</p>
+    <p class="note"><span class="lbl">現場での見方：</span>例：「文章の下書きはOK／評価・判断・個別配慮はNG」のように一言で持っておく。</p>
+  </div>
+</section>
+
+<!-- ============ P6: ⑩ + おわりに ============ -->
+<section class="page">
+  <div class="item">
+    <h3>⑩ 記録・説明できる形で使っているか</h3>
+    <div class="check"><span class="box">□</span>「何に、どう使ったか」を後から説明できる状態になっている</div>
+    <p class="note"><span class="lbl">なぜ大事か：</span>説明できる使い方は、安心して使える使い方です。</p>
+    <p class="note"><span class="lbl">現場での見方：</span>迷ったら「同僚や管理職に経緯を話せるか?」を基準にします。</p>
+  </div>
+
+  <h2 style="margin-top:8mm;">おわりに — 次の一歩</h2>
+  <div class="closing">
+    <p>10項目を確認できたら、生成AIは「こわいもの」から「下書きを手伝ってくれる道具」に変わります。あとは、実際にどんな言葉で頼むか（プロンプト）を知るだけです。</p>
+    <ul class="next">
+      <li>すぐ使える校務プロンプトをまとめた <b>『先生のための生成AI校務プロンプト30選』（有料note）</b> を準備中です。通知文・学級通信・指導案などを、安全に下書きするための具体例を収録予定です。</li>
+      <li>特別支援教育向けには、印刷して使える <b>『特別支援教育×ICT・AI活用チェックリスト集』（有料PDF）</b> も準備中です。</li>
+    </ul>
+    <p class="softnote">※ 価格・公開時期は確定後にご案内します。本資料・続編とも、所属校・教育委員会の方針に従ってご活用ください。教育DXナビでは、生成AI・ICT・特別支援教育の記事を無料で公開しています。</p>
+  </div>
+</section>
+
+<!-- ============ P7: PRINTABLE SHEET ============ -->
+<section class="page">
+  <div class="sheet-title">1ページ印刷用チェックシート</div>
+  <p class="sheet-help">AIを使う前に、上から □ をたどってください。1つでも不安な □ があれば、いったん止めて確認を。</p>
+  <div class="sheet">
+    <div class="hd"><span>学校で生成AIを使う前の 10チェック</span><span>日付：＿＿＿＿＿</span><span>使う目的：＿＿＿＿＿＿＿＿</span></div>
+    <ul>
+      <li><span class="box">□</span><span class="n">①</span>校内・自治体のルールを確認した</li>
+      <li><span class="box">□</span><span class="n">②</span>個人情報を入力しないと決めている</li>
+      <li><span class="box">□</span><span class="n">③</span>子どもの実態をAIに断定させない</li>
+      <li><span class="box">□</span><span class="n">④</span>生成物は必ず自分で読み直して直す</li>
+      <li><span class="box">□</span><span class="n">⑤</span>保護者向け文書をそのまま出さない</li>
+      <li><span class="box">□</span><span class="n">⑥</span>著作権・引用に配慮している</li>
+      <li><span class="box">□</span><span class="n">⑦</span>規約（保存・学習利用）を確認した</li>
+      <li><span class="box">□</span><span class="n">⑧</span>アカウント・年齢制限・管理者設定を確認した</li>
+      <li><span class="box">□</span><span class="n">⑨</span>「任せない範囲」を先に決めた</li>
+      <li><span class="box">□</span><span class="n">⑩</span>後から説明できる形で使っている</li>
+    </ul>
+    <div class="done">ぜんぶ □ が埋まったら、安心して下書きづくりに進めます。</div>
+    <div class="foot">※ 固有名は伏字で。迷ったら校内・自治体の方針を優先。　　提供：教育DXナビ（無料配布版）</div>
+  </div>
+</section>
+
+</body>
+</html>
