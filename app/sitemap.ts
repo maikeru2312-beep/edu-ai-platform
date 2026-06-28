@@ -1,13 +1,11 @@
 import type { MetadataRoute } from 'next';
 import { getAllArticles } from '@/lib/articles';
-import { getAllNewsDigests } from '@/lib/news';
 import { CATEGORIES, CATEGORY_TO_SLUG } from '@/lib/categories';
 import { getSiteUrl } from '@/lib/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = getSiteUrl();
   const articles = getAllArticles();
-  const newsDigests = getAllNewsDigests();
 
   const articleEntries: MetadataRoute.Sitemap = articles.map((a) => ({
     url: `${base}/articles/${a.slug}`,
@@ -16,12 +14,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  const newsDigestEntries: MetadataRoute.Sitemap = newsDigests.map((n) => ({
-    url: `${base}/news/${n.slug}`,
-    lastModified: n.updatedAt ?? n.publishedAt,
-    changeFrequency: 'monthly' as const,
-    priority: 0.65,
-  }));
+  // 注: /news・/news/[slug]・/db は現状薄いページのため metadata robots で noindex 化しており、
+  // サイトマップにも含めない（index 対象と一致させる）。充実後に復帰させる。
 
   const activeCategories = CATEGORIES.filter((cat) => articles.some((a) => a.category === cat));
   const categoryEntries: MetadataRoute.Sitemap = activeCategories.map((cat) => ({
@@ -33,9 +27,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: base, changeFrequency: 'daily', priority: 1 },
     { url: `${base}/articles`, changeFrequency: 'daily', priority: 0.9 },
-    { url: `${base}/db`, changeFrequency: 'weekly', priority: 0.8 },
-    { url: `${base}/news`, changeFrequency: 'weekly' as const, priority: 0.75 },
-    ...newsDigestEntries,
     ...categoryEntries,
     ...articleEntries,
     { url: `${base}/about`, changeFrequency: 'yearly', priority: 0.4 },

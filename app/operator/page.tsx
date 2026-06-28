@@ -11,7 +11,7 @@ export default function OperatorPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
       <h1 className="text-3xl font-bold text-gray-900 mb-2">運営者情報</h1>
-      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年6月17日</p>
+      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年6月29日</p>
 
       <div className="space-y-10 text-gray-700 leading-relaxed">
 
@@ -54,6 +54,28 @@ export default function OperatorPage() {
             </li>
             <li>
               <strong>特別支援教育</strong>：ICTを活用した合理的配慮・支援事例・アクセシビリティの実践
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-bold text-gray-900 mb-3">編集の方針</h2>
+          <p className="mb-3">
+            記事は、特別支援教育・ICT活用・校務改善に関わる教育現場での実務経験と、
+            公開情報（文部科学省・こども家庭庁・個人情報保護委員会・各サービスの公式情報など）の
+            確認をもとに編集しています。公式情報は貼って終わりにせず、「現場ではどう読むか・どう判断するか」まで整理することを心がけています。
+          </p>
+          <ul className="list-disc list-inside space-y-2 text-sm">
+            <li>
+              <strong>個人情報の保護</strong>：実在の児童生徒・保護者・学校・自治体・同僚が特定される情報は扱いません。
+              事例は匿名化・一般化したうえで紹介します。
+            </li>
+            <li>
+              <strong>AI利用時の人間による確認</strong>：本文作成に生成AIを補助的に用いる場合がありますが、
+              構成・表現・教育現場への適用判断は最終的に人間が確認しています。
+            </li>
+            <li>
+              <strong>断定の回避</strong>：法的・医療的・行政的な個別判断は代替せず、最終判断は各学校・教育委員会・専門機関に委ねます。
             </li>
           </ul>
         </section>

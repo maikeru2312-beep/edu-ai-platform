@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   description:
     '教育DX・生成AI・ICT活用・校務改善・特別支援教育に関する動きを、学校現場向けに整理します。元記事本文の転載ではなく、出典リンクと独自コメントでお届けします。',
   alternates: { canonical: '/news' },
+  // 現状はニュースまとめが少数のため、検索インデックスからは一時的に除外（ページ自体は閲覧可能）。
+  // 本数・現場解説が充実した段階で index: true に戻す。内部リンクはたどれるよう follow は維持。
+  robots: { index: false, follow: true },
   openGraph: {
     type: 'website',
     url: '/news',
@@ -31,9 +34,9 @@ export default function NewsPage() {
 
       {digests.length === 0 ? (
         <div className="bg-blue-50 border border-blue-100 rounded-xl p-8 text-center">
-          <p className="text-gray-600 text-sm">ニュースまとめは準備中です。</p>
+          <p className="text-gray-600 text-sm">現在公開しているニュースまとめはありません。</p>
           <p className="text-gray-400 text-xs mt-2">
-            教育DX・生成AIに関する情報を随時まとめていく予定です。
+            公式情報の動きは、各記事の中で現場での読み方とあわせて随時整理しています。
           </p>
         </div>
       ) : (

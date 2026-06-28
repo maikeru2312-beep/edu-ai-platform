@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: '教育情報DB',
   description:
     '特別支援教育・ICT・AI校務改善に関する法令・ツール・助成金・研修情報のデータベースです。',
+  // 現状は収録件数が少なく外部リンク集に見えやすいため、検索インデックスからは一時的に除外（閲覧は可能）。
+  // 各項目に現場での読み方・チェックポイントを追記し充実させた段階で index: true に戻す。
+  robots: { index: false, follow: true },
 };
 
 const DB_TYPES = ['法令・通知', 'ツール', '助成金', '研修', '教材', '研究・報告書'] as const;

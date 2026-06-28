@@ -11,7 +11,7 @@ export default function PrivacyPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
       <h1 className="text-3xl font-bold text-gray-900 mb-2">プライバシーポリシー</h1>
-      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年6月17日</p>
+      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年6月29日</p>
 
       <div className="space-y-10 text-gray-700 leading-relaxed">
         <section>
@@ -70,22 +70,49 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-gray-900 mb-3">5. 広告・アフィリエイトについて</h2>
+          <h2 className="text-xl font-bold text-gray-900 mb-3">5. 広告配信について（Google AdSense等）</h2>
           <p className="mb-3">
-            当サイトは現在、広告・アフィリエイトリンクを掲載していません。
+            当サイトは、第三者配信の広告サービス「Google AdSense」を利用する場合があります。
           </p>
-          <p className="mb-3">
-            将来的に Google AdSense による広告を掲載する場合、Google およびその提携企業が
-            Cookie を使用してパーソナライズ広告を表示することがあります。
-            収集されるデータは Google の広告サービスの提供にのみ使用され、当サイトが
-            個人を特定できる情報を受け取ることはありません。
+          <ul className="list-disc list-inside space-y-2 text-sm mb-3">
+            <li>
+              Google などの第三者配信事業者は、Cookie を使用して、ユーザーが当サイトや
+              他のサイトに過去にアクセスした情報に基づいて広告を配信することがあります。
+            </li>
+            <li>
+              Google が広告 Cookie を使用することにより、Google や Google のパートナーは、
+              当サイトや他のサイトへのアクセス情報に基づいて、ユーザーに適切な広告を表示できます。
+            </li>
+            <li>
+              当サイトが、Google AdSense を通じてユーザー個人を特定できる情報を取得・保有することはありません。
+            </li>
+          </ul>
+          <p className="mb-3 text-sm">
+            ユーザーは、
+            <a href="https://myadcenter.google.com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-700">
+              Google の広告設定
+            </a>
+            でパーソナライズ広告を無効にできます。また、
+            <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-700">
+              www.aboutads.info
+            </a>
+            にアクセスすれば、第三者配信事業者の Cookie によるパーソナライズ広告を無効にできます。
           </p>
-          <p className="mb-3">
+          <p className="mb-3 text-sm">
+            広告 Cookie を含む Cookie 全般は、ご利用のブラウザの設定からいつでも無効化・削除できます。
+            無効にした場合でも当サイトの閲覧は可能ですが、表示される広告が最適化されない場合があります。
+            広告配信における Cookie の取り扱いの詳細は、
+            <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-700">
+              Google の広告に関するポリシー
+            </a>
+            をご確認ください。
+          </p>
+          <p className="mb-3 text-sm">
             将来的にアフィリエイトリンクを掲載する場合は、当該リンクに「PR」「広告」等の
-            表記を行い、利用者が明確に識別できるよう表示します。
+            表記を行い、記事本文と明確に区別します。
           </p>
           <p className="text-sm text-gray-500">
-            広告・アフィリエイトを導入した場合、その時点でこのページを更新します。
+            広告サービスの利用状況が変わった場合は、その時点でこのページを更新します。
           </p>
         </section>
 

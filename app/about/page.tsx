@@ -13,7 +13,7 @@ export default function AboutPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
       <h1 className="text-3xl font-bold text-gray-900 mb-2">このサイトについて</h1>
-      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年6月20日</p>
+      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年6月29日</p>
 
       <div className="space-y-10 text-gray-700 leading-relaxed">
         <section>
@@ -25,6 +25,37 @@ export default function AboutPage() {
           <p className="mt-3">
             日々の授業準備や校務の中でICTや生成AIを活用したい先生方が、
             必要な情報に素早くたどり着けることを目指しています。
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-bold text-gray-900 mb-3">大切にしている考え方</h2>
+          <p className="mb-3">
+            教育DXナビは、万人向けの無難なICT解説サイトではなく、
+            「子どもの学び・生活・支援の質が本当に良くなるか」で判断したい先生に向けて編集しています。
+            その土台にあるのは、次のような考え方です。
+          </p>
+          <ul className="list-disc list-inside space-y-2 text-sm mb-3">
+            <li>教育DXは、端末やアプリを増やすこと自体が目的ではありません。</li>
+            <li>子どもをデータ化して管理するためのものでも、教師の判断をAIに丸投げするためのものでもありません。</li>
+            <li>
+              ICTや生成AIは、教師の専門性を置き換える道具ではなく、
+              <strong>教師が子どもを見る時間・教材を整える時間・保護者と丁寧に関わる時間を取り戻す</strong>ための道具だと考えます。
+            </li>
+            <li>
+              特別支援教育では、便利さよりも先に、安心・見通し・個別性・関係性・安全性を確認する必要があります。
+            </li>
+            <li>
+              公式情報（文部科学省・こども家庭庁・個人情報保護委員会など）を確認し、
+              「現場ではどう読むか・どう判断するか」までセットで整理します。
+            </li>
+            <li>
+              現場で使えない理想論ではなく、明日から小さく試せる現実的な判断軸を示すことを心がけます。
+            </li>
+          </ul>
+          <p className="text-sm text-gray-600">
+            「使ったかどうか」ではなく「子どもの学びや支援の質がどう変わったか」を軸に、
+            ときには「ここは安易に進めない方がよい」という判断もはっきり書きます。
           </p>
         </section>
 

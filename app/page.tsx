@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllArticles, getArticlesByCategory } from '@/lib/articles';
-import { getAllDBItems } from '@/lib/db';
 import {
   CATEGORIES,
   CATEGORY_TO_SLUG,
@@ -9,7 +8,6 @@ import {
   CATEGORY_ICONS,
 } from '@/lib/categories';
 import ArticleCard from '@/components/ArticleCard';
-import DBItemCard from '@/components/DBItemCard';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
@@ -18,7 +16,6 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   const latestArticles = getAllArticles().slice(0, 6);
-  const latestDBItems = getAllDBItems().slice(0, 4);
   const specialNeedsArticles = getArticlesByCategory('特別支援教育').slice(0, 3);
   const recentlyUpdated = [...getAllArticles()]
     .sort((a, b) =>
@@ -35,8 +32,8 @@ export default function HomePage() {
             教育現場のDXを、<br className="sm:hidden" />一歩前へ。
           </h1>
           <p className="text-blue-100 text-lg mb-8 leading-relaxed">
-            特別支援教育・ICT活用・AI校務改善に関する<br />
-            最新情報を収集・整理してお届けします。
+            特別支援教育・ICT活用・AI校務改善について、<br />
+            現場で迷いやすい「使うかどうかの判断」を整理します。
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
@@ -46,12 +43,28 @@ export default function HomePage() {
               記事を読む
             </Link>
             <Link
-              href="/db"
+              href="/categories/tokubetsu-shien"
               className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold border border-blue-400 hover:bg-blue-500 transition-colors"
             >
-              教育情報DB
+              特別支援教育×ICT
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* 編集方針 */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 pt-12">
+        <div className="bg-white border border-gray-200 rounded-2xl p-6 sm:p-7">
+          <h2 className="text-lg font-bold text-gray-900 mb-3">教育DXナビについて</h2>
+          <p className="text-gray-700 leading-relaxed">
+            教育DXナビは、ICTやAIを「便利そうだから使う」のではなく、
+            <strong>子どもを見る時間・教材を整える時間・支援の質を取り戻すためにどう使うか</strong>を考えるサイトです。
+            特別支援教育・校務改善・個人情報保護の観点から、現場で迷いやすい判断を、公式情報の「現場での読み方」とあわせて整理します。
+          </p>
+          <p className="mt-3 text-sm text-gray-600 leading-relaxed">
+            端末やアプリを増やすこと、子どもをデータで管理すること、教師の判断をAIに丸投げすることを目的にはしません。
+            「使ったかどうか」ではなく「子どもの学びや支援の質がどう変わったか」を軸に、ときには「ここは慎重に」という判断もはっきりお伝えします。
+          </p>
         </div>
       </section>
 
@@ -163,36 +176,22 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* 教育情報DB 新着 */}
+      {/* そのほか（拡充中・控えめに表示） */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-8 pb-16">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold text-gray-900">教育情報DB — 新着</h2>
-          <Link href="/db" className="text-blue-600 hover:text-blue-800 text-sm font-medium">
-            すべて見る →
-          </Link>
-        </div>
-        {latestDBItems.length === 0 ? (
-          <p className="text-gray-500 py-8 text-center">データはまだありません。</p>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {latestDBItems.map((item) => (
-              <DBItemCard key={item.id} item={item} />
-            ))}
+        <div className="bg-white border border-gray-100 rounded-2xl p-5">
+          <h2 className="text-base font-semibold text-gray-700 mb-2">そのほかのコンテンツ</h2>
+          <p className="text-sm text-gray-500 mb-3">
+            公式情報や教育DX関連の動きも、現場で読み解く視点を添えて少しずつ整理しています（拡充中）。
+          </p>
+          <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+            <Link href="/db" className="text-blue-600 hover:text-blue-800 font-medium">
+              教育情報DB（法令・ツール・助成金など）→
+            </Link>
+            <Link href="/news" className="text-blue-600 hover:text-blue-800 font-medium">
+              ニュースまとめ（公式情報の現場での読み方）→
+            </Link>
           </div>
-        )}
-      </section>
-
-      {/* ニュースまとめ */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-8">
-        <div className="flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-gray-700">ニュースまとめ</h2>
-          <Link href="/news" className="text-blue-600 hover:text-blue-800 text-sm font-medium">
-            一覧を見る →
-          </Link>
         </div>
-        <p className="text-sm text-gray-500 mt-1">
-          教育DX・生成AI・ICT活用に関する動きを、学校現場向けに整理しています。
-        </p>
       </section>
     </div>
   );

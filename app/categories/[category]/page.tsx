@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getArticlesByCategory } from '@/lib/articles';
-import { CATEGORY_SLUGS, CATEGORY_TO_SLUG, CATEGORIES } from '@/lib/categories';
+import { CATEGORY_SLUGS, CATEGORY_TO_SLUG, CATEGORIES, CATEGORY_DESCRIPTIONS } from '@/lib/categories';
 import ArticleCard from '@/components/ArticleCard';
 import CategoryBadge from '@/components/CategoryBadge';
 
@@ -18,15 +18,16 @@ export async function generateMetadata({
   const { category: slug } = await params;
   const category = CATEGORY_SLUGS[slug];
   if (!category) return { title: 'カテゴリが見つかりません' };
+  const desc = CATEGORY_DESCRIPTIONS[category].meta;
   return {
     title: `${category}の記事一覧`,
-    description: `${category}に関する教育DXの記事をまとめています。`,
+    description: desc,
     alternates: { canonical: `/categories/${slug}` },
     openGraph: {
       type: 'website',
       url: `/categories/${slug}`,
       title: `${category}の記事一覧 | 教育DXナビ`,
-      description: `${category}に関する教育DXの記事をまとめています。`,
+      description: desc,
     },
   };
 }
@@ -41,6 +42,7 @@ export default async function CategoryPage({
   if (!category) notFound();
 
   const articles = getArticlesByCategory(category);
+  const { intro, axes } = CATEGORY_DESCRIPTIONS[category];
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
@@ -61,7 +63,16 @@ export default async function CategoryPage({
           <CategoryBadge category={category} />
         </div>
         <h1 className="text-3xl font-bold text-gray-900 mb-1">{category}</h1>
-        <p className="text-gray-500 text-sm">全 {articles.length} 件</p>
+        <p className="text-gray-500 text-sm mb-4">全 {articles.length} 件</p>
+        <p className="text-gray-700 leading-relaxed max-w-3xl">{intro}</p>
+        <div className="mt-4 bg-blue-50 border border-blue-100 rounded-xl p-4 max-w-3xl">
+          <p className="text-sm font-semibold text-gray-800 mb-2">このカテゴリで大切にする判断軸</p>
+          <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
+            {axes.map((axis) => (
+              <li key={axis}>{axis}</li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       {/* 他カテゴリへのリンク */}

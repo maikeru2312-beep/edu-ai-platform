@@ -11,7 +11,7 @@ export default function DisclaimerPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
       <h1 className="text-3xl font-bold text-gray-900 mb-2">免責事項</h1>
-      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年6月17日</p>
+      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年6月29日</p>
 
       <div className="space-y-10 text-gray-700 leading-relaxed">
         <section>
@@ -70,9 +70,14 @@ export default function DisclaimerPage() {
             <li>学校支給端末での外部サービス利用の可否</li>
             <li>生成AIへの個人情報（児童生徒氏名・学校名・診断情報等）の入力禁止</li>
           </ul>
-          <p>
+          <p className="mb-3">
             当サイトの情報だけをもとに生成AIを業務利用しないでください。
             必ず所属校・教育委員会の方針を確認してから使用してください。
+          </p>
+          <p>
+            また、生成AIの出力（文章・要約・分類結果など）を、確認・修正をせずにそのまま
+            <strong>校務文書・通知表所見等の評価文・個人情報を含む処理</strong>に用いることは推奨しません。
+            AIの出力はあくまで下書き・たたき台とし、最終的な内容・表現・適用判断は必ず教員・管理職が確認してください。
           </p>
         </section>
 
