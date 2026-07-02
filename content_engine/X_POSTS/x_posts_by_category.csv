@@ -1,0 +1,23 @@
+ref,category,body,link,hashtags
+X-AI-01,AI校務改善,"通知表の所見、白紙から書くと時間がかかりますよね。AIは叩き台づくりに向いています。子どもの様子はこちらが把握しているので、文の型と語彙を手伝ってもらう。所見をAIで下書きする手順です。",https://edu-ai-platform-delta.vercel.app/articles/chatgpt-tsuchihyo-shoken,#通知表 #教員のためのChatGPT
+X-AI-02,AI校務改善,"学級通信、毎回ゼロから書くと負担が大きいです。行事の要点を渡して構成を手伝ってもらうと、時短しつつ自分の言葉に直せます。AIで学級通信を時短する使い方をまとめました。",https://edu-ai-platform-delta.vercel.app/articles/ai-class-newsletter-prompt,#学級通信 #校務改善
+X-AI-03,AI校務改善,"ChatGPTを校務で使いたいけれど何から触れば、という方へ。まず文の下書きや要点整理が入りやすいです。教員向けの入門手順をまとめました。無理のない範囲で1つずつで大丈夫です。",https://edu-ai-platform-delta.vercel.app/articles/chatgpt-teacher-beginner-guide,#教員のためのChatGPT #校務改善
+X-AI-04,AI校務改善,"校務改善、どこから手をつけるか迷いますよね。時間がかかる割に定型的な作業から見直すと効果を感じやすいです。生成AIを使った校務改善の入門5つをまとめました。1つ試すところから。",https://edu-ai-platform-delta.vercel.app/articles/ai-koomu-kaizen-nyumon,#校務改善 #生成AI
+X-AI-05,AI校務改善,"生成AIを学校で使うとき、個人情報とセキュリティは最初に確認したい点です。何を入力してよいか・校内ルールとの関係を整理しました。公式の考え方の読み方も添えています。導入前にぜひ。",https://edu-ai-platform-delta.vercel.app/articles/school-generative-ai-privacy-security,#生成AI #情報セキュリティ
+X-SN-01,特別支援教育,"視覚支援は今日は何をするかが見えるだけで、子どもの安心が変わります。凝ったものでなくて大丈夫。まず1日の流れを絵カードや文字で並べるところから。見通し支援の始め方を記事にしました。",https://edu-ai-platform-delta.vercel.app/articles/special-needs-visual-schedule-support,#特別支援教育 #視覚支援
+X-SN-02,特別支援教育,"合理的配慮は、やったことを記録に残すと引き継ぎや保護者との共有がスムーズになります。記録の粒度や書き方の例をまとめました。あとから見返せる形にしておくのがおすすめです。",https://edu-ai-platform-delta.vercel.app/articles/reasonable-accommodation-school-record,#特別支援教育 #合理的配慮
+X-SN-03,特別支援教育,"行動記録は気づいたときにすぐだと続きます。長文でなくて構いません。いつ・何が・どうだったかを短く。記録の取り方と負担を減らす工夫をまとめました。支援を共有する材料になります。",https://edu-ai-platform-delta.vercel.app/articles/special-needs-behavior-record-guide,#特別支援教育 #行動記録
+X-SN-04,特別支援教育,"個別の教育支援計画、書き方に迷いませんか。目標と手立てを具体的に、あとで見返せる形にすると支援がつながります。書き方の手順と例をまとめました。引き継ぎにも使えます。",https://edu-ai-platform-delta.vercel.app/articles/individual-education-plan-writing-guide,#特別支援教育 #個別の教育支援計画
+X-SN-05,特別支援教育,"保護者との連携は、こまめな共有の積み重ねが効いてきます。よいことも含めて伝えると信頼につながりやすいです。連携の進め方と伝え方の工夫をまとめました。日々のやり取りの参考に。",https://edu-ai-platform-delta.vercel.app/articles/special-needs-parent-collaboration,#特別支援教育 #保護者連携
+X-ICT-01,ICT活用,"GIGA端末が授業で止まると空気が切れてしまいます。よくある困りごと（ログイン・音・接続）は事前の1手で防げるものが多いです。Q&A形式で対処をまとめました。焦らず1つずつで大丈夫です。",https://edu-ai-platform-delta.vercel.app/articles/giga-school-device-troubleshooting,#GIGAスクール #ICT活用
+X-ICT-02,ICT活用,"Googleフォームはアンケートだけでなく小テストや欠席連絡にも使えます。集計が自動になるだけで校務の負担が減ります。学校での活用パターンをまとめました。まず1つ試すところから。",https://edu-ai-platform-delta.vercel.app/articles/google-forms-school-use-guide,#Googleフォーム #校務改善
+X-ICT-03,ICT活用,"教育DXって結局なに、という段階の方へ。端末を増やすことが目的ではなく、子どもを見る時間を取り戻す道具という捉え方が現場では役立ちます。基礎をやさしくまとめました。",https://edu-ai-platform-delta.vercel.app/articles/kyoiku-dx-kiso,#教育DX #ICT活用
+X-ICT-04,ICT活用,"GIGA端末は配っただけでは授業は変わりません。この場面でこう使うを1つ決めると定着します。授業での活かし方の具体例をまとめました。まず得意な教科で1つ試すのがおすすめです。",https://edu-ai-platform-delta.vercel.app/articles/giga-device-lesson-use-guide,#GIGAスクール #授業改善
+X-ICT-05,ICT活用,"情報モラル教育、何を扱うか迷いますよね。SNS・個人情報・著作権あたりは学年に応じて繰り返し触れたいテーマです。授業で扱えるテーマ例をまとめました。指導の下準備にどうぞ。",https://edu-ai-platform-delta.vercel.app/articles/information-morals-education-themes,#情報モラル #ICT活用
+X-TOOL-01,教材・支援ツール,"無料のICT教材は助かりますが、安全かは別で確認したいところです。誰が運営し、データはどう扱われるか。使う前に見る項目をチェックリストにしました。判断材料として使ってください。",https://edu-ai-platform-delta.vercel.app/articles/free-ict-tools-safety-checklist,#ICT教材 #情報セキュリティ
+X-TOOL-02,教材・支援ツール,"教育AIサービスを試す前に確認したい点があります。無料か・データの扱い・校内ルールとの整合など。使う前チェックリストにまとめました。導入の可否を落ち着いて判断するために。",https://edu-ai-platform-delta.vercel.app/articles/education-ai-service-checklist-before-use,#教育AI #チェックリスト
+X-TOOL-03,教材・支援ツール,"ICT支援ツールは種類が多くて選ぶのが大変ですよね。誰の何を楽にするかを先に決めると比べやすくなります。選び方の観点をまとめました。多機能より現場に合うかを基準に。",https://edu-ai-platform-delta.vercel.app/articles/ict-teaching-tools-selection-guide,#ICT教材 #支援ツール
+X-GRANT-01,助成金・補助金,"助成金・補助金はどこを見れば探せるかが分かると動きやすくなります。募集の探し方と読み方の手順をまとめました。年度途中でも公募はあります。まず情報源を1つ押さえるところから。",https://edu-ai-platform-delta.vercel.app/articles/education-grant-search-guide,#助成金 #教育
+X-GRANT-02,助成金・補助金,"2025年度の教育向け助成金・補助金の情報をまとめました。対象や時期は制度ごとに違うので、必ず公式の募集要項で確認を。自校が対象になりそうかを絞る材料として使ってください。",https://edu-ai-platform-delta.vercel.app/articles/joseikin-guide-2025,#助成金 #補助金
+X-TRAIN-01,研修・セミナー,"校内研修は外部講師を呼ばなくても始められます。まず困っている業務を1つ持ち寄る形が入りやすいです。生成AIの校内研修を無理なく進める手順をまとめました。担当になった方の下準備に。",https://edu-ai-platform-delta.vercel.app/articles/generative-ai-school-training-guide,#教員研修 #生成AI
+X-TRAIN-02,研修・セミナー,"ICTやAIの校内研修、担当になると準備が大変ですよね。外部に頼らず校内で回す進め方をまとめました。全員が同じ土台に立てると、その後の運用がぐっと楽になります。下準備の参考に。",https://edu-ai-platform-delta.vercel.app/articles/school-training-ict-ai-guide,#教員研修 #ICT活用

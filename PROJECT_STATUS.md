@@ -1,8 +1,27 @@
 # 教育DXナビ — PROJECT_STATUS
 
-最終更新: 2026-06-27（フェーズ5 / 運用フェーズへ移行）
+最終更新: 2026-06-28（デジタル商品群 初稿制作）
 
 > **運用フェーズへ移行**（2026-06-27〜）。以降はコード変更中心ではなく、Search Console 運用・X投稿・本番モニタリングが中心。手順は [docs/ops/operations-memo.md](docs/ops/operations-memo.md) を参照。
+
+## 2026-06-28 デジタル商品群 初稿制作（products/）
+
+AdSense審査待機中に、教育DXナビ／note／X と連動するデジタル商品群の**設計・本文下書き・販売ページ案・SNS導線**を作成。**販売開始はしていない**（公開・販売はユーザー確認後）。サイト本体のコード・SEO・解析・広告設定は一切変更なし（`products/` 配下の新規追加のみ）。
+
+**作成した4商品（MVP初稿）:**
+| 商品 | 形式 | 価格案 | フォルダ |
+|---|---|---|---|
+| A 無料PDF（10チェックリスト） | 5〜8p | 無料 | `products/free-ai-checklist/` |
+| B 有料note（校務プロンプト30選） | note | 300〜500円 | `products/note-ai-prompts-30/` |
+| C 有料PDF（特別支援ICT・AIテンプレ集8種） | 20〜35p | 980〜1,500円 | `products/paid-ict-ai-checklist/` |
+| D スターターキット（プロンプト50＋研修＋ルール） | 30〜50p | 1,980〜2,980円 | `products/starter-kit/` |
+
+- 設計: [products/PRODUCT_LADDER.md](products/PRODUCT_LADDER.md) / [products/RELEASE_PLAN.md](products/RELEASE_PLAN.md)
+- 販売導線: `products/launch/`（note・BOOTH販売コピー、X投稿10件、サイト導線案）
+- コンプラ: [products/COMPLIANCE_CHECK.md](products/COMPLIANCE_CHECK.md)
+- 既存記事を**再構成**（コピペなし）。記入例はすべて架空。
+- **販売前の最重要確認：公立教員の服務・兼職兼業（営利従事制限）の許可要否をユーザー本人が確認**（COMPLIANCE_CHECK §1）。これが済むまで有料販売しない。
+- 次の一歩：①服務確認 → ②原稿レビュー → ③価格決定 → ④無料PDFから順次公開（RELEASE_PLAN参照）。
 
 ## 2026-06-27 フェーズ5（GA4 本番発火確認）
 
