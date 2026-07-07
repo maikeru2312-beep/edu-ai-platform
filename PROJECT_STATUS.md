@@ -1,8 +1,20 @@
 # 教育DXナビ — PROJECT_STATUS
 
-最終更新: 2026-06-27（フェーズ5 / 運用フェーズへ移行）
+最終更新: 2026-07-08（AdSense再審査対策：コンテンツ品質・信頼性強化）
 
 > **運用フェーズへ移行**（2026-06-27〜）。以降はコード変更中心ではなく、Search Console 運用・X投稿・本番モニタリングが中心。手順は [docs/ops/operations-memo.md](docs/ops/operations-memo.md) を参照。
+
+## 2026-07-08 AdSense再審査対策（低価値コンテンツ判定への対応）
+
+AdSense「有用性の低いコンテンツ」判定を受け、サイトを「特別支援教育×ICT×生成AI安全活用の実務メディア」として再構成。記事の機械的追加はせず、既存の質と信頼性を強化。
+
+- **監査**: [operations/ADSENSE_LOW_VALUE_CONTENT_AUDIT.md](operations/ADSENSE_LOW_VALUE_CONTENT_AUDIT.md) — 主因は「量産記事構造」「著者性不足」「/db /news の薄さ」
+- **主力10記事を質的強化**（判断軸・失敗例・校内確認の順番・チェックリスト・一次情報の読み方・独自見解を、記事ごとに構成を変えて追加。updatedAt=2026-07-08）
+- **E-E-A-T強化**: /about /operator に編集方針・公開前確認プロセスを明記、全記事ページ末尾に共通「編集方針・確認プロセス」カード（components/EditorialPolicy.tsx 新規）
+- **技術対応**: /db /news /news/* を noindex(follow) 化し sitemap から除外。canonical/カテゴリ/内部リンク308件は検証済み・問題なし
+- **検証**: lint ✅ / build ✅（51/51） / validate ✅ / PII混入なし ✅
+- **結果と次アクション**: [operations/ADSENSE_REVIEW_READY_REPORT.md](operations/ADSENSE_REVIEW_READY_REPORT.md)
+- **⚠️ 最重要の残タスク（人間）**: 本番が古いビルドのままのため**再デプロイ**→本番でnoindex/sitemap確認→Search Consoleでsitemap再送信→数日後に再審査リクエスト
 
 ## 2026-06-27 フェーズ5（GA4 本番発火確認）
 

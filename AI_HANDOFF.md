@@ -1,6 +1,15 @@
 # 教育DXナビ — AI_HANDOFF
 
-次に作業するAI／開発者への引き継ぎメモ。最終更新: 2026-06-27
+次に作業するAI／開発者への引き継ぎメモ。最終更新: 2026-07-08
+
+## 2026-07-08 AdSense再審査対策の引き継ぎ
+
+AdSense「有用性の低いコンテンツ」判定への対応として、サイト本体を変更した（**従来の「審査中は本体に触らない」凍結は、低価値判定を受けたため解除し、再審査前の品質改善を実施**）。
+
+- 実施内容と検証結果: `operations/ADSENSE_REVIEW_READY_REPORT.md` / 原因分析: `operations/ADSENSE_LOW_VALUE_CONTENT_AUDIT.md`
+- 主力10記事を強化（updatedAt=2026-07-08）。/db /news /news/* は noindex + sitemap除外。全記事ページに `components/EditorialPolicy.tsx`（編集方針カード）を表示。
+- **次の担当者への最優先事項**: 本番は古いビルドのまま。main への反映（または既存デプロイフロー）→ 本番で noindex / sitemap.xml / 編集方針カードを確認 → Search Console で sitemap 再送信 → 数日置いて再審査リクエスト。
+- 引き続き守ること: 実名・勤務先・自治体・児童生徒特定情報・メールアドレスは公開しない。記事の機械的量産をしない（監査レポートが量産構造を主因と特定）。AdSenseクライアントID・GA4・Search Console verification は変更しない。
 
 ## このリポジトリの要点
 
