@@ -11,7 +11,7 @@ export default function DisclaimerPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
       <h1 className="text-3xl font-bold text-gray-900 mb-2">免責事項</h1>
-      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年6月17日</p>
+      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年7月8日</p>
 
       <div className="space-y-10 text-gray-700 leading-relaxed">
         <section>
@@ -44,7 +44,8 @@ export default function DisclaimerPage() {
         <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">3. 法的・医療的・行政的判断について</h2>
           <p className="mb-3">
-            当サイトは情報提供を目的としており、以下に関する個別の判断を代行するものではありません。
+            当サイトは情報提供を目的としており、医療・法律・行政上の判断を代替するものではありません。
+            特に、以下に関する個別の判断を代行するものではありません。
           </p>
           <ul className="list-disc list-inside space-y-1 text-sm">
             <li>児童生徒の障害認定・診断・医療ケアに関する判断</li>
@@ -128,9 +129,11 @@ export default function DisclaimerPage() {
         <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">10. AIによる生成コンテンツについて</h2>
           <p>
-            当サイトの一部コンテンツはAIを補助ツールとして活用して作成されています。
-            公開前に編集者が内容を確認していますが、誤りが含まれる可能性があります。
-            誤情報を発見された場合は、<a href="/contact" className="text-blue-600 hover:underline">お問い合わせページ</a>よりお知らせください。
+            当サイトでは、文章作成の補助としてAIを活用する場合があります。
+            その場合も、記事の構成・教育現場への適用可否の判断・安全性の確認は人間（運営者）が行い、
+            公開前に一次情報との突き合わせを行っています。
+            それでも誤りが含まれる可能性はあります。
+            誤情報を発見された場合は、<a href="/contact" className="text-blue-600 hover:underline">お問い合わせページ</a>よりお知らせください。確認のうえ修正します。
           </p>
         </section>
 

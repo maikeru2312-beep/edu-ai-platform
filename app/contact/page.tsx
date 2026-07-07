@@ -14,7 +14,7 @@ export default function ContactPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
       <h1 className="text-3xl font-bold text-gray-900 mb-2">お問い合わせ</h1>
-      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年6月17日</p>
+      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年7月8日</p>
 
       <div className="space-y-8 text-gray-700 leading-relaxed">
         <section>
@@ -48,6 +48,18 @@ export default function ContactPage() {
               </p>
             </div>
           )}
+        </section>
+
+        <section>
+          <h2 className="text-xl font-bold text-gray-900 mb-3">誤情報・リンク切れのご報告</h2>
+          <p className="mb-3 text-sm">
+            記事内容の誤り・古くなった情報・リンク切れのご報告を受け付けています。
+            いただいたご報告は一次情報と照合のうえ、必要に応じて記事を修正し、記事の更新日を改めます。
+          </p>
+          <p className="text-sm text-gray-500">
+            ご報告の際は、対象記事のURL・該当箇所・（差し支えなければ）正しい情報の出典を
+            添えていただけると、迅速に確認できます。
+          </p>
         </section>
 
         <section>

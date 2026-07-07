@@ -1,6 +1,26 @@
 # 教育DXナビ — AI_HANDOFF
 
-次に作業するAI／開発者への引き継ぎメモ。最終更新: 2026-06-27
+次に作業するAI／開発者への引き継ぎメモ。最終更新: 2026-07-08
+
+## 2026-07-08 AdSense再審査対策の引き継ぎ
+
+AdSense「有用性の低いコンテンツ」判定への対応として、サイト本体を変更した（**従来の「審査中は本体に触らない」凍結は、低価値判定を受けたため解除し、再審査前の品質改善を実施**）。
+
+- 実施内容と検証結果: `operations/ADSENSE_REVIEW_READY_REPORT.md` / 原因分析: `operations/ADSENSE_LOW_VALUE_CONTENT_AUDIT.md`
+- 主力10記事を強化（updatedAt=2026-07-08）。/db /news /news/* は noindex + sitemap除外。全記事ページに `components/EditorialPolicy.tsx`（編集方針カード）を表示。
+- **次の担当者への最優先事項**: 本番は古いビルドのまま。main への反映（または既存デプロイフロー）→ 本番で noindex / sitemap.xml / 編集方針カードを確認 → Search Console で sitemap 再送信 → 数日置いて再審査リクエスト。
+- 引き続き守ること: 実名・勤務先・自治体・児童生徒特定情報・メールアドレスは公開しない。記事の機械的量産をしない（監査レポートが量産構造を主因と特定）。AdSenseクライアントID・GA4・Search Console verification は変更しない。
+
+## 2026-06-28 デジタル商品群（products/）の引き継ぎ
+
+`products/` 配下に、note・X と連動するデジタル商品群（A無料PDF / B有料note / C有料PDFテンプレ集 / Dスターターキット）の**初稿一式**を追加した。**サイト本体（`app/` `content/` `lib/` 等）は一切触っていない**（AdSense/GA4/SC/robots/sitemap/canonical 変更なし）。
+
+**重要な前提（次の担当者へ）:**
+- これは**原稿制作まで**。公開・販売は未実施。**ユーザー確認後にのみ**公開する。
+- 最優先の人間確認：**公立教員の服務・兼職兼業（営利従事制限）の許可要否**。→ `products/COMPLIANCE_CHECK.md` §1。済むまで有料販売しない。
+- 記入例・事例は**すべて架空**。実在児童・勤務校・校内資料は使っていない。維持すること。
+- 既存記事からの導線追加（`products/launch/site-linking-plan.md`）を実装する場合も、**本文への関連リンク最小限のみ**。メタ/構造化データ/SEO設定は変更しない。別途ユーザー承認必須。
+- 商品の詳細・公開順は `products/PRODUCT_LADDER.md` / `products/RELEASE_PLAN.md`。
 
 ## このリポジトリの要点
 

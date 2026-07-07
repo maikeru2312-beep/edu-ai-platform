@@ -11,20 +11,24 @@ export default function OperatorPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
       <h1 className="text-3xl font-bold text-gray-900 mb-2">運営者情報</h1>
-      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年6月17日</p>
+      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年7月8日</p>
 
       <div className="space-y-10 text-gray-700 leading-relaxed">
 
         <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">運営者について</h2>
           <p className="mb-3">
-            教育DXナビは、教育現場での実務経験を持つ個人が運営しています。
-            ICT活用・校務改善・特別支援教育の実践に日常的に携わる中で感じた
+            教育DXナビは、教育現場でICT活用・校務改善・特別支援教育に関わる実務経験を持つ個人が運営しています。
+            これらの実践に日常的に携わる中で感じた
             「現場で使える情報をまとまった形で届けたい」という思いから、このサイトを立ち上げました。
           </p>
-          <p>
-            プライバシー保護および勤務先への影響を避けるため、
+          <p className="mb-3">
+            児童生徒・保護者のプライバシー保護、および勤務先・所属自治体への影響を避けるため、
             個人名・勤務校名・所属自治体名は公開していません。
+          </p>
+          <p>
+            匿名での運営とする代わりに、下記の「記事の編集プロセス」を公開し、
+            掲載内容への編集責任を明確にしています。
           </p>
         </section>
 
@@ -55,6 +59,24 @@ export default function OperatorPage() {
             <li>
               <strong>特別支援教育</strong>：ICTを活用した合理的配慮・支援事例・アクセシビリティの実践
             </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-bold text-gray-900 mb-3">記事の編集プロセス</h2>
+          <p className="mb-3">
+            記事は、文部科学省・デジタル庁等の公式資料（一次情報）、各ツール・サービスの公式ドキュメント、
+            そして教育現場での実務判断をもとに編集しています。
+          </p>
+          <p className="mb-3">
+            文章作成の補助としてAIを使うことがありますが、記事の構成、教育現場への適用可否の判断、
+            安全性の確認は、いずれも運営者（人間）が行っています。AIの出力をそのまま公開することはありません。
+          </p>
+          <p className="mb-3">すべての記事は、公開前に次の確認を行っています。</p>
+          <ul className="list-disc list-inside space-y-2 text-sm">
+            <li>一次情報（公式資料・法令・通知等）との突き合わせ（数値・制度・出典の確認）</li>
+            <li>児童生徒・教職員など個人が特定される情報が含まれていないことの確認</li>
+            <li>教育現場で適用する際の注意点（所属校・教育委員会の方針確認等）の明記</li>
           </ul>
         </section>
 
