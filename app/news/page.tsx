@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'ニュースまとめ',
   description:
     '教育DX・生成AI・ICT活用・校務改善・特別支援教育に関する動きを、学校現場向けに整理します。元記事本文の転載ではなく、出典リンクと独自コメントでお届けします。',
+  robots: { index: false, follow: true },
   alternates: { canonical: '/news' },
   openGraph: {
     type: 'website',

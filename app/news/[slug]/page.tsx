@@ -16,10 +16,11 @@ export async function generateMetadata({
   const { slug } = await params;
   try {
     const digest = await getNewsDigest(slug);
-    if (digest.draft) return { title: 'ニュースまとめ' };
+    if (digest.draft) return { title: 'ニュースまとめ', robots: { index: false, follow: true } };
     return {
       title: digest.title,
       description: digest.description,
+      robots: { index: false, follow: true },
       alternates: { canonical: `/news/${slug}` },
       openGraph: {
         type: 'article',
@@ -31,7 +32,7 @@ export async function generateMetadata({
       },
     };
   } catch {
-    return { title: 'ニュースまとめ' };
+    return { title: 'ニュースまとめ', robots: { index: false, follow: true } };
   }
 }
 
