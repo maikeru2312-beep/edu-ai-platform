@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { getAllArticleSlugs, getArticle, getArticlesByCategory } from '@/lib/articles';
 import CategoryBadge from '@/components/CategoryBadge';
 import ChifuyuProfileCard from '@/components/ChifuyuProfileCard';
+import EditorialPolicy from '@/components/EditorialPolicy';
 
 export function generateStaticParams() {
   return getAllArticleSlugs().map((slug) => ({ slug }));
@@ -103,6 +104,11 @@ export default async function ArticleDetailPage({
       {/* 案内役 */}
       <div className="mt-10">
         <ChifuyuProfileCard variant="compact" />
+      </div>
+
+      {/* 編集方針・確認プロセス */}
+      <div className="mt-4">
+        <EditorialPolicy />
       </div>
 
       {relatedArticles.length > 0 && (
