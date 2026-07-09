@@ -5,6 +5,7 @@ import { getAllArticleSlugs, getArticle, getArticlesByCategory } from '@/lib/art
 import CategoryBadge from '@/components/CategoryBadge';
 import ChifuyuProfileCard from '@/components/ChifuyuProfileCard';
 import EditorialPolicy from '@/components/EditorialPolicy';
+import ArticleBody from '@/components/ArticleBody';
 
 export function generateStaticParams() {
   return getAllArticleSlugs().map((slug) => ({ slug }));
@@ -96,10 +97,7 @@ export default async function ArticleDetailPage({
         </div>
       </header>
 
-      <div
-        className="prose prose-lg max-w-none prose-headings:font-bold prose-a:text-blue-600 prose-img:rounded-lg prose-code:bg-gray-100 prose-code:px-1 prose-code:rounded"
-        dangerouslySetInnerHTML={{ __html: article.contentHtml }}
-      />
+      <ArticleBody contentHtml={article.contentHtml} />
 
       {/* 案内役 */}
       <div className="mt-10">
