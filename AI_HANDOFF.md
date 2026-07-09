@@ -1,6 +1,12 @@
 # 教育DXナビ — AI_HANDOFF
 
-次に作業するAI／開発者への引き継ぎメモ。最終更新: 2026-07-08
+次に作業するAI／開発者への引き継ぎメモ。最終更新: 2026-07-09
+
+## 2026-07-09 メディア化 Phase 2 の引き継ぎ
+
+- 主力5記事に editorial voice・強い見出し・冒頭改善を実施し、自作図解5種を追加（`components/diagrams/` + `components/ArticleBody.tsx`）。詳細は `operations/CONTENT_VOICE_VISUALS_REPORT.md`。
+- **図解の挿入方法**: 記事md内に `<!--diagram:キー-->` を1行（前後空行・行頭）で書く。キーと対応コンポーネントは `components/ArticleBody.tsx` の `DIAGRAMS` マップに登録。未知キーは無視される（記事は壊れない）。新しい図解を作る場合は `components/diagrams/DiagramFigure.tsx`（figure/figcaption/aria-label 共通ラッパー）を使い、外部画像・クライアントJSを使わないこと。
+- 記事本文の prose 描画は `ArticleBody` 経由に変更済み（`app/articles/[slug]/page.tsx`）。prose クラスを変える場合は `ArticleBody` 内の `PROSE_CLASS` を編集。
 
 ## 2026-07-08 AdSense再審査対策の引き継ぎ
 
