@@ -5,6 +5,7 @@ category: "AI校務改善"
 tags: ["Microsoft Copilot", "生成AI", "AI校務改善", "Microsoft 365", "Teams", "校務効率化", "情報セキュリティ", "教員"]
 publishedAt: "2026-06-19"
 updatedAt: "2026-06-19"
+published: false
 ---
 
 「Microsoft Copilotって何ができるの?」「ChatGPTとどう違うの?」「学校のパソコンで使えるの?」——そうした疑問を持つ教員の方は多いのではないでしょうか。
@@ -77,7 +78,7 @@ Copilotの機能・対応範囲・プラン体系は頻繁にアップデート�
 
 両サービスの料金体系・機能は頻繁に変更されるため、具体的なプラン名・価格の記載は割愛します。最新情報は各公式サイトを確認してください。
 
-ChatGPTの基本的な使い方について詳しく知りたい場合は、[教員のためのChatGPT入門](/articles/chatgpt-teacher-beginner-guide)もあわせてご覧ください。
+ChatGPTの基本的な使い方について詳しく知りたい場合は、[教員のためのChatGPT入門](/articles/school-generative-ai-privacy-security)もあわせてご覧ください。
 
 ---
 
@@ -107,7 +108,7 @@ Copilotを校務で活用する場面は多くありますが、**個人情報�
 
 「安全な範囲で試す → 結果を確認する → 少しずつ活用範囲を広げる」というステップが現実的です。
 
-校務でのAI活用全般については、[AIで変わる校務改善](/articles/ai-koomu-kaizen-nyumon)で詳しく紹介しています。
+校務でのAI活用全般については、[AIで変わる校務改善](/articles/ai-lesson-preparation-prompt)で詳しく紹介しています。
 
 ---
 
@@ -126,7 +127,7 @@ Word上でCopilotを使うと、文書の下書き・編集・要約をアプリ
 
 生成された文章はあくまでたたき台です。学校の実態や学年の状況に合わせて修正してください。
 
-学級通信の作成にAIを活用するプロンプト例は、[AI学級通信プロンプト](/articles/ai-class-newsletter-prompt)でも紹介しています。
+学級通信の作成にAIを活用するプロンプト例は、[AI学級通信プロンプト](/articles/chatgpt-tsuchihyo-shoken)でも紹介しています。
 
 ### 文章の要約・書き換え
 
@@ -460,7 +461,7 @@ Microsoft Copilotは、Word・Excel・PowerPoint・Teamsといった学校現場
 - **校内で知見を共有する** — うまくいったプロンプトや活用法は、学年会や職員室で共有すると全体の効率が上がる
 - **使わない判断も大切** — すべての業務にAIを使う必要はない。手書きの方が早い作業、対面で話した方がよい場面では、あえて使わない判断も重要
 
-[AIで変わる校務改善](/articles/ai-koomu-kaizen-nyumon)の記事では、Copilotに限らない生成AI全般の校務活用を紹介しています。あわせてご覧ください。
+[AIで変わる校務改善](/articles/ai-lesson-preparation-prompt)の記事では、Copilotに限らない生成AI全般の校務活用を紹介しています。あわせてご覧ください。
 
 ---
 
@@ -468,9 +469,9 @@ Microsoft Copilotは、Word・Excel・PowerPoint・Teamsといった学校現場
 
 校務でのAI活用やセキュリティについて、さらに詳しく知りたい方は以下の記事もご覧ください。
 
-- [教員のためのChatGPT入門：アカウント作成から安全な使い始め方まで](/articles/chatgpt-teacher-beginner-guide) — ChatGPTの基本的な使い方・始め方を解説
-- [AIで変わる校務改善：教員の残業を減らす5つの活用法](/articles/ai-koomu-kaizen-nyumon) — 生成AI全般の校務活用例を紹介
+- [教員のためのChatGPT入門：アカウント作成から安全な使い始め方まで](/articles/school-generative-ai-privacy-security) — ChatGPTの基本的な使い方・始め方を解説
+- [AIで変わる校務改善：教員の残業を減らす5つの活用法](/articles/ai-lesson-preparation-prompt) — 生成AI全般の校務活用例を紹介
 - [学校で生成AIを使うときの個人情報・セキュリティの注意点](/articles/school-generative-ai-privacy-security) — 入力してはいけない情報・安全な使い方を詳しく整理
-- [学年だより・学級通信をAIで時短する実践例](/articles/ai-class-newsletter-prompt) — 学級通信の作成にAIを使う具体的なプロンプト例
+- [学年だより・学級通信をAIで時短する実践例](/articles/chatgpt-tsuchihyo-shoken) — 学級通信の作成にAIを使う具体的なプロンプト例
 - [AI校務改善カテゴリの記事一覧](/categories/ai-koomu) — AI校務改善に関する全記事を確認
-- [生成AI校内研修の進め方](/articles/generative-ai-school-training-guide)
+- [生成AI校内研修の進め方](/articles/generative-ai-guideline-v2-school-reading)

@@ -5,6 +5,7 @@ category: "ICT活用"
 tags: ["情報モラル", "ICT活用", "GIGAスクール", "タブレット", "個人情報", "著作権", "生成AI", "デジタル・シティズンシップ"]
 publishedAt: "2026-06-17"
 updatedAt: "2026-06-17"
+published: false
 ---
 
 ## はじめに
@@ -15,7 +16,7 @@ GIGAスクール構想によって、全国の小中学校で児童生徒一人1
 
 この記事では、情報モラル教育を5つのテーマ（個人情報・写真と動画・コミュニケーション・著作権・生成AI）に整理し、小学校・中学校・特別支援教育の現場で活用できる授業の進め方を解説します。年間計画の参考や、単元の組み立て直しにもお役立てください。
 
-なお、端末活用全般の困りごとについては [GIGAスクール端末の困りごとQ&A](/articles/giga-school-device-troubleshooting) もあわせてご覧ください。
+なお、端末活用全般の困りごとについては [GIGAスクール端末の困りごとQ&A](/articles/giga-device-lesson-use-guide) もあわせてご覧ください。
 
 ---
 
@@ -363,11 +364,11 @@ GIGAスクール端末の家庭への持ち帰りが可能な学校では、家�
 
 情報モラル教育に取り組む際に、あわせて参考にしていただきたい記事をご紹介します。
 
-- [GIGAスクール端末の困りごとQ&A：よくあるトラブルと対処法](/articles/giga-school-device-troubleshooting)
-- [タブレット1台で始める授業ICT活用【GIGAスクール対応】](/articles/tablet-ict-jugyo-giga)
+- [GIGAスクール端末の困りごとQ&A：よくあるトラブルと対処法](/articles/giga-device-lesson-use-guide)
+- [タブレット1台で始める授業ICT活用【GIGAスクール対応】](/articles/giga-device-lesson-use-guide)
 - [学校で生成AIを使うときの個人情報・セキュリティの注意点](/articles/school-generative-ai-privacy-security)
-- [教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/kyoiku-dx-kiso)
-- [無料ICT教材・支援ツールを安全に使うチェックポイント](/articles/free-ict-tools-safety-checklist)
+- [教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/digital-textbook-introduction-school-changes)
+- [無料ICT教材・支援ツールを安全に使うチェックポイント](/articles/education-ai-service-checklist-before-use)
 - [カテゴリ：ICT活用](/categories/ict)
 - [学校でGoogleフォームを使う方法](/articles/google-forms-school-use-guide)
 

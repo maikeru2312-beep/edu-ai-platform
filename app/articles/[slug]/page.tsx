@@ -1,13 +1,16 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { getAllArticleSlugs, getArticle, getArticlesByCategory } from '@/lib/articles';
+import { getPublishedArticleSlugs, getArticle, getArticlesByCategory } from '@/lib/articles';
 import CategoryBadge from '@/components/CategoryBadge';
 import ChifuyuProfileCard from '@/components/ChifuyuProfileCard';
 import EditorialPolicy from '@/components/EditorialPolicy';
+import AdSenseScript from '@/components/AdSenseScript';
+import ArticleReferences from '@/components/ArticleReferences';
+import ArticleExperienceNote from '@/components/ArticleExperienceNote';
 
 export function generateStaticParams() {
-  return getAllArticleSlugs().map((slug) => ({ slug }));
+  return getPublishedArticleSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -62,7 +65,9 @@ export default async function ArticleDetailPage({
     .slice(0, 3);
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10">
+    <>
+      <AdSenseScript />
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10">
       <nav className="text-sm text-gray-500 mb-6 flex items-center gap-2 flex-wrap">
         <Link href="/" className="hover:text-blue-600">
           ホーム
@@ -85,7 +90,7 @@ export default async function ArticleDetailPage({
         <p className="text-gray-600 text-lg mb-4 leading-relaxed">{article.description}</p>
         <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400">
           <time>公開: {article.publishedAt}</time>
-          {article.updatedAt && <time>更新: {article.updatedAt}</time>}
+          <time>最終確認: {article.updatedAt ?? article.publishedAt}</time>
         </div>
         <div className="flex flex-wrap gap-1 mt-3">
           {article.tags.map((tag) => (
@@ -100,6 +105,8 @@ export default async function ArticleDetailPage({
         className="prose prose-lg max-w-none prose-headings:font-bold prose-a:text-blue-600 prose-img:rounded-lg prose-code:bg-gray-100 prose-code:px-1 prose-code:rounded"
         dangerouslySetInnerHTML={{ __html: article.contentHtml }}
       />
+      <ArticleReferences slug={article.slug} />
+      <ArticleExperienceNote slug={article.slug} />
 
       {/* 案内役 */}
       <div className="mt-10">
@@ -137,6 +144,7 @@ export default async function ArticleDetailPage({
           ← 記事一覧に戻る
         </Link>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

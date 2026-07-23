@@ -13,6 +13,9 @@ export const metadata: Metadata = {
 
 export default function ArticlesPage() {
   const articles = getAllArticles();
+  const activeCategories = CATEGORIES.filter((cat) =>
+    articles.some((article) => article.category === cat),
+  );
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
@@ -26,7 +29,7 @@ export default function ArticlesPage() {
         <span className="text-xs font-medium text-white bg-blue-600 px-3 py-1.5 rounded-full">
           すべて
         </span>
-        {CATEGORIES.map((cat) => (
+        {activeCategories.map((cat) => (
           <Link
             key={cat}
             href={`/categories/${CATEGORY_TO_SLUG[cat]}`}

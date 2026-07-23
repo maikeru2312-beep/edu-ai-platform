@@ -29,13 +29,13 @@ GIGAスクール構想により、特別支援学校・特別支援学級・通�
 
 このように、ICTは「できないから使う補助具」ではなく、**「その子に合った学習・表現・参加の方法を選べる環境を整えるもの」**として位置付けることが重要です。
 
-→ 教育DXの全体像については[教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/kyoiku-dx-kiso)もご参照ください。
+→ 教育DXの全体像については[教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/digital-textbook-introduction-school-changes)もご参照ください。
 
 ---
 
 ## 2. 活用場面の分類
 
-ICTの活用は「この障害にはこのツール」という障害名での決め方よりも、**「この場面でどんなことが難しいか・何があれば参加しやすいか」という機能・場面での整理**が実態に合います。
+ICTの活用は「この障害にはこのツール」という障害名での決め方よりも、**「この場面でどんなことが難しいか・何があれば参加しやすいか」という機能・場面での整理**が実態に合います。本記事で挙げる拡大・読み上げ・音声入力・AACなどの機能は、障害名だけで自動的に決めるものではなく、**本人のニーズと、実際に試した結果（試用）から選ぶ**ものとして整理しています。ここでの紹介は選択肢の整理であり、すべての機能をあらゆる場面で使うことを勧めるものではありません。
 
 ### 意思表出・コミュニケーション
 
@@ -244,9 +244,9 @@ ICTの導入によって、操作に時間がかかり学習の本題に集中�
 
 ## 9. 関連記事
 
-- [教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/kyoiku-dx-kiso)
+- [教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/digital-textbook-introduction-school-changes)
 - [学校で生成AIを使うときの個人情報・セキュリティの注意点](/articles/school-generative-ai-privacy-security)
-- [AIで変わる校務改善：教員の残業を減らす5つの活用法](/articles/ai-koomu-kaizen-nyumon)
+- [AIで変わる校務改善：教員の残業を減らす5つの活用法](/articles/ai-lesson-preparation-prompt)
 - [個別の教育支援計画・個別の指導計画の書き方：学校現場で使える基本ガイド](/articles/individual-education-plan-writing-guide)
 - [デジタル教科書の本格導入で学校現場は何が変わるか：紙との使い分けと特別支援の視点](/articles/digital-textbook-introduction-school-changes)
 - [特別支援教育におけるICT活用と合理的配慮｜現場で確認したい視点](/articles/special-needs-ict-reasonable-accommodation)

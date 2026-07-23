@@ -206,7 +206,7 @@ GIGAスクール構想によって、全国の小中学校に1人1台の端末�
 
 「なぜこのルールが必要か」を考える活動自体が、情報モラル教育の一部です。「もし誰かが自分の写真を勝手にネットに載せたらどう感じる？」など、具体的な場面を想定しながら話し合うことで、ルールの意味を理解した上で守れるようになります。
 
-詳しくは[情報モラル教育の進め方](/articles/information-morals-education-themes)もあわせてご参照ください。
+詳しくは[情報モラル教育の進め方](/articles/school-generative-ai-privacy-security)もあわせてご参照ください。
 
 ---
 
@@ -228,7 +228,7 @@ GIGAスクール構想によって、全国の小中学校に1人1台の端末�
 
 端末トラブルが起きた際に教員が慌てると、児童生徒も不安になります。「このくらいなら大丈夫」という見通しを持って、落ち着いて代替案に切り替えることが大切です。トラブルへの対応自体が、問題解決力を示すモデルになります。
 
-詳しいトラブルシューティングは[GIGAスクール端末のQ&A](/articles/giga-school-device-troubleshooting)をご参照ください。
+端末固有の操作や復旧方法は、設置者のマニュアルと各OS事業者の公式資料を確認してください。
 
 ---
 
@@ -289,10 +289,8 @@ GIGAスクール端末を授業で活かすためには、「端末を使うこ�
 
 端末活用をさらに深めるために、以下の記事もあわせてご覧ください。
 
-- [タブレット端末を活用したICT授業実践](/articles/tablet-ict-jugyo-giga) - 授業での具体的な実践例と工夫
-- [GIGAスクール端末のQ&A](/articles/giga-school-device-troubleshooting) - よくある質問とトラブルシューティング
-- [情報モラル教育の進め方](/articles/information-morals-education-themes) - 授業での情報モラル指導の実践
-- [無料ICT教材・支援ツールを安全に使うチェックポイント](/articles/free-ict-tools-safety-checklist) - ツール選定と安全確認の方法
+- [情報モラル教育の進め方](/articles/school-generative-ai-privacy-security) - 授業での情報モラル指導の実践
+- [無料ICT教材・支援ツールを安全に使うチェックポイント](/articles/education-ai-service-checklist-before-use) - ツール選定と安全確認の方法
 - [特別支援教育×ICT活用ガイド](/articles/tokubetsu-shien-ict) - 個別ニーズに応じたICT活用の考え方
 - [デジタル教科書の本格導入で学校現場は何が変わるか](/articles/digital-textbook-introduction-school-changes) - 紙との使い分けと特別支援の視点
 - [特別支援教育におけるICT活用と合理的配慮｜現場で確認したい視点](/articles/special-needs-ict-reasonable-accommodation) - 合理的配慮と指導の違い・確認チェックリスト

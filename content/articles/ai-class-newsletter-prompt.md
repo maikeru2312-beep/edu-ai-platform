@@ -5,6 +5,7 @@ category: "AI校務改善"
 tags: ["学級通信", "学年だより", "ChatGPT", "生成AI", "AI校務改善", "プロンプト", "校務効率化", "保護者向け文書"]
 publishedAt: "2026-06-17"
 updatedAt: "2026-07-08"
+published: false
 ---
 
 金曜の放課後、来週配る学級通信がまだ白紙——多くの教室で毎週繰り返されている光景です。書きたいことはあるのです。今週の授業のこと、係活動が回り始めたこと、来週の持ち物。ただ、手元の箇条書きメモを「保護者に読んでもらえる文章」にする最後のひと押しに、毎回30分、下手をすると1時間かかってしまう。
@@ -408,16 +409,16 @@ ChatGPTなどの利用について学校・教育委員会のルールがある�
 ## 関連記事・カテゴリ
 
 **ChatGPTを初めて使う方はまずこちら：**
-- [教員のためのChatGPT入門：アカウント作成から安全な使い始め方まで](/articles/chatgpt-teacher-beginner-guide)
+- [教員のためのChatGPT入門：アカウント作成から安全な使い始め方まで](/articles/school-generative-ai-privacy-security)
 
 **個人情報・セキュリティの確認：**
 - [学校で生成AIを使うときの個人情報・セキュリティの注意点](/articles/school-generative-ai-privacy-security)
 
 **AI校務改善の全体像：**
-- [AIで変わる校務改善：教員の残業を減らす5つの活用法](/articles/ai-koomu-kaizen-nyumon)
+- [AIで変わる校務改善：教員の残業を減らす5つの活用法](/articles/ai-lesson-preparation-prompt)
 
 **教育DXの基礎：**
-- [教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/kyoiku-dx-kiso)
+- [教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/digital-textbook-introduction-school-changes)
 
 **カテゴリ：**
 - [AI校務改善](/categories/ai-koomu)

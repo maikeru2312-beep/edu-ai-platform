@@ -5,6 +5,7 @@ category: "AI校務改善"
 tags: ["AI", "校務改善", "ChatGPT", "生成AI", "働き方改革", "残業削減", "校務効率化"]
 publishedAt: "2025-06-10"
 updatedAt: "2026-06-16"
+published: false
 ---
 
 ## はじめに
@@ -222,12 +223,12 @@ AIの出力はあくまで出発点です。内容が正確かどうか、表現
 
 ## 8. 関連記事
 
-- [教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/kyoiku-dx-kiso)
+- [教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/digital-textbook-introduction-school-changes)
 - [ChatGPTで通知表所見を作る方法と注意点【教員向け】](/articles/chatgpt-tsuchihyo-shoken)
 - [学校で生成AIを使うときの個人情報・セキュリティの注意点](/articles/school-generative-ai-privacy-security)
 - [生成AIガイドラインVer.2.0を学校現場向けに読む：先生が押さえたい5つの視点](/articles/generative-ai-guideline-v2-school-reading)
 - [教育AIサービスを学校で使う前に確認したいこと｜個人情報・規約・安全性のチェックリスト](/articles/education-ai-service-checklist-before-use)
-- [学年だより・学級通信をAIで時短する実践例【プロンプト付き】](/articles/ai-class-newsletter-prompt)
+- [学年だより・学級通信をAIで時短する実践例【プロンプト付き】](/articles/chatgpt-tsuchihyo-shoken)
 - [カテゴリ：AI校務改善](/categories/ai-koomu)
 - [教員向けMicrosoft Copilot活用ガイド](/articles/microsoft-copilot-teacher-guide)
 - [授業準備をAIで時短する方法](/articles/ai-lesson-preparation-prompt)

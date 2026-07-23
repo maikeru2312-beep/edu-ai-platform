@@ -11,16 +11,21 @@ export default function OperatorPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
       <h1 className="text-3xl font-bold text-gray-900 mb-2">運営者情報</h1>
-      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年7月8日</p>
+      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年7月24日</p>
 
       <div className="space-y-10 text-gray-700 leading-relaxed">
 
         <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">運営者について</h2>
           <p className="mb-3">
-            教育DXナビは、教育現場でICT活用・校務改善・特別支援教育に関わる実務経験を持つ個人が運営しています。
-            これらの実践に日常的に携わる中で感じた
-            「現場で使える情報をまとまった形で届けたい」という思いから、このサイトを立ち上げました。
+            教育DXナビは個人が運営する教育情報サイトです。運営者は、掲載記事の選定、一次資料の確認、
+            編集、訂正、公開範囲の判断に責任を持ちます。
+          </p>
+          <p className="mb-3">
+            運営者は、特別支援学校で、授業づくり、通知表所見、個別の指導計画、行動記録と支援の見直し、
+            合理的配慮の検討、ICT教材・1人1台端末・視覚支援・AACの活用に関する業務経験を持ち、
+            公的資料と実務上の確認手順を照合して記事を編集しています。生成AIについては、
+            授業準備や教材作成への活用と、個人情報や校内ルールに配慮した利用方法を検討しています。
           </p>
           <p className="mb-3">
             児童生徒・保護者のプライバシー保護、および勤務先・所属自治体への影響を避けるため、
@@ -39,8 +44,8 @@ export default function OperatorPage() {
             教育DX・ICT活用・AI校務改善・特別支援教育に関する実践的な情報を整理・発信します。
           </p>
           <p>
-            政策文書や研究報告だけでは見えにくい「現場での使い方」「導入時の注意点」「実践のヒント」を
-            わかりやすく届けることを目指しています。
+            公的資料や公式文書を起点に、学校で確認すべき条件、導入時の注意点、判断手順を
+            読者が再確認できる形で整理することを目指しています。
           </p>
         </section>
 
@@ -66,7 +71,7 @@ export default function OperatorPage() {
           <h2 className="text-xl font-bold text-gray-900 mb-3">記事の編集プロセス</h2>
           <p className="mb-3">
             記事は、文部科学省・デジタル庁等の公式資料（一次情報）、各ツール・サービスの公式ドキュメント、
-            そして教育現場での実務判断をもとに編集しています。
+            および記事ごとに示す確認可能な資料をもとに編集しています。
           </p>
           <p className="mb-3">
             文章作成の補助としてAIを使うことがありますが、記事の構成、教育現場への適用可否の判断、
@@ -104,7 +109,7 @@ export default function OperatorPage() {
         <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">勤務先との関係</h2>
           <p className="mb-3">
-            当サイトの内容はすべて運営者個人の見解・経験に基づくものであり、
+            当サイトの解説・チェックリストは運営者の編集上の見解を含み、
             勤務先・所属自治体・学校の公式見解を代表するものではありません。
           </p>
           <p>

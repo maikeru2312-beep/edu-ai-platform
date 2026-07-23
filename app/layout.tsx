@@ -5,8 +5,6 @@ import Footer from '@/components/Footer';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import { getSiteUrl } from '@/lib/site';
 
-const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT;
-
 const SITE_URL = getSiteUrl();
 const SITE_NAME = '教育DXナビ';
 const SITE_DESCRIPTION =
@@ -40,10 +38,6 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: [`${SITE_URL}/opengraph-image`],
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
   verification: {
     google: 'yaStdF17kEUufx3_NTiTUuTYpRB1wilz2R8Vxssyf-I',
   },
@@ -52,15 +46,6 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja">
-      {ADSENSE_CLIENT && (
-        <head>
-          <script
-            async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
-            crossOrigin="anonymous"
-          />
-        </head>
-      )}
       <body className="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
         <GoogleAnalytics />
         <Header />

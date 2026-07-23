@@ -5,6 +5,7 @@ category: "教材・支援ツール"
 tags: ["ICT教材", "無料ツール", "支援ツール", "情報セキュリティ", "個人情報", "著作権", "特別支援教育", "ICT活用"]
 publishedAt: "2026-06-19"
 updatedAt: "2026-07-08"
+published: false
 ---
 
 「同僚の先生から『このアプリ、無料で漢字の練習ができて子どもの食いつきもいいよ』と教えてもらった。明日の授業で使ってみたい。でも、勝手に使っていいのだろうか」――1人1台端末が当たり前になった今、こうした場面は日常的に起こります。そして、多くの先生がつまずくのはツールの操作ではなく、**その手前の「確認」**です。具体的には、次のような悩みです。
@@ -188,7 +189,7 @@ updatedAt: "2026-07-08"
 - サービスによっては、アップロードされた作品の利用権をサービス提供元に許諾する条項が利用規約に含まれている場合があります
 - 作品データのエクスポート（書き出し）機能があるか、サービス終了時にデータを取り出せるかを確認してください
 
-→ タブレット端末での作品作りや協働学習の進め方については[タブレット端末を活用したICT授業実践](/articles/tablet-ict-jugyo-giga)もご参照ください。
+→ タブレット端末での作品作りや協働学習の進め方については[タブレット端末を活用したICT授業実践](/articles/giga-device-lesson-use-guide)もご参照ください。
 
 ---
 
@@ -307,7 +308,7 @@ updatedAt: "2026-07-08"
 - 無料ツールで作成した教材を校外に公開・配布する場合は、ツールの利用規約で認められている範囲を確認する
 - 出典を明記する習慣を持つ
 
-→ 情報モラル教育における著作権の扱いについては[情報モラル教育の進め方](/articles/information-morals-education-themes)もご参照ください。
+→ 情報モラル教育における著作権の扱いについては[情報モラル教育の進め方](/articles/school-generative-ai-privacy-security)もご参照ください。
 
 ---
 
@@ -425,7 +426,7 @@ updatedAt: "2026-07-08"
 - 担当教員が異動した場合の引き継ぎ方法
 - 問題が発生した場合の対応フロー
 
-→ GIGAスクール端末の設定やトラブル対応については[GIGAスクール端末Q&A](/articles/giga-school-device-troubleshooting)も参考にしてください。
+→ GIGAスクール端末の設定やトラブル対応については[GIGAスクール端末Q&A](/articles/giga-device-lesson-use-guide)も参考にしてください。
 
 ---
 
@@ -530,9 +531,9 @@ updatedAt: "2026-07-08"
 無料ICT教材・支援ツールの安全な利用に関連して、以下の記事もあわせてお読みください。
 
 - [ICT教材・支援ツールの選び方](/articles/ict-teaching-tools-selection-guide) - 授業目的・操作性・アクセシビリティ・個人情報管理の観点からツールの選び方を解説
-- [タブレット端末を活用したICT授業実践](/articles/tablet-ict-jugyo-giga) - GIGAスクール端末を使った授業の具体的な進め方を紹介
-- [GIGAスクール端末Q&A](/articles/giga-school-device-troubleshooting) - 端末の基本設定やトラブル対応をQ&A形式で解説
-- [情報モラル教育の進め方](/articles/information-morals-education-themes) - 著作権・個人情報・ネットリテラシーなど情報モラル指導のポイント
+- [タブレット端末を活用したICT授業実践](/articles/giga-device-lesson-use-guide) - GIGAスクール端末を使った授業の具体的な進め方を紹介
+- [GIGAスクール端末Q&A](/articles/giga-device-lesson-use-guide) - 端末の基本設定やトラブル対応をQ&A形式で解説
+- [情報モラル教育の進め方](/articles/school-generative-ai-privacy-security) - 著作権・個人情報・ネットリテラシーなど情報モラル指導のポイント
 - [特別支援教育×ICT活用ガイド](/articles/tokubetsu-shien-ict) - 特別支援教育でのICT活用の考え方と具体例を解説
 - [特別支援教育におけるICT活用と合理的配慮｜現場で確認したい視点](/articles/special-needs-ict-reasonable-accommodation) - 合理的配慮と指導の違い・計画と記録への位置づけを整理
 - [学校における生成AIの安全な使い方](/articles/school-generative-ai-privacy-security) - 生成AIを使う際の個人情報・セキュリティの注意点を整理

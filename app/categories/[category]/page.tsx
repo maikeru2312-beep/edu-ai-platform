@@ -1,13 +1,16 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { getArticlesByCategory } from '@/lib/articles';
+import { getAllArticles, getArticlesByCategory } from '@/lib/articles';
 import { CATEGORY_SLUGS, CATEGORY_TO_SLUG, CATEGORIES } from '@/lib/categories';
 import ArticleCard from '@/components/ArticleCard';
 import CategoryBadge from '@/components/CategoryBadge';
 
 export function generateStaticParams() {
-  return Object.keys(CATEGORY_SLUGS).map((category) => ({ category }));
+  const articles = getAllArticles();
+  return Object.entries(CATEGORY_SLUGS)
+    .filter(([, category]) => articles.some((article) => article.category === category))
+    .map(([category]) => ({ category }));
 }
 
 export async function generateMetadata({
@@ -18,6 +21,10 @@ export async function generateMetadata({
   const { category: slug } = await params;
   const category = CATEGORY_SLUGS[slug];
   if (!category) return { title: 'カテゴリが見つかりません' };
+  const articles = getArticlesByCategory(category);
+  if (articles.length === 0) {
+    return { title: 'カテゴリが見つかりません', robots: { index: false, follow: false } };
+  }
   return {
     title: `${category}の記事一覧`,
     description: `${category}に関する教育DXの記事をまとめています。`,
@@ -41,6 +48,10 @@ export default async function CategoryPage({
   if (!category) notFound();
 
   const articles = getArticlesByCategory(category);
+  if (articles.length === 0) notFound();
+  const activeCategories = CATEGORIES.filter((candidate) =>
+    getAllArticles().some((article) => article.category === candidate),
+  );
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
@@ -66,7 +77,7 @@ export default async function CategoryPage({
 
       {/* 他カテゴリへのリンク */}
       <div className="flex flex-wrap gap-2 mb-8">
-        {CATEGORIES.filter((c) => c !== category).map((c) => (
+        {activeCategories.filter((c) => c !== category).map((c) => (
           <Link
             key={c}
             href={`/categories/${CATEGORY_TO_SLUG[c]}`}
