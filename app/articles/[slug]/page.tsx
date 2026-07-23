@@ -8,6 +8,7 @@ import EditorialPolicy from '@/components/EditorialPolicy';
 import AdSenseScript from '@/components/AdSenseScript';
 import ArticleReferences from '@/components/ArticleReferences';
 import ArticleExperienceNote from '@/components/ArticleExperienceNote';
+import ArticleBody from '@/components/ArticleBody';
 
 export function generateStaticParams() {
   return getPublishedArticleSlugs().map((slug) => ({ slug }));
@@ -101,10 +102,7 @@ export default async function ArticleDetailPage({
         </div>
       </header>
 
-      <div
-        className="prose prose-lg max-w-none prose-headings:font-bold prose-a:text-blue-600 prose-img:rounded-lg prose-code:bg-gray-100 prose-code:px-1 prose-code:rounded"
-        dangerouslySetInnerHTML={{ __html: article.contentHtml }}
-      />
+      <ArticleBody contentHtml={article.contentHtml} />
       <ArticleReferences slug={article.slug} />
       <ArticleExperienceNote slug={article.slug} />
 

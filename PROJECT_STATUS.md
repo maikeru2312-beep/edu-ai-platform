@@ -37,9 +37,18 @@
 - 準備状況: `docs/adsense/fourth-review-readiness.md`
 - 現時点は再審査未準備。公開15記事の主張別一次資料監査と運営者確認がP0。
 
-最終更新: 2026-07-08（AdSense再審査対策：コンテンツ品質・信頼性強化）
+最終更新: 2026-07-24（AdSense第4審査準備：ads.txt設置・運営者確認反映＋メディア化Phase 2の図解を統合）
 
 > **運用フェーズへ移行**（2026-06-27〜）。以降はコード変更中心ではなく、Search Console 運用・X投稿・本番モニタリングが中心。手順は [docs/ops/operations-memo.md](docs/ops/operations-memo.md) を参照。
+
+## 2026-07-09 メディア化 Phase 2（文章の熱量改善＋独自図解）
+
+主力5記事（生成AIガイドライン / AIサービス導入前 / 通知表所見 / 支援計画 / 行動記録）に、現場の迷い起点の冒頭・判断軸が伝わる強い見出し・editorial voice（「本サイトでは〜と考えます」等）を追加し、量産感を低減。あわせて自作の軽量図解5種（`components/diagrams/`、外部素材なし・サーバーコンポーネントのみ）を各記事に1つずつ挿入。
+
+- 挿入方式: 記事md内の `<!--diagram:キー-->` マーカーを `components/ArticleBody.tsx` が図解に置換（MDX不要・マーカーなし記事は従来どおり）
+- 検証: lint ✅ / build ✅（51/51）/ validate ✅ / 図解5記事の描画・マーカー残存0 ✅ / sitemap 43 URL・noindex 維持 ✅ / PII混入なし ✅
+- 詳細: [operations/CONTENT_VOICE_VISUALS_REPORT.md](operations/CONTENT_VOICE_VISUALS_REPORT.md)
+- ブランチ: `release/content-voice-visuals`（マージ・デプロイは人間確認後）
 
 ## 2026-07-08 AdSense再審査対策（低価値コンテンツ判定への対応）
 
