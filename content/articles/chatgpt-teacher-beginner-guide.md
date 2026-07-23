@@ -5,6 +5,7 @@ category: "AI校務改善"
 tags: ["ChatGPT", "生成AI", "教員", "AI校務改善", "教育DX", "校務効率化", "情報セキュリティ", "プロンプト"]
 publishedAt: "2026-06-17"
 updatedAt: "2026-06-19"
+published: false
 ---
 
 ## はじめに
@@ -207,7 +208,7 @@ ChatGPT が生成した文章の著作権については現在も議論が続い
 
 校務利用では、**学校・自治体が許可した環境・サービスを使う**必要がある場合があります。個人契約のサービスで校務データを扱うことを禁止している学校も多いため、ルールの確認が前提です。
 
-→ 校務でのAI活用全般については[AIで変わる校務改善：教員の残業を減らす5つの活用法](/articles/ai-koomu-kaizen-nyumon)もご参照ください。
+→ 校務でのAI活用全般については[AIで変わる校務改善：教員の残業を減らす5つの活用法](/articles/ai-lesson-preparation-prompt)もご参照ください。
 
 ---
 
@@ -229,7 +230,7 @@ ChatGPT が生成した文章の著作権については現在も議論が続い
 
 生成AIは「調べれば答えが出る」体験を提供しますが、**子どもが考える・試行錯誤する経験を置き換えるものではありません**。「AIが出した答えを批判的に読む」「AIに頼らずに考える場面を作る」という授業設計のバランスが重要です。
 
-→ 授業でのICT活用全般については[タブレット1台で始める授業ICT活用【GIGAスクール対応】](/articles/tablet-ict-jugyo-giga)もご参照ください。
+→ 授業でのICT活用全般については[タブレット1台で始める授業ICT活用【GIGAスクール対応】](/articles/giga-device-lesson-use-guide)もご参照ください。
 
 ---
 
@@ -263,13 +264,13 @@ A. 全体向けの通知文・お便りのたたき台として活用するこ�
 
 ## 10. 関連記事・カテゴリ
 
-- [教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/kyoiku-dx-kiso)
+- [教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/digital-textbook-introduction-school-changes)
 - [学校で生成AIを使うときの個人情報・セキュリティの注意点](/articles/school-generative-ai-privacy-security)
-- [タブレット1台で始める授業ICT活用【GIGAスクール対応】](/articles/tablet-ict-jugyo-giga)
-- [学年だより・学級通信をAIで時短する実践例【プロンプト付き】](/articles/ai-class-newsletter-prompt)
+- [タブレット1台で始める授業ICT活用【GIGAスクール対応】](/articles/giga-device-lesson-use-guide)
+- [学年だより・学級通信をAIで時短する実践例【プロンプト付き】](/articles/chatgpt-tsuchihyo-shoken)
 - [教員向けMicrosoft Copilot活用ガイド](/articles/microsoft-copilot-teacher-guide)
 - [授業準備をAIで時短する方法](/articles/ai-lesson-preparation-prompt)
-- [生成AI校内研修の進め方](/articles/generative-ai-school-training-guide)
+- [生成AI校内研修の進め方](/articles/generative-ai-guideline-v2-school-reading)
 - [生成AIガイドラインVer.2.0を学校現場向けに読む：先生が押さえたい5つの視点](/articles/generative-ai-guideline-v2-school-reading)
 - [カテゴリ：AI校務改善](/categories/ai-koomu)
 - [カテゴリ：ICT活用](/categories/ict)

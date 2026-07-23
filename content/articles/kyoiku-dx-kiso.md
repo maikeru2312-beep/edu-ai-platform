@@ -5,6 +5,7 @@ category: "ICT活用"
 tags: ["教育DX", "ICT活用", "校務DX", "生成AI", "GIGAスクール", "特別支援教育"]
 publishedAt: "2026-06-16"
 updatedAt: "2026-06-19"
+published: false
 ---
 
 ## はじめに
@@ -62,7 +63,7 @@ ICT活用は教育DXを実現するための**手段**であり、DXはその先
 
 校務DXは教員の長時間労働の改善につながる側面が強く、近年特に注目されています。
 
-→ 関連記事：[AIで変わる校務改善：教員の残業を減らす5つの活用法](/articles/ai-koomu-kaizen-nyumon)
+→ 関連記事：[AIで変わる校務改善：教員の残業を減らす5つの活用法](/articles/ai-lesson-preparation-prompt)
 
 ### 授業DX
 
@@ -176,9 +177,9 @@ DXは「魔法の解決策」ではありません。導入した当初は使い
 教育DXナビでは、各テーマに特化した実践情報を発信しています。
 
 **記事**
-- [AIで変わる校務改善：教員の残業を減らす5つの活用法](/articles/ai-koomu-kaizen-nyumon)
+- [AIで変わる校務改善：教員の残業を減らす5つの活用法](/articles/ai-lesson-preparation-prompt)
 - [特別支援教育でICTを活用する：タブレット・AAC・読み上げソフトの選び方](/articles/tokubetsu-shien-ict)
-- [タブレット1台で始める授業ICT活用【GIGAスクール対応】](/articles/tablet-ict-jugyo-giga)
+- [タブレット1台で始める授業ICT活用【GIGAスクール対応】](/articles/giga-device-lesson-use-guide)
 
 **カテゴリ**
 - [ICT活用](/categories/ict) — 授業・学習支援でのICT実践
@@ -199,4 +200,4 @@ DXは「魔法の解決策」ではありません。導入した当初は使い
 
 ## 関連記事
 
-- [教員研修を校内で進める方法](/articles/school-training-ict-ai-guide)
+- [教員研修を校内で進める方法](/articles/generative-ai-guideline-v2-school-reading)

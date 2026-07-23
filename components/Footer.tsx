@@ -24,16 +24,6 @@ export default function Footer() {
                   記事一覧
                 </Link>
               </li>
-              <li>
-                <Link href="/db" className="hover:text-white transition-colors">
-                  教育情報DB
-                </Link>
-              </li>
-              <li>
-                <Link href="/news" className="hover:text-white transition-colors">
-                  ニュースまとめ
-                </Link>
-              </li>
             </ul>
           </div>
           <div>

@@ -16,9 +16,18 @@ export function getAllArticleSlugs(): string[] {
     .map((f) => f.replace('.md', ''));
 }
 
+export function isArticlePublished(article: ArticleMeta): boolean {
+  return article.published !== false;
+}
+
+export function getPublishedArticleSlugs(): string[] {
+  return getAllArticleSlugs().filter((slug) => isArticlePublished(getArticleMeta(slug)));
+}
+
 export function getAllArticles(): ArticleMeta[] {
   return getAllArticleSlugs()
     .map((slug) => getArticleMeta(slug))
+    .filter(isArticlePublished)
     .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
 }
 
@@ -35,7 +44,11 @@ export async function getArticle(slug: string): Promise<Article> {
     .use(remarkGfm)
     .use(remarkHtml, { sanitize: false })
     .process(content);
-  return { slug, ...data, contentHtml: processed.toString() } as Article;
+  const article = { slug, ...data, contentHtml: processed.toString() } as Article;
+  if (!isArticlePublished(article)) {
+    throw new Error(`Article is not published: ${slug}`);
+  }
+  return article;
 }
 
 export function getArticlesByCategory(category: string): ArticleMeta[] {

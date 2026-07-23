@@ -1,6 +1,43 @@
 # 教育DXナビ — PROJECT_STATUS
 
-最終更新: 2026-07-09（メディア化 Phase 2：文章の熱量改善＋独自図解）
+## 2026-07-24 AdSense 第3段階：ads.txt設置・本番反映
+
+- 運営者提供の正確な行を `public/ads.txt` に設置（`google.com, pub-3801092904087307, DIRECT, f08c47fec0942fa0`、UTF-8/BOMなし/末尾改行/1行）。
+- middlewareの matcher は `/articles/:slug` のみで `/ads.txt` に影響なし。robots は `Allow: /`。
+- ローカルで `/ads.txt` の200・text/plain・内容一致を確認。lint/typecheck/test/validate/build 再PASS。
+- 第1・第2段階の変更＋ads.txt＋監査資料を選択commit → `origin/main` へpush → Vercel自動デプロイ → 本番監査。
+- AdSense側の ads.txt 認識は再クロール反映待ち（PENDING）。**AdSense再審査申請は未実施**（運営者報告後に判断）。
+
+## 2026-07-24 AdSense改善 第2段階：運営者確認の反映
+
+- 全15記事の実務経験について運営者回答を受領・反映。確認範囲に限定した最小修正のみ実施。
+- 経験A/B=13記事に実務経験注記（`lib/article-experience-notes.ts` ＋ `components/ArticleExperienceNote.tsx`）。効果の実証・時短時間・全校導入は断定しない。
+- 経験C=記事3（digital-textbook）・5（generative-ai-guideline-v2）は実体験・効果示唆を中立表現へ書き換え、注記なし。
+- 記事別の個別修正（必須/比較条件の分割、匿名化しても入力しない情報、評価場面の確認、申請書の非必須明記 ほか）。
+- 公開プロフィールを `/operator`（全文）・`/about`（要約）へ反映。学校名・地域・児童情報は不記載。
+- 主張CSVの FIRSTHAND 15件を更新（13→VERIFIED、記事3/5→UNVERIFIED/REWRITE、USER_CONFIRMATION_REQUIRED=0）。全体 VERIFIED 33 / PARTIALLY_VERIFIED 8 / UNVERIFIED 4。
+- lint / typecheck / test / validate / build 再実行し PASS。残ゲートは正確な `ads.txt` と本番反映後の監査のみ。commit/push/deploy は未実施。
+
+## 2026-07-21 AdSense改善 第2段階
+
+- 公開15記事の主要主張45件を一次資料と照合。集計は VERIFIED 20 / PARTIALLY_VERIFIED 8 / UNVERIFIED 2（公開文は修正済み）/ USER_CONFIRMATION_REQUIRED 15。
+- 文科省・個人情報保護委員会・文化庁・国立特別支援教育総合研究所の内容対応資料を記事slug別に表示。
+- MERGE 11件を中核記事へ統合し、旧slugからHTTP 301。UNPUBLISH 4件は404を維持。
+- ABC記録様式・架空例、個別計画確認票、生成AI二段階確認票、教材選定表、紙/デジタル判断表を追加。
+- about/operatorの未確認な実務経験断定を除去。確認質問は `docs/adsense/operator-experience-review-20260720.md`。
+- 技術作業は完了したが、運営者回答と本番反映が残るため条件付き未完了。
+
+## 2026-07-20 AdSense 4回目審査前の公開範囲再設計
+
+- 記事30件を監査し、15件を `published: false` で可逆的に公開停止。
+- AdSenseのルートレイアウト読込を廃止し、公開記事詳細だけへ限定。
+- `/db`、`/news`、ニュース詳細、空カテゴリを公開対象・主要導線・sitemapから撤去。
+- 公開記事から非公開記事への内部リンク31件を解消。
+- 監査結果: `docs/adsense/third-rejection-audit-20260720.md`
+- 準備状況: `docs/adsense/fourth-review-readiness.md`
+- 現時点は再審査未準備。公開15記事の主張別一次資料監査と運営者確認がP0。
+
+最終更新: 2026-07-24（AdSense第4審査準備：ads.txt設置・運営者確認反映＋メディア化Phase 2の図解を統合）
 
 > **運用フェーズへ移行**（2026-06-27〜）。以降はコード変更中心ではなく、Search Console 運用・X投稿・本番モニタリングが中心。手順は [docs/ops/operations-memo.md](docs/ops/operations-memo.md) を参照。
 

@@ -5,6 +5,7 @@ category: "助成金・補助金"
 tags: ["助成金", "補助金", "特別支援教育", "ICT", "GIGAスクール"]
 publishedAt: "2025-04-15"
 updatedAt: "2026-06-19"
+published: false
 ---
 
 ## 助成金を活用した教育実践の意義
@@ -136,9 +137,9 @@ NPO法人・任意団体・保護者会などが申請主体になる場合は�
 
 GIGAスクール構想の推進により、学校のICT環境は大きく変化しています。端末の活用・授業改善・教員研修など、ICT関連の取り組みを支援する助成制度も増えています。
 
-[GIGAスクール端末のICT活用](/articles/tablet-ict-jugyo-giga)の記事でも解説していますが、端末が整備されただけでは授業は変わりません。端末を活用した授業改善・評価の工夫・家庭連携など、実践的な取り組みを支援する財団もあります。
+[GIGAスクール端末のICT活用](/articles/giga-device-lesson-use-guide)の記事でも解説していますが、端末が整備されただけでは授業は変わりません。端末を活用した授業改善・評価の工夫・家庭連携など、実践的な取り組みを支援する財団もあります。
 
-[教育DXの基礎](/articles/kyoiku-dx-kiso)でも触れているとおり、デジタル化は手段であり目的ではありません。助成金の申請においても「ICTを使うこと」自体ではなく「ICTを活用して何をどう変えるか」を明確にすることが重要です。
+[教育DXの基礎](/articles/digital-textbook-introduction-school-changes)でも触れているとおり、デジタル化は手段であり目的ではありません。助成金の申請においても「ICTを使うこと」自体ではなく「ICTを活用して何をどう変えるか」を明確にすることが重要です。
 
 ### 文科省・GIGAスクール関連補助
 
@@ -269,14 +270,14 @@ GIGAスクール構想の推進により、学校のICT環境は大きく変化�
 
 助成金の活用は、教育実践を豊かにするための手段の一つです。正しい手続きで申請・運用することで、子どもたちの学びをより充実したものにすることができます。
 
-ICT活用の実践については[GIGAスクール端末のICT活用](/articles/tablet-ict-jugyo-giga)、特別支援教育については[特別支援教育とICT](/articles/tokubetsu-shien-ict)や[合理的配慮と学校記録](/articles/reasonable-accommodation-school-record)もあわせてご参照ください。
+ICT活用の実践については[GIGAスクール端末のICT活用](/articles/giga-device-lesson-use-guide)、特別支援教育については[特別支援教育とICT](/articles/tokubetsu-shien-ict)や[合理的配慮と学校記録](/articles/reasonable-accommodation-school-record)もあわせてご参照ください。
 
 本サイトの[ICTカテゴリ](/categories/ict)・[特別支援教育カテゴリ](/categories/tokubetsu-shien)では、関連する実践情報を継続的に発信しています。
 
 ## 関連記事
 
-- [教育DXの基礎知識](/articles/kyoiku-dx-kiso)
-- [タブレット端末を活用したICT授業実践](/articles/tablet-ict-jugyo-giga)
+- [教育DXの基礎知識](/articles/digital-textbook-introduction-school-changes)
+- [タブレット端末を活用したICT授業実践](/articles/giga-device-lesson-use-guide)
 - [特別支援教育×ICT活用ガイド](/articles/tokubetsu-shien-ict)
 - [合理的配慮の申請と記録](/articles/reasonable-accommodation-school-record)
 - [ICT教材・支援ツールの選び方](/articles/ict-teaching-tools-selection-guide)

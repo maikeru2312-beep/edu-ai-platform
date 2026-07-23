@@ -5,6 +5,7 @@ category: "助成金・補助金"
 tags: ["教育助成金", "助成金", "教員", "実践研究", "校内決裁", "ICT活用", "特別支援教育", "教材購入"]
 publishedAt: "2026-06-19"
 updatedAt: "2026-06-19"
+published: false
 ---
 
 「授業で使える教材を充実させたい」「研究的な取り組みを行いたいが予算がない」——教育現場でこうした声は珍しくありません。教育助成金や実践研究助成は、そうした課題を乗り越えるための一つの手段です。
@@ -278,7 +279,7 @@ updatedAt: "2026-06-19"
 
 ## ICT活用で申請テーマを作る例
 
-[教育DXの基礎知識](/articles/kyoiku-dx-kiso)でも整理されているとおり、ICTを活用した教育実践は助成金のテーマとして関心を集めやすい分野です。ただし、「ICTを使うこと」自体が目的ではなく、「ICTを活用して教育上の何を改善するか」が問われます。
+[教育DXの基礎知識](/articles/digital-textbook-introduction-school-changes)でも整理されているとおり、ICTを活用した教育実践は助成金のテーマとして関心を集めやすい分野です。ただし、「ICTを使うこと」自体が目的ではなく、「ICTを活用して教育上の何を改善するか」が問われます。
 
 以下は、テーマの考え方を示すための**架空の例**です。実際の応募では、自校の状況に合わせて具体化してください。
 
@@ -286,7 +287,7 @@ updatedAt: "2026-06-19"
 
 > （例：）小学校○年生の算数において、1人1台端末を活用した個別最適な学習支援の仕組みを構築する。児童の習熟度に応じた課題配信と、学習ログを活用した教員のフィードバック改善を組み合わせることで、つまずきの早期発見と個に応じた支援を実現する。
 
-**ポイント：** 端末を「使う」だけでなく、学びの質がどう変わるかを説明する。[タブレット端末を活用したICT授業実践](/articles/tablet-ict-jugyo-giga)の内容も、テーマを具体化する際の参考になります。
+**ポイント：** 端末を「使う」だけでなく、学びの質がどう変わるかを説明する。[タブレット端末を活用したICT授業実践](/articles/giga-device-lesson-use-guide)の内容も、テーマを具体化する際の参考になります。
 
 ### 架空の例2：教員間の授業改善を支えるICT活用研修体制の構築
 
@@ -446,15 +447,15 @@ updatedAt: "2026-06-19"
 
 また、仮に不採択となった場合でも、申請書を書く過程で自分の実践を言語化し、計画を立てた経験は決して無駄にはなりません。不採択の理由が開示される場合は次回に活かし、そうでない場合も申請書の質を高めて再挑戦することができます。
 
-助成金制度の全体像や主要な助成プログラムの概要については、[教員向け教育助成金ガイド](/articles/joseikin-guide-2025)を参照してください。[教育DXの基礎知識](/articles/kyoiku-dx-kiso)や[ICT教材・支援ツールの選び方](/articles/ict-teaching-tools-selection-guide)も、テーマの具体化に役立つ情報を提供しています。
+助成金制度の全体像や主要な助成プログラムの概要については、[教員向け教育助成金ガイド](/articles/joseikin-guide-2025)を参照してください。[教育DXの基礎知識](/articles/digital-textbook-introduction-school-changes)や[ICT教材・支援ツールの選び方](/articles/ict-teaching-tools-selection-guide)も、テーマの具体化に役立つ情報を提供しています。
 
 ---
 
 ## 関連記事
 
 - [教員向け教育助成金ガイド](/articles/joseikin-guide-2025) — 主要な助成プログラムの概要と制度の全体像
-- [教育DXの基礎知識](/articles/kyoiku-dx-kiso) — 教育DXの基本概念とICT活用との違い
-- [タブレット端末を活用したICT授業実践](/articles/tablet-ict-jugyo-giga) — 1人1台端末を活用した授業づくりの実践ポイント
+- [教育DXの基礎知識](/articles/digital-textbook-introduction-school-changes) — 教育DXの基本概念とICT活用との違い
+- [タブレット端末を活用したICT授業実践](/articles/giga-device-lesson-use-guide) — 1人1台端末を活用した授業づくりの実践ポイント
 - [特別支援教育×ICT活用ガイド](/articles/tokubetsu-shien-ict) — 特別支援教育におけるICT活用の基本と実践
 - [合理的配慮の申請と記録](/articles/reasonable-accommodation-school-record) — 合理的配慮の記録方法と校内体制
 - [ICT教材・支援ツールの選び方](/articles/ict-teaching-tools-selection-guide) — 教材・ツール選定の観点と注意点

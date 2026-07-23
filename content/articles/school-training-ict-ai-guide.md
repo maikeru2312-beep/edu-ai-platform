@@ -5,6 +5,7 @@ category: "研修・セミナー"
 tags: ["校内研修", "ICT研修", "生成AI研修", "教育DX", "AI校務改善", "情報セキュリティ", "授業改善", "教員"]
 publishedAt: "2026-06-19"
 updatedAt: "2026-06-19"
+published: false
 ---
 
 GIGAスクール構想により1人1台端末が整備され、生成AIの校務活用も広がりつつあります。しかし「端末はあるが使い方がわからない」「AIの話題は出るが、何をどこまでやってよいか不安」という声は、現場の先生方から今も多く聞かれます。
@@ -35,7 +36,7 @@ ICTスキルや関心に大きな差がある中で、同じ内容を一斉に�
 
 研修が「聞いて終わり」の単発イベントになると、日常の授業や校務に結びつく前に記憶が薄れます。**研修後のフォローアップや実践の場をセットで設計すること**が、定着の分かれ目です。
 
-→ 教育DX全体の考え方については[教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/kyoiku-dx-kiso)もご参照ください。
+→ 教育DX全体の考え方については[教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/digital-textbook-introduction-school-changes)もご参照ください。
 
 ---
 
@@ -80,7 +81,7 @@ ICTスキルや関心に大きな差がある中で、同じ内容を一斉に�
 - 学習支援アプリの基本的な使い方
 - 児童生徒のタイピング指導・端末管理のコツ
 
-→ タブレット活用の具体例は[タブレット1台で始める授業ICT活用](/articles/tablet-ict-jugyo-giga)も参考になります。
+→ タブレット活用の具体例は[タブレット1台で始める授業ICT活用](/articles/giga-device-lesson-use-guide)も参考になります。
 
 ### 校務効率化につながるテーマ例
 
@@ -94,7 +95,7 @@ ICTスキルや関心に大きな差がある中で、同じ内容を一斉に�
 - 情報モラル教育の授業設計
 - 校内情報セキュリティルールの確認
 
-→ 情報モラル教育については[情報モラル教育の進め方](/articles/information-morals-education-themes)で詳しく解説しています。
+→ 情報モラル教育については[情報モラル教育の進め方](/articles/school-generative-ai-privacy-security)で詳しく解説しています。
 
 ### テーマ設定の判断軸
 
@@ -275,7 +276,7 @@ ICTに慣れていない教員が「質問したら恥ずかしい」と感じ�
 
 学校が管理している端末の設定変更（ブラウザ拡張機能の追加・ソフトウェアのインストールなど）は、**個人の判断で行わず、必ずICT担当や管理職に相談**してください。管理端末のセキュリティ設定を個人が変更すると、校内ネットワーク全体に影響を及ぼす場合があります。
 
-→ ChatGPTの基本的な使い方は[教員のためのChatGPT入門](/articles/chatgpt-teacher-beginner-guide)、Microsoft Copilotについては[教員向けMicrosoft Copilot活用ガイド](/articles/microsoft-copilot-teacher-guide)で解説しています。
+→ ChatGPTの基本的な使い方は[教員のためのChatGPT入門](/articles/school-generative-ai-privacy-security)、Microsoft Copilotについては[教員向けMicrosoft Copilot活用ガイド](/articles/microsoft-copilot-teacher-guide)で解説しています。
 
 ---
 
@@ -443,12 +444,12 @@ ICT活用も生成AIの活用も、最初から完璧にできる必要はあり
 
 校内研修のテーマ選びや研修内容の深掘りに、以下の記事もご活用ください。
 
-- [教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/kyoiku-dx-kiso) — 教育DX・校務DXの基本概念を整理
-- [教員のためのChatGPT入門](/articles/chatgpt-teacher-beginner-guide) — ChatGPTの基本操作・安全な使い方を初心者向けに解説
+- [教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/digital-textbook-introduction-school-changes) — 教育DX・校務DXの基本概念を整理
+- [教員のためのChatGPT入門](/articles/school-generative-ai-privacy-security) — ChatGPTの基本操作・安全な使い方を初心者向けに解説
 - [教員向けMicrosoft Copilot活用ガイド](/articles/microsoft-copilot-teacher-guide) — Microsoft Copilotの校務活用を解説
 - [学校における生成AIの安全な使い方](/articles/school-generative-ai-privacy-security) — 個人情報・セキュリティの注意点を整理
-- [タブレット1台で始める授業ICT活用](/articles/tablet-ict-jugyo-giga) — GIGAスクール端末を授業で活用する実践例
-- [情報モラル教育の進め方](/articles/information-morals-education-themes) — 情報モラルの授業設計と実践テーマ
+- [タブレット1台で始める授業ICT活用](/articles/giga-device-lesson-use-guide) — GIGAスクール端末を授業で活用する実践例
+- [情報モラル教育の進め方](/articles/school-generative-ai-privacy-security) — 情報モラルの授業設計と実践テーマ
 - [ICT活用カテゴリの記事一覧](/categories/ict) — ICT活用に関する全記事を確認
 - [AI校務改善カテゴリの記事一覧](/categories/ai-koomu) — AI校務改善に関する全記事を確認
-- [生成AI校内研修の進め方](/articles/generative-ai-school-training-guide)
+- [生成AI校内研修の進め方](/articles/generative-ai-guideline-v2-school-reading)

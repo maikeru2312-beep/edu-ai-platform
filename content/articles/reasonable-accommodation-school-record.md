@@ -55,7 +55,7 @@ updatedAt: "2026-06-17"
 
 基礎的環境整備が整っていることが、個別の合理的配慮を実施しやすくする土台になります。
 
-→ 学校全体でのICT環境整備については[タブレット1台で始める授業ICT活用【GIGAスクール対応】](/articles/tablet-ict-jugyo-giga)もご参照ください。
+→ 学校全体でのICT環境整備については[タブレット1台で始める授業ICT活用【GIGAスクール対応】](/articles/giga-device-lesson-use-guide)もご参照ください。
 
 ---
 
@@ -74,7 +74,7 @@ updatedAt: "2026-06-17"
 
 合理的配慮は、保護者・本人の要望に対して学校が一方的に「認める・認めない」を決めるものではありません。**本人・保護者・学校が対話を通じて、必要な調整と実現可能な方法を一緒に検討するプロセス**です。
 
-また、「申請書がなければ始められない」と考えすぎず、まず**相談の記録を残すことから始める**ことで、対話の証跡と校内共有の基盤が作れます。
+また、「申請書がなければ始められない」と考えすぎず、まず**相談の記録を残すことから始める**ことで、対話の証跡と校内共有の基盤が作れます。所定の申請書の提出は全国共通の必須手順ではなく、相談・合意形成・決裁（校内での意思決定）・記録の方法は、学校・自治体・設置者によって異なります。本記事の流れは一般的な考え方の整理であり、実際の手順は必ず所属校・設置者のルールで確認してください。
 
 ---
 
@@ -323,13 +323,12 @@ A. 学校内の定期テストでは、合意に基づいた配慮（時間延�
 ## 13. 関連記事・カテゴリ
 
 - [特別支援教育でICTを活用する：タブレット・AAC・読み上げソフトの選び方](/articles/tokubetsu-shien-ict)
-- [タブレット1台で始める授業ICT活用【GIGAスクール対応】](/articles/tablet-ict-jugyo-giga)
+- [タブレット1台で始める授業ICT活用【GIGAスクール対応】](/articles/giga-device-lesson-use-guide)
 - [学校で生成AIを使うときの個人情報・セキュリティの注意点](/articles/school-generative-ai-privacy-security)
-- [教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/kyoiku-dx-kiso)
+- [教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/digital-textbook-introduction-school-changes)
 - [個別の教育支援計画・個別の指導計画の書き方：学校現場で使える基本ガイド](/articles/individual-education-plan-writing-guide)
 - [デジタル教科書の本格導入で学校現場は何が変わるか：紙との使い分けと特別支援の視点](/articles/digital-textbook-introduction-school-changes)
 - [特別支援教育におけるICT活用と合理的配慮｜現場で確認したい視点](/articles/special-needs-ict-reasonable-accommodation)
-- [特別支援教育の保護者連携](/articles/special-needs-parent-collaboration)
 - [カテゴリ：特別支援教育](/categories/tokubetsu-shien)
 - [カテゴリ：ICT活用](/categories/ict)
 - [特別支援教育における行動記録の取り方](/articles/special-needs-behavior-record-guide)

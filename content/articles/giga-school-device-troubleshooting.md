@@ -5,6 +5,7 @@ category: "ICT活用"
 tags: ["GIGAスクール", "ICT活用", "タブレット", "端末管理", "授業改善", "情報モラル", "校内ICT", "教育DX"]
 publishedAt: "2026-06-17"
 updatedAt: "2026-06-17"
+published: false
 ---
 
 ## はじめに
@@ -457,10 +458,10 @@ GIGAスクール端末を安全に使うためには、ICTスキルだけでな�
 
 ## 関連記事
 
-- [タブレット1台で始める授業ICT活用【GIGAスクール対応】](/articles/tablet-ict-jugyo-giga)
+- [タブレット1台で始める授業ICT活用【GIGAスクール対応】](/articles/giga-device-lesson-use-guide)
 - [学校で生成AIを使うときの個人情報・セキュリティの注意点](/articles/school-generative-ai-privacy-security)
-- [教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/kyoiku-dx-kiso)
-- [情報モラル教育の進め方：授業で扱う5つのテーマ](/articles/information-morals-education-themes)
+- [教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/digital-textbook-introduction-school-changes)
+- [情報モラル教育の進め方：授業で扱う5つのテーマ](/articles/school-generative-ai-privacy-security)
 - [カテゴリ：ICT活用](/categories/ict)
 - [GIGAスクール端末を授業で活かす基本](/articles/giga-device-lesson-use-guide)
 

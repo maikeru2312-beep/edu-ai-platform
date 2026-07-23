@@ -21,12 +21,6 @@ export default function Header() {
               記事一覧
             </Link>
             <Link
-              href="/db"
-              className="text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors"
-            >
-              教育情報DB
-            </Link>
-            <Link
               href="/about"
               className="text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors"
             >

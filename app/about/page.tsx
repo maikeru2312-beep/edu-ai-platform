@@ -13,7 +13,7 @@ export default function AboutPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
       <h1 className="text-3xl font-bold text-gray-900 mb-2">このサイトについて</h1>
-      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年7月8日</p>
+      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年7月24日</p>
 
       <div className="space-y-10 text-gray-700 leading-relaxed">
         <section>
@@ -96,8 +96,11 @@ export default function AboutPage() {
         <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">運営者</h2>
           <p className="mb-3">
-            教育現場でICT活用・校務改善・特別支援教育に関わる実務経験をもつ個人が運営しています。
-            日々の授業・校務の中で得た「現場で実際に使えるかどうか」という視点を、記事の編集に反映しています。
+            匿名の個人運営者が、掲載記事の選定、一次資料の確認、編集、訂正、公開範囲の判断を行っています。
+            運営者は、特別支援学校での授業づくり・通知表所見・個別の指導計画・行動記録・合理的配慮の検討・
+            ICTや視覚支援・AACの活用に関する業務経験を持ち、公的資料と実務上の確認手順を照合して記事を編集しています。
+            実務経験に基づく記述は、個人や勤務先を特定できない範囲で、事実確認した内容だけを掲載します
+            （詳しくは<Link href="/operator" className="text-blue-600 hover:underline">運営者情報</Link>）。
           </p>
           <p className="mb-3">
             児童生徒・保護者のプライバシー保護と、勤務先・所属自治体への影響を避けるため、

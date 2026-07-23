@@ -14,6 +14,7 @@ export interface ArticleMeta {
   tags: string[];
   publishedAt: string;
   updatedAt?: string;
+  published?: boolean;
 }
 
 export interface Article extends ArticleMeta {

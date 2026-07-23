@@ -1,6 +1,43 @@
 # 教育DXナビ — AI_HANDOFF
 
-次に作業するAI／開発者への引き継ぎメモ。最終更新: 2026-07-09
+## 2026-07-24 第3段階：ads.txt設置・本番反映
+
+- `public/ads.txt`（1行のみ）：`google.com, pub-3801092904087307, DIRECT, f08c47fec0942fa0`。UTF-8/BOMなし/末尾改行。説明文・重複を足さないこと。
+- Next.jsは `public/` をルート配信。middleware matcher は `/articles/:slug` のみなので `/ads.txt` は非対象。robots は全許可。
+- デプロイは `origin/main` へ push → Vercel 自動デプロイ（README・過去phase準拠）。force push 禁止・デプロイ方式変更禁止。
+- AdSense pub-3801092904087307 は `NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT`（本番=ca-pub-3801092904087307）と一致。
+- 本番 `/ads.txt` の200・内容一致・text/plain を確認後にゲート更新。AdSense側の認識は反映待ち＝PENDINGで、200取得だけで「認識済み」と書かないこと。
+- **AdSense再審査申請は未実施**。運営者へ本番監査結果を報告してから判断。
+
+## 2026-07-24 第2段階：運営者確認の反映
+
+- 実務経験注記は `lib/article-experience-notes.ts`（データ）＋ `components/ArticleExperienceNote.tsx`（表示）。記事詳細で参考資料の下に表示。
+- 注記は経験A/B=13記事のみ。記事3（digital-textbook）・5（generative-ai-guideline-v2）は経験C＝**注記を付けない**。誤って追加しないこと。
+- 注記に効果の実証・具体的な時短時間・全校導入・契約/管理者業務・児童個人を推測できる例・全内容実践済みと読める表現を入れない。
+- 公開プロフィールは `/operator`（全文）・`/about`（要約）。学校名・地域・児童情報を追加しない。
+- 主張CSVの FIRSTHAND 15件は反映済み（USER_CONFIRMATION_REQUIRED=0）。戻さないこと。
+- 残作業は正確な `ads.txt` 行の取得（AdSense管理画面・推測作成禁止）と、本番反映後の監査のみ。commit/push/deploy は未実施。
+
+## 2026-07-21 第2段階（出典・統合・独自性）
+
+- 記事別参考資料は `lib/article-references.ts` で管理。カテゴリ一括資料へ戻さない。
+- MERGE 11件は `middleware.ts` で旧slugからHTTP 301。UNPUBLISH 4件はマップへ追加しない。
+- 主張監査: `docs/adsense/article-claim-source-audit-20260720.csv`。
+- 統合表: `docs/adsense/article-merge-redirect-map-20260720.csv`。
+- 次の作業は `docs/adsense/operator-experience-review-20260720.md` のユーザー回答反映。
+- 回答前に実務経験、効果、所要時間、現場の声を追加しない。
+- 条件付き未完了。再審査申請はまだ行わない。
+
+## 2026-07-20 AdSense公開範囲再設計
+
+- 30記事中15記事を `published: false` で公開停止。削除しないこと。
+- `lib/articles.ts` の公開判定を一覧・カテゴリ・関連記事・記事詳細・sitemapで共有。
+- AdSenseは `components/AdSenseScript.tsx` を公開記事詳細でのみ描画。ルートレイアウトへ戻さないこと。
+- `/db`、`/news`、ニュース詳細はソースを保持しつつ404。主要導線へ戻さないこと。
+- 監査報告と次の必須作業は `docs/adsense/` の監査・準備状況文書を参照。
+- 再審査申請前に、公開15記事の主張別一次資料監査と運営者による実体験・成果物確認が必要。
+
+次に作業するAI／開発者への引き継ぎメモ。最終更新: 2026-07-24
 
 ## 2026-07-09 メディア化 Phase 2 の引き継ぎ
 

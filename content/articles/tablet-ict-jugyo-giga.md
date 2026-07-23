@@ -5,6 +5,7 @@ category: "ICT活用"
 tags: ["ICT活用", "GIGAスクール", "タブレット", "授業改善", "教育DX", "情報活用能力", "特別支援教育"]
 publishedAt: "2026-06-17"
 updatedAt: "2026-06-17"
+published: false
 ---
 
 ## はじめに
@@ -50,7 +51,7 @@ ICTを授業で使う目的は、大きく次の6つに整理できます。
 
 クラス全員が同じアプリを同じ操作で使わなくてよいのがICTの特徴です。書くことが得意な子は書く、タイピングが楽な子は入力する、写真で記録したい子は撮る——**学び方の選択肢が増えること自体が、ICT活用の価値**のひとつです。
 
-→ 教育DX全体の考え方は[教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/kyoiku-dx-kiso)もご参照ください。
+→ 教育DX全体の考え方は[教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/digital-textbook-introduction-school-changes)もご参照ください。
 
 ---
 
@@ -313,10 +314,10 @@ AACアプリ・絵カードアプリ・選択肢提示などは、話し言葉�
 
 ## 9. 関連記事・カテゴリ
 
-- [教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/kyoiku-dx-kiso)
+- [教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/digital-textbook-introduction-school-changes)
 - [特別支援教育でICTを活用する：タブレット・AAC・読み上げソフトの選び方](/articles/tokubetsu-shien-ict)
 - [学校で生成AIを使うときの個人情報・セキュリティの注意点](/articles/school-generative-ai-privacy-security)
-- [GIGAスクール端末の困りごとQ&A：よくあるトラブルと対処法](/articles/giga-school-device-troubleshooting)
+- [GIGAスクール端末の困りごとQ&A：よくあるトラブルと対処法](/articles/giga-device-lesson-use-guide)
 - [ICT教材・支援ツールの選び方](/articles/ict-teaching-tools-selection-guide)
 - [GIGAスクール端末を授業で活かす基本](/articles/giga-device-lesson-use-guide)
 - [カテゴリ：ICT活用](/categories/ict)
