@@ -11,7 +11,7 @@ export default function PrivacyPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
       <h1 className="text-3xl font-bold text-gray-900 mb-2">プライバシーポリシー</h1>
-      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年6月17日</p>
+      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年8月10日</p>
 
       <div className="space-y-10 text-gray-700 leading-relaxed">
         <section>
@@ -53,9 +53,10 @@ export default function PrivacyPage() {
         <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">3. Cookieについて</h2>
           <p>
-            当サイトはGoogle Analytics 4のためCookieを使用しています。
+            当サイトでは、Google Analytics 4 によるアクセス解析と、
+            第5節に記載した広告配信のために Cookie を使用しています。
             ブラウザの設定でCookieを無効にしても当サイトの閲覧に支障はありませんが、
-            アクセス計測が行われなくなります。
+            アクセス計測が行われなくなり、表示される広告は利用者の関心に基づかないものになります。
           </p>
         </section>
 
@@ -70,27 +71,71 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-gray-900 mb-3">5. 広告・アフィリエイトについて</h2>
+          <h2 className="text-xl font-bold text-gray-900 mb-3">5. 広告配信について</h2>
           <p className="mb-3">
-            当サイトは現在、広告・アフィリエイトリンクを掲載していません。
+            当サイトは、記事ページにおいて Google AdSense を利用しています。
           </p>
           <p className="mb-3">
-            将来的に Google AdSense による広告を掲載する場合、Google およびその提携企業が
-            Cookie を使用してパーソナライズ広告を表示することがあります。
-            収集されるデータは Google の広告サービスの提供にのみ使用され、当サイトが
-            個人を特定できる情報を受け取ることはありません。
+            Google を含む第三者配信事業者は、Cookie を使用して、利用者の過去の当サイトや
+            他のウェブサイトへの訪問に基づいて広告を配信します。
           </p>
           <p className="mb-3">
-            将来的にアフィリエイトリンクを掲載する場合は、当該リンクに「PR」「広告」等の
-            表記を行い、利用者が明確に識別できるよう表示します。
+            Google の広告 Cookie により、Google および Google のパートナーは、
+            当サイトおよび他のウェブサイトへの訪問情報に基づいて利用者に広告を表示できます。
+            当サイトが個人を特定できる情報を受け取ることはありません。
+          </p>
+          <p className="mb-3">
+            当サイトでは、Google 以外の第三者配信事業者・広告ネットワーク（Google が認定した
+            広告配信事業者および広告技術パートナー）が広告を配信する場合があります。
+            これらの事業者も Cookie 等を使用して広告の配信・表示回数の計測を行うことがあります。
+          </p>
+          <p className="mb-3">
+            該当する事業者は Google が管理・更新しており、次の Google 公式ページで確認できます。
+            各事業者のプライバシーポリシーおよびパーソナライズ広告用 Cookie の無効化方法は、
+            各事業者のサイトでご確認いただけます。
+          </p>
+          <ul className="list-disc list-inside space-y-1 text-sm mb-3">
+            <li>
+              <a href="https://support.google.com/adsense/answer/94149?hl=ja" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-700">
+                広告の第三者配信が認められている広告配信事業者（Google AdSense ヘルプ）
+              </a>
+            </li>
+            <li>
+              <a href="https://support.google.com/adsense/answer/9012903?hl=ja" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-700">
+                広告技術パートナー（ATP）の一覧（Google AdSense ヘルプ）
+              </a>
+            </li>
+          </ul>
+          <p className="mb-3">
+            利用者は、
+            <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-700">
+              Google の広告設定
+            </a>
+            でパーソナライズ広告を無効にできます。また、
+            <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-700">
+              www.aboutads.info
+            </a>
+            では、参加している第三者配信事業者のパーソナライズ広告用 Cookie を一括で無効にできます。
           </p>
           <p className="text-sm text-gray-500">
-            広告・アフィリエイトを導入した場合、その時点でこのページを更新します。
+            広告配信の詳細は
+            <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-700">
+              Google の広告に関するポリシー
+            </a>
+            をご確認ください。
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-gray-900 mb-3">6. お問い合わせフォームで取得する情報</h2>
+          <h2 className="text-xl font-bold text-gray-900 mb-3">6. アフィリエイトについて</h2>
+          <p>
+            現時点でアフィリエイトリンクの掲載はありません。掲載する場合は、当該リンクに
+            「PR」「広告」等の表記を行い、利用者が明確に識別できるよう表示します。
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-bold text-gray-900 mb-3">7. お問い合わせフォームで取得する情報</h2>
           <p className="mb-3">
             当サイトのお問い合わせページからご連絡いただく場合、メッセージ内容を取得することがあります。
             取得した情報はお問い合わせへの対応のみに使用し、第三者に提供・開示しません。
@@ -104,7 +149,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-gray-900 mb-3">7. 著作権について</h2>
+          <h2 className="text-xl font-bold text-gray-900 mb-3">8. 著作権について</h2>
           <p className="mb-3">
             当サイトに掲載する文章・図表・構成等の著作権は運営者に帰属します。
             引用・転載の際は出典を明記し、過度な引用はお控えください。
@@ -116,7 +161,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-gray-900 mb-3">8. プライバシーポリシーの変更</h2>
+          <h2 className="text-xl font-bold text-gray-900 mb-3">9. プライバシーポリシーの変更</h2>
           <p>
             当サイトは、法令の改正や運営方針の変更等により、
             予告なくこのプライバシーポリシーを変更することがあります。
@@ -126,7 +171,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-gray-900 mb-3">9. お問い合わせ</h2>
+          <h2 className="text-xl font-bold text-gray-900 mb-3">10. お問い合わせ</h2>
           <p>
             プライバシーに関するご質問がある場合は、
             <a href="/contact" className="text-blue-600 hover:underline">お問い合わせページ</a>
