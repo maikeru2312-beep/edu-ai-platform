@@ -10,7 +10,6 @@ export const ARTICLE_MERGE_REDIRECTS: Record<string, string> = {
   'information-morals-education-themes': 'school-generative-ai-privacy-security',
   'kyoiku-dx-kiso': 'giga-device-lesson-use-guide',
   'microsoft-copilot-teacher-guide': 'education-ai-service-checklist-before-use',
-  'special-needs-parent-collaboration': 'reasonable-accommodation-school-record',
   'tablet-ict-jugyo-giga': 'giga-device-lesson-use-guide',
 };
 

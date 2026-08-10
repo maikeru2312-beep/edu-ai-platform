@@ -55,6 +55,10 @@ const ARTICLE_EXPERIENCE_NOTES: Record<string, ArticleExperienceNote> = {
     scope: 'B',
     note: '運営者は、本人の様子を確認しながらICT支援ツールを選ぶ場面に関わった経験に基づいて本記事を整理しています。特定の製品名や個別の事例は掲載していません。',
   },
+  'special-needs-parent-collaboration': {
+    scope: 'B',
+    note: '運営者は、特別支援学校で保護者との面談・相談の場に同席した経験があります。本記事は、その経験と公的資料を踏まえて整理しています。面談の進め方や記録方法は、学校・設置者によって異なります。',
+  },
   'special-needs-visual-schedule-support': {
     scope: 'A',
     note: '運営者は、スケジュールや手順表などの視覚支援を作成・見直した経験に基づいて本記事を整理しています。支援の合う・合わないは本人により異なるため、記録して調整する前提です。',
