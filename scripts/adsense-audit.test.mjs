@@ -92,12 +92,15 @@ test('the review scope is deliberately reduced and focused', () => {
 
 test('all MERGE articles have exact 301 targets and UNPUBLISH articles do not', () => {
   const middleware = read('middleware.ts');
-  const mergeSlugs = [
-    'chatgpt-teacher-beginner-guide', 'free-ict-tools-safety-checklist',
-    'giga-school-device-troubleshooting',
-    'kyoiku-dx-kiso', 'microsoft-copilot-teacher-guide',
-    'tablet-ict-jugyo-giga',
-  ];
+  // slug の存在だけでなく 301 先まで exact に検証する（現在の middleware の受入条件）。
+  const mergeTargets = {
+    'chatgpt-teacher-beginner-guide': 'ai-koomu-kaizen-nyumon',
+    'free-ict-tools-safety-checklist': 'ict-teaching-tools-selection-guide',
+    'giga-school-device-troubleshooting': 'giga-device-lesson-use-guide',
+    'kyoiku-dx-kiso': 'giga-device-lesson-use-guide',
+    'microsoft-copilot-teacher-guide': 'education-ai-service-checklist-before-use',
+    'tablet-ict-jugyo-giga': 'giga-device-lesson-use-guide',
+  };
   // RESTORE_REBUILD により公開へ戻した slug は 301 を持たない。
   const restoredSlugs = [
     'special-needs-parent-collaboration', 'ai-koomu-kaizen-nyumon', 'ai-class-newsletter-prompt',
@@ -107,7 +110,25 @@ test('all MERGE articles have exact 301 targets and UNPUBLISH articles do not', 
     'education-grant-search-guide', 'generative-ai-school-training-guide',
     'joseikin-guide-2025', 'school-training-ict-ai-guide',
   ];
-  for (const slug of mergeSlugs) assert.match(middleware, new RegExp(`'${slug}':`));
+  for (const [slug, target] of Object.entries(mergeTargets)) {
+    assert.match(middleware, new RegExp(`'${slug}': '${target}'`));
+    // 301 先は実在する公開記事であること（存在しない slug や未公開へ送らない）。
+    const targetArticle = articles.get(target);
+    assert.ok(targetArticle, `${slug} -> missing target: ${target}`);
+    // 301 先が別の redirect 元でないこと（301 が 1 ホップで 200 に着地する）。
+    // 未公開判定より先に見る。redirect 元は未公開なので、後段だと連鎖を診断できない。
+    assert.equal(
+      Object.hasOwn(mergeTargets, target),
+      false,
+      `${slug} -> redirect target is another redirect source: ${target}`,
+    );
+    assert.notEqual(targetArticle.published, false, `${slug} -> unpublished target: ${target}`);
+  }
+  // middleware に載る legacy redirect は上記の 6 件だけ。
+  assert.deepEqual(
+    [...middleware.matchAll(/'([a-z0-9-]+)': '([a-z0-9-]+)'/g)].map((m) => m[1]).sort(),
+    Object.keys(mergeTargets).sort(),
+  );
   for (const slug of unpublishSlugs) assert.doesNotMatch(middleware, new RegExp(`'${slug}':`));
   for (const slug of restoredSlugs) assert.doesNotMatch(middleware, new RegExp(`'${slug}':`));
   assert.match(middleware, /NextResponse\.redirect\([^;]+, 301\)/s);
