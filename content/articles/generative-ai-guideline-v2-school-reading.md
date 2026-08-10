@@ -31,8 +31,6 @@ updatedAt: "2026-07-09"
 
 この姿勢が、ガイドラインを読むときの土台になります。
 
-→ 教育DX全体の見取り図は[教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/digital-textbook-introduction-school-changes)もあわせてご覧ください。
-
 ---
 
 ## 2. 視点①：人間の判断を置き換えない（説明責任）
@@ -107,8 +105,6 @@ AIが生成した文章や画像が、既存の著作物に似てしまう可能
 
 逆に、調べ学習の答えをAIに出させて終わり、感想文をAIに書かせて提出、といった使い方は、学びの機会を奪ってしまいます。**何の力を育てたい授業なのか**を先に決め、その中でAIの役割を考える——この順番が大切です。
 
-→ 情報モラルの授業づくりは[情報モラル教育の進め方：授業で扱う5つのテーマ](/articles/school-generative-ai-privacy-security)も参考になります。
-
 ---
 
 ## 6. 視点⑤：まずは安全な校務支援から、小さく試す
@@ -124,7 +120,7 @@ AIが生成した文章や画像が、既存の著作物に似てしまう可能
 
 これらは「いきなり大きく変える」のではなく、**今ある業務の負担を少しだけ軽くする**使い方です。本サイトが一貫して「授業より先に校務から」をすすめるのは、校務なら失敗してもやり直せるのに対し、児童生徒が関わる場面での失敗は取り返しがつきにくいからです。順番を変えるだけで、リスクの性質が変わります。校務での具体的な活用例は、別記事で詳しく紹介しています。
 
-→ [AIで変わる校務改善：教員の残業を減らす5つの活用法](/articles/ai-lesson-preparation-prompt)
+→ [授業準備をAIで時短する方法：教材研究・導入・発問づくりの実践例](/articles/ai-lesson-preparation-prompt)
 
 そして、校内で広げる前には、**「学校としてどう使うか」を組織で決める**ことが欠かせません。個人の善意の先行利用が後から問題になることもあるため、研修などで認識をそろえておくと安心です。
 
@@ -181,11 +177,9 @@ AIが生成した文章や画像が、既存の著作物に似てしまう可能
 
 ## 10. 関連記事
 
-- [教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/digital-textbook-introduction-school-changes)
+- [デジタル教科書の本格導入で学校現場は何が変わるか：紙との使い分けと特別支援の視点](/articles/digital-textbook-introduction-school-changes)
 - [学校で生成AIを使うときの個人情報・セキュリティの注意点【教員向け】](/articles/school-generative-ai-privacy-security)
-- [ChatGPTをはじめて使う先生のための入門ガイド](/articles/school-generative-ai-privacy-security)
-- [AIで変わる校務改善：教員の残業を減らす5つの活用法](/articles/ai-lesson-preparation-prompt)
-- [情報モラル教育の進め方：授業で扱う5つのテーマ](/articles/school-generative-ai-privacy-security)
+- [授業準備をAIで時短する方法：教材研究・導入・発問づくりの実践例](/articles/ai-lesson-preparation-prompt)
 - [教育AIサービスを学校で使う前に確認したいこと｜個人情報・規約・安全性のチェックリスト](/articles/education-ai-service-checklist-before-use)
 - [カテゴリ：AI校務改善](/categories/ai-koomu)
 

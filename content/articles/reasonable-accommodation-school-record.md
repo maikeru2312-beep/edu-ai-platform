@@ -55,7 +55,7 @@ updatedAt: "2026-06-17"
 
 基礎的環境整備が整っていることが、個別の合理的配慮を実施しやすくする土台になります。
 
-→ 学校全体でのICT環境整備については[タブレット1台で始める授業ICT活用【GIGAスクール対応】](/articles/giga-device-lesson-use-guide)もご参照ください。
+→ GIGA端末を授業で使う際の基本については[GIGAスクール端末を授業で活かす基本：一斉授業・個別学習・協働学習の使い分け](/articles/giga-device-lesson-use-guide)もご参照ください。
 
 ---
 
@@ -323,9 +323,8 @@ A. 学校内の定期テストでは、合意に基づいた配慮（時間延�
 ## 13. 関連記事・カテゴリ
 
 - [特別支援教育でICTを活用する：タブレット・AAC・読み上げソフトの選び方](/articles/tokubetsu-shien-ict)
-- [タブレット1台で始める授業ICT活用【GIGAスクール対応】](/articles/giga-device-lesson-use-guide)
+- [GIGAスクール端末を授業で活かす基本：一斉授業・個別学習・協働学習の使い分け](/articles/giga-device-lesson-use-guide)
 - [学校で生成AIを使うときの個人情報・セキュリティの注意点](/articles/school-generative-ai-privacy-security)
-- [教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/digital-textbook-introduction-school-changes)
 - [個別の教育支援計画・個別の指導計画の書き方：学校現場で使える基本ガイド](/articles/individual-education-plan-writing-guide)
 - [デジタル教科書の本格導入で学校現場は何が変わるか：紙との使い分けと特別支援の視点](/articles/digital-textbook-introduction-school-changes)
 - [特別支援教育におけるICT活用と合理的配慮｜現場で確認したい視点](/articles/special-needs-ict-reasonable-accommodation)

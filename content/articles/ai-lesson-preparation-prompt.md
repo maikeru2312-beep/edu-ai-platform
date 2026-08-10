@@ -15,7 +15,7 @@ ChatGPTをはじめとする生成AIは、この状況を部分的に変えら�
 
 > 生成AIの利用にあたっては、**所属校・教育委員会のガイドラインを必ず事前に確認**してください。本記事は一般的な活用の紹介であり、特定のサービス利用を推奨するものではありません。個別の法的・医療的・行政的な判断を代行するものでもありません。
 
-ChatGPTの基本的な使い方やアカウント作成については、[教員のためのChatGPT入門](/articles/school-generative-ai-privacy-security)をご参照ください。
+ChatGPTに何を入力してよいかの判断については、[学校で生成AIを使うときの個人情報・セキュリティの注意点【教員向け】](/articles/school-generative-ai-privacy-security)をご参照ください。
 
 ---
 
@@ -91,7 +91,7 @@ AIに質のよい出力を求めるには、依頼する前に教員自身が以
 - **家庭状況・保護者の個人情報**
 - **学校名・自治体名など所属が特定できる情報**
 
-生成AIに入力した情報は外部サービスに送信されます。「この情報を外部に出してよいか」を常に確認する習慣をつけてください。個人情報の取り扱いについて詳しくは[学校における生成AIの安全な使い方](/articles/school-generative-ai-privacy-security)をご覧ください。
+生成AIに入力した情報は外部サービスに送信されます。「この情報を外部に出してよいか」を常に確認する習慣をつけてください。個人情報の取り扱いについて詳しくは[学校で生成AIを使うときの個人情報・セキュリティの注意点【教員向け】](/articles/school-generative-ai-privacy-security)をご覧ください。
 
 ---
 
@@ -170,7 +170,7 @@ AIに質のよい出力を求めるには、依頼する前に教員自身が以
 > 単元名：【単元名】
 > 使用端末・アプリ：【わかる範囲で記入】
 
-タブレット端末の授業活用については[タブレット端末活用の実践例](/articles/giga-device-lesson-use-guide)も参考にしてください。
+タブレット端末の授業活用については[GIGAスクール端末を授業で活かす基本：一斉授業・個別学習・協働学習の使い分け](/articles/giga-device-lesson-use-guide)も参考にしてください。
 
 ### 導入案を選ぶときのコツ
 
@@ -463,14 +463,13 @@ AIは授業準備を効率化する道具であり、**授業を設計するの�
 
 まずは1つのプロンプトを試してみるところから始めてみてください。たとえば、明日の授業の導入案を3つ出してもらう、来週の単元のつまずき予想を聞いてみる、といった小さな一歩で十分です。使いながら自分なりの「頼み方のコツ」を見つけていくことが、継続的な活用につながります。
 
-他のプロンプト活用例は[通知表所見の下書きを作る際の確認手順](/articles/chatgpt-tsuchihyo-shoken)もあわせてご覧ください。
+他のプロンプト活用例は[ChatGPTで通知表所見を作る方法と注意点【教員向け】](/articles/chatgpt-tsuchihyo-shoken)もあわせてご覧ください。
 
 ---
 
 ## 関連記事
 
-- [教員のためのChatGPT入門：アカウント作成から安全な使い始め方まで](/articles/school-generative-ai-privacy-security)
-- [学年だより・学級通信をAIで時短する実践例【プロンプト付き】](/articles/chatgpt-tsuchihyo-shoken)
+- [ChatGPTで通知表所見を作る方法と注意点【教員向け】](/articles/chatgpt-tsuchihyo-shoken)
 - [学校で生成AIを使うときの個人情報・セキュリティの注意点](/articles/school-generative-ai-privacy-security)
-- [タブレット端末を活用した授業づくり実践ガイド](/articles/giga-device-lesson-use-guide)
+- [GIGAスクール端末を授業で活かす基本：一斉授業・個別学習・協働学習の使い分け](/articles/giga-device-lesson-use-guide)
 - [AI校務改善の記事一覧](/categories/ai-koomu)

@@ -253,7 +253,7 @@ ABC記録が「1回の出来事を深く記録する」手法だとすれば、�
 
 ## 保護者と共有するときの注意
 
-行動記録の内容を保護者と共有することは、[特別支援教育の保護者連携](/articles/reasonable-accommodation-school-record)の重要な一部です。ただし、共有の方法や伝え方には慎重な配慮が必要です。
+行動記録の内容を保護者と共有することは、保護者との連携の重要な一部です。ただし、共有の方法や伝え方には慎重な配慮が必要です。
 
 ### 何を共有するかを考える
 
@@ -349,9 +349,8 @@ ABC記録・頻度記録・時間帯記録・場面記録など、複数の手�
 
 ## 関連記事
 
-- [特別支援教育の保護者連携](/articles/reasonable-accommodation-school-record) - 記録を活用した保護者との連携方法
 - [個別の教育支援計画・個別の指導計画の書き方](/articles/individual-education-plan-writing-guide) - 行動記録を支援計画に生かす
 - [合理的配慮の申請と記録](/articles/reasonable-accommodation-school-record) - 記録が合理的配慮の根拠になる
-- [特別支援教育×ICT活用ガイド](/articles/tokubetsu-shien-ict) - デジタルツールを活用した記録の効率化
-- [学校における生成AIの安全な使い方](/articles/school-generative-ai-privacy-security) - 記録作成に生成AIを使う際の注意点
+- [特別支援教育でICTを活用する：タブレット・AAC・読み上げソフトの選び方](/articles/tokubetsu-shien-ict) - デジタルツールを活用した記録の効率化
+- [学校で生成AIを使うときの個人情報・セキュリティの注意点【教員向け】](/articles/school-generative-ai-privacy-security) - 記録作成に生成AIを使う際の注意点
 - [特別支援教育カテゴリ](/categories/tokubetsu-shien) - 関連する記事の一覧
