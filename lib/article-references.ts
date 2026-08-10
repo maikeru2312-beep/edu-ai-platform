@@ -16,6 +16,9 @@ const parentCollaborationCheckedAt = '2026-08-10';
 // 既存の generativeAiGuideline / ppcAiNotice は共有の checkedAt を用いる
 const koomuHubCheckedAt = '2026-08-10';
 
+// 情報モラル授業設計記事のために文部科学省の情報モラル教育ページを確認した日
+const informationMoralsCheckedAt = '2026-08-10';
+
 const sources = {
   generativeAiGuideline: {
     title: '初等中等教育段階における生成AIの利活用に関するガイドライン（Ver.2.0）',
@@ -159,6 +162,15 @@ const sources = {
     supports:
       '法第2条第3項の委任を受けた要配慮個人情報の記述等として、第1号に身体障害・知的障害・精神障害（発達障害を含む）等の心身の機能の障害があること、第2号に医師等により行われた健康診断その他の検査の結果、第3号に健康診断等の結果に基づき又は疾病・負傷等を理由として医師等により指導・診療・調剤が行われたことが定められていること（本人の病歴・犯罪の経歴は同条柱書きで除かれ、法第2条第3項に直接定められている）',
   },
+  informationMoralsMext: {
+    title: '情報モラル教育の充実等',
+    publisher: '文部科学省',
+    publishedOrUpdatedAt: '2026-03-16（日付が明示された掲載資料のうち最新。日付表記のない掲載物あり）',
+    url: 'https://www.mext.go.jp/a_menu/shotou/zyouhou/detail/1369617.htm',
+    checkedAt: informationMoralsCheckedAt,
+    supports:
+      '同ページに情報モラル教育関連資料・事例集・教材集および指導者向けセミナー資料が継続的に掲載されていること。授業例を掲載していないテーマの場面例・教材の入手先として本文から参照している',
+  },
   ppcSchoolAlert2025: {
     title: '学校における個人情報の漏えい等事案を踏まえた個人情報の取扱いに関する留意点について（注意喚起）',
     publisher: '個人情報保護委員会',
@@ -186,6 +198,7 @@ export const ARTICLE_REFERENCES: Record<string, ArticleReference[]> = {
     sources.aiCopyright,
     sources.personalInfoActDefinitions,
   ],
+  'information-morals-education-themes': [sources.generativeAiGuideline, sources.informationMoralsMext],
   'ai-koomu-kaizen-nyumon': [
     sources.generativeAiGuideline,
     sources.ppcAiNotice,
