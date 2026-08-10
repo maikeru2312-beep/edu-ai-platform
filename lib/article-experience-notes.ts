@@ -11,6 +11,10 @@ export interface ArticleExperienceNote {
 }
 
 const ARTICLE_EXPERIENCE_NOTES: Record<string, ArticleExperienceNote> = {
+  'ai-koomu-kaizen-nyumon': {
+    scope: 'A',
+    note: '運営者は、授業案・教材のたたき台に生成AIを用い、その際の個人情報の取扱いや校内ルールへの配慮を検討した経験に基づいて、本記事の判断手順を整理しています。通知表所見・学級通信・会議記録・アンケート整理を含め、掲載する5業務で生成AIを利用した経験を示すものではありません。',
+  },
   'ai-lesson-preparation-prompt': {
     scope: 'A',
     note: '運営者は、授業案や教材のたたき台に生成AIを用い、学習目標・児童生徒の実態・原資料に照らして内容を確認・修正した経験に基づいて、本記事の手順を整理しています。用途によっては確認に時間がかかる場合もあります。',
