@@ -68,7 +68,7 @@ test('published articles do not link to themselves', () => {
 
 test('the review scope is deliberately reduced and focused', () => {
   assert.equal(articles.size, 30);
-  assert.equal(published.length, 15);
+  assert.equal(published.length, 16);
   const categories = new Set(published.map((article) => article.category));
   assert.equal(categories.has('助成金・補助金'), false);
   assert.equal(categories.has('研修・セミナー'), false);
@@ -81,15 +81,18 @@ test('all MERGE articles have exact 301 targets and UNPUBLISH articles do not', 
     'chatgpt-teacher-beginner-guide', 'free-ict-tools-safety-checklist',
     'giga-school-device-troubleshooting', 'google-forms-school-use-guide',
     'information-morals-education-themes', 'kyoiku-dx-kiso',
-    'microsoft-copilot-teacher-guide', 'special-needs-parent-collaboration',
+    'microsoft-copilot-teacher-guide',
     'tablet-ict-jugyo-giga',
   ];
+  // RESTORE_REBUILD により公開へ戻した slug は 301 を持たない。
+  const restoredSlugs = ['special-needs-parent-collaboration'];
   const unpublishSlugs = [
     'education-grant-search-guide', 'generative-ai-school-training-guide',
     'joseikin-guide-2025', 'school-training-ict-ai-guide',
   ];
   for (const slug of mergeSlugs) assert.match(middleware, new RegExp(`'${slug}':`));
   for (const slug of unpublishSlugs) assert.doesNotMatch(middleware, new RegExp(`'${slug}':`));
+  for (const slug of restoredSlugs) assert.doesNotMatch(middleware, new RegExp(`'${slug}':`));
   assert.match(middleware, /NextResponse\.redirect\([^;]+, 301\)/s);
 });
 
@@ -104,15 +107,15 @@ test('every published article has article-specific references', () => {
 
 test('operator experience notes match confirmed experience (C articles excluded)', () => {
   const notes = read('lib/article-experience-notes.ts');
-  // 経験A/B と確認された13記事にのみ注記を付ける。
+  // 経験A/B と確認された14記事にのみ注記を付ける。
   const withNote = [
     'ai-lesson-preparation-prompt', 'chatgpt-tsuchihyo-shoken',
     'education-ai-service-checklist-before-use', 'giga-device-lesson-use-guide',
     'ict-teaching-tools-selection-guide', 'individual-education-plan-writing-guide',
     'reasonable-accommodation-school-record', 'school-generative-ai-privacy-security',
     'special-needs-behavior-record-guide', 'special-needs-ict-reasonable-accommodation',
-    'special-needs-ict-support-tools-checklist', 'special-needs-visual-schedule-support',
-    'tokubetsu-shien-ict',
+    'special-needs-ict-support-tools-checklist', 'special-needs-parent-collaboration',
+    'special-needs-visual-schedule-support', 'tokubetsu-shien-ict',
   ];
   // 経験C（資料でのみ確認）の記事には実務経験注記を付けない。
   const withoutNote = [

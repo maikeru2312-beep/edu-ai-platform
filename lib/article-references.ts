@@ -9,6 +9,9 @@ export type ArticleReference = {
 
 const checkedAt = '2026-07-21';
 
+// 保護者面談記事のために e-Gov 法令検索で条文本文を確認した日
+const parentCollaborationCheckedAt = '2026-08-10';
+
 const sources = {
   generativeAiGuideline: {
     title: '初等中等教育段階における生成AIの利活用に関するガイドライン（Ver.2.0）',
@@ -80,7 +83,8 @@ const sources = {
     publishedOrUpdatedAt: '2023-12-28',
     url: 'https://www.mext.go.jp/a_menu/shotou/tokubetu/material/mext_02599.html',
     checkedAt,
-    supports: '合理的配慮の申出、建設的対話、個別の教育支援計画への記載と情報共有',
+    supports:
+      '合理的配慮の申出と建設的対話（意思の表明が困難な場合に家族・支援者等が本人を補佐して行う表明を含む点を含む）。法第11条に基づく事業者向け指針であり、公立学校の教職員には地方公共団体等職員対応要領が別途あることに留意',
   },
   tsukyuGuide: {
     title: '初めて通級による指導を担当する教師のためのガイド',
@@ -106,6 +110,42 @@ const sources = {
     checkedAt,
     supports: '行動観察、機能的アセスメント、ABC行動記録を用いた支援検討',
   },
+  schoolEducationRule134: {
+    title: '学校教育法施行規則 第百三十四条の二・第百三十九条の二・第百四十一条の二（個別の教育支援計画）',
+    publisher: 'e-Gov 法令検索（デジタル庁）',
+    publishedOrUpdatedAt: '2018-08-27（第134条の2・第139条の2・第141条の2 追加。公布の日から施行）',
+    url: 'https://laws.e-gov.go.jp/law/322M40000080011',
+    checkedAt: parentCollaborationCheckedAt,
+    supports:
+      '特別支援学校（第134条の2）に加え、準用により特別支援学級（第139条の2）・通級による指導（第141条の2）にも及ぶ個別の教育支援計画の作成義務、および作成にあたり「当該児童等又はその保護者の意向を踏まえつつ、あらかじめ、関係機関等と…必要な情報の共有を図らなければならない」とする規定',
+  },
+  disabilityDiscriminationAct: {
+    title: '障害を理由とする差別の解消の推進に関する法律 第七条第二項・第八条第二項',
+    publisher: 'e-Gov 法令検索（デジタル庁）',
+    publishedOrUpdatedAt: '2024-04-01（事業者の合理的配慮を義務化する改正の施行日。公布は2013-06-26）',
+    url: 'https://laws.e-gov.go.jp/law/425AC0000000065',
+    checkedAt: parentCollaborationCheckedAt,
+    supports:
+      '合理的配慮は「意思の表明があった場合」に「負担が過重でないとき」に提供義務が生じるという構造。面談の場で即答せず校内確認へ持ち帰る判断手順の根拠',
+  },
+  childAbusePreventionAct: {
+    title: '児童虐待の防止等に関する法律 第六条（児童虐待に係る通告）',
+    publisher: 'e-Gov 法令検索（デジタル庁）',
+    publishedOrUpdatedAt: '2000-05-24（公布）',
+    url: 'https://laws.e-gov.go.jp/law/412AC1000000082',
+    checkedAt: parentCollaborationCheckedAt,
+    supports:
+      '「児童虐待を受けたと思われる児童を発見した者」の通告義務が保護者の同意を要件としないこと、および第3項により守秘義務が通告義務の遵守を妨げないこと',
+  },
+  personalInfoAct: {
+    title: '個人情報の保護に関する法律 第二十七条（第三者提供の制限）・第六十九条（利用及び提供の制限）',
+    publisher: 'e-Gov 法令検索（デジタル庁）',
+    publishedOrUpdatedAt: '2023-04-01（第69条を含む令和3年改正の地方公共団体への適用開始日。公布は2003-05-30）',
+    url: 'https://laws.e-gov.go.jp/law/415AC0000000057',
+    checkedAt: parentCollaborationCheckedAt,
+    supports:
+      '公立学校（行政機関等）は第69条の利用目的外利用・提供の制限（第2項第1号に本人の同意の例外）。私立学校（学校法人）はそもそも第2条第11項の各号に該当せず個人情報取扱事業者であり、国立大学法人立・公立大学法人立の学校は第2条第11項第3号・第4号の括弧書きにより行政機関等から除かれ、いずれも第27条の本人同意原則が適用されること',
+  },
 } satisfies Record<string, ArticleReference>;
 
 export const ARTICLE_REFERENCES: Record<string, ArticleReference[]> = {
@@ -122,6 +162,14 @@ export const ARTICLE_REFERENCES: Record<string, ArticleReference[]> = {
   'special-needs-behavior-record-guide': [sources.behaviorResearch, sources.individualPlan],
   'special-needs-ict-reasonable-accommodation': [sources.accommodationGuideline, sources.specialNeedsIct],
   'special-needs-ict-support-tools-checklist': [sources.specialNeedsIct, sources.accommodationGuideline],
+  'special-needs-parent-collaboration': [
+    sources.disabilityDiscriminationAct,
+    sources.schoolEducationRule134,
+    sources.personalInfoAct,
+    sources.childAbusePreventionAct,
+    sources.accommodationGuideline,
+    sources.individualPlan,
+  ],
   'special-needs-visual-schedule-support': [sources.tsukyuGuide, sources.behaviorResearch],
   'tokubetsu-shien-ict': [sources.specialNeedsIct, sources.accommodationGuideline, sources.studx],
 };
