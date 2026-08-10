@@ -1,10 +1,24 @@
+// LEGACY: 2026-07-20 時点の AdSense 監査判断をハードコードした履歴用スクリプトです。
+// - 現在のリポジトリ状態の判定には使用しません（現在の source of truth は
+//   npm test / npm run validate、つまり scripts/adsense-audit.test.mjs と scripts/validate.mjs）。
+// - docs/adsense/*-20260720.csv は当時の監査記録なので、現在値で再生成しません。
+//   出力先を明示した場合のみ書き出します:
+//     AUDIT_LEGACY_OUT_DIR=<書き出し先> node scripts/content-audit.mjs
 import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
 
 const root = process.cwd();
 const dir = path.join(root, 'content/articles');
-const output = path.join(root, 'docs/adsense/content-inventory-20260720.csv');
+const outDir = process.env.AUDIT_LEGACY_OUT_DIR;
+if (!outDir) {
+  console.error('scripts/content-audit.mjs は 2026-07-20 時点の履歴用スクリプトです。');
+  console.error('docs/adsense の監査記録を現在値で上書きしないため、既定では書き出しません。');
+  console.error('現在の状態を検証するには npm run audit を使用してください。');
+  console.error('履歴スクリプトの出力を確認する場合: AUDIT_LEGACY_OUT_DIR=<dir> node scripts/content-audit.mjs');
+  process.exit(2);
+}
+const output = path.join(outDir, 'content-inventory-20260720.csv');
 const sourcePattern = /https?:\/\/[^\s)"'>]+/g;
 const markdownPattern = /[#>*_`[\]()|~-]/g;
 

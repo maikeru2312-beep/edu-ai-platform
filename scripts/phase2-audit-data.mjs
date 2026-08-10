@@ -1,15 +1,31 @@
+// LEGACY: 2026-07-21 時点の AdSense 監査判断をハードコードした履歴用スクリプトです。
+// - 現在のリポジトリ状態の判定には使用しません（現在の source of truth は
+//   npm test / npm run validate、つまり scripts/adsense-audit.test.mjs と scripts/validate.mjs）。
+// - docs/adsense/*-20260720.csv は当時の監査記録なので、現在値で再生成しません。
+//   出力先を明示した場合のみ書き出します:
+//     AUDIT_LEGACY_OUT_DIR=<書き出し先> node scripts/phase2-audit-data.mjs
 import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
 
 const root = process.cwd();
-const outDir = path.join(root, 'docs/adsense');
+const outDir = process.env.AUDIT_LEGACY_OUT_DIR;
+if (!outDir) {
+  console.error('scripts/phase2-audit-data.mjs は 2026-07-21 時点の履歴用スクリプトです。');
+  console.error('docs/adsense の監査記録を現在値で上書きしないため、既定では書き出しません。');
+  console.error('現在の状態を検証するには npm run audit を使用してください。');
+  console.error('履歴スクリプトの出力を確認する場合: AUDIT_LEGACY_OUT_DIR=<dir> node scripts/phase2-audit-data.mjs');
+  process.exit(2);
+}
 const checkedAt = '2026-07-21';
 const csv = (value) => `"${String(value ?? '').replaceAll('"', '""')}"`;
-const writeCsv = (file, header, rows) => fs.writeFileSync(
-  path.join(outDir, file),
-  [header, ...rows].map((row) => row.map(csv).join(',')).join('\n') + '\n',
-);
+const writeCsv = (file, header, rows) => {
+  fs.mkdirSync(outDir, { recursive: true });
+  fs.writeFileSync(
+    path.join(outDir, file),
+    [header, ...rows].map((row) => row.map(csv).join(',')).join('\n') + '\n',
+  );
+};
 
 const S = {
   ai: ['初等中等教育段階における生成AIの利活用に関するガイドライン（Ver.2.0）', '文部科学省', 'https://www.mext.go.jp/content/000332373.pdf', '2024-12-26'],

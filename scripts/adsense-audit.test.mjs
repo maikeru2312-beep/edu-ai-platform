@@ -17,6 +17,22 @@ const articles = new Map(
 );
 const published = [...articles.values()].filter((article) => article.published !== false);
 
+test('the default audit judges current state, not the 2026-07 snapshot', () => {
+  const scripts = JSON.parse(read('package.json')).scripts ?? {};
+  // 2026-07-20/21 の判断をハードコードした履歴用スクリプト。
+  const legacy = /content-audit\.mjs|phase2-audit-data\.mjs/;
+  assert.ok(scripts.audit, 'npm run audit が定義されていること');
+  assert.doesNotMatch(scripts.audit, legacy);
+  // 履歴用スクリプトを package script として残す場合は、名前で履歴用と分かること。
+  for (const [name, body] of Object.entries(scripts)) {
+    if (legacy.test(body)) assert.match(name, /^audit:legacy/);
+  }
+  // 履歴用スクリプトは出力先を明示しない限り書き出さない。
+  for (const file of ['scripts/content-audit.mjs', 'scripts/phase2-audit-data.mjs']) {
+    assert.match(read(file), /AUDIT_LEGACY_OUT_DIR/);
+  }
+});
+
 test('AdSense is loaded only by a successfully resolved article detail', () => {
   assert.doesNotMatch(read('app/layout.tsx'), /adsbygoogle|AdSenseScript/);
   assert.match(read('app/articles/[slug]/page.tsx'), /<AdSenseScript \/>/);

@@ -10,7 +10,7 @@
     "typecheck": "tsc --noEmit",
     "test": "node --test scripts/adsense-audit.test.mjs",
     "validate": "node scripts/validate.mjs",
-    "audit": "node scripts/content-audit.mjs && node scripts/phase2-audit-data.mjs"
+    "audit": "npm test && npm run validate"
   },
   "dependencies": {
     "next": "^15.3.0",
