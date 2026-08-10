@@ -19,6 +19,10 @@ const koomuHubCheckedAt = '2026-08-10';
 // 情報モラル授業設計記事のために文部科学省の情報モラル教育ページを確認した日
 const informationMoralsCheckedAt = '2026-08-10';
 
+// Googleフォーム記事の「現在の設定仕様」章のために Google 公式ヘルプを確認した日。
+// この章だけが Google の現在仕様に依存するため、確認日を独立して持つ
+const googleFormsSpecCheckedAt = '2026-08-10';
+
 const sources = {
   generativeAiGuideline: {
     title: '初等中等教育段階における生成AIの利活用に関するガイドライン（Ver.2.0）',
@@ -162,6 +166,78 @@ const sources = {
     supports:
       '法第2条第3項の委任を受けた要配慮個人情報の記述等として、第1号に身体障害・知的障害・精神障害（発達障害を含む）等の心身の機能の障害があること、第2号に医師等により行われた健康診断その他の検査の結果、第3号に健康診断等の結果に基づき又は疾病・負傷等を理由として医師等により指導・診療・調剤が行われたことが定められていること（本人の病歴・犯罪の経歴は同条柱書きで除かれ、法第2条第3項に直接定められている）',
   },
+  googleFormsPublish: {
+    title: 'Publish & share your form with responders',
+    publisher: 'Google（Google Docs Editors ヘルプ）',
+    publishedOrUpdatedAt: '2026-08-10（本サイト確認時点の掲載内容）',
+    url: 'https://support.google.com/docs/answer/2839588',
+    checkedAt: googleFormsSpecCheckedAt,
+    supports:
+      '公開（Publish）が独立した操作であり、未公開のフォームはリンクを知っていてもアクセスできないこと。「一般的なアクセス（General access）」で「リンクを知っているすべてのユーザー」または対象グループにアクセス権を付与できること。個人やグループを名前で指定して回答者に追加でき、アクセスに有効期限を設定できること。「1回に制限する」を有効にすると、フォームへのアクセスと入力にGoogleアカウントへのログインが必要になり、かつメールアドレスを収集する設定をオンにしない限り回答者のユーザー名は記録されないこと。回答者にフォームの結果へのリンクが表示され、回答の概要（各質問への回答の全文やグラフ）はフォームに回答できるすべてのユーザーが閲覧できること',
+  },
+  googleFormsResponses: {
+    title: 'View & manage form responses',
+    publisher: 'Google（Google Docs Editors ヘルプ）',
+    publishedOrUpdatedAt: '2026-08-10（本サイト確認時点の掲載内容）',
+    url: 'https://support.google.com/docs/answer/139706',
+    checkedAt: googleFormsSpecCheckedAt,
+    supports:
+      'メールアドレスの収集に「Responder input（回答者が入力）」と「Verified（確認済み）」の2つの方式があり、Verified では回答者が自分のGoogleアカウントのメールアドレスの収集を確認する必要があること。Link to Sheets による回答スプレッドシートの作成。回答受付の停止（Accepting responses）と締切日・回答数上限の設定',
+  },
+  googleFormsCollaborators: {
+    title: 'Share your form with collaborators',
+    publisher: 'Google（Google Docs Editors ヘルプ）',
+    publishedOrUpdatedAt: '2026-08-10（本サイト確認時点の掲載内容）',
+    url: 'https://support.google.com/docs/answer/2917111',
+    checkedAt: googleFormsSpecCheckedAt,
+    supports:
+      '回答用スプレッドシートを新規作成するとフォームの共同編集者が自動的にそのスプレッドシートにもアクセスできること、およびその後のフォーム側の権限変更は同期されず、変更・削除はフォームとリンク先シートの両方で別々に行う必要があること',
+  },
+  googleFormsErrors: {
+    title: 'Fix common errors while you respond to a Google Form',
+    publisher: 'Google（Google Docs Editors ヘルプ）',
+    publishedOrUpdatedAt: '2026-08-10（本サイト確認時点の掲載内容）',
+    url: 'https://support.google.com/docs/answer/15473134',
+    checkedAt: googleFormsSpecCheckedAt,
+    supports:
+      'ファイルアップロードの設問に回答するにはGoogleアカウントへのログインが必要であること',
+  },
+  googleFormsPermission: {
+    title: 'Get permission to open a Google Form',
+    publisher: 'Google（Google Docs Editors ヘルプ）',
+    publishedOrUpdatedAt: '2026-08-10（本サイト確認時点の掲載内容）',
+    url: 'https://support.google.com/docs/answer/160166',
+    checkedAt: googleFormsSpecCheckedAt,
+    supports:
+      '職場・学校アカウントで作成したフォームは、作成者が設定を変更しない限り通常は組織内の人のみアクセスできること。アクセスできない場合に「You need access」が表示されること',
+  },
+  googleFormsUpgrade: {
+    title: 'Learn about updates in Google Forms',
+    publisher: 'Google（Google Docs Editors ヘルプ）',
+    publishedOrUpdatedAt: '2026-08-10（本サイト確認時点の掲載内容）',
+    url: 'https://support.google.com/docs/answer/16319311',
+    checkedAt: googleFormsSpecCheckedAt,
+    supports:
+      '2025年9月8日に旧設定による信頼済みドメイン経由での制限フォームへのアクセスが廃止され、当該回答者がアクセスできなくなったこと。2025年12月以降、古いフォームが新しい版へ自動的にアップグレードされ、所有者に共有設定の見直しが求められること',
+  },
+  googleFormsQuestionTypes: {
+    title: 'Choose a type of question for your form',
+    publisher: 'Google（Google Docs Editors ヘルプ）',
+    publishedOrUpdatedAt: '2026-08-10（本サイト確認時点の掲載内容）',
+    url: 'https://support.google.com/docs/answer/7322334',
+    checkedAt: googleFormsSpecCheckedAt,
+    supports:
+      'ファイルアップロードの設問で提出されたファイルが、フォーム所有者のGoogleドライブ上の新しいフォルダに保存されること',
+  },
+  googleFormsAdmin: {
+    title: 'Turn Forms on or off for users',
+    publisher: 'Google（Google Workspace 管理者ヘルプ）',
+    publishedOrUpdatedAt: '2026-08-10（本サイト確認時点の掲載内容）',
+    url: 'https://knowledge.workspace.google.com/admin/users/access/turn-forms-on-or-off-for-users',
+    checkedAt: googleFormsSpecCheckedAt,
+    supports:
+      '管理者が組織部門またはアクセスグループの単位でGoogleフォームを有効・無効にできること。フォームを有効にするにはGoogleドライブが有効である必要があること',
+  },
   informationMoralsMext: {
     title: '情報モラル教育の充実等',
     publisher: '文部科学省',
@@ -192,6 +268,16 @@ const sources = {
 } satisfies Record<string, ArticleReference>;
 
 export const ARTICLE_REFERENCES: Record<string, ArticleReference[]> = {
+  'google-forms-school-use-guide': [
+    sources.googleFormsPublish,
+    sources.googleFormsResponses,
+    sources.googleFormsCollaborators,
+    sources.googleFormsErrors,
+    sources.googleFormsPermission,
+    sources.googleFormsUpgrade,
+    sources.googleFormsQuestionTypes,
+    sources.googleFormsAdmin,
+  ],
   'ai-class-newsletter-prompt': [
     sources.generativeAiGuideline,
     sources.ppcAiNotice,
