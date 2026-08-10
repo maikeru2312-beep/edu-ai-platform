@@ -265,6 +265,7 @@ AIの生成する文章には、次のような問題が含まれる場合があ
 
 ## 関連記事
 
+- [学校の校務で生成AIを使う前の判断ガイド：5業務の使い分けと確認手順](/articles/ai-koomu-kaizen-nyumon)
 - [デジタル教科書の本格導入で学校現場は何が変わるか：紙との使い分けと特別支援の視点](/articles/digital-textbook-introduction-school-changes)
 - [授業準備をAIで時短する方法：教材研究・導入・発問づくりの実践例](/articles/ai-lesson-preparation-prompt)
 - [特別支援教育でICTを活用する：タブレット・AAC・読み上げソフトの選び方](/articles/tokubetsu-shien-ict)
