@@ -12,6 +12,10 @@ const checkedAt = '2026-07-21';
 // 保護者面談記事のために e-Gov 法令検索で条文本文を確認した日
 const parentCollaborationCheckedAt = '2026-08-10';
 
+// 校務AI判断ハブのために新規登録した資料（PPC 2025学校向け注意喚起・個情法第2条）を確認した日。
+// 既存の generativeAiGuideline / ppcAiNotice は共有の checkedAt を用いる
+const koomuHubCheckedAt = '2026-08-10';
+
 const sources = {
   generativeAiGuideline: {
     title: '初等中等教育段階における生成AIの利活用に関するガイドライン（Ver.2.0）',
@@ -137,6 +141,33 @@ const sources = {
     supports:
       '「児童虐待を受けたと思われる児童を発見した者」の通告義務が保護者の同意を要件としないこと、および第3項により守秘義務が通告義務の遵守を妨げないこと',
   },
+  personalInfoActDefinitions: {
+    title: '個人情報の保護に関する法律 第二条（定義）',
+    publisher: 'e-Gov 法令検索（デジタル庁）',
+    publishedOrUpdatedAt: '2003-05-30（公布）',
+    url: 'https://laws.e-gov.go.jp/law/415AC0000000057',
+    checkedAt: koomuHubCheckedAt,
+    supports:
+      '第2条第1項第1号「他の情報と容易に照合することができ…特定の個人を識別することができることとなるものを含む」（＝氏名を外しても個人情報でありうる）、第2条第3項の要配慮個人情報、第2条第5項の仮名加工情報および第6項の匿名加工情報の定義',
+  },
+  personalInfoActOrderSensitive: {
+    title: '個人情報の保護に関する法律施行令 第二条（要配慮個人情報）',
+    publisher: 'e-Gov 法令検索（デジタル庁）',
+    publishedOrUpdatedAt: '2003-12-10（公布。平成十五年政令第五百七号）',
+    url: 'https://laws.e-gov.go.jp/law/415CO0000000507',
+    checkedAt: koomuHubCheckedAt,
+    supports:
+      '法第2条第3項の委任を受けた要配慮個人情報の記述等として、第1号に身体障害・知的障害・精神障害（発達障害を含む）等の心身の機能の障害があること、第2号に医師等により行われた健康診断その他の検査の結果、第3号に健康診断等の結果に基づき又は疾病・負傷等を理由として医師等により指導・診療・調剤が行われたことが定められていること（本人の病歴・犯罪の経歴は同条柱書きで除かれ、法第2条第3項に直接定められている）',
+  },
+  ppcSchoolAlert2025: {
+    title: '学校における個人情報の漏えい等事案を踏まえた個人情報の取扱いに関する留意点について（注意喚起）',
+    publisher: '個人情報保護委員会',
+    publishedOrUpdatedAt: '2025-06-25',
+    url: 'https://www.ppc.go.jp/news/careful_information/250625_alert_school/',
+    checkedAt: koomuHubCheckedAt,
+    supports:
+      '令和5年4月〜令和7年4月の学校からの漏えい等報告を分析し、学校設置者・教職員向けに留意点・事案例・発生原因・再発防止策を示したもの。学校は個人情報の管理が難しい環境であることを前提に入力情報を絞るべきという本記事の立場を支える。なお、同注意喚起は生成AIの利用を対象としたものではない',
+  },
   personalInfoAct: {
     title: '個人情報の保護に関する法律 第二十七条（第三者提供の制限）・第六十九条（利用及び提供の制限）',
     publisher: 'e-Gov 法令検索（デジタル庁）',
@@ -149,6 +180,13 @@ const sources = {
 } satisfies Record<string, ArticleReference>;
 
 export const ARTICLE_REFERENCES: Record<string, ArticleReference[]> = {
+  'ai-koomu-kaizen-nyumon': [
+    sources.generativeAiGuideline,
+    sources.ppcAiNotice,
+    sources.ppcSchoolAlert2025,
+    sources.personalInfoActDefinitions,
+    sources.personalInfoActOrderSensitive,
+  ],
   'ai-lesson-preparation-prompt': [sources.generativeAiGuideline, sources.ppcAiNotice, sources.aiCopyright],
   'chatgpt-tsuchihyo-shoken': [sources.generativeAiGuideline, sources.ppcAiNotice],
   'digital-textbook-introduction-school-changes': [sources.digitalTextbook, sources.digitalTextbookNotice],

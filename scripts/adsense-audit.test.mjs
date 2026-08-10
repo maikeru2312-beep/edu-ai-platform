@@ -68,7 +68,7 @@ test('published articles do not link to themselves', () => {
 
 test('the review scope is deliberately reduced and focused', () => {
   assert.equal(articles.size, 30);
-  assert.equal(published.length, 16);
+  assert.equal(published.length, 17);
   const categories = new Set(published.map((article) => article.category));
   assert.equal(categories.has('助成金・補助金'), false);
   assert.equal(categories.has('研修・セミナー'), false);
@@ -77,7 +77,7 @@ test('the review scope is deliberately reduced and focused', () => {
 test('all MERGE articles have exact 301 targets and UNPUBLISH articles do not', () => {
   const middleware = read('middleware.ts');
   const mergeSlugs = [
-    'ai-class-newsletter-prompt', 'ai-koomu-kaizen-nyumon',
+    'ai-class-newsletter-prompt',
     'chatgpt-teacher-beginner-guide', 'free-ict-tools-safety-checklist',
     'giga-school-device-troubleshooting', 'google-forms-school-use-guide',
     'information-morals-education-themes', 'kyoiku-dx-kiso',
@@ -85,7 +85,7 @@ test('all MERGE articles have exact 301 targets and UNPUBLISH articles do not', 
     'tablet-ict-jugyo-giga',
   ];
   // RESTORE_REBUILD により公開へ戻した slug は 301 を持たない。
-  const restoredSlugs = ['special-needs-parent-collaboration'];
+  const restoredSlugs = ['special-needs-parent-collaboration', 'ai-koomu-kaizen-nyumon'];
   const unpublishSlugs = [
     'education-grant-search-guide', 'generative-ai-school-training-guide',
     'joseikin-guide-2025', 'school-training-ict-ai-guide',
@@ -107,8 +107,9 @@ test('every published article has article-specific references', () => {
 
 test('operator experience notes match confirmed experience (C articles excluded)', () => {
   const notes = read('lib/article-experience-notes.ts');
-  // 経験A/B と確認された14記事にのみ注記を付ける。
+  // 経験A/B と確認された15記事にのみ注記を付ける。
   const withNote = [
+    'ai-koomu-kaizen-nyumon',
     'ai-lesson-preparation-prompt', 'chatgpt-tsuchihyo-shoken',
     'education-ai-service-checklist-before-use', 'giga-device-lesson-use-guide',
     'ict-teaching-tools-selection-guide', 'individual-education-plan-writing-guide',

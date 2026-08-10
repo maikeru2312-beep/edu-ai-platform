@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export const ARTICLE_MERGE_REDIRECTS: Record<string, string> = {
   'ai-class-newsletter-prompt': 'ai-lesson-preparation-prompt',
-  'ai-koomu-kaizen-nyumon': 'ai-lesson-preparation-prompt',
   'chatgpt-teacher-beginner-guide': 'school-generative-ai-privacy-security',
   'free-ict-tools-safety-checklist': 'ict-teaching-tools-selection-guide',
   'giga-school-device-troubleshooting': 'giga-device-lesson-use-guide',
