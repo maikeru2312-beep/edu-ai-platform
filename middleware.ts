@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export const ARTICLE_MERGE_REDIRECTS: Record<string, string> = {
   'chatgpt-teacher-beginner-guide': 'ai-koomu-kaizen-nyumon',
-  'free-ict-tools-safety-checklist': 'ict-teaching-tools-selection-guide',
   'giga-school-device-troubleshooting': 'giga-device-lesson-use-guide',
   'kyoiku-dx-kiso': 'giga-device-lesson-use-guide',
   'microsoft-copilot-teacher-guide': 'education-ai-service-checklist-before-use',
