@@ -5,7 +5,6 @@ export const ARTICLE_MERGE_REDIRECTS: Record<string, string> = {
   'free-ict-tools-safety-checklist': 'ict-teaching-tools-selection-guide',
   'giga-school-device-troubleshooting': 'giga-device-lesson-use-guide',
   'google-forms-school-use-guide': 'giga-device-lesson-use-guide',
-  'information-morals-education-themes': 'school-generative-ai-privacy-security',
   'kyoiku-dx-kiso': 'giga-device-lesson-use-guide',
   'microsoft-copilot-teacher-guide': 'education-ai-service-checklist-before-use',
   'tablet-ict-jugyo-giga': 'giga-device-lesson-use-guide',
