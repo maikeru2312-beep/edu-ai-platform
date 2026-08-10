@@ -29,8 +29,6 @@ GIGAスクール構想により、特別支援学校・特別支援学級・通�
 
 このように、ICTは「できないから使う補助具」ではなく、**「その子に合った学習・表現・参加の方法を選べる環境を整えるもの」**として位置付けることが重要です。
 
-→ 教育DXの全体像については[教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/digital-textbook-introduction-school-changes)もご参照ください。
-
 ---
 
 ## 2. 活用場面の分類
@@ -244,9 +242,8 @@ ICTの導入によって、操作に時間がかかり学習の本題に集中�
 
 ## 9. 関連記事
 
-- [教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/digital-textbook-introduction-school-changes)
 - [学校で生成AIを使うときの個人情報・セキュリティの注意点](/articles/school-generative-ai-privacy-security)
-- [AIで変わる校務改善：教員の残業を減らす5つの活用法](/articles/ai-lesson-preparation-prompt)
+- [授業準備をAIで時短する方法：教材研究・導入・発問づくりの実践例](/articles/ai-lesson-preparation-prompt)
 - [個別の教育支援計画・個別の指導計画の書き方：学校現場で使える基本ガイド](/articles/individual-education-plan-writing-guide)
 - [デジタル教科書の本格導入で学校現場は何が変わるか：紙との使い分けと特別支援の視点](/articles/digital-textbook-introduction-school-changes)
 - [特別支援教育におけるICT活用と合理的配慮｜現場で確認したい視点](/articles/special-needs-ict-reasonable-accommodation)

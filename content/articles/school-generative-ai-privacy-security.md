@@ -214,15 +214,12 @@ ChatGPT（OpenAI）やGemini（Google）など、各サービスには独自の�
 
 ## 9. 関連記事
 
-- [教育DXとは何か？現場教員が押さえておきたい基礎知識](/articles/digital-textbook-introduction-school-changes)
+- [デジタル教科書の本格導入で学校現場は何が変わるか：紙との使い分けと特別支援の視点](/articles/digital-textbook-introduction-school-changes)
 - [ChatGPTで通知表所見を作る方法と注意点【教員向け】](/articles/chatgpt-tsuchihyo-shoken)
-- [AIで変わる校務改善：教員の残業を減らす5つの活用法](/articles/ai-lesson-preparation-prompt)
+- [授業準備をAIで時短する方法：教材研究・導入・発問づくりの実践例](/articles/ai-lesson-preparation-prompt)
 - [生成AIガイドラインVer.2.0を学校現場向けに読む：先生が押さえたい5つの視点](/articles/generative-ai-guideline-v2-school-reading)
 - [教育AIサービスを学校で使う前に確認したいこと｜個人情報・規約・安全性のチェックリスト](/articles/education-ai-service-checklist-before-use)
 - [カテゴリ：AI校務改善](/categories/ai-koomu)
-- [教員研修を校内で進める方法](/articles/generative-ai-guideline-v2-school-reading)
-- [無料ICT教材・支援ツールを安全に使うチェックポイント](/articles/education-ai-service-checklist-before-use)
-- [生成AI校内研修の進め方](/articles/generative-ai-guideline-v2-school-reading)
 
 ---
 

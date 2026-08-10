@@ -55,7 +55,7 @@ ICT支援ツールを選ぶ基準は、「便利そうかどうか」ではあ�
 
 注意点：ツールを使うことでかえって画面に注意が向きすぎることもあります。紙のスケジュール表や具体物と組み合わせて使う方法も有効です。
 
-→ 視覚スケジュールの活用については[特別支援教育での視覚スケジュール・構造化支援の実践](/articles/special-needs-visual-schedule-support)もご参照ください。
+→ 視覚スケジュールの活用については[特別支援教育における見通し支援：スケジュール・手順表・視覚支援の使い方](/articles/special-needs-visual-schedule-support)もご参照ください。
 
 ### 2. コミュニケーション支援（AAC）
 
@@ -242,4 +242,3 @@ ICT支援ツールの選択と活用は、子どもの実態を一番よく知�
 - [特別支援教育でICTを活用する：タブレット・AAC・読み上げソフトの選び方](/articles/tokubetsu-shien-ict)
 - [GIGAスクール端末を授業で活かす基本](/articles/giga-device-lesson-use-guide)
 - [学校で生成AIを使うときの個人情報・セキュリティの注意点](/articles/school-generative-ai-privacy-security)
-- [教員のためのChatGPT入門](/articles/school-generative-ai-privacy-security)

@@ -200,7 +200,7 @@ AIはあくまで案を出す道具であり、最終的な判断と説明は人
 
 一度にすべてを整えるのが難しい場合は、**まず個人情報を入力しない安全な使い方から、小さく試す**のが現実的です。
 
-→ 校務での安全な活用例は[AIで変わる校務改善：教員の残業を減らす5つの活用法](/articles/ai-lesson-preparation-prompt)を参考にしてください。
+→ 授業準備でのAI活用例は[授業準備をAIで時短する方法：教材研究・導入・発問づくりの実践例](/articles/ai-lesson-preparation-prompt)を参考にしてください。
 
 ---
 
@@ -208,7 +208,7 @@ AIはあくまで案を出す道具であり、最終的な判断と説明は人
 
 - [学校で生成AIを使うときの個人情報・セキュリティの注意点【教員向け】](/articles/school-generative-ai-privacy-security)
 - [生成AIガイドラインVer.2.0を学校現場向けに読む：先生が押さえたい5つの視点](/articles/generative-ai-guideline-v2-school-reading)
-- [AIで変わる校務改善：教員の残業を減らす5つの活用法](/articles/ai-lesson-preparation-prompt)
+- [授業準備をAIで時短する方法：教材研究・導入・発問づくりの実践例](/articles/ai-lesson-preparation-prompt)
 - [特別支援教育におけるICT活用と合理的配慮｜現場で確認したい視点](/articles/special-needs-ict-reasonable-accommodation)
 - [カテゴリ：教材・支援ツール](/categories/kyozai)
 - [カテゴリ：AI校務改善](/categories/ai-koomu)
