@@ -3,6 +3,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
 import matter from 'gray-matter';
+import { remark } from 'remark';
+import remarkGfm from 'remark-gfm';
+import remarkHtml from 'remark-html';
 
 const root = process.cwd();
 const read = (relativePath) => fs.readFileSync(path.join(root, relativePath), 'utf8');
@@ -141,6 +144,26 @@ test('every published article has article-specific references', () => {
   }
   assert.match(read('components/ArticleReferences.tsx'), /rel="noopener noreferrer"/);
   assert.match(read('components/ArticleReferences.tsx'), /最終確認/);
+});
+
+test('published articles render every ** emphasis (no literal asterisks for readers)', async () => {
+  // CommonMark の delimiter 規則により、`**…。**文字` や `文字**「…` のように
+  // 強調の境界が句読点・括弧に接すると strong が閉じず、読者に ** がそのまま見える。
+  // 日本語では「**「…」**です」が典型で、実サイトと同じ pipeline でしか検出できない。
+  const broken = [];
+  for (const article of published) {
+    const html = String(
+      await remark().use(remarkGfm).use(remarkHtml, { sanitize: false }).process(article.content),
+    );
+    // Markdown 構文を意図的に見せるコードブロック・インラインコードは対象外。
+    const visible = html
+      .replace(/<pre[\s\S]*?<\/pre>/g, '')
+      .replace(/<code[\s\S]*?<\/code>/g, '')
+      .replace(/<[^>]+>/g, '');
+    const count = (visible.match(/\*\*/g) ?? []).length;
+    if (count > 0) broken.push(`${article.slug}: ${count} literal ** markers`);
+  }
+  assert.deepEqual(broken, []);
 });
 
 test('operator experience notes match confirmed experience (C articles excluded)', () => {
