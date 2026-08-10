@@ -180,6 +180,12 @@ const sources = {
 } satisfies Record<string, ArticleReference>;
 
 export const ARTICLE_REFERENCES: Record<string, ArticleReference[]> = {
+  'ai-class-newsletter-prompt': [
+    sources.generativeAiGuideline,
+    sources.ppcAiNotice,
+    sources.aiCopyright,
+    sources.personalInfoActDefinitions,
+  ],
   'ai-koomu-kaizen-nyumon': [
     sources.generativeAiGuideline,
     sources.ppcAiNotice,
