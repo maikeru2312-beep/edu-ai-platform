@@ -84,7 +84,7 @@ test('published articles do not link to themselves', () => {
 
 test('the review scope is deliberately reduced and focused', () => {
   assert.equal(articles.size, 30);
-  assert.equal(published.length, 20);
+  assert.equal(published.length, 21);
   const categories = new Set(published.map((article) => article.category));
   assert.equal(categories.has('助成金・補助金'), false);
   assert.equal(categories.has('研修・セミナー'), false);
@@ -95,7 +95,6 @@ test('all MERGE articles have exact 301 targets and UNPUBLISH articles do not', 
   // slug の存在だけでなく 301 先まで exact に検証する（現在の middleware の受入条件）。
   const mergeTargets = {
     'chatgpt-teacher-beginner-guide': 'ai-koomu-kaizen-nyumon',
-    'free-ict-tools-safety-checklist': 'ict-teaching-tools-selection-guide',
     'giga-school-device-troubleshooting': 'giga-device-lesson-use-guide',
     'kyoiku-dx-kiso': 'giga-device-lesson-use-guide',
     'microsoft-copilot-teacher-guide': 'education-ai-service-checklist-before-use',
@@ -105,6 +104,7 @@ test('all MERGE articles have exact 301 targets and UNPUBLISH articles do not', 
   const restoredSlugs = [
     'special-needs-parent-collaboration', 'ai-koomu-kaizen-nyumon', 'ai-class-newsletter-prompt',
     'information-morals-education-themes', 'google-forms-school-use-guide',
+    'free-ict-tools-safety-checklist',
   ];
   const unpublishSlugs = [
     'education-grant-search-guide', 'generative-ai-school-training-guide',
@@ -124,7 +124,7 @@ test('all MERGE articles have exact 301 targets and UNPUBLISH articles do not', 
     );
     assert.notEqual(targetArticle.published, false, `${slug} -> unpublished target: ${target}`);
   }
-  // middleware に載る legacy redirect は上記の 6 件だけ。
+  // middleware に載る legacy redirect は上記の 5 件だけ。
   assert.deepEqual(
     [...middleware.matchAll(/'([a-z0-9-]+)': '([a-z0-9-]+)'/g)].map((m) => m[1]).sort(),
     Object.keys(mergeTargets).sort(),
