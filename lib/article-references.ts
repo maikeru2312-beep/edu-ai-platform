@@ -9,6 +9,9 @@ export type ArticleReference = {
 
 const checkedAt = '2026-07-21';
 
+// 内閣府「障害を理由とする差別の解消の推進に関する基本方針」を確認した日（第6回クロージャ）
+const basicPolicyCheckedAt = '2026-08-22';
+
 // 保護者面談記事のために e-Gov 法令検索で条文本文を確認した日
 const parentCollaborationCheckedAt = '2026-08-10';
 
@@ -90,6 +93,15 @@ const sources = {
     url: 'https://www.mext.go.jp/a_menu/shotou/tokubetu/material/1340250_00005.htm',
     checkedAt,
     supports: '個別の教育支援計画・個別の指導計画の役割と作成・活用プロセス',
+  },
+  disabilityBasicPolicy: {
+    title: '障害を理由とする差別の解消の推進に関する基本方針',
+    publisher: '内閣府（閣議決定）',
+    publishedOrUpdatedAt: '2023-03-14（令和5年3月14日閣議決定）',
+    url: 'https://www8.cao.go.jp/shougai/suishin/sabekai.html',
+    checkedAt: basicPolicyCheckedAt,
+    supports:
+      '合理的配慮の「過重な負担」の判断要素、および意思の表明に関する考え方（本人を補佐して行う表明を含む点、表明が無い場合の建設的対話）。障害者差別解消法第6条に基づき政府が定める方針で、各府省の対応指針・地方公共団体等の対応要領はこれを踏まえて定められる',
   },
   accommodationGuideline: {
     title: '文部科学省所管事業分野における障害を理由とする差別の解消の推進に関する対応指針',
@@ -340,9 +352,17 @@ export const ARTICLE_REFERENCES: Record<string, ArticleReference[]> = {
     sources.individualPlan,
     sources.tsukyuGuide,
   ],
-  'reasonable-accommodation-school-record': [sources.accommodationGuideline, sources.individualPlan],
+  'reasonable-accommodation-school-record': [
+    sources.disabilityBasicPolicy,
+    sources.accommodationGuideline,
+    sources.individualPlan,
+  ],
   'special-needs-behavior-record-guide': [sources.behaviorResearch, sources.individualPlan],
-  'special-needs-ict-reasonable-accommodation': [sources.accommodationGuideline, sources.specialNeedsIct],
+  'special-needs-ict-reasonable-accommodation': [
+    sources.disabilityBasicPolicy,
+    sources.accommodationGuideline,
+    sources.specialNeedsIct,
+  ],
   'special-needs-ict-support-tools-checklist': [
     sources.specialNeedsIct,
     sources.accommodationGuideline,
@@ -351,6 +371,7 @@ export const ARTICLE_REFERENCES: Record<string, ArticleReference[]> = {
   ],
   'special-needs-parent-collaboration': [
     sources.disabilityDiscriminationAct,
+    sources.disabilityBasicPolicy,
     sources.schoolEducationRule134,
     sources.personalInfoAct,
     sources.childAbusePreventionAct,
