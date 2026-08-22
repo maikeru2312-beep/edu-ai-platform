@@ -21,11 +21,17 @@ export default function HomePage() {
     allArticles.some((article) => article.category === cat),
   );
   const specialNeedsArticles = getArticlesByCategory('特別支援教育').slice(0, 3);
-  const recentlyUpdated = [...getAllArticles()]
-    .sort((a, b) =>
-      (b.updatedAt ?? b.publishedAt).localeCompare(a.updatedAt ?? a.publishedAt),
-    )
-    .slice(0, 4);
+  // 全記事の最終確認日が同じとき（サイト全体を見直した直後など）、この一覧は
+  // 「最近更新した」という情報を何も伝えないので出さない。
+  const updateDates = new Set(allArticles.map((a) => a.updatedAt ?? a.publishedAt));
+  const recentlyUpdated =
+    updateDates.size < 2
+      ? []
+      : [...allArticles]
+          .sort((a, b) =>
+            (b.updatedAt ?? b.publishedAt).localeCompare(a.updatedAt ?? a.publishedAt),
+          )
+          .slice(0, 4);
 
   return (
     <div>

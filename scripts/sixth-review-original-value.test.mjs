@@ -433,3 +433,39 @@ test('canonical articles are not all cast from one template', () => {
   }
   assert.deepEqual(formulaic, []);
 });
+
+test('the article skeleton does not become more uniform than it already is', () => {
+  // 見出し文字列だけを見ていると、本文レベルの反復（同じ骨格の使い回し）を見落とす。
+  // 骨格の要素ごとに現状値を上限として固定し、鋳型が「増える」方向の変更を落とす。
+  //
+  // 減らす対象にしないもの（指示書 §12 の「必要な共通 security/legal note は共有してよい」）:
+  //   - 「本サイト作成の参考様式」… 公式様式との誤認を防ぐ注記。様式を持つ記事には必要
+  //   - 「完全な架空」          … 架空例が実例と誤読されるのを防ぐ注記。省くほうが危険
+  // これらは件数の増加だけを監視し、削減は求めない。
+  const count = (re) => published.filter((a) => re.test(a.content)).length;
+
+  const measured = {
+    fictionalNotice: count(/完全な架空/),
+    formTemplateNotice: count(/本サイト作成の参考様式/),
+    scopeLimitSection: count(/^## (?:この記事の適用限界|この記事で決まらないこと|この手順で決められないこと)/m),
+    bodyReferences: count(/^## 参考資料\s*$/m),
+  };
+
+  // 記事下部の参考資料はコンポーネントが描画する。本文にも置くと同じ H2 が1ページに2回出る。
+  assert.equal(measured.bodyReferences, 0, '本文の「## 参考資料」はコンポーネントへ一本化する');
+
+  // 以下は現状値を上限とするラチェット。増えたら鋳型が強まったということ。
+  assert.ok(measured.fictionalNotice <= 10, `架空注記の反復: ${measured.fictionalNotice}/15`);
+  assert.ok(measured.formTemplateNotice <= 12, `参考様式注記の反復: ${measured.formTemplateNotice}/15`);
+  assert.ok(measured.scopeLimitSection <= 6, `適用限界節の反復: ${measured.scopeLimitSection}/15`);
+
+  // 導入部が「扱わないことの列挙」で始まる記事が過半に達すると、
+  // どの記事も同じ入り方に見える。半数未満に抑える。
+  const scopeOpeners = published.filter((a) =>
+    /(だけを扱|は扱いません|別記事へ|へ委ね|引き受けない)/.test(a.content.split('\n').slice(0, 30).join('\n')),
+  );
+  assert.ok(
+    scopeOpeners.length <= 9,
+    `冒頭でスコープ宣言する記事が多すぎる: ${scopeOpeners.length}/15 (${scopeOpeners.map((a) => a.slug)})`,
+  );
+});
