@@ -5,6 +5,7 @@ category: "AI校務改善"
 tags: ["生成AI", "ガイドライン", "文部科学省", "ChatGPT", "校務改善", "情報モラル", "学校AI", "個人情報"]
 publishedAt: "2026-06-27"
 updatedAt: "2026-07-09"
+published: false
 ---
 
 ## はじめに

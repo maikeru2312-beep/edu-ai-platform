@@ -4,11 +4,15 @@ import { getAllArticles } from '@/lib/articles';
 import { CATEGORIES, CATEGORY_TO_SLUG } from '@/lib/categories';
 import ArticleCard from '@/components/ArticleCard';
 
+const LIST_DESCRIPTION =
+  '特別支援教育を中心とした学校実務で、ICT・生成AI・支援・記録をどう判断するかを扱う記事の一覧です。'
+  + '各記事に確認手順と、そのまま使える様式・判断表を掲載しています。';
+
 export const metadata: Metadata = {
   title: '記事一覧',
-  description: '特別支援教育・ICT活用・AI校務改善など教育DXに関する記事一覧です。',
+  description: LIST_DESCRIPTION,
   alternates: { canonical: '/articles' },
-  openGraph: { type: 'website', url: '/articles', title: '記事一覧 | 教育DXナビ', description: '特別支援教育・ICT活用・AI校務改善など教育DXに関する記事一覧です。' },
+  openGraph: { type: 'website', url: '/articles', title: '記事一覧 | 教育DXナビ', description: LIST_DESCRIPTION },
 };
 
 export default function ArticlesPage() {
@@ -20,8 +24,13 @@ export default function ArticlesPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-1">記事一覧</h1>
-        <p className="text-gray-500 text-sm">全 {articles.length} 件</p>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">記事一覧</h1>
+        <p className="text-gray-600 text-sm leading-relaxed max-w-3xl">
+          特別支援教育を中心とした学校実務について、確認手順と判断の分かれ目を扱う記事です。
+          記事数を増やすことは目的にしていません。1本ずつ、扱う場面と、
+          そのまま使える様式・判断表を持たせています。
+        </p>
+        <p className="text-gray-400 text-xs mt-2">全 {articles.length} 件</p>
       </div>
 
       {/* カテゴリフィルター */}

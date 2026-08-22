@@ -7,13 +7,16 @@ import { getSiteUrl } from '@/lib/site';
 
 const SITE_URL = getSiteUrl();
 const SITE_NAME = '教育DXナビ';
+const SITE_TAGLINE = '特別支援教育と学校実務の判断ガイド';
 const SITE_DESCRIPTION =
-  '教員向けに、ICT活用・校務効率化・生成AI活用・特別支援教育の実践知をわかりやすく整理するサイト。';
+  '特別支援教育を中心とした学校実務で、ICT・生成AI・支援・記録をどう判断し実行するかを、'
+  + '公的資料と実務上の確認手順から整理する教員向けサイト。計画・記録・面談・支援ツール選定・'
+  + '校務での生成AI利用について、確認手順と判断の様式を掲載しています。';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} | 教員向けICT活用・校務効率化・生成AI活用情報`,
+    default: `${SITE_NAME} | ${SITE_TAGLINE}`,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -21,7 +24,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'ja_JP',
     siteName: SITE_NAME,
-    title: `${SITE_NAME} | 教員向けICT活用・校務効率化・生成AI活用情報`,
+    title: `${SITE_NAME} | ${SITE_TAGLINE}`,
     description: SITE_DESCRIPTION,
     images: [
       {
@@ -34,7 +37,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${SITE_NAME} | 教員向けICT活用・校務効率化・生成AI活用情報`,
+    title: `${SITE_NAME} | ${SITE_TAGLINE}`,
     description: SITE_DESCRIPTION,
     images: [`${SITE_URL}/opengraph-image`],
   },

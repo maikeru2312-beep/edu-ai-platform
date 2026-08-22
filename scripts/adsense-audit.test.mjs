@@ -69,7 +69,7 @@ test('sitemap and listings use the shared published article reader', () => {
 test('published articles do not link to unpublished or missing articles', () => {
   const broken = [];
   for (const article of published) {
-    for (const match of article.content.matchAll(/\]\(\/articles\/([a-z0-9-]+)(?:[)#?][^)]*)?\)/g)) {
+    for (const match of article.content.matchAll(/\]\(\/articles\/([a-z0-9-]+)(?:[#?][^)]*)?\)/g)) {
       const target = articles.get(match[1]);
       if (!target || target.published === false) broken.push(`${article.slug} -> ${match[1]}`);
     }
@@ -87,28 +87,54 @@ test('published articles do not link to themselves', () => {
 
 test('the review scope is deliberately reduced and focused', () => {
   assert.equal(articles.size, 30);
-  assert.equal(published.length, 21);
+  // 第6回審査で 21 → 15 へ絞った（統合5件・退役1件）。記事を増やす方向の変更を検出する。
+  assert.equal(published.length, 15);
   const categories = new Set(published.map((article) => article.category));
   assert.equal(categories.has('助成金・補助金'), false);
   assert.equal(categories.has('研修・セミナー'), false);
+  // 特別支援教育がサイトの専門軸であることを、記事分布の側でも固定する。
+  // 着手時は AI校務改善 6 / 特別支援教育 7 で、生成AI寄りのサイトに見えていた。
+  const byCategory = new Map();
+  for (const article of published) {
+    byCategory.set(article.category, (byCategory.get(article.category) ?? 0) + 1);
+  }
+  const ranked = [...byCategory].sort((a, b) => b[1] - a[1]);
+  assert.equal(ranked[0][0], '特別支援教育', `最大カテゴリが特別支援教育でない: ${JSON.stringify(ranked)}`);
+  assert.ok(
+    ranked[0][1] > ranked[1][1],
+    `特別支援教育が単独で最大であること: ${JSON.stringify(ranked)}`,
+  );
 });
 
 test('all MERGE articles have exact 301 targets and UNPUBLISH articles do not', () => {
   const middleware = read('middleware.ts');
   // slug の存在だけでなく 301 先まで exact に検証する（現在の middleware の受入条件）。
   const mergeTargets = {
+    // 第3〜5回審査
     'chatgpt-teacher-beginner-guide': 'ai-koomu-kaizen-nyumon',
     'giga-school-device-troubleshooting': 'giga-device-lesson-use-guide',
     'kyoiku-dx-kiso': 'giga-device-lesson-use-guide',
     'microsoft-copilot-teacher-guide': 'education-ai-service-checklist-before-use',
     'tablet-ict-jugyo-giga': 'giga-device-lesson-use-guide',
+    // 第6回審査
+    'generative-ai-guideline-v2-school-reading': 'ai-koomu-kaizen-nyumon',
+    'school-generative-ai-privacy-security': 'ai-koomu-kaizen-nyumon',
+    'ai-lesson-preparation-prompt': 'ai-koomu-kaizen-nyumon',
+    'ict-teaching-tools-selection-guide': 'special-needs-ict-support-tools-checklist',
+    'tokubetsu-shien-ict': 'special-needs-ict-support-tools-checklist',
   };
   // RESTORE_REBUILD により公開へ戻した slug は 301 を持たない。
   const restoredSlugs = [
     'special-needs-parent-collaboration', 'ai-koomu-kaizen-nyumon', 'ai-class-newsletter-prompt',
-    'information-morals-education-themes', 'google-forms-school-use-guide',
-    'free-ict-tools-safety-checklist',
+    'google-forms-school-use-guide', 'free-ict-tools-safety-checklist',
   ];
+  // 第6回審査で退役（noindex）した slug は、意味的に正しい統合先が無いため 301 を持たない。
+  // 未公開だが redirect も無い＝404。fake redirect を作らないことを固定する。
+  const retiredSlugs = ['information-morals-education-themes'];
+  for (const slug of retiredSlugs) {
+    assert.equal(articles.get(slug)?.published, false, `${slug} が公開のまま`);
+    assert.doesNotMatch(middleware, new RegExp(`'${slug}':`), `${slug} に fake redirect がある`);
+  }
   const unpublishSlugs = [
     'education-grant-search-guide', 'generative-ai-school-training-guide',
     'joseikin-guide-2025', 'school-training-ict-ai-guide',
@@ -168,24 +194,32 @@ test('published articles render every ** emphasis (no literal asterisks for read
 
 test('operator experience notes match confirmed experience (C articles excluded)', () => {
   const notes = read('lib/article-experience-notes.ts');
-  // 経験A/B と確認された15記事にのみ注記を付ける。
+  // 経験A/B と確認された canonical 記事にのみ注記を付ける。
+  // 統合で未公開にした記事の注記は残さない（未公開記事に注記が残ると、経験の境界が
+  // どの公開記事に対応するのか監査できなくなるため）。
   const withNote = [
-    'ai-koomu-kaizen-nyumon',
-    'ai-lesson-preparation-prompt', 'chatgpt-tsuchihyo-shoken',
+    'ai-koomu-kaizen-nyumon', 'chatgpt-tsuchihyo-shoken',
     'education-ai-service-checklist-before-use', 'giga-device-lesson-use-guide',
-    'ict-teaching-tools-selection-guide', 'individual-education-plan-writing-guide',
-    'reasonable-accommodation-school-record', 'school-generative-ai-privacy-security',
+    'individual-education-plan-writing-guide', 'reasonable-accommodation-school-record',
     'special-needs-behavior-record-guide', 'special-needs-ict-reasonable-accommodation',
     'special-needs-ict-support-tools-checklist', 'special-needs-parent-collaboration',
-    'special-needs-visual-schedule-support', 'tokubetsu-shien-ict',
+    'special-needs-visual-schedule-support',
   ];
   // 経験C（資料でのみ確認）の記事には実務経験注記を付けない。
   const withoutNote = [
-    'digital-textbook-introduction-school-changes',
-    'generative-ai-guideline-v2-school-reading',
+    'digital-textbook-introduction-school-changes', 'ai-class-newsletter-prompt',
+    'free-ict-tools-safety-checklist', 'google-forms-school-use-guide',
   ];
   for (const slug of withNote) assert.match(notes, new RegExp(`'${slug}':`));
   for (const slug of withoutNote) assert.doesNotMatch(notes, new RegExp(`'${slug}':`));
+  // 注記の集合は「公開記事のうち経験A/Bのもの」と過不足なく一致すること。
+  const noteKeys = [...notes.matchAll(/^ {2}'([a-z0-9-]+)':/gm)].map((m) => m[1]);
+  assert.deepEqual(noteKeys.sort(), [...withNote].sort());
+  assert.deepEqual(
+    [...withNote, ...withoutNote].sort(),
+    published.map((a) => a.slug).sort(),
+    '経験の分類が公開記事の集合を網羅していること',
+  );
   // 注記は記事詳細で描画される。
   assert.match(read('app/articles/[slug]/page.tsx'), /<ArticleExperienceNote slug=\{article\.slug\} \/>/);
 });

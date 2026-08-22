@@ -2,7 +2,12 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getAllArticles, getArticlesByCategory } from '@/lib/articles';
-import { CATEGORY_SLUGS, CATEGORY_TO_SLUG, CATEGORIES } from '@/lib/categories';
+import {
+  CATEGORY_SLUGS,
+  CATEGORY_TO_SLUG,
+  CATEGORIES,
+  CATEGORY_DESCRIPTIONS,
+} from '@/lib/categories';
 import ArticleCard from '@/components/ArticleCard';
 import CategoryBadge from '@/components/CategoryBadge';
 
@@ -25,15 +30,16 @@ export async function generateMetadata({
   if (articles.length === 0) {
     return { title: 'カテゴリが見つかりません', robots: { index: false, follow: false } };
   }
+  const description = CATEGORY_DESCRIPTIONS[category];
   return {
     title: `${category}の記事一覧`,
-    description: `${category}に関する教育DXの記事をまとめています。`,
+    description,
     alternates: { canonical: `/categories/${slug}` },
     openGraph: {
       type: 'website',
       url: `/categories/${slug}`,
       title: `${category}の記事一覧 | 教育DXナビ`,
-      description: `${category}に関する教育DXの記事をまとめています。`,
+      description,
     },
   };
 }
@@ -71,11 +77,17 @@ export default async function CategoryPage({
         <div className="mb-3">
           <CategoryBadge category={category} />
         </div>
-        <h1 className="text-3xl font-bold text-gray-900 mb-1">{category}</h1>
-        <p className="text-gray-500 text-sm">全 {articles.length} 件</p>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">{category}</h1>
+        <p className="text-gray-600 text-sm leading-relaxed max-w-3xl">
+          {CATEGORY_DESCRIPTIONS[category]}
+        </p>
+        <p className="text-gray-400 text-xs mt-2">全 {articles.length} 件</p>
       </div>
 
       {/* 他カテゴリへのリンク */}
+      <p className="text-xs text-gray-400 mb-2">
+        いずれも「特別支援教育を含む学校実務での判断」を扱う区分です
+      </p>
       <div className="flex flex-wrap gap-2 mb-8">
         {activeCategories.filter((c) => c !== category).map((c) => (
           <Link

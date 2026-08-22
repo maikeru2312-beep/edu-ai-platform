@@ -12,8 +12,8 @@ export default function Footer() {
               <span className="font-bold text-white text-lg">教育DXナビ</span>
             </div>
             <p className="text-sm leading-relaxed">
-              特別支援教育・ICT活用・AI校務改善に関する情報を収集・整理し、
-              教育現場のDXを支援する個人運営の情報メディアです。
+              特別支援教育を中心とした学校実務で、ICT・生成AI・支援・記録を
+              どう判断し実行するかを、公的資料と確認手順から整理している個人運営のサイトです。
             </p>
           </div>
           <div>
@@ -60,7 +60,7 @@ export default function Footer() {
         <div className="border-t border-gray-800 mt-8 pt-8 text-xs">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
             <p>
-              © {year} 教育DXナビ — 個人運営の教育情報サイト。勤務先・自治体・学校を代表するものではありません。
+              © {year} 教育DXナビ — 個人運営。勤務先・自治体・学校を代表するものではありません。
             </p>
           </div>
         </div>

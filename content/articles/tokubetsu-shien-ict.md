@@ -5,6 +5,7 @@ category: "特別支援教育"
 tags: ["特別支援教育", "ICT活用", "タブレット", "AAC", "読み上げ", "合理的配慮", "GIGAスクール", "アクセシビリティ"]
 publishedAt: "2025-05-20"
 updatedAt: "2026-06-17"
+published: false
 ---
 
 ## はじめに

@@ -106,14 +106,15 @@ export default async function ArticleDetailPage({
       <ArticleReferences slug={article.slug} />
       <ArticleExperienceNote slug={article.slug} />
 
-      {/* 案内役 */}
+      {/* 編集方針・確認プロセス。
+          著者位置には運営者の責任表明を先に置き、編集キャラクターはその後に回す。 */}
       <div className="mt-10">
-        <ChifuyuProfileCard variant="compact" />
+        <EditorialPolicy />
       </div>
 
-      {/* 編集方針・確認プロセス */}
+      {/* 案内役（編集キャラクター。著者ではない旨はカード内で開示している） */}
       <div className="mt-4">
-        <EditorialPolicy />
+        <ChifuyuProfileCard variant="compact" />
       </div>
 
       {relatedArticles.length > 0 && (
