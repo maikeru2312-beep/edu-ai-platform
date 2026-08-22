@@ -43,8 +43,9 @@ export default function ContactPage() {
           ) : (
             <div className="bg-gray-50 border border-gray-200 rounded-lg p-5">
               <p className="text-sm text-gray-700">
-                お問い合わせ窓口の準備を進めています。
-                お急ぎの場合は、サイト内各記事のコメント欄等をご利用ください。
+                現在、お問い合わせフォームを準備中です。
+                内容の誤り・リンク切れのご指摘は、フォーム公開後に受け付けます。
+                お手数ですが、しばらく経ってから再度このページをご確認ください。
               </p>
             </div>
           )}
