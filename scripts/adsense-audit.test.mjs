@@ -69,7 +69,7 @@ test('sitemap and listings use the shared published article reader', () => {
 test('published articles do not link to unpublished or missing articles', () => {
   const broken = [];
   for (const article of published) {
-    for (const match of article.content.matchAll(/\]\(\/articles\/([a-z0-9-]+)(?:[)#?][^)]*)?\)/g)) {
+    for (const match of article.content.matchAll(/\]\(\/articles\/([a-z0-9-]+)(?:[#?][^)]*)?\)/g)) {
       const target = articles.get(match[1]);
       if (!target || target.published === false) broken.push(`${article.slug} -> ${match[1]}`);
     }
