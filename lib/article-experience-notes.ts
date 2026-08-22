@@ -15,10 +15,6 @@ const ARTICLE_EXPERIENCE_NOTES: Record<string, ArticleExperienceNote> = {
     scope: 'A',
     note: '運営者は、授業案・教材のたたき台に生成AIを用い、その際の個人情報の取扱いや校内ルールへの配慮を検討した経験に基づいて、本記事の判断手順を整理しています。通知表所見・学級通信・会議記録・アンケート整理を含め、掲載する5業務で生成AIを利用した経験を示すものではありません。',
   },
-  'ai-lesson-preparation-prompt': {
-    scope: 'A',
-    note: '運営者は、授業案や教材のたたき台に生成AIを用い、学習目標・児童生徒の実態・原資料に照らして内容を確認・修正した経験に基づいて、本記事の手順を整理しています。用途によっては確認に時間がかかる場合もあります。',
-  },
   'chatgpt-tsuchihyo-shoken': {
     scope: 'A',
     note: '運営者は、通知表所見の作成・確認業務に携わった経験に基づいて本記事を整理しています。生成AIの利用は匿名化したたたき台に限り、事実確認と校内での確認は人が行う前提です。',
@@ -31,10 +27,6 @@ const ARTICLE_EXPERIENCE_NOTES: Record<string, ArticleExperienceNote> = {
     scope: 'A',
     note: '運営者は、1人1台端末を使った授業の設計・支援に携わった経験に基づいて本記事を整理しています。活用の効果や到達度は、学年・教科・環境によって異なります。',
   },
-  'ict-teaching-tools-selection-guide': {
-    scope: 'A',
-    note: '運営者は、ICT教材・支援ツールを授業目的に応じて選定・試用した経験に基づいて本記事を整理しています。',
-  },
   'individual-education-plan-writing-guide': {
     scope: 'A',
     note: '運営者は、個別の指導計画等の作成・評価・引継ぎに携わった経験に基づいて本記事を整理しています。様式や作成手順は学校・自治体・設置者によって異なります。',
@@ -42,10 +34,6 @@ const ARTICLE_EXPERIENCE_NOTES: Record<string, ArticleExperienceNote> = {
   'reasonable-accommodation-school-record': {
     scope: 'B',
     note: '運営者は、合理的配慮の検討や記録に関わった経験に基づいて本記事を整理しています。相談・合意形成・記録の方法は学校・設置者によって異なります。',
-  },
-  'school-generative-ai-privacy-security': {
-    scope: 'A',
-    note: '運営者は、校務情報を生成AIに入力する際の個人情報・校内ルールの確認に携わった経験に基づいて本記事を整理しています。',
   },
   'special-needs-behavior-record-guide': {
     scope: 'A',
@@ -66,10 +54,6 @@ const ARTICLE_EXPERIENCE_NOTES: Record<string, ArticleExperienceNote> = {
   'special-needs-visual-schedule-support': {
     scope: 'A',
     note: '運営者は、スケジュールや手順表などの視覚支援を作成・見直した経験に基づいて本記事を整理しています。支援の合う・合わないは本人により異なるため、記録して調整する前提です。',
-  },
-  'tokubetsu-shien-ict': {
-    scope: 'A',
-    note: '運営者は、コミュニケーションカード等のAACを含む支援に携わった経験に基づいて本記事を整理しています。各機能は本人のニーズと試用結果から選ぶものとして整理しており、掲載した機能のすべてを実践したことを示すものではありません。',
   },
 };
 

@@ -45,7 +45,7 @@ updatedAt: "2026-07-09"
 
 個人情報を含めずにAIを使う具体的な工夫は、別記事に整理しています。
 
-→ [学校で生成AIを使うときの個人情報・セキュリティの注意点【教員向け】](/articles/school-generative-ai-privacy-security)
+→ [学校の校務で生成AIを使う前の判断ガイド](/articles/ai-koomu-kaizen-nyumon)の Gate 2（何を入力するか）
 
 ---
 
@@ -98,7 +98,7 @@ AIが生成した文章・画像・教材を学校で使うときは、**著作�
 
 AIはあくまで案を出す道具であり、最終的な判断と説明は人間（教員）が担う——この原則は、文部科学省のガイドラインでも繰り返し示されている考え方です。
 
-→ ガイドラインの読み方は[生成AIガイドラインVer.2.0を学校現場向けに読む：先生が押さえたい5つの視点](/articles/generative-ai-guideline-v2-school-reading)で詳しく扱っています。
+→ ガイドライン原本のどこを読むかは[学校の校務で生成AIを使う前の判断ガイド](/articles/ai-koomu-kaizen-nyumon)で扱っています。
 
 ---
 
@@ -200,15 +200,13 @@ AIはあくまで案を出す道具であり、最終的な判断と説明は人
 
 一度にすべてを整えるのが難しい場合は、**まず個人情報を入力しない安全な使い方から、小さく試す**のが現実的です。
 
-→ 授業準備でのAI活用例は[授業準備をAIで時短する方法：教材研究・導入・発問づくりの実践例](/articles/ai-lesson-preparation-prompt)を参考にしてください。
+→ 導入したあと、個々の校務でどこまで任せるかは[学校の校務で生成AIを使う前の判断ガイド](/articles/ai-koomu-kaizen-nyumon)の4つのゲートで判断します。
 
 ---
 
 ## 12. 関連記事
 
-- [学校で生成AIを使うときの個人情報・セキュリティの注意点【教員向け】](/articles/school-generative-ai-privacy-security)
-- [生成AIガイドラインVer.2.0を学校現場向けに読む：先生が押さえたい5つの視点](/articles/generative-ai-guideline-v2-school-reading)
-- [授業準備をAIで時短する方法：教材研究・導入・発問づくりの実践例](/articles/ai-lesson-preparation-prompt)
+- [学校の校務で生成AIを使う前の判断ガイド：5業務の使い分けと確認手順](/articles/ai-koomu-kaizen-nyumon)
 - [特別支援教育におけるICT活用と合理的配慮｜現場で確認したい視点](/articles/special-needs-ict-reasonable-accommodation)
 - [カテゴリ：教材・支援ツール](/categories/kyozai)
 - [カテゴリ：AI校務改善](/categories/ai-koomu)

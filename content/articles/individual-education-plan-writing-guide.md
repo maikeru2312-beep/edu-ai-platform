@@ -299,7 +299,7 @@ updatedAt: "2026-07-09"
 - **環境調整**：「視覚的な刺激が少ない窓際の座席を基本とする。周囲の音が気になるときはイヤーマフを使用できる環境を整える」
 - **ICTの活用**：「タブレットの読み上げ機能で教科書本文を聴いてから書き取りに取り組む。写真で今日の時間割を確認できるよう、朝の会前に画面を見せる」
 
-ICT活用に関連する詳しい内容は [特別支援教育でICTを活用する](/articles/tokubetsu-shien-ict) もご参照ください。
+ICT支援ツールの選び方は [特別支援教育の支援ツールを選ぶ手順](/articles/special-needs-ict-support-tools-checklist) もご参照ください。
 
 ---
 
@@ -397,7 +397,7 @@ ICTを計画に取り入れる際は、以下の点にも注意が必要です�
 - 個人情報に関わるデータ（写真・動画・学習記録など）の取り扱いに注意する
 - 特定のアプリや機能が使えなくなった場合の代替手段も考えておく
 
-ICTの活用に関する詳しい内容は [特別支援教育でICTを活用する](/articles/tokubetsu-shien-ict) もご参照ください。
+ICT支援ツールの選定手順は [特別支援教育の支援ツールを選ぶ手順](/articles/special-needs-ict-support-tools-checklist) もご参照ください。
 
 ---
 
@@ -445,7 +445,7 @@ ICTの活用に関する詳しい内容は [特別支援教育でICTを活用す
 
 個別の教育支援計画・個別の指導計画の文書や、その内容の一部（個人名・学校名・診断名・支援内容・家庭状況など）を生成AIのチャットサービスに入力することは避けてください。入力した情報がどのように利用・保存されるかが不明確なサービスへの入力は、個人情報の漏洩リスクを伴います。
 
-生成AIの学校での利用に関する注意点については [学校で生成AIを使うときの個人情報・セキュリティの注意点](/articles/school-generative-ai-privacy-security) もご参照ください。
+生成AIの校務利用の判断手順については [学校の校務で生成AIを使う前の判断ガイド](/articles/ai-koomu-kaizen-nyumon) もご参照ください。
 
 ---
 
@@ -610,9 +610,9 @@ ICTの活用に関する詳しい内容は [特別支援教育でICTを活用す
 この記事で触れた関連テーマについて、以下の記事も参考にしてください。
 
 - [合理的配慮の申請と記録：学校現場での進め方ガイド](/articles/reasonable-accommodation-school-record)
-- [特別支援教育でICTを活用する：タブレット・AAC・読み上げソフトの選び方](/articles/tokubetsu-shien-ict)
+- [特別支援教育の支援ツールを選ぶ手順：困りごとの観察から試用・見直しまで](/articles/special-needs-ict-support-tools-checklist)
 - [特別支援教育におけるICT活用と合理的配慮｜現場で確認したい視点](/articles/special-needs-ict-reasonable-accommodation)
-- [学校で生成AIを使うときの個人情報・セキュリティの注意点](/articles/school-generative-ai-privacy-security)
+- [学校の校務で生成AIを使う前の判断ガイド：5業務の使い分けと確認手順](/articles/ai-koomu-kaizen-nyumon)
 - [デジタル教科書の本格導入で学校現場は何が変わるか：紙との使い分けと特別支援の視点](/articles/digital-textbook-introduction-school-changes)
 - [特別支援教育における見通し支援](/articles/special-needs-visual-schedule-support)
 - [特別支援教育における行動記録の取り方](/articles/special-needs-behavior-record-guide)

@@ -14,9 +14,9 @@ updatedAt: "2026-08-10"
 **扱わないもの**（それぞれ別の記事が担当します）
 
 - 外部サービスを学校で使ってよいかの導入前確認 → [教育AIサービスを学校で使う前に確認したいこと｜個人情報・規約・安全性のチェックリスト](/articles/education-ai-service-checklist-before-use)
-- そもそもどのツールを選ぶか → [教員向けICT教材・支援ツールの選び方：授業と特別支援で使いやすい観点](/articles/ict-teaching-tools-selection-guide)
+- そもそもどのツールを選ぶか → [特別支援教育の支援ツールを選ぶ手順](/articles/special-needs-ict-support-tools-checklist)
 - 授業で端末をどう使うか、紙と端末の使い分け → [GIGAスクール端末を授業で活かす基本：一斉授業・個別学習・協働学習の使い分け](/articles/giga-device-lesson-use-guide)
-- 要配慮個人情報の定義など個人情報の枠組み → [学校で生成AIを使うときの個人情報・セキュリティの注意点【教員向け】](/articles/school-generative-ai-privacy-security)
+- 要配慮個人情報の定義など個人情報の枠組み → [学校の校務で生成AIを使う前の判断ガイド](/articles/ai-koomu-kaizen-nyumon)の Gate 2
 
 **操作手順書ではありません。** ボタンの位置や画面の見た目は変わります。この記事の中心は「何を決めるか」で、**現在の設定名とその挙動は末尾の1章にまとめ、確認日を付けています。**
 

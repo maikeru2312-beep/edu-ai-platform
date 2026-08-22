@@ -192,7 +192,7 @@ updatedAt: "2026-06-17"
 - 活動の見通しを視覚的に示す（スケジュール表・タイマー）
 - 不安が高まったときの休憩場所の確保
 
-→ ICTを活用した配慮の具体例については[特別支援教育でICTを活用する：タブレット・AAC・読み上げソフトの選び方](/articles/tokubetsu-shien-ict)をご参照ください。
+→ 配慮に使う支援ツールの選び方は[特別支援教育の支援ツールを選ぶ手順](/articles/special-needs-ict-support-tools-checklist)をご参照ください。
 
 ---
 
@@ -264,7 +264,7 @@ ICTは合理的配慮を実現する有効な手段のひとつですが、**「
 | 次に何があるかが不安 | スケジュールアプリ・タイマーで見通しを持つ |
 | 口頭での意思表出が難しい | AACアプリ・絵カードアプリで伝える |
 
-→ 特別支援教育でのICT活用の詳細は[特別支援教育でICTを活用する：タブレット・AAC・読み上げソフトの選び方](/articles/tokubetsu-shien-ict)をご参照ください。
+→ 支援ツールの選定と試用の手順は[特別支援教育の支援ツールを選ぶ手順](/articles/special-needs-ict-support-tools-checklist)をご参照ください。
 
 ---
 
@@ -284,7 +284,7 @@ ICTは合理的配慮を実現する有効な手段のひとつですが、**「
 
 合理的配慮の記録や相談内容を、メールや外部クラウドサービス・生成AIに入力する際は特に注意が必要です。氏名・診断名・家庭状況などの要配慮個人情報が含まれる内容は、**校内が許可した安全な環境のみで扱い、外部サービスには入力しない**ことを基本としてください。
 
-→ 個人情報と生成AIに関する詳細は[学校で生成AIを使うときの個人情報・セキュリティの注意点](/articles/school-generative-ai-privacy-security)をご参照ください。
+→ 個人情報と生成AIに関する詳細は[学校の校務で生成AIを使う前の判断ガイド](/articles/ai-koomu-kaizen-nyumon)の Gate 2 をご参照ください。
 
 ---
 
@@ -322,9 +322,9 @@ A. 学校内の定期テストでは、合意に基づいた配慮（時間延�
 
 ## 13. 関連記事・カテゴリ
 
-- [特別支援教育でICTを活用する：タブレット・AAC・読み上げソフトの選び方](/articles/tokubetsu-shien-ict)
+- [特別支援教育の支援ツールを選ぶ手順：困りごとの観察から試用・見直しまで](/articles/special-needs-ict-support-tools-checklist)
 - [GIGAスクール端末を授業で活かす基本：一斉授業・個別学習・協働学習の使い分け](/articles/giga-device-lesson-use-guide)
-- [学校で生成AIを使うときの個人情報・セキュリティの注意点](/articles/school-generative-ai-privacy-security)
+- [学校の校務で生成AIを使う前の判断ガイド：5業務の使い分けと確認手順](/articles/ai-koomu-kaizen-nyumon)
 - [個別の教育支援計画・個別の指導計画の書き方：学校現場で使える基本ガイド](/articles/individual-education-plan-writing-guide)
 - [デジタル教科書の本格導入で学校現場は何が変わるか：紙との使い分けと特別支援の視点](/articles/digital-textbook-introduction-school-changes)
 - [特別支援教育におけるICT活用と合理的配慮｜現場で確認したい視点](/articles/special-needs-ict-reasonable-accommodation)

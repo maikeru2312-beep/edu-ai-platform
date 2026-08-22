@@ -109,7 +109,7 @@ updatedAt: "2026-07-08"
 
 「デジタルなら誰にでもよい」のではなく、**その子の実態に合わせて選び、調整する**という基本は、ICT活用全般と同じです。
 
-→ 特別支援でのICT活用の全体像は[特別支援教育でICTを活用する：タブレット・AAC・読み上げソフトの選び方](/articles/tokubetsu-shien-ict)で詳しく扱っています。
+→ 読み上げや拡大などの機能を、その子の支援手段として選ぶ手順は[特別支援教育の支援ツールを選ぶ手順](/articles/special-needs-ict-support-tools-checklist)で扱っています。
 
 ---
 
@@ -178,7 +178,7 @@ updatedAt: "2026-07-08"
 ## 8. 関連記事
 
 - [GIGAスクール端末を授業でどう使い分けるか](/articles/giga-device-lesson-use-guide)
-- [特別支援教育でICTを活用する：タブレット・AAC・読み上げソフトの選び方](/articles/tokubetsu-shien-ict)
+- [特別支援教育の支援ツールを選ぶ手順：困りごとの観察から試用・見直しまで](/articles/special-needs-ict-support-tools-checklist)
 - [合理的配慮の申請と記録：学校現場での進め方ガイド](/articles/reasonable-accommodation-school-record)
 - [個別の教育支援計画・個別の指導計画の書き方](/articles/individual-education-plan-writing-guide)
 - [カテゴリ：ICT活用](/categories/ict)

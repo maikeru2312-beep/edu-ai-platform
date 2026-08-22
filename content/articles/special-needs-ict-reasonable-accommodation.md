@@ -15,7 +15,7 @@ updatedAt: "2026-07-08"
 
 > 本記事は一般的な考え方の整理です。合理的配慮の具体的な決定や支援内容は、本人・保護者・関係機関と連携のうえ、**所属校・教育委員会の方針に従って**判断してください。制度・運用は地域や学校により異なります。
 
-→ ツールそのものの選び方は[特別支援教育で使えるICT支援ツールの選び方](/articles/special-needs-ict-support-tools-checklist)、活用全般の入門は[特別支援教育でICTを活用する：タブレット・AAC・読み上げソフトの選び方](/articles/tokubetsu-shien-ict)で詳しく扱っています。本記事はそれらを「どう位置づけるか」を補う内容です。
+→ ツールそのものの選び方（困りごとの観察から試用・見直しまで）は[特別支援教育の支援ツールを選ぶ手順](/articles/special-needs-ict-support-tools-checklist)で詳しく扱っています。本記事はそれを「どう位置づけるか」を補う内容です。
 
 ---
 
@@ -188,14 +188,13 @@ ICT活用を一人の教員の工夫で終わらせず、**継続する仕組み
 - [ ] 個人情報・写真・動画の取り扱いが校内規定に沿っているか
 - [ ] 困ったときに誰へつなぐか（特別支援教育コーディネーター・管理職）が見えているか
 
-→ 無料ツールを使う場合の安全確認は[教員向けICT教材・支援ツールの選び方：授業と特別支援で使いやすい観点](/articles/ict-teaching-tools-selection-guide)もあわせてご確認ください。
+→ 未承認の外部サービスを使う場合の安全確認は[無料ICTツールを授業で使う前の確認手順](/articles/free-ict-tools-safety-checklist)もあわせてご確認ください。
 
 ---
 
 ## 7. 関連記事
 
-- [特別支援教育でICTを活用する：タブレット・AAC・読み上げソフトの選び方](/articles/tokubetsu-shien-ict)
-- [特別支援教育で使えるICT支援ツールの選び方](/articles/special-needs-ict-support-tools-checklist)
+- [特別支援教育の支援ツールを選ぶ手順：困りごとの観察から試用・見直しまで](/articles/special-needs-ict-support-tools-checklist)
 - [合理的配慮の申請と記録：学校現場での進め方ガイド](/articles/reasonable-accommodation-school-record)
 - [個別の教育支援計画・個別の指導計画の書き方](/articles/individual-education-plan-writing-guide)
 - [デジタル教科書の本格導入で学校現場は何が変わるか](/articles/digital-textbook-introduction-school-changes)

@@ -322,27 +322,29 @@ export const ARTICLE_REFERENCES: Record<string, ArticleReference[]> = {
     sources.aiCopyright,
     sources.personalInfoActDefinitions,
   ],
-  'information-morals-education-themes': [sources.generativeAiGuideline, sources.informationMoralsMext],
   'ai-koomu-kaizen-nyumon': [
     sources.generativeAiGuideline,
     sources.ppcAiNotice,
     sources.ppcSchoolAlert2025,
     sources.personalInfoActDefinitions,
     sources.personalInfoActOrderSensitive,
+    sources.personalInfoAct,
+    sources.aiCopyright,
   ],
-  'ai-lesson-preparation-prompt': [sources.generativeAiGuideline, sources.ppcAiNotice, sources.aiCopyright],
   'chatgpt-tsuchihyo-shoken': [sources.generativeAiGuideline, sources.ppcAiNotice],
   'digital-textbook-introduction-school-changes': [sources.digitalTextbook, sources.digitalTextbookNotice],
   'education-ai-service-checklist-before-use': [sources.ppcAiNotice, sources.generativeAiGuideline, sources.aiCopyright],
-  'generative-ai-guideline-v2-school-reading': [sources.generativeAiGuideline, sources.ppcAiNotice, sources.aiCopyright],
   'giga-device-lesson-use-guide': [sources.studx, sources.safeDevices],
-  'ict-teaching-tools-selection-guide': [sources.safeDevices, sources.specialNeedsIct, sources.ppcAiNotice],
   'individual-education-plan-writing-guide': [sources.individualPlan, sources.tsukyuGuide],
   'reasonable-accommodation-school-record': [sources.accommodationGuideline, sources.individualPlan],
-  'school-generative-ai-privacy-security': [sources.generativeAiGuideline, sources.ppcAiNotice, sources.aiCopyright],
   'special-needs-behavior-record-guide': [sources.behaviorResearch, sources.individualPlan],
   'special-needs-ict-reasonable-accommodation': [sources.accommodationGuideline, sources.specialNeedsIct],
-  'special-needs-ict-support-tools-checklist': [sources.specialNeedsIct, sources.accommodationGuideline],
+  'special-needs-ict-support-tools-checklist': [
+    sources.specialNeedsIct,
+    sources.accommodationGuideline,
+    sources.safeDevices,
+    sources.individualPlan,
+  ],
   'special-needs-parent-collaboration': [
     sources.disabilityDiscriminationAct,
     sources.schoolEducationRule134,
@@ -352,7 +354,6 @@ export const ARTICLE_REFERENCES: Record<string, ArticleReference[]> = {
     sources.individualPlan,
   ],
   'special-needs-visual-schedule-support': [sources.tsukyuGuide, sources.behaviorResearch],
-  'tokubetsu-shien-ict': [sources.specialNeedsIct, sources.accommodationGuideline, sources.studx],
 };
 
 export function getArticleReferences(slug: string): ArticleReference[] {

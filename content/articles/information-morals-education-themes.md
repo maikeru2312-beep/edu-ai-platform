@@ -5,6 +5,7 @@ category: "ICT活用"
 tags: ["情報モラル", "情報活用能力", "授業設計", "ICT活用", "GIGAスクール", "特別支援教育", "生成AI", "道徳科"]
 publishedAt: "2026-06-17"
 updatedAt: "2026-08-10"
+published: false
 ---
 
 ## この記事で扱う範囲

@@ -325,7 +325,7 @@ GIGAスクール構想によって、全国の小中学校に1人1台の端末�
 
 特定のツールや設定が特定の障害に必ず効果があると断定することはできません。「試してみる・効果を確認する・見直す」というサイクルを繰り返すことが大切です。
 
-詳しくは[特別支援教育でICTを活用する：タブレット・AAC・読み上げソフトの選び方](/articles/tokubetsu-shien-ict)をご参照ください。
+詳しくは[特別支援教育の支援ツールを選ぶ手順](/articles/special-needs-ict-support-tools-checklist)をご参照ください。
 
 ---
 
@@ -381,9 +381,9 @@ GIGAスクール端末を授業で活かすためには、「端末を使うこ�
 
 端末活用をさらに深めるために、以下の記事もあわせてご覧ください。
 
-- [学校で生成AIを使うときの個人情報・セキュリティの注意点【教員向け】](/articles/school-generative-ai-privacy-security) - 生成AIに入力してよい情報の線引き
+- [学校の校務で生成AIを使う前の判断ガイド：5業務の使い分けと確認手順](/articles/ai-koomu-kaizen-nyumon) - 生成AIに入力してよい情報の線引き
 - [教育AIサービスを学校で使う前に確認したいこと｜個人情報・規約・安全性のチェックリスト](/articles/education-ai-service-checklist-before-use) - 教育AIサービスの導入前チェック
-- [特別支援教育でICTを活用する：タブレット・AAC・読み上げソフトの選び方](/articles/tokubetsu-shien-ict) - 個別ニーズに応じたICT活用の考え方
+- [特別支援教育の支援ツールを選ぶ手順：困りごとの観察から試用・見直しまで](/articles/special-needs-ict-support-tools-checklist) - 個別のニーズから支援ツールを選ぶ手順
 - [デジタル教科書の本格導入で学校現場は何が変わるか](/articles/digital-textbook-introduction-school-changes) - 紙との使い分けと特別支援の視点
 - [特別支援教育におけるICT活用と合理的配慮｜現場で確認したい視点](/articles/special-needs-ict-reasonable-accommodation) - 合理的配慮と指導の違い・確認チェックリスト
 - [ICT活用カテゴリ](/categories/ict) - ICT活用に関する記事一覧

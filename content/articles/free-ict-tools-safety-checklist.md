@@ -15,9 +15,9 @@ updatedAt: "2026-08-10"
 
 **扱わないもの**（それぞれ別の記事が担当します）
 
-- **どのツールを選ぶか**（授業目的・操作性・アクセシビリティからの選定）→ [教員向けICT教材・支援ツールの選び方：授業と特別支援で使いやすい観点](/articles/ict-teaching-tools-selection-guide)
+- **どのツールを選ぶか**（子どもの困りごとと目的からの選定）→ [特別支援教育の支援ツールを選ぶ手順](/articles/special-needs-ict-support-tools-checklist)
 - **AIサービス固有の確認**（学習利用、生成物の扱い、出力の責任）→ [教育AIサービスを学校で使う前に確認したいこと｜個人情報・規約・安全性のチェックリスト](/articles/education-ai-service-checklist-before-use)
-- **生成AIに何を入力するか**の線引き → [学校で生成AIを使うときの個人情報・セキュリティの注意点【教員向け】](/articles/school-generative-ai-privacy-security)
+- **生成AIに何を入力するか**の線引き → [学校の校務で生成AIを使う前の判断ガイド](/articles/ai-koomu-kaizen-nyumon)
 
 **選ぶことと、使ってよい状態かを判断することは別です。** どれだけ授業に合うツールでも、学校として使える状態でなければ使えません。
 
