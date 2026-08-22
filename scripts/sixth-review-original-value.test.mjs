@@ -190,6 +190,10 @@ test('every canonical article has exactly one registry entry, and vice versa', (
 });
 
 // ─── 8. registry の各行が独自価値を持つこと ───────────────────────────────
+// 注意: これは **宣言の整形式検査** であって、独自価値が実在することの証明ではない。
+// CSV のセルを書き替えるだけで通るため、これ単独を「独自性の担保」と読まないこと。
+// 独自性の実質的な根拠は、docs/adsense-sixth-review/07〜10 の人手レビューにある。
+// 本文から計算した裏づけは 11b（distinctness claim is backed by a computable signal）が担う。
 test('every registry entry declares a substantive primary unique value', () => {
   const REQUIRED = [
     'slug', 'reader_job', 'primary_unique_value_type', 'primary_unique_value',
@@ -223,6 +227,8 @@ test('no canonical article exists purely as an official-source summary', () => {
 });
 
 // ─── 10. reader job が重複しないこと ──────────────────────────────────────
+// 注意: これも CSV 内の整形式検査であり、言い換えれば衝突を回避できる。
+// 実際の重複は 11b の本文ベースの計算と、人手レビューで見ている。
 test('no two canonical articles share the same primary reader job', () => {
   // 同一文字列だけでなく、実質的な重複も拾う。助詞・記号を落とした指紋で比較する。
   const fingerprint = (text) =>
@@ -274,6 +280,65 @@ test('the distinctness matrix covers every pair and leaves no overlap unrepaired
     .filter((r) => r.verdict === 'OVERLAP_REQUIRES_REPAIR' || r.verdict === 'MERGE')
     .map((r) => `${r.a} <-> ${r.b}: ${r.verdict}`);
   assert.deepEqual(unresolved, [], '最終状態では OVERLAP_REQUIRES_REPAIR = 0 / MERGE = 0');
+});
+
+// ─── 11b. distinctness を、CSV の申告ではなく本文から計算した信号でも裏づけること ─
+test('the distinctness claim is backed by a computable signal, not only the CSV', () => {
+  // 独立レビュー2件（post-fix Review A / D）が、独自価値・distinctness のゲートが
+  // 「実装者が書いた CSV を CSV の性質だけで検査していて反証不能」だと指摘した。
+  // CSV のセルを DISTINCT に書き替えるだけでは通らないよう、本文から計算した重なりに上限を置く。
+  //
+  // 計測値（2026-08-22 時点）: 見出し Jaccard 最大 0.087 / 本文12-gram 重なり 最大 0.039。
+  // 上限はその 2〜3 倍に置き、重複が実際に戻ってきたときだけ落ちるようにする。
+  const HEADING_JACCARD_MAX = 0.20;
+  const NGRAM_OVERLAP_MAX = 0.12;
+
+  const profile = (article) => {
+    const headings = new Set(
+      [...article.content.matchAll(/^#{2,3}\s+(.+)$/gm)].map((m) => m[1].replace(/[\s：:（）()「」【】]/g, '')),
+    );
+    const flat = article.content
+      .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+      .replace(/[^\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}A-Za-z0-9]/gu, '');
+    const grams = new Set();
+    for (let i = 0; i + 12 <= flat.length; i += 1) grams.add(flat.slice(i, i + 12));
+    return { slug: article.slug, headings, grams };
+  };
+  const profiles = published.map(profile);
+  const inter = (a, b) => { let n = 0; for (const x of a) if (b.has(x)) n += 1; return n; };
+
+  const verdictOf = new Map();
+  for (const row of matrix) verdictOf.set([row.a, row.b].sort().join('|'), row.verdict);
+
+  const tooSimilar = [];
+  let maxJaccard = 0;
+  let maxOverlap = 0;
+  for (let i = 0; i < profiles.length; i += 1) {
+    for (let j = i + 1; j < profiles.length; j += 1) {
+      const A = profiles[i];
+      const B = profiles[j];
+      const hi = inter(A.headings, B.headings);
+      const jaccard = hi / (A.headings.size + B.headings.size - hi);
+      const overlap = inter(A.grams, B.grams) / Math.min(A.grams.size, B.grams.size);
+      maxJaccard = Math.max(maxJaccard, jaccard);
+      maxOverlap = Math.max(maxOverlap, overlap);
+      const key = [A.slug, B.slug].sort().join('|');
+      assert.ok(verdictOf.has(key), `matrix にペアが無い: ${key}`);
+      if (jaccard > HEADING_JACCARD_MAX || overlap > NGRAM_OVERLAP_MAX) {
+        tooSimilar.push(
+          `${A.slug} x ${B.slug}: 見出しJaccard=${jaccard.toFixed(3)} / 12-gram重なり=${overlap.toFixed(3)}`
+          + ` (CSV の申告は ${verdictOf.get(key)})`,
+        );
+      }
+    }
+  }
+  assert.deepEqual(
+    tooSimilar, [],
+    '本文から計算した重なりが閾値を超えるペアがある。CSV の verdict にかかわらず重複とみなす',
+  );
+  // 上限そのものが緩みすぎていないことも固定する（記事を薄くして通す抜け道を塞ぐ）。
+  assert.ok(maxJaccard <= HEADING_JACCARD_MAX, `見出しJaccardの最大値: ${maxJaccard.toFixed(3)}`);
+  assert.ok(maxOverlap <= NGRAM_OVERLAP_MAX, `12-gram重なりの最大値: ${maxOverlap.toFixed(3)}`);
 });
 
 // ─── 12. 旧ポジショニング（情報を収集・整理する集約サイト）が残らないこと ─
