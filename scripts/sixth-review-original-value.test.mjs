@@ -543,7 +543,12 @@ test('the article skeleton does not become more uniform than it already is', () 
   assert.equal(measured.bodyReferences, 0, '本文の「## 参考資料」はコンポーネントへ一本化する');
 
   // 以下は現状値を上限とするラチェット。増えたら鋳型が強まったということ。
-  assert.ok(measured.fictionalNotice <= 10, `架空注記の反復: ${measured.fictionalNotice}/15`);
+  // 架空注記の上限は 10 → 11 へ引き上げた。post-fix の確認レビューが
+  // 「chatgpt-tsuchihyo-shoken だけ架空の明示が0回で、依頼文例が実在児童の様子に読める。
+  //  実在児童の情報をAIに入れないと説く記事として外形が食い違う」と指摘したため、
+  // 同記事へ架空である旨を追加した結果。これは鋳型の増加ではなく、
+  // 欠けていた安全上の注記を埋めたもの（§12 が共有を認める security/legal note にあたる）。
+  assert.ok(measured.fictionalNotice <= 11, `架空注記の反復: ${measured.fictionalNotice}/15`);
   assert.ok(measured.formTemplateNotice <= 12, `参考様式注記の反復: ${measured.formTemplateNotice}/15`);
   assert.ok(measured.scopeLimitSection <= 6, `適用限界節の反復: ${measured.scopeLimitSection}/15`);
 
