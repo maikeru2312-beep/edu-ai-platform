@@ -123,7 +123,7 @@ const MUTATIONS = [
       const file = 'docs/adsense-sixth-review/01-canonical-value-registry.csv';
       const abs = path.join(root, file);
       const lines = fs.readFileSync(abs, 'utf8').split(/\r?\n/);
-      const idx = lines.findIndex((l) => l.startsWith('google-forms-school-use-guide,'));
+      const idx = lines.findIndex((l) => l.startsWith(String.fromCharCode(34) + 'google-forms-school-use-guide' + String.fromCharCode(34)));
       if (idx === -1) throw new Error('registry 行が見つかりません');
       lines.splice(idx, 1);
       fs.writeFileSync(abs, lines.join('\r\n'));
@@ -137,9 +137,10 @@ const MUTATIONS = [
       const file = 'docs/adsense-sixth-review/01-canonical-value-registry.csv';
       const abs = path.join(root, file);
       const text = fs.readFileSync(abs, 'utf8');
+      // CSV は全フィールドが引用符つき。3列目（primary_unique_value_type）だけを置き換える。
       const mutated = text.replace(
-        /^(google-forms-school-use-guide,[^\n]*?),(OPERATOR_DECISION_RULE|PROCEDURE_GUIDE|DECISION_MATRIX|WORKSHEET_FORM|WORKED_EXAMPLE|FIRSTHAND_PRACTICE_BOUNDARY|ORIGINAL_COMPARATIVE_ANALYSIS|ORIGINAL_SYNTHESIS_WITH_DECISION_LOGIC),/m,
-        '$1,OFFICIAL_SOURCE_SUMMARY,',
+        /^("google-forms-school-use-guide","[^\n]*?"),"(?:OPERATOR_DECISION_RULE|PROCEDURE_GUIDE|DECISION_MATRIX|WORKSHEET_FORM|WORKED_EXAMPLE|FIRSTHAND_PRACTICE_BOUNDARY|ORIGINAL_COMPARATIVE_ANALYSIS|ORIGINAL_SYNTHESIS_WITH_DECISION_LOGIC)",/m,
+        '$1,"OFFICIAL_SOURCE_SUMMARY",',
       );
       if (mutated === text) throw new Error('value type の書き換えに失敗しました');
       fs.writeFileSync(abs, mutated);
@@ -164,8 +165,8 @@ const MUTATIONS = [
         }
         out.push(cur); return out;
       };
-      const a = lines.findIndex((l) => l.startsWith('google-forms-school-use-guide,'));
-      const b = lines.findIndex((l) => l.startsWith('free-ict-tools-safety-checklist,'));
+      const a = lines.findIndex((l) => l.startsWith(String.fromCharCode(34) + 'google-forms-school-use-guide' + String.fromCharCode(34)));
+      const b = lines.findIndex((l) => l.startsWith(String.fromCharCode(34) + 'free-ict-tools-safety-checklist' + String.fromCharCode(34)));
       if (a === -1 || b === -1) throw new Error('registry 行が見つかりません');
       const rowA = parse(lines[a]);
       const rowB = parse(lines[b]);
