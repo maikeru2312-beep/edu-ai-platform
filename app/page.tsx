@@ -33,11 +33,12 @@ export default function HomePage() {
       <section className="bg-gradient-to-br from-blue-700 to-indigo-800 text-white py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <h1 className="text-4xl sm:text-5xl font-bold mb-4 leading-tight">
-            教育現場のDXを、<br className="sm:hidden" />一歩前へ。
+            特別支援教育と学校実務の判断を、<br className="sm:hidden" />現場で使える形に。
           </h1>
           <p className="text-blue-100 text-lg mb-8 leading-relaxed">
-            特別支援教育・ICT活用・AI校務改善に関する<br />
-            最新情報を収集・整理してお届けします。
+            公的資料と実務上の確認手順をつなぎ、ICT・生成AI・支援・記録について
+            <br className="hidden sm:inline" />
+            「何を確認し、どこで止まり、次に何をするか」まで整理します。
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
@@ -52,7 +53,10 @@ export default function HomePage() {
 
       {/* カテゴリ */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">カテゴリから探す</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-1">場面から探す</h2>
+        <p className="text-sm text-gray-500 mb-6">
+          いずれも「特別支援教育を含む学校実務での判断」を扱う区分です。
+        </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
           {activeCategories.map((cat) => (
             <Link
@@ -139,7 +143,7 @@ export default function HomePage() {
       {specialNeedsArticles.length > 0 && (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
           <div className="flex items-center justify-between mb-2">
-            <h2 className="text-2xl font-bold text-gray-900">特別支援教育 × ICT</h2>
+            <h2 className="text-2xl font-bold text-gray-900">このサイトの中心：特別支援教育の学校実務</h2>
             <Link
               href="/categories/tokubetsu-shien"
               className="text-blue-600 hover:text-blue-800 text-sm font-medium"
@@ -148,7 +152,8 @@ export default function HomePage() {
             </Link>
           </div>
           <p className="text-sm text-gray-500 mb-6">
-            タブレット・読み上げ・デジタル教科書など、一人ひとりに合った学び方の選択肢を広げるICT活用を整理しています。
+            計画を書く、記録を取る、保護者と話す、配慮を決めて残す——
+            公的資料と実務上の確認手順をつなぎ、判断が分かれる場面と、校内確認へ回す条件まで整理しています。
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {specialNeedsArticles.map((article) => (
