@@ -79,6 +79,8 @@ Markdownで記述してください。
 
 `content/db/` 内の既存JSONファイルに追記するか、新しいJSONファイルを作成します。
 
+> **注意:** `/db` と `/news` は第4回審査以降、公開ルートから外して 404 にしています（`app/db/page.tsx` / `app/news/page.tsx` は `notFound()` を返すのみ）。`content/db/*.json` は検証スクリプトの対象として残していますが、サイト上には描画されません。
+
 ```
 content/db/
 ├── grants.json      # 助成金情報
@@ -182,7 +184,8 @@ git push
 | `/articles` | 記事一覧 |
 | `/articles/[slug]` | 記事詳細 |
 | `/categories/[category]` | カテゴリ別記事一覧 |
-| `/db` | 教育情報DB一覧 |
+| `/about` | このサイトについて |
+| `/operator` | 運営者情報 |
 | `/privacy` | プライバシーポリシー |
 | `/disclaimer` | 免責事項 |
 

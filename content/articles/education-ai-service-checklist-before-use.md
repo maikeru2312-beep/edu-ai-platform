@@ -190,7 +190,7 @@ A4一枚に収まる分量です。空欄を残したまま「候補にする」
 ## 関連記事
 
 - [無料ICTツールを授業で使う前の確認手順：学校のルール・アカウント・外部に出る情報をどう確かめるか](/articles/free-ict-tools-safety-checklist)
-- [学校の校務で生成AIを使う前の判断ガイド：5業務の使い分けと確認手順](/articles/ai-koomu-kaizen-nyumon)
+- [学校の校務で生成AIを使う前の判断ガイド：4つの校務ゲートと判断シート](/articles/ai-koomu-kaizen-nyumon)
 - [カテゴリ：教材・支援ツール](/categories/kyozai)
 - [カテゴリ：AI校務改善](/categories/ai-koomu)
 

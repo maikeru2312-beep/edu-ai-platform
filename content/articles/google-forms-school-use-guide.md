@@ -13,7 +13,7 @@ updatedAt: "2026-08-22"
 
 **扱わないもの**（それぞれ別の記事が担当します）
 
-- 外部サービスを学校で使ってよいかの導入前確認 → [そのAIサービスを導入候補に載せてよいか：一次判定シートと規約の見どころ](/articles/education-ai-service-checklist-before-use)
+- 外部サービスを学校で使ってよいかの導入前確認 → [無料ICTツールを授業で使う前の確認手順](/articles/free-ict-tools-safety-checklist)の Gate 1〜5
 - 情報が外部に出るか、終わるときに回収・削除できるか（保管期間・削除・個人アカウントの扱いを含む） → [無料ICTツールを授業で使う前の確認手順](/articles/free-ict-tools-safety-checklist)の Gate 3・Gate 5
 - 要配慮個人情報や匿名加工情報・仮名加工情報といった法令上の枠組み → [学校の校務で生成AIを使う前の判断ガイド](/articles/ai-koomu-kaizen-nyumon)の校務ゲート2
 - そもそもどのツールを選ぶか → [特別支援教育の支援ツールを選ぶ手順](/articles/special-needs-ict-support-tools-checklist)

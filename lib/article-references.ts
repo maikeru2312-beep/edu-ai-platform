@@ -335,7 +335,11 @@ export const ARTICLE_REFERENCES: Record<string, ArticleReference[]> = {
   'digital-textbook-introduction-school-changes': [sources.digitalTextbook, sources.digitalTextbookNotice],
   'education-ai-service-checklist-before-use': [sources.ppcAiNotice, sources.generativeAiGuideline, sources.aiCopyright],
   'giga-device-lesson-use-guide': [sources.studx, sources.safeDevices],
-  'individual-education-plan-writing-guide': [sources.individualPlan, sources.tsukyuGuide],
+  'individual-education-plan-writing-guide': [
+    sources.schoolEducationRule134,
+    sources.individualPlan,
+    sources.tsukyuGuide,
+  ],
   'reasonable-accommodation-school-record': [sources.accommodationGuideline, sources.individualPlan],
   'special-needs-behavior-record-guide': [sources.behaviorResearch, sources.individualPlan],
   'special-needs-ict-reasonable-accommodation': [sources.accommodationGuideline, sources.specialNeedsIct],

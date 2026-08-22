@@ -434,6 +434,29 @@ test('canonical articles are not all cast from one template', () => {
   assert.deepEqual(formulaic, []);
 });
 
+test('internal link anchor text matches the current title of its target', () => {
+  // 記事のタイトルを付け替えると、他記事のリンク文言が旧タイトルのまま取り残される。
+  // 第6回では実際に9記事をリタイトルし、24箇所＋6箇所の取り残しが発生した。
+  // 前方一致だけを見ると接尾辞の変更（「：5業務の使い分け」→「：4つの校務ゲート」）を
+  // 見落とすため、記事タイトル風の長いアンカーは全体が現タイトルに含まれることを要求する。
+  const titles = new Map(published.map((a) => [a.slug, a.title]));
+  const normalize = (s) => s.replace(/[\s：:｜|【】（）()、。・]/g, '');
+  const stale = [];
+  for (const article of published) {
+    for (const m of article.content.matchAll(/\[([^\]]+)\]\(\/articles\/([a-z0-9-]+)(?:[#?][^)]*)?\)/g)) {
+      const [, anchor, target] = m;
+      const title = titles.get(target);
+      if (!title) continue;
+      // 短い説明的アンカー（「校務ゲート2」等）は対象外。タイトルを引用した長いものだけ見る。
+      if (anchor.length < 14) continue;
+      const a = normalize(anchor);
+      const t = normalize(title);
+      if (!t.includes(a)) stale.push(`${article.slug} -> ${target}: 「${anchor}」 / 現タイトル「${title}」`);
+    }
+  }
+  assert.deepEqual(stale, [], 'リンク文言は着地先の現タイトルの部分文字列であること');
+});
+
 test('the article skeleton does not become more uniform than it already is', () => {
   // 見出し文字列だけを見ていると、本文レベルの反復（同じ骨格の使い回し）を見落とす。
   // 骨格の要素ごとに現状値を上限として固定し、鋳型が「増える」方向の変更を落とす。

@@ -244,5 +244,5 @@ updatedAt: "2026-08-22"
 - [デジタル教科書を初めて使う単元の組み立て方：導入前の校内確認から授業後の判定まで](/articles/digital-textbook-introduction-school-changes) - 初回単元の組み立てと紙との併用範囲
 - [無料ICTツールを授業で使う前の確認手順](/articles/free-ict-tools-safety-checklist) - 保存先・共有範囲・回収と削除の確認
 - [そのAIサービスを導入候補に載せてよいか：一次判定シートと規約の見どころ](/articles/education-ai-service-checklist-before-use) - AIサービスを候補に載せてよいかの一次判定
-- [学校の校務で生成AIを使う前の判断ガイド：5業務の使い分けと確認手順](/articles/ai-koomu-kaizen-nyumon) - 生成AIに入力してよい情報の線引き
+- [学校の校務で生成AIを使う前の判断ガイド：4つの校務ゲートと判断シート](/articles/ai-koomu-kaizen-nyumon) - 生成AIに入力してよい情報の線引き
 - [ICT活用カテゴリ](/categories/ict) - ICT活用に関する記事一覧

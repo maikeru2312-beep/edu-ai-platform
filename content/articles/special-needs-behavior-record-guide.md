@@ -209,5 +209,5 @@ ABC記録が1件を深く書く方法だとすれば、頻度・時間帯・場�
 - [特別支援教育の保護者面談：準備・その場の整理・校内確認・記録の手順](/articles/special-needs-parent-collaboration) - 記録のどの部分を、面談でどう伝えるか
 - [合理的配慮の記録の書き方](/articles/reasonable-accommodation-school-record) - 記録が合理的配慮の根拠になる
 - [特別支援教育の支援ツールを選ぶ手順：困りごとの観察から試用・見直しまで](/articles/special-needs-ict-support-tools-checklist) - 記録・振り返りを支える支援ツールの選び方
-- [学校の校務で生成AIを使う前の判断ガイド：5業務の使い分けと確認手順](/articles/ai-koomu-kaizen-nyumon) - 記録を外部サービスに入力してよいかの判断手順
+- [学校の校務で生成AIを使う前の判断ガイド：4つの校務ゲートと判断シート](/articles/ai-koomu-kaizen-nyumon) - 記録を外部サービスに入力してよいかの判断手順
 - [特別支援教育カテゴリ](/categories/tokubetsu-shien) - 関連する記事の一覧
