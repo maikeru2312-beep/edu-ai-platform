@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getPublishedArticleSlugs, getArticle, getArticlesByCategory } from '@/lib/articles';
+import { getSiteUrl } from '@/lib/site';
 import CategoryBadge from '@/components/CategoryBadge';
 import ChifuyuProfileCard from '@/components/ChifuyuProfileCard';
 import EditorialPolicy from '@/components/EditorialPolicy';
@@ -65,8 +66,28 @@ export default async function ArticleDetailPage({
     .filter((a) => a.slug !== slug)
     .slice(0, 3);
 
+  // Article の構造化データ。運営者は匿名の個人のため、author は個人名ではなく
+  // サイト名の Organization として表す（About・運営者情報の開示方針と一致させる）。
+  const siteUrl = getSiteUrl();
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: article.title,
+    description: article.description,
+    datePublished: article.publishedAt,
+    dateModified: article.updatedAt ?? article.publishedAt,
+    inLanguage: 'ja',
+    mainEntityOfPage: `${siteUrl}/articles/${slug}`,
+    author: { '@type': 'Organization', name: '教育DXナビ', url: `${siteUrl}/operator` },
+    publisher: { '@type': 'Organization', name: '教育DXナビ', url: siteUrl },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
+      />
       <AdSenseScript />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10">
       <nav className="text-sm text-gray-500 mb-6 flex items-center gap-2 flex-wrap">
