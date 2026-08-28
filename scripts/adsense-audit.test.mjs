@@ -183,6 +183,36 @@ test('practical resources list only assets owned by published articles', () => {
   assert.match(read('app/sitemap.ts'), /\/resources/);
 });
 
+test('every practical resource anchor resolves to a real heading (no broken anchors)', () => {
+  // /resources のリンクは記事トップではなく該当見出しへ着地する。
+  // 見出しの文言を変えたのに一覧を直し忘れると、読者は記事の先頭に落ちるだけで
+  // 「様式がある」という約束が破れる。着地先の見出しが実在することを固定する。
+  const source = read('lib/practical-resources.ts');
+  const entries = [...source.matchAll(/slug: '([a-z0-9-]+)',[\s\S]*?anchor: '([^']+)',/g)]
+    .map((m) => ({ slug: m[1], anchor: m[2] }));
+  const slugs = [...source.matchAll(/^\s+slug: '([a-z0-9-]+)',$/gm)].map((m) => m[1]);
+  assert.equal(entries.length, slugs.length, '全エントリが anchor を持つこと');
+
+  const broken = [];
+  for (const { slug, anchor } of entries) {
+    const article = articles.get(slug);
+    if (!article) { broken.push(`${slug}: 記事が無い`); continue; }
+    // 着地先は h2 または h3 の見出しで、文言が完全一致すること。
+    const headings = [...article.content.matchAll(/^#{2,3}\s+(.+)$/gm)].map((m) => m[1].trim());
+    if (!headings.includes(anchor)) {
+      broken.push(`${slug}: 見出し「${anchor}」が本文に無い`);
+    }
+  }
+  assert.deepEqual(broken, [], '/resources のアンカーが着地先の見出しと一致すること');
+
+  // 一覧側と記事側が同じ id 生成関数を使うこと（片方だけ変えられないようにする）。
+  assert.match(read('app/resources/page.tsx'), /headingId\(resource\.anchor\)/);
+  assert.match(read('lib/articles.ts'), /withHeadingIds/);
+  assert.match(read('lib/articles.ts'), /from '@\/lib\/heading-id'/);
+  // 記事側は h2/h3 に id を付けること（付かなければアンカーは全て素通りする）。
+  assert.match(read('lib/articles.ts'), /<\(h\[23\]\)>/);
+});
+
 test('every published article has article-specific references', () => {
   const references = read('lib/article-references.ts');
   for (const article of published) {

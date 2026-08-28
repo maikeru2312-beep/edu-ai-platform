@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllArticles } from '@/lib/articles';
 import { PRACTICAL_RESOURCES } from '@/lib/practical-resources';
+import { headingId } from '@/lib/heading-id';
 import { CATEGORIES } from '@/lib/categories';
 import CategoryBadge from '@/components/CategoryBadge';
 
@@ -58,7 +59,7 @@ export default function ResourcesPage() {
                     <p className="font-semibold text-gray-900 leading-snug mb-1">{resource.asset}</p>
                     <p className="text-sm text-gray-600 leading-relaxed mb-3">{resource.useWhen}</p>
                     <Link
-                      href={`/articles/${resource.slug}`}
+                      href={`/articles/${resource.slug}#${encodeURIComponent(headingId(resource.anchor))}`}
                       className="text-sm text-blue-600 hover:text-blue-800 font-medium"
                     >
                       使い方と記入例を見る：{article.title} →

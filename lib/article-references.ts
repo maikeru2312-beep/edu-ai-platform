@@ -336,6 +336,44 @@ const sources = {
       + '個別の指導計画の作成に当たり「各学校において定める各教科等の評価規準の内容を指導目標、指導内容等の設定に活かすことが考えられる」'
       + 'とされ、計画様式の形そのものは定められていないこと（P.9〜10）',
   },
+  tokushiSokusokuKaisetsu: {
+    title: '特別支援学校教育要領・学習指導要領解説 総則編（幼稚部・小学部・中学部）',
+    publisher: '文部科学省',
+    publishedOrUpdatedAt: '2018-03（平成30年3月。令和6年12月一部改訂）',
+    url: 'https://www.mext.go.jp/content/20200407-mxt_tokubetu01-100002983_02.pdf',
+    checkedAt: threeViewpointCheckedAt,
+    supports:
+      '個別の指導計画が「個々の児童生徒の実態に応じて適切な指導を行うために各学校で作成しなければならないもの」であること。'
+      + 'および「個別の指導計画の作成の手順や様式は、それぞれの学校が児童生徒の実態や各教科や自立活動等の特質を踏まえて、'
+      + '指導上最も効果が上がるように工夫して作成することが大切である」として、様式の設計を各学校に委ねていること（第2章第3節、印刷ページ241）。'
+      + '各教科の個別の指導計画についても「児童生徒一人一人に対する指導上の配慮事項を付記するなど、児童生徒の実態や各教科等の特質等を踏まえて、'
+      + '様式を工夫して作成することが大切である」としていること。計画がPlan-Do-Check-Actionのサイクルで評価・改善されるべきものとされていること',
+  },
+  kobetsuShidoKeikakuYoshikiRei: {
+    title: '資料5 個別の指導計画の様式例',
+    publisher: '文部科学省',
+    publishedOrUpdatedAt: '2010-10（平成22年10月掲載。平成29年改訂より前の資料）',
+    url: 'https://www.mext.go.jp/a_menu/shotou/tokubetu/material/1298214.htm',
+    checkedAt: threeViewpointCheckedAt,
+    supports:
+      '国が示す個別の指導計画の様式例が単一ではなく、記載の単位や粒度の異なる複数の形式（実態と学期ごとの取組、題材・単元ごとの記入、'
+      + '学期ごとの重点と年間の振り返り、基本的配慮と教科別配慮の分離など）を並べたものであること。'
+      + 'ただし本資料は平成22年10月の掲載であり、平成29年改訂学習指導要領を踏まえたものではない点に留意が必要',
+  },
+  gakushuHyokaQa: {
+    title: '平成29・30年改訂の学習指導要領下における学習評価に関するQ&A【令和元年11月5日時点】',
+    publisher: '文部科学省',
+    publishedOrUpdatedAt: '2019-11-05（令和元年11月5日時点）',
+    url: 'https://www.mext.go.jp/a_menu/shotou/new-cs/qa/1421956.htm',
+    checkedAt: threeViewpointCheckedAt,
+    supports:
+      '【通知表と指導要録】の項で、指導要録が「学校教育法施行規則に位置付けられた法令に基づく公簿」であるのに対し、'
+      + '「通知表は法令上の作成義務はなく実態として各学校で作成するもの」と、法令上の位置付けの有無が異なることを明示していること。'
+      + 'また通知表の記載事項が指導要録の「指導に関する記録」の記載事項をすべて満たす場合、設置者の判断で様式を共通のものとすることが'
+      + '現行制度上も可能であること。【障害のある児童生徒に係る学習評価】の項で、個別の指導計画を作成している児童生徒について、'
+      + '指導要録の指導に関する記録に記載すべき事項が当該計画に記載されている場合は「その写しをもって指導要録への記入に替えることも可能」'
+      + 'としたこと。知的障害の各教科の学習の記録を、評価の観点及びその趣旨を踏まえ「観点別学習状況を考慮し、端的な文章記述とする」としたこと',
+  },
   schoolEducationRuleShidoYoroku: {
     title: '学校教育法施行規則 第二十四条・第二十八条（指導要録・表簿）',
     publisher: 'e-Gov 法令検索（デジタル庁）',
@@ -393,9 +431,12 @@ export const ARTICLE_REFERENCES: Record<string, ArticleReference[]> = {
     sources.tsukyuGuide,
   ],
   'individual-plan-three-viewpoint-evaluation': [
+    sources.tokushiSokusokuKaisetsu,
     sources.gakushuHyokaKaizenTsuchi,
     sources.tokushiGakushuHyokaSankou,
+    sources.gakushuHyokaQa,
     sources.schoolEducationRuleShidoYoroku,
+    sources.kobetsuShidoKeikakuYoshikiRei,
     sources.individualPlan,
   ],
   'reasonable-accommodation-school-record': [
