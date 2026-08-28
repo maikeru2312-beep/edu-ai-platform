@@ -29,6 +29,9 @@ const externalServiceCheckedAt = '2026-08-10';
 // この章だけが Google の現在仕様に依存するため、確認日を独立して持つ
 const googleFormsSpecCheckedAt = '2026-08-10';
 
+// 三観点評価記事のために、改善等通知・学習評価参考資料・施行規則の指導要録規定を確認した日
+const threeViewpointCheckedAt = '2026-08-29';
+
 const sources = {
   generativeAiGuideline: {
     title: '初等中等教育段階における生成AIの利活用に関するガイドライン（Ver.2.0）',
@@ -307,6 +310,43 @@ const sources = {
     supports:
       '公立学校（行政機関等）は第69条の利用目的外利用・提供の制限（第2項第1号に本人の同意の例外）。私立学校（学校法人）はそもそも第2条第11項の各号に該当せず個人情報取扱事業者であり、国立大学法人立・公立大学法人立の学校は第2条第11項第3号・第4号の括弧書きにより行政機関等から除かれ、いずれも第27条の本人同意原則が適用されること',
   },
+  gakushuHyokaKaizenTsuchi: {
+    title: '小学校、中学校、高等学校及び特別支援学校等における児童生徒の学習評価及び指導要録の改善等について（通知）',
+    publisher: '文部科学省',
+    publishedOrUpdatedAt: '2019-03-29（平成31年3月29日 30文科初第1845号）',
+    url: 'https://www.mext.go.jp/b_menu/hakusho/nc/1415169.htm',
+    checkedAt: threeViewpointCheckedAt,
+    supports:
+      '観点別学習状況の評価の観点が「知識・技能」「思考・判断・表現」「主体的に学習に取り組む態度」の3観点に整理され、設置者において通知に基づく適切な観点を設定することとされたこと。'
+      + '特別支援学校（知的障害）の各教科の学習の記録は、評価の観点及びその趣旨を踏まえて文章で記述するとされていること。'
+      + '通級による指導を受けている児童生徒について、記載すべき事項が個別の指導計画に記載されている場合には'
+      + '「その写しを指導要録の様式に添付することをもって指導要録への記入に替えることも可能とする」とされていること',
+  },
+  tokushiGakushuHyokaSankou: {
+    title: '特別支援学校小学部・中学部 学習評価参考資料',
+    publisher: '文部科学省',
+    publishedOrUpdatedAt: '2020-04（令和2年4月）',
+    url: 'https://www.mext.go.jp/content/20200515-mxt_tokubetu01-1386427.pdf',
+    checkedAt: threeViewpointCheckedAt,
+    supports:
+      '特別支援学校小学部・中学部学習指導要領総則（学習評価の充実）が「個別の指導計画に基づいて行われた学習状況や結果を適切に評価し、'
+      + '指導目標や指導内容、指導方法の改善に努め、より効果的な指導ができるようにすること」を求めていること（同資料P.5の引用による）。'
+      + '知的障害である児童生徒のための各教科が小・中・高等部を通じて3観点に整理されたこと（P.7）。'
+      + '知的障害の各教科の指導要録の記載が「具体的に定めた指導内容、実現状況等を箇条書き等により文章で端的に記述する」であること（P.9）。'
+      + '個別の指導計画の作成に当たり「各学校において定める各教科等の評価規準の内容を指導目標、指導内容等の設定に活かすことが考えられる」'
+      + 'とされ、計画様式の形そのものは定められていないこと（P.9〜10）',
+  },
+  schoolEducationRuleShidoYoroku: {
+    title: '学校教育法施行規則 第二十四条・第二十八条（指導要録・表簿）',
+    publisher: 'e-Gov 法令検索（デジタル庁）',
+    publishedOrUpdatedAt: '1947-05-23（公布。条文はe-Gov掲載の現行版を確認）',
+    url: 'https://laws.e-gov.go.jp/law/322M40000080011',
+    checkedAt: threeViewpointCheckedAt,
+    supports:
+      '校長に指導要録の作成義務があること（第24条第1項）、指導要録が学校に備えなければならない表簿であり、'
+      + '保存期間が5年間（指導要録及びその写しのうち入学・卒業等の学籍に関する記録は20年間）であること（第28条）、'
+      + 'および第28条第1項の表簿の列挙に通知表が含まれていないこと',
+  },
 } satisfies Record<string, ArticleReference>;
 
 export const ARTICLE_REFERENCES: Record<string, ArticleReference[]> = {
@@ -351,6 +391,12 @@ export const ARTICLE_REFERENCES: Record<string, ArticleReference[]> = {
     sources.schoolEducationRule134,
     sources.individualPlan,
     sources.tsukyuGuide,
+  ],
+  'individual-plan-three-viewpoint-evaluation': [
+    sources.gakushuHyokaKaizenTsuchi,
+    sources.tokushiGakushuHyokaSankou,
+    sources.schoolEducationRuleShidoYoroku,
+    sources.individualPlan,
   ],
   'reasonable-accommodation-school-record': [
     sources.disabilityBasicPolicy,

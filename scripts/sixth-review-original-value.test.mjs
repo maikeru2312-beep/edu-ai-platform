@@ -72,7 +72,9 @@ const redirectSources = new Set(
 );
 
 // ─── 1. canonical セットが期待どおりであること ────────────────────────────
-test('the canonical article set is exactly the 15 intended pages', () => {
+test('the canonical article set is exactly the 16 intended pages', () => {
+  // 15 件は第6回審査で確定した canonical セット。individual-plan-three-viewpoint-evaluation は
+  // 2026-08-29 に特別支援教育の専門軸（目標・評価）を深めるため追加した16件目。
   const expected = [
     'ai-class-newsletter-prompt',
     'ai-koomu-kaizen-nyumon',
@@ -83,6 +85,7 @@ test('the canonical article set is exactly the 15 intended pages', () => {
     'giga-device-lesson-use-guide',
     'google-forms-school-use-guide',
     'individual-education-plan-writing-guide',
+    'individual-plan-three-viewpoint-evaluation',
     'reasonable-accommodation-school-record',
     'special-needs-behavior-record-guide',
     'special-needs-ict-reasonable-accommodation',
@@ -383,7 +386,8 @@ test('AdSense stays confined to resolved article pages', () => {
   for (const file of ['app/page.tsx', 'app/articles/page.tsx', 'app/about/page.tsx',
                       'app/privacy/page.tsx', 'app/operator/page.tsx', 'app/disclaimer/page.tsx',
                       'app/contact/page.tsx', 'app/not-found.tsx', 'app/db/page.tsx',
-                      'app/news/page.tsx', 'app/categories/[category]/page.tsx']) {
+                      'app/news/page.tsx', 'app/categories/[category]/page.tsx',
+                      'app/resources/page.tsx']) {
     assert.doesNotMatch(read(file), /AdSenseScript/, `${file} に AdSense が入っている`);
   }
   assert.match(read('app/articles/[slug]/page.tsx'), /<AdSenseScript \/>/);
@@ -478,11 +482,11 @@ test('canonical articles are not all cast from one template', () => {
   const closer = published.filter((a) => /^##\s*まとめ\s*$/m.test(a.content));
   assert.ok(
     opener.length <= 4,
-    `「## はじめに」で始まる記事が多すぎる: ${opener.length}/15 (${opener.map((a) => a.slug)})`,
+    `「## はじめに」で始まる記事が多すぎる: ${opener.length}/16 (${opener.map((a) => a.slug)})`,
   );
   assert.ok(
     closer.length <= 6,
-    `「## まとめ」で終わる記事が多すぎる: ${closer.length}/15 (${closer.map((a) => a.slug)})`,
+    `「## まとめ」で終わる記事が多すぎる: ${closer.length}/16 (${closer.map((a) => a.slug)})`,
   );
 
   // 量産記事に特有の見出し（「Nつのポイント」「N選」「Nつのコツ」）は canonical では使わない。
@@ -548,9 +552,12 @@ test('the article skeleton does not become more uniform than it already is', () 
   //  実在児童の情報をAIに入れないと説く記事として外形が食い違う」と指摘したため、
   // 同記事へ架空である旨を追加した結果。これは鋳型の増加ではなく、
   // 欠けていた安全上の注記を埋めたもの（§12 が共有を認める security/legal note にあたる）。
-  assert.ok(measured.fictionalNotice <= 11, `架空注記の反復: ${measured.fictionalNotice}/15`);
-  assert.ok(measured.formTemplateNotice <= 12, `参考様式注記の反復: ${measured.formTemplateNotice}/15`);
-  assert.ok(measured.scopeLimitSection <= 6, `適用限界節の反復: ${measured.scopeLimitSection}/15`);
+  // 2026-08-29: 16件目（individual-plan-three-viewpoint-evaluation）が架空の記載例と
+  // 確認表（参考様式）を持つため、架空注記 11 → 12・様式注記 12 → 13 へ各1件分だけ引き上げた。
+  // どちらも既存記事側の増加ではなく、新規記事1件に必要な安全上の注記による。
+  assert.ok(measured.fictionalNotice <= 12, `架空注記の反復: ${measured.fictionalNotice}/16`);
+  assert.ok(measured.formTemplateNotice <= 13, `参考様式注記の反復: ${measured.formTemplateNotice}/16`);
+  assert.ok(measured.scopeLimitSection <= 6, `適用限界節の反復: ${measured.scopeLimitSection}/16`);
 
   // 導入部が「扱わないことの列挙」で始まる記事が過半に達すると、
   // どの記事も同じ入り方に見える。半数未満に抑える。
@@ -559,6 +566,6 @@ test('the article skeleton does not become more uniform than it already is', () 
   );
   assert.ok(
     scopeOpeners.length <= 9,
-    `冒頭でスコープ宣言する記事が多すぎる: ${scopeOpeners.length}/15 (${scopeOpeners.map((a) => a.slug)})`,
+    `冒頭でスコープ宣言する記事が多すぎる: ${scopeOpeners.length}/16 (${scopeOpeners.map((a) => a.slug)})`,
   );
 });
