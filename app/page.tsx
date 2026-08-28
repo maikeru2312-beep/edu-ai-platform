@@ -53,6 +53,12 @@ export default function HomePage() {
             >
               記事を読む
             </Link>
+            <Link
+              href="/resources"
+              className="border border-white/70 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors"
+            >
+              様式・チェックリストから探す
+            </Link>
           </div>
         </div>
       </section>
