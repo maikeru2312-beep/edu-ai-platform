@@ -11,7 +11,7 @@ export default function PrivacyPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
       <h1 className="text-3xl font-bold text-gray-900 mb-2">プライバシーポリシー</h1>
-      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年8月10日</p>
+      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年8月29日</p>
 
       <div className="space-y-10 text-gray-700 leading-relaxed">
         <section>
@@ -53,10 +53,10 @@ export default function PrivacyPage() {
         <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">3. Cookieについて</h2>
           <p>
-            当サイトでは、Google Analytics 4 によるアクセス解析と、
-            第5節に記載した広告配信のために Cookie を使用しています。
+            当サイトでは、Google Analytics 4 によるアクセス解析のために Cookie を使用しています。
+            第5節に記載する広告配信を開始した場合は、広告配信のための Cookie も使用されます。
             ブラウザの設定でCookieを無効にしても当サイトの閲覧に支障はありませんが、
-            アクセス計測が行われなくなり、表示される広告は利用者の関心に基づかないものになります。
+            アクセス計測が行われなくなります。
           </p>
         </section>
 
@@ -73,7 +73,9 @@ export default function PrivacyPage() {
         <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">5. 広告配信について</h2>
           <p className="mb-3">
-            当サイトは、記事ページにおいて Google AdSense を利用しています。
+            当サイトは、今後、記事ページにおいて Google AdSense による広告配信を行う場合があります。
+            現時点で広告の掲載は開始していません。掲載を開始した場合は本ページの記載を更新します。
+            掲載を開始した場合、以下の内容が適用されます。
           </p>
           <p className="mb-3">
             Google を含む第三者配信事業者は、Cookie を使用して、利用者の過去の当サイトや

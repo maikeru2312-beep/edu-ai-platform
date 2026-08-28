@@ -13,7 +13,7 @@ export default function AboutPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
       <h1 className="text-3xl font-bold text-gray-900 mb-2">このサイトについて</h1>
-      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年8月22日</p>
+      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年8月29日</p>
 
       <div className="space-y-10 text-gray-700 leading-relaxed">
         <section>
@@ -112,10 +112,11 @@ export default function AboutPage() {
         <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">収益化・広告について</h2>
           <p className="text-sm leading-relaxed mb-3">
-            当サイトでは、記事ページにおいて Google AdSense による広告を掲載しています。
-            広告配信に伴う Cookie の利用や第三者配信事業者の取り扱いについては、
+            当サイトでは、今後、記事ページにおいて Google AdSense 等による広告を掲載する場合があります。
+            現時点で広告の掲載は開始していません。掲載を開始した際は、本ページと
             <Link href="/privacy" className="text-blue-600 hover:underline">プライバシーポリシー</Link>
-            をご確認ください。
+            の記載を更新してお知らせします。広告配信に伴う Cookie の利用や
+            第三者配信事業者の取り扱いについても、プライバシーポリシーに定めています。
           </p>
           <p className="text-sm leading-relaxed">
             現時点で、アフィリエイトプログラムによる収益化は行っていません。
