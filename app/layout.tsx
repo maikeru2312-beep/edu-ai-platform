@@ -46,10 +46,25 @@ export const metadata: Metadata = {
   },
 };
 
+// WebSite の構造化データ。記事ページの Article JSON-LD（app/articles/[slug]/page.tsx）とは役割を分け、
+// ここではサイト自体の名称・URL・説明のみを宣言する。
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE_NAME,
+  url: SITE_URL,
+  description: SITE_DESCRIPTION,
+  inLanguage: 'ja',
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja">
       <body className="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd).replace(/</g, '\\u003c') }}
+        />
         <GoogleAnalytics />
         <Header />
         <main className="flex-1">{children}</main>

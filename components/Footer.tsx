@@ -24,6 +24,11 @@ export default function Footer() {
                   記事一覧
                 </Link>
               </li>
+              <li>
+                <Link href="/resources" className="hover:text-white transition-colors">
+                  様式・チェックリスト一覧
+                </Link>
+              </li>
             </ul>
           </div>
           <div>

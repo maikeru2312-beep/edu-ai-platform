@@ -86,9 +86,12 @@ test('published articles do not link to themselves', () => {
 });
 
 test('the review scope is deliberately reduced and focused', () => {
-  assert.equal(articles.size, 30);
-  // 第6回審査で 21 → 15 へ絞った（統合5件・退役1件）。記事を増やす方向の変更を検出する。
-  assert.equal(published.length, 15);
+  assert.equal(articles.size, 31);
+  // 第6回審査で 21 → 15 へ絞った（統合5件・退役1件）。
+  // 2026-08-29 に三観点評価の記事（individual-plan-three-viewpoint-evaluation）を
+  // 特別支援教育の専門軸を深める新規 canonical として1件だけ追加し 16 とした。
+  // それ以外の「記事を増やす方向の変更」は引き続きこの assert で検出する。
+  assert.equal(published.length, 16);
   const categories = new Set(published.map((article) => article.category));
   assert.equal(categories.has('助成金・補助金'), false);
   assert.equal(categories.has('研修・セミナー'), false);
@@ -163,6 +166,53 @@ test('all MERGE articles have exact 301 targets and UNPUBLISH articles do not', 
   assert.match(middleware, /NextResponse\.redirect\([^;]+, 301\)/s);
 });
 
+test('practical resources list only assets owned by published articles', () => {
+  // /resources は「記事本文に実在する様式」への入口だけを提供する。
+  // 空リンク・準備中の予告・未公開記事の資産が一覧に載る経路を塞ぐ。
+  const source = read('lib/practical-resources.ts');
+  const slugs = [...source.matchAll(/^\s+slug: '([a-z0-9-]+)',$/gm)].map((m) => m[1]);
+  assert.ok(slugs.length > 0, 'practical resources が空');
+  assert.deepEqual([...new Set(slugs)].sort(), slugs.slice().sort(), '同じ記事の重複エントリがある');
+  for (const slug of slugs) {
+    const article = articles.get(slug);
+    assert.ok(article, `resources が存在しない記事を指している: ${slug}`);
+    assert.notEqual(article.published, false, `resources が未公開記事を指している: ${slug}`);
+  }
+  // 一覧ページは共通の公開記事リーダーを使い、sitemap にも載ること。
+  assert.match(read('app/resources/page.tsx'), /getAllArticles\(\)/);
+  assert.match(read('app/sitemap.ts'), /\/resources/);
+});
+
+test('every practical resource anchor resolves to a real heading (no broken anchors)', () => {
+  // /resources のリンクは記事トップではなく該当見出しへ着地する。
+  // 見出しの文言を変えたのに一覧を直し忘れると、読者は記事の先頭に落ちるだけで
+  // 「様式がある」という約束が破れる。着地先の見出しが実在することを固定する。
+  const source = read('lib/practical-resources.ts');
+  const entries = [...source.matchAll(/slug: '([a-z0-9-]+)',[\s\S]*?anchor: '([^']+)',/g)]
+    .map((m) => ({ slug: m[1], anchor: m[2] }));
+  const slugs = [...source.matchAll(/^\s+slug: '([a-z0-9-]+)',$/gm)].map((m) => m[1]);
+  assert.equal(entries.length, slugs.length, '全エントリが anchor を持つこと');
+
+  const broken = [];
+  for (const { slug, anchor } of entries) {
+    const article = articles.get(slug);
+    if (!article) { broken.push(`${slug}: 記事が無い`); continue; }
+    // 着地先は h2 または h3 の見出しで、文言が完全一致すること。
+    const headings = [...article.content.matchAll(/^#{2,3}\s+(.+)$/gm)].map((m) => m[1].trim());
+    if (!headings.includes(anchor)) {
+      broken.push(`${slug}: 見出し「${anchor}」が本文に無い`);
+    }
+  }
+  assert.deepEqual(broken, [], '/resources のアンカーが着地先の見出しと一致すること');
+
+  // 一覧側と記事側が同じ id 生成関数を使うこと（片方だけ変えられないようにする）。
+  assert.match(read('app/resources/page.tsx'), /headingId\(resource\.anchor\)/);
+  assert.match(read('lib/articles.ts'), /withHeadingIds/);
+  assert.match(read('lib/articles.ts'), /from '@\/lib\/heading-id'/);
+  // 記事側は h2/h3 に id を付けること（付かなければアンカーは全て素通りする）。
+  assert.match(read('lib/articles.ts'), /<\(h\[23\]\)>/);
+});
+
 test('every published article has article-specific references', () => {
   const references = read('lib/article-references.ts');
   for (const article of published) {
@@ -205,10 +255,13 @@ test('operator experience notes match confirmed experience (C articles excluded)
     'special-needs-ict-support-tools-checklist', 'special-needs-parent-collaboration',
     'special-needs-visual-schedule-support',
   ];
-  // 経験C（資料でのみ確認）の記事には実務経験注記を付けない。
+  // 経験C（資料でのみ確認）・SOURCE_ONLY の記事には実務経験注記を付けない。
+  // individual-plan-three-viewpoint-evaluation は制度整理の記事であり、運営者の確認回答を
+  // 経ていないため SOURCE_ONLY とする（注記を付けるには Owner の確認が必要）。
   const withoutNote = [
     'digital-textbook-introduction-school-changes', 'ai-class-newsletter-prompt',
     'free-ict-tools-safety-checklist', 'google-forms-school-use-guide',
+    'individual-plan-three-viewpoint-evaluation',
   ];
   for (const slug of withNote) assert.match(notes, new RegExp(`'${slug}':`));
   for (const slug of withoutNote) assert.doesNotMatch(notes, new RegExp(`'${slug}':`));
