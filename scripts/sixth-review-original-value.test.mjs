@@ -533,15 +533,13 @@ test('the article skeleton does not become more uniform than it already is', () 
   // 見出し文字列だけを見ていると、本文レベルの反復（同じ骨格の使い回し）を見落とす。
   // 骨格の要素ごとに現状値を上限として固定し、鋳型が「増える」方向の変更を落とす。
   //
-  // 減らす対象にしないもの（指示書 §12 の「必要な共通 security/legal note は共有してよい」）:
-  //   - 「本サイト作成の参考様式」… 公式様式との誤認を防ぐ注記。様式を持つ記事には必要
-  //   - 「完全な架空」          … 架空例が実例と誤読されるのを防ぐ注記。省くほうが危険
-  // これらは件数の増加だけを監視し、削減は求めない。
+  // 安全上必要な注記（「本サイト作成の参考様式」「完全な架空」）は、この鋳型ラチェットの対象にしない。
+  // 2026-09-10 まではこれらも「現状値を上限」にしていたが、記事を1件足すたびに上限を +1 する運用になり
+  // （2026-08-29 と 2026-09-10 に実際にそうなった）、反復防止と安全注記の両立ができていなかった。
+  // 注記の要否は registry の宣言と突き合わせる（下の 'safety notices are tied to registry declarations' を参照）。
   const count = (re) => published.filter((a) => re.test(a.content)).length;
 
   const measured = {
-    fictionalNotice: count(/完全な架空/),
-    formTemplateNotice: count(/本サイト作成の参考様式/),
     scopeLimitSection: count(/^## (?:この記事の適用限界|この記事で決まらないこと|この手順で決められないこと)/m),
     bodyReferences: count(/^## 参考資料\s*$/m),
   };
@@ -550,21 +548,6 @@ test('the article skeleton does not become more uniform than it already is', () 
   assert.equal(measured.bodyReferences, 0, '本文の「## 参考資料」はコンポーネントへ一本化する');
 
   // 以下は現状値を上限とするラチェット。増えたら鋳型が強まったということ。
-  // 架空注記の上限は 10 → 11 へ引き上げた。post-fix の確認レビューが
-  // 「chatgpt-tsuchihyo-shoken だけ架空の明示が0回で、依頼文例が実在児童の様子に読める。
-  //  実在児童の情報をAIに入れないと説く記事として外形が食い違う」と指摘したため、
-  // 同記事へ架空である旨を追加した結果。これは鋳型の増加ではなく、
-  // 欠けていた安全上の注記を埋めたもの（§12 が共有を認める security/legal note にあたる）。
-  // 2026-08-29: 16件目（individual-plan-three-viewpoint-evaluation）が架空の記載例と
-  // 確認表（参考様式）を持つため、架空注記 11 → 12・様式注記 12 → 13 へ各1件分だけ引き上げた。
-  // どちらも既存記事側の増加ではなく、新規記事1件に必要な安全上の注記による。
-  // 2026-09-10: 17件目（individual-plan-goal-specificity-evaluation）が完全な架空の例（同じ題材を
-  // 三観点で三通りに書いた例と改善例4組）と目標具体化チェックシート（参考様式）を持つため、
-  // 架空注記 12 → 13・様式注記 13 → 14 へ各1件分だけ引き上げた。既存16記事側の件数は変えていない
-  // （引き上げ前の実測は 12 / 13 のまま）。このラチェットは「増加を人が明示的に承認する」ための
-  // 手続き上のゲートであり、安全注記そのものの削減を求めるものではない。
-  assert.ok(measured.fictionalNotice <= 13, `架空注記の反復: ${measured.fictionalNotice}/${published.length}`);
-  assert.ok(measured.formTemplateNotice <= 14, `参考様式注記の反復: ${measured.formTemplateNotice}/${published.length}`);
   assert.ok(measured.scopeLimitSection <= 6, `適用限界節の反復: ${measured.scopeLimitSection}/${published.length}`);
 
   // 導入部が「扱わないことの列挙」で始まる記事が過半に達すると、
@@ -576,4 +559,40 @@ test('the article skeleton does not become more uniform than it already is', () 
     scopeOpeners.length <= 9,
     `冒頭でスコープ宣言する記事が多すぎる: ${scopeOpeners.length}/${published.length} (${scopeOpeners.map((a) => a.slug)})`,
   );
+});
+
+// ─── 19. 安全上の注記は registry の宣言と突き合わせる（件数の上限では見ない） ─
+test('safety notices are tied to registry declarations, not capped as repetition', () => {
+  // 「完全な架空」「本サイト作成の参考様式」は、架空例が実例と誤読されること・本サイトの様式が公的様式と
+  // 誤認されることを防ぐ注記で、該当する資産を持つ記事には必要。件数の上限で縛ると、記事を足すたびに
+  // 上限を +1 する運用になる（2026-08-29 と 2026-09-10 に実際にそうなった）。
+  // 代わりに registry（docs/adsense-sixth-review/01-canonical-value-registry.csv）を宣言元とし、
+  //   - 宣言があるのに注記が無い記事（安全上の欠落）
+  //   - 宣言が無いのに定型句だけ入っている記事（鋳型としての混入）
+  // の両方向を落とす。registry の canonical_asset / firsthand_boundary に「架空」、canonical_asset に
+  // 「参考様式」と書くことが宣言にあたる。記事を足すときは、資産の実態を registry に書けば注記が要求される。
+  const rowOf = new Map(registry.map((r) => [r.slug, r]));
+  const problems = [];
+  for (const article of published) {
+    const row = rowOf.get(article.slug);
+    if (!row) continue; // registry との 1:1 対応は別のテストが見る
+    const declaresFictional = /架空/.test(row.canonical_asset) || /架空/.test(row.firsthand_boundary);
+    const declaresForm = /参考様式/.test(row.canonical_asset);
+    const marksFictional = /架空/.test(article.content);
+    const usesFictionalBoilerplate = /完全な架空/.test(article.content);
+    const usesFormNotice = /本サイト作成の参考様式/.test(article.content);
+    if (declaresFictional && !marksFictional) {
+      problems.push(`${article.slug}: registry は架空例を宣言しているが、本文に架空である旨の明示が無い`);
+    }
+    if (usesFictionalBoilerplate && !declaresFictional) {
+      problems.push(`${article.slug}: registry に架空例の宣言が無いのに「完全な架空」の定型句がある`);
+    }
+    if (declaresForm && !usesFormNotice) {
+      problems.push(`${article.slug}: registry は参考様式を宣言しているが、本文に「本サイト作成の参考様式」が無い`);
+    }
+    if (usesFormNotice && !declaresForm) {
+      problems.push(`${article.slug}: registry に参考様式の宣言が無いのに「本サイト作成の参考様式」がある`);
+    }
+  }
+  assert.deepEqual(problems, [], '安全注記の有無は registry の宣言と一致すること');
 });
