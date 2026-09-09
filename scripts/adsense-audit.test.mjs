@@ -86,12 +86,15 @@ test('published articles do not link to themselves', () => {
 });
 
 test('the review scope is deliberately reduced and focused', () => {
-  assert.equal(articles.size, 31);
+  // 記事ファイルの総数（未公開の統合・退役分を含む）。2026-09-10 の17件目追加で 31 → 32。
+  assert.equal(articles.size, 32);
   // 第6回審査で 21 → 15 へ絞った（統合5件・退役1件）。
   // 2026-08-29 に三観点評価の記事（individual-plan-three-viewpoint-evaluation）を
   // 特別支援教育の専門軸を深める新規 canonical として1件だけ追加し 16 とした。
+  // 2026-09-10 に目標設定の記事（individual-plan-goal-specificity-evaluation）を、同じ専門軸で
+  // 「目標の抽象度と評価可能性の両立」を扱う旗艦記事として1件だけ追加し 17 とした。
   // それ以外の「記事を増やす方向の変更」は引き続きこの assert で検出する。
-  assert.equal(published.length, 16);
+  assert.equal(published.length, 17);
   const categories = new Set(published.map((article) => article.category));
   assert.equal(categories.has('助成金・補助金'), false);
   assert.equal(categories.has('研修・セミナー'), false);
@@ -258,10 +261,12 @@ test('operator experience notes match confirmed experience (C articles excluded)
   // 経験C（資料でのみ確認）・SOURCE_ONLY の記事には実務経験注記を付けない。
   // individual-plan-three-viewpoint-evaluation は制度整理の記事であり、運営者の確認回答を
   // 経ていないため SOURCE_ONLY とする（注記を付けるには Owner の確認が必要）。
+  // individual-plan-goal-specificity-evaluation も一次資料の整理と完全な架空例で構成し、
+  // 運営者の確認回答を経ていないため同様に SOURCE_ONLY とする。
   const withoutNote = [
     'digital-textbook-introduction-school-changes', 'ai-class-newsletter-prompt',
     'free-ict-tools-safety-checklist', 'google-forms-school-use-guide',
-    'individual-plan-three-viewpoint-evaluation',
+    'individual-plan-three-viewpoint-evaluation', 'individual-plan-goal-specificity-evaluation',
   ];
   for (const slug of withNote) assert.match(notes, new RegExp(`'${slug}':`));
   for (const slug of withoutNote) assert.doesNotMatch(notes, new RegExp(`'${slug}':`));

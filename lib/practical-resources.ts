@@ -30,6 +30,12 @@ export const PRACTICAL_RESOURCES: PracticalResource[] = [
     anchor: '三観点の要求がどの層から来ているかを確かめる',
   },
   {
+    slug: 'individual-plan-goal-specificity-evaluation',
+    asset: '目標具体化チェックシート（力／場面／表れ／観点／支援／評価の6行＋二つの失敗の見分け表）',
+    useWhen: '個別の指導計画の目標を書いたあと、評価できる具体性と教科性が両立しているか、行動だけの目標になっていないかを確かめるときに',
+    anchor: '目標具体化チェックシート（本サイト作成の参考様式）',
+  },
+  {
     slug: 'special-needs-behavior-record-guide',
     asset: 'ABC行動記録シート（6列の空欄表＋完全な架空の記入例）',
     useWhen: '行動の記録を明日から取り始めるとき、粒度を決めて1枚目を書くために',

@@ -197,6 +197,39 @@ const MUTATIONS = [
         '        <GoogleAnalytics />\n        {/* adsbygoogle */}',
       ),
   },
+  {
+    name: 'registry に参考様式の宣言が無い記事へ「本サイト作成の参考様式」の定型句を混入させる',
+    files: ['content/articles/giga-device-lesson-use-guide.md'],
+    expect: 'registry declarations',
+    apply: () =>
+      patch(
+        'content/articles/giga-device-lesson-use-guide.md',
+        '## 前日までに実機で確かめること\n',
+        '## 前日までに実機で確かめること\n\n以下は本サイト作成の参考様式です。\n',
+      ),
+  },
+  {
+    name: 'registry に架空例の宣言が無い記事へ「完全な架空」の定型句を混入させる',
+    files: ['content/articles/special-needs-ict-reasonable-accommodation.md'],
+    expect: 'registry declarations',
+    apply: () =>
+      patch(
+        'content/articles/special-needs-ict-reasonable-accommodation.md',
+        '## 「読み上げを使わせてよいか」は、二つの問いに分かれている\n',
+        '## 「読み上げを使わせてよいか」は、二つの問いに分かれている\n\n以下は完全な架空の例です。\n',
+      ),
+  },
+  {
+    name: 'registry が参考様式を宣言している記事から「本サイト作成の参考様式」の注記を落とす',
+    files: ['content/articles/individual-plan-three-viewpoint-evaluation.md'],
+    expect: 'registry declarations',
+    apply: () =>
+      patch(
+        'content/articles/individual-plan-three-viewpoint-evaluation.md',
+        '確認表です（本サイト作成の参考様式）。',
+        '確認表です。',
+      ),
+  },
 ];
 
 console.log('\n\x1b[1m🧬 受入ゲートの mutation test\x1b[0m');
