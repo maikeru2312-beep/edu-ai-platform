@@ -32,6 +32,10 @@ const googleFormsSpecCheckedAt = '2026-08-10';
 // 三観点評価記事のために、改善等通知・学習評価参考資料・施行規則の指導要録規定を確認した日
 const threeViewpointCheckedAt = '2026-08-29';
 
+// 目標の具体化と評価可能性の記事のために、学習指導要領本文・解説（総則編・各教科等編・自立活動編）・
+// 学習評価参考資料・改善等通知と別紙1・中教審報告・国立特別支援教育総合研究所のガイドブックを確認した日
+const goalSpecificityCheckedAt = '2026-09-10';
+
 const sources = {
   generativeAiGuideline: {
     title: '初等中等教育段階における生成AIの利活用に関するガイドライン（Ver.2.0）',
@@ -385,6 +389,130 @@ const sources = {
       + '保存期間が5年間（指導要録及びその写しのうち入学・卒業等の学籍に関する記録は20年間）であること（第28条）、'
       + 'および第28条第1項の表簿の列挙に通知表が含まれていないこと',
   },
+  tokushiShidoYoryo: {
+    title: '特別支援学校幼稚部教育要領　小学部・中学部学習指導要領（平成29年4月告示）',
+    publisher: '文部科学省',
+    publishedOrUpdatedAt: '2017-04（平成29年4月告示）',
+    url: 'https://www.mext.go.jp/content/20200407-mxt_tokubetu01-100002983_1.pdf',
+    checkedAt: goalSpecificityCheckedAt,
+    supports:
+      '総則第3節の3の(3)イ（各教科等の指導に当たり、個々の実態を的確に把握し個別の指導計画を作成すること）、'
+      + '総則第4節の3の(2)（個別の指導計画に基づいて行われた学習状況や結果を適切に評価し、指導目標や指導内容、指導方法の改善に努めること）、'
+      + '第2章第1節第2款（知的障害者である児童に対する教育を行う特別支援学校）の国語の目標が三つの柱で示され、'
+      + '段階ごとの目標と、〔知識及び技能〕（2段階：写し書きやなぞり書きなどにより書写の基本を身に付けること）および'
+      + '〔思考力、判断力、表現力等〕（2段階 Ｂ書くこと：写真などを手掛かりにして伝えたいことを思い浮かべたり選んだりすること、'
+      + '自分の名前や物の名前を文字で表すことができることを知り簡単な平仮名をなぞったり書いたりすること／Ａ聞くこと・話すこと：簡単な事柄と語句などを結び付けること）'
+      + 'の内容が示されていること（印刷ページ89〜92）。第7章第3（自立活動の個別の指導計画は、実態把握に基づき指導すべき課題を明確にして'
+      + '指導目標及び指導内容を設定し、第2の内容から必要な項目を選定して具体的な指導内容を設定すること）',
+  },
+  tokushiSokusokuKaisetsuForGoalSetting: {
+    title: '特別支援学校教育要領・学習指導要領解説 総則編（幼稚部・小学部・中学部）',
+    publisher: '文部科学省',
+    publishedOrUpdatedAt: '2018-03（平成30年3月。令和6年12月一部改訂）',
+    url: 'https://www.mext.go.jp/content/20200407-mxt_tokubetu01-100002983_02.pdf',
+    checkedAt: goalSpecificityCheckedAt,
+    supports:
+      '各教科において作成する個別の指導計画は、各教科の習得状況や既習事項を確認するための実態把握と、各教科の指導内容の発展性を踏まえて'
+      + '指導目標を明確にすることが大切であること、および様式は各学校が工夫して作成するものであること（印刷ページ240〜241）。'
+      + '自立活動の個別の指導計画について、なぜその指導目標を設定したのかという考え方（指導仮説）を記述して次の担当者に引き継ぐ工夫が大切とされていること。'
+      + '各教科等を合わせて指導を行う際には各教科等の目標及び内容を基にして指導目標・指導内容を明らかにすること。'
+      + '学習評価の充実の解説として、三観点への整理と、論述・発表・作品の制作等の多様な活動を評価の対象とする多面的・多角的な評価、'
+      + 'および個別の指導計画に基づく評価がPlan-Do-Check-Actionのサイクルで指導目標・指導内容・指導方法の改善につながるべきこと（印刷ページ271〜272）',
+  },
+  tokushiKakukyokaKaisetsu: {
+    title: '特別支援学校学習指導要領解説 各教科等編（小学部・中学部）',
+    publisher: '文部科学省',
+    publishedOrUpdatedAt: '2018-03（平成30年3月）',
+    url: 'https://www.mext.go.jp/content/20220715-mxt_tokubetu01-100002983_1.pdf',
+    checkedAt: goalSpecificityCheckedAt,
+    supports:
+      '知的障害者である児童生徒に対する教育を行う特別支援学校の各教科の目標・内容が資質・能力の三つの柱に基づいて構造化され、段階ごとの目標が新設されたこと、'
+      + '学年ではなく段階別に内容を示す理由が同一学年でも個人差が大きく学力や学習状況が異なるためであること（印刷ページ22〜23）。'
+      + '小学部国語を例に、教科の目標(1)(2)(3)が三つの柱に対応し「これを踏まえ、段階ごとに、三つの柱に即し段階の目標を示している」とされていること（印刷ページ37）。'
+      + '国語の内容が〔知識及び技能〕と〔思考力、判断力、表現力等〕に構成し直され、〔知識及び技能〕は個別の事実的な知識や一定の手順のみを指すのではなく、'
+      + '両者が相互に関連し合いながら育成される必要があるとされていること（印刷ページ77）。'
+      + '知的障害のある児童生徒の学習上の特性として、学習で得た知識や技能が断片的になりやすく実際の生活の場面で生かすことが難しいこと、'
+      + '実際的な生活場面の中で具体的に思考や判断、表現できるようにする指導が効果的であること（印刷ページ26）',
+  },
+  tokushiJiritsuKaisetsu: {
+    title: '特別支援学校教育要領・学習指導要領解説 自立活動編（幼稚部・小学部・中学部）',
+    publisher: '文部科学省',
+    publishedOrUpdatedAt: '2018-03（平成30年3月）',
+    url: 'https://www.mext.go.jp/content/20220426-mext_tokubetu01-100002983_9.pdf',
+    checkedAt: goalSpecificityCheckedAt,
+    supports:
+      '自立活動の指導目標（ねらい）を設定する段階で到達状況を具体的に捉えておくことが重要であり、例えば「自分の病気を理解する」を'
+      + '「学校での健康状態の把握において、平熱などの通常の状態を知り、シートに記入しながら、自ら不調に気付く」のように、'
+      + 'どのような場を想定し、何を、どのような方法で理解させるのかを明らかにし、具体的な行動や観察できる状態として評価が可能になるよう工夫することが必要とされていること（印刷ページ118〜119）。'
+      + '自立活動の個別の指導計画が、実態把握→指導すべき課題の整理→指導目標→具体的な指導内容の手順で作成され、指導目標や指導内容が個別に設定されるものであること（印刷ページ40）',
+  },
+  tokushiGakushuHyokaSankouForGoalSetting: {
+    title: '特別支援学校小学部・中学部 学習評価参考資料',
+    publisher: '文部科学省',
+    publishedOrUpdatedAt: '2020-04（令和2年4月）',
+    url: 'https://www.mext.go.jp/content/20200515-mxt_tokubetu01-1386427.pdf',
+    checkedAt: goalSpecificityCheckedAt,
+    supports:
+      '知的障害者である児童生徒に対する教育を行う特別支援学校でも「学習指導要領に示す目標の実現の状況を判断するよりどころとして、評価規準を作成することが必要である」こと、'
+      + 'および「各学校において定める各教科等の評価規準の内容を指導目標、指導内容等の設定に活かすことが考えられる」こと（P.9〜10）。'
+      + '「知識・技能」は他の学習や生活の場面でも活用できる程度に概念等を理解したり技能を習得したりしているかまで評価すること、'
+      + '「思考・判断・表現」は論述やレポートの作成、発表、グループでの話合い、作品の制作や表現等の多様な活動で評価すること、'
+      + '「主体的に学習に取り組む態度」は単に継続的な行動や積極的な発言など性格や行動面の傾向を評価するのではなく、'
+      + '粘り強い取組を行おうとする側面と自らの学習を調整しようとする側面の二つを評価すること（P.10〜12）。'
+      + '「内容のまとまりごとの評価規準」が学習指導要領の「(2) 内容」の文末を「〜すること」から「〜している」に変換したものであり、'
+      + '〔知識及び技能〕が「知識・技能」、〔思考力、判断力、表現力等〕が「思考・判断・表現」に対応し、'
+      + '態度の規準は「(2) 内容」に記載がないため段階の目標(3)や観点の趣旨を用いて作成すること（P.16〜17、P.32〜34）。'
+      + '小学部国語の段階別の評価の観点及びその趣旨（P.29〜30）',
+  },
+  gakushuHyokaKaizenTsuchiForGoalSetting: {
+    title: '小学校、中学校、高等学校及び特別支援学校等における児童生徒の学習評価及び指導要録の改善等について（通知）',
+    publisher: '文部科学省',
+    publishedOrUpdatedAt: '2019-03-29（平成31年3月29日 30文科初第1845号）',
+    url: 'https://www.mext.go.jp/b_menu/hakusho/nc/1415169.htm',
+    checkedAt: goalSpecificityCheckedAt,
+    supports:
+      '観点別学習状況の評価の観点を「知識・技能」「思考・判断・表現」「主体的に学習に取り組む態度」の3観点に整理し、設置者において適切な観点を設定すること。'
+      + '「主体的に学習に取り組む態度」は、知識及び技能を獲得したり思考力等を身に付けたりすることに向けた粘り強い取組の中で、'
+      + '自らの学習を調整しようとしているかどうかを含めて評価すること。感性や思いやり等は個人内評価を通じて見取ること。'
+      + '特別支援学校（知的障害）の各教科の学習の記録を、評価の観点及びその趣旨を踏まえて文章で記述すること',
+  },
+  gakushuHyokaKaizenTsuchiBesshi1: {
+    title: '別紙1 小学校及び特別支援学校小学部の指導要録に記載する事項等（学習評価及び指導要録の改善等について（通知））',
+    publisher: '文部科学省',
+    publishedOrUpdatedAt: '2019-03-29（平成31年3月29日）',
+    url: 'https://www.mext.go.jp/b_menu/hakusho/nc/attach/1415186.htm',
+    checkedAt: goalSpecificityCheckedAt,
+    supports:
+      '特別支援学校（知的障害）小学部の各教科の学習の記録が、各教科の目標・内容に照らし、別紙4の評価の観点及びその趣旨を踏まえ、'
+      + '「具体的に定めた指導内容、実現状況等を箇条書き等により文章で端的に記述する」ものであること。'
+      + '自立活動の記録が、個別の指導計画を踏まえ、指導目標、指導内容、指導の成果の概要に関すること等を端的に記入するものであり、各教科の記録とは別の形であること',
+  },
+  chukyoGakushuHyokaHoukoku: {
+    title: '児童生徒の学習評価の在り方について（報告）',
+    publisher: '中央教育審議会初等中等教育分科会教育課程部会',
+    publishedOrUpdatedAt: '2019-01-21（平成31年1月21日）',
+    url: 'https://www.mext.go.jp/component/b_menu/shingi/toushin/__icsFiles/afieldfile/2019/04/17/1415602_1_1_1.pdf',
+    checkedAt: goalSpecificityCheckedAt,
+    supports:
+      '従前の「関心・意欲・態度」が挙手の回数や毎時間ノートを取っているかなど性格や行動面の傾向が一時的に表出された場面を捉える評価であるような誤解が課題とされたこと（P.3）。'
+      + '「主体的に学習に取り組む態度」は「挙手の回数やノートの取り方などの形式的な活動ではなく」、粘り強い取組を行おうとする側面と、'
+      + 'その中で自らの学習を調整しようとする側面の二つの側面を評価すること、'
+      + 'この観点の評価は知識及び技能を習得させたり思考力等を育成したりする場面に関わって行うものであり、'
+      + 'この観点のみを取り出して形式的態度を評価することは適当でないこと（P.9〜12）。'
+      + '「知識・技能」「思考・判断・表現」の具体的な評価方法（文章による説明、観察・実験、論述やレポート、発表、話合い、作品の制作等）（P.8〜9）',
+  },
+  niseGakushuHyokaGuide: {
+    title: '知的障害教育における学習評価ガイドブック',
+    publisher: '国立特別支援教育総合研究所 知的障害教育研究班',
+    publishedOrUpdatedAt: '2026-02-25（令和8年2月25日 初版）',
+    url: 'https://www.nise.go.jp/wp-content/uploads/2026/04/titeki_LEguide2.pdf',
+    checkedAt: goalSpecificityCheckedAt,
+    supports:
+      '評価規準は学習指導要領の内容の文末「〜すること」を「〜している」に置き換えて作ること、'
+      + '単元目標は「〜できる」とするのが基本と考えられるが実態に応じた目標内容に応用することもできるとされていること'
+      + '（観点を問わず「〜できる」が目標の文末として扱われている点の確認）。'
+      + '知的障害のある児童生徒のための各教科では観点別学習状況の評価を総括する「評定」は行わず、学習状況を記述により表すこと',
+  },
 } satisfies Record<string, ArticleReference>;
 
 export const ARTICLE_REFERENCES: Record<string, ArticleReference[]> = {
@@ -429,6 +557,17 @@ export const ARTICLE_REFERENCES: Record<string, ArticleReference[]> = {
     sources.schoolEducationRule134,
     sources.individualPlan,
     sources.tsukyuGuide,
+  ],
+  'individual-plan-goal-specificity-evaluation': [
+    sources.tokushiShidoYoryo,
+    sources.tokushiSokusokuKaisetsuForGoalSetting,
+    sources.tokushiKakukyokaKaisetsu,
+    sources.tokushiJiritsuKaisetsu,
+    sources.tokushiGakushuHyokaSankouForGoalSetting,
+    sources.gakushuHyokaKaizenTsuchiForGoalSetting,
+    sources.gakushuHyokaKaizenTsuchiBesshi1,
+    sources.chukyoGakushuHyokaHoukoku,
+    sources.niseGakushuHyokaGuide,
   ],
   'individual-plan-three-viewpoint-evaluation': [
     sources.tokushiSokusokuKaisetsu,
