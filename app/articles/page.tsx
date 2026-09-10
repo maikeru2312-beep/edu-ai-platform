@@ -30,7 +30,7 @@ export default function ArticlesPage() {
           記事数を増やすことは目的にしていません。1本ずつ、扱う場面と、
           そのまま使える様式・判断表を持たせています。
         </p>
-        <p className="text-gray-400 text-xs mt-2">全 {articles.length} 件</p>
+        <p className="text-gray-600 text-xs mt-2">全 {articles.length} 件</p>
       </div>
 
       {/* カテゴリフィルター */}

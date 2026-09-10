@@ -11,7 +11,7 @@ export default function OperatorPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
       <h1 className="text-3xl font-bold text-gray-900 mb-2">運営者情報</h1>
-      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年8月22日</p>
+      <p className="text-sm text-gray-600 mb-10">最終更新日：2026年8月22日</p>
 
       <div className="space-y-10 text-gray-700 leading-relaxed">
 
@@ -104,7 +104,7 @@ export default function OperatorPage() {
           </ul>
           <p>
             掲載情報の正確性・完全性・最新性の確保に努めていますが、これらを保証するものではありません。
-            誤情報を発見された場合は、<a href="/contact" className="text-blue-600 hover:underline">お問い合わせページ</a>よりお知らせください。
+            誤情報を発見された場合は、<a href="/contact" className="text-blue-600 underline underline-offset-2 hover:text-blue-800">お問い合わせページ</a>よりお知らせください。
           </p>
         </section>
 
@@ -136,8 +136,8 @@ export default function OperatorPage() {
 
         <section className="bg-gray-50 rounded-lg p-5 text-sm text-gray-500">
           <p>
-            個人情報保護方針については<a href="/privacy" className="text-blue-600 hover:underline">プライバシーポリシー</a>をご覧ください。
-            免責事項の詳細は<a href="/disclaimer" className="text-blue-600 hover:underline">免責事項ページ</a>に掲載しています。
+            個人情報保護方針については<a href="/privacy" className="text-blue-600 underline underline-offset-2 hover:text-blue-800">プライバシーポリシー</a>をご覧ください。
+            免責事項の詳細は<a href="/disclaimer" className="text-blue-600 underline underline-offset-2 hover:text-blue-800">免責事項ページ</a>に掲載しています。
           </p>
         </section>
 

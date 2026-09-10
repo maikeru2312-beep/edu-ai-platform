@@ -61,7 +61,7 @@ export default async function CategoryPage({
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
-      <nav className="text-sm text-gray-500 mb-6 flex items-center gap-2">
+      <nav aria-label="パンくずリスト" className="text-sm text-gray-500 mb-6 flex items-center gap-2">
         <Link href="/" className="hover:text-blue-600">
           ホーム
         </Link>
@@ -81,11 +81,11 @@ export default async function CategoryPage({
         <p className="text-gray-600 text-sm leading-relaxed max-w-3xl">
           {CATEGORY_DESCRIPTIONS[category]}
         </p>
-        <p className="text-gray-400 text-xs mt-2">全 {articles.length} 件</p>
+        <p className="text-gray-600 text-xs mt-2">全 {articles.length} 件</p>
       </div>
 
       {/* 他カテゴリへのリンク */}
-      <p className="text-xs text-gray-400 mb-2">
+      <p className="text-xs text-gray-600 mb-2">
         いずれも「特別支援教育を含む学校実務での判断」を扱う区分です
       </p>
       <div className="flex flex-wrap gap-2 mb-8">

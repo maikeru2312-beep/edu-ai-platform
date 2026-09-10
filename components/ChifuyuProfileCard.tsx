@@ -48,7 +48,7 @@ export default function ChifuyuProfileCard({ variant = 'full' }: Props) {
           <p className="text-xs text-gray-500 leading-tight">教育DXナビの案内役</p>
           {/* 記事の著者は運営者であり、千冬先生は編集キャラクターである。
               収益化対象ページで著者名と誤読されないよう、compact でも必ず開示する。 */}
-          <p className="mt-1 text-xs text-gray-400 leading-tight">
+          <p className="mt-1 text-xs text-gray-600 leading-tight">
             ※ 編集キャラクターです。記事の執筆・編集の責任は運営者にあります。
           </p>
         </div>
@@ -64,7 +64,7 @@ export default function ChifuyuProfileCard({ variant = 'full' }: Props) {
           <p className="font-bold text-gray-900 text-lg leading-tight">千冬先生＠教育DX</p>
           <p className="text-sm text-blue-600 font-medium mt-0.5">教育DXナビの案内役</p>
           <p className="text-sm text-gray-700 mt-3 leading-relaxed">
-            ICT活用・生成AI・校務改善・特別支援教育について、学校現場で安全に使うための視点をやさしく整理します。
+            特別支援教育の学校実務と、ICT活用・生成AI・校務改善について、学校現場で安全に使うための視点をやさしく整理します。
           </p>
           {X_URL && (
             <a
@@ -81,7 +81,7 @@ export default function ChifuyuProfileCard({ variant = 'full' }: Props) {
           )}
         </div>
       </div>
-      <p className="mt-4 text-xs text-gray-400 leading-relaxed border-t border-blue-100 pt-3">
+      <p className="mt-4 text-xs text-gray-600 leading-relaxed border-t border-blue-100 pt-3">
         ※ 千冬先生は、教育DXナビの編集キャラクターです。実在の学校・自治体・教員個人を代表するものではありません。
       </p>
     </div>

@@ -13,7 +13,7 @@ export default function AboutPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
       <h1 className="text-3xl font-bold text-gray-900 mb-2">このサイトについて</h1>
-      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年8月29日</p>
+      <p className="text-sm text-gray-600 mb-10">最終更新日：2026年9月10日</p>
 
       <div className="space-y-10 text-gray-700 leading-relaxed">
         <section>
@@ -94,7 +94,7 @@ export default function AboutPage() {
           <p className="mt-3 text-sm leading-relaxed">
             なお、当サイトの記事は情報提供を目的としており、医療・法律・行政上の判断を代替するものではありません。
             誤情報・リンク切れを見つけた場合は、
-            <Link href="/contact" className="text-blue-600 hover:underline">お問い合わせページ</Link>
+            <Link href="/contact" className="text-blue-600 underline underline-offset-2 hover:text-blue-800">お問い合わせページ</Link>
             からお知らせください。確認のうえ修正します。
           </p>
         </section>
@@ -103,7 +103,7 @@ export default function AboutPage() {
           <h2 className="text-xl font-bold text-gray-900 mb-3">千冬先生＠教育DXについて</h2>
           <ChifuyuProfileCard variant="full" />
           <p className="mt-4 text-sm text-gray-700 leading-relaxed">
-            千冬先生＠教育DXは、教育DXナビの案内役です。ICT活用、生成AI、校務改善、特別支援教育について、学校現場で安全に使うための視点をやさしく整理します。
+            千冬先生＠教育DXは、教育DXナビの案内役です。特別支援教育の学校実務と、ICT活用、生成AI、校務改善について、学校現場で安全に使うための視点をやさしく整理します。
             実在の学校・自治体・教員個人を代表するものではなく、教育DXナビの編集キャラクターとして、サイト内記事やSNSで情報発信を行います。
           </p>
         </section>
@@ -113,7 +113,7 @@ export default function AboutPage() {
           <p className="text-sm leading-relaxed mb-3">
             当サイトでは、今後、記事ページにおいて Google AdSense 等による広告を掲載する場合があります。
             現時点で広告の掲載は開始していません。掲載を開始した際は、本ページと
-            <Link href="/privacy" className="text-blue-600 hover:underline">プライバシーポリシー</Link>
+            <Link href="/privacy" className="text-blue-600 underline underline-offset-2 hover:text-blue-800">プライバシーポリシー</Link>
             の記載を更新してお知らせします。広告配信に伴う Cookie の利用や
             第三者配信事業者の取り扱いについても、プライバシーポリシーに定めています。
           </p>
@@ -131,7 +131,7 @@ export default function AboutPage() {
             運営者は、特別支援学校での授業づくり・通知表所見・個別の指導計画・行動記録・合理的配慮の検討・
             ICTや視覚支援・AACの活用に関する業務経験を持ち、公的資料と実務上の確認手順を照合して記事を編集しています。
             実務経験に基づく記述は、個人や勤務先を特定できない範囲で、事実確認した内容だけを掲載します
-            （詳しくは<Link href="/operator" className="text-blue-600 hover:underline">運営者情報</Link>）。
+            （詳しくは<Link href="/operator" className="text-blue-600 underline underline-offset-2 hover:text-blue-800">運営者情報</Link>）。
           </p>
           <p className="mb-3">
             児童生徒・保護者のプライバシー保護と、勤務先・所属自治体への影響を避けるため、
@@ -139,9 +139,9 @@ export default function AboutPage() {
             匿名での運営とする代わりに、上記の編集方針・確認プロセスを公開し、内容への責任を明確にしています。
           </p>
           <p>
-            詳しくは<Link href="/operator" className="text-blue-600 hover:underline">運営者情報</Link>をご覧ください。
+            詳しくは<Link href="/operator" className="text-blue-600 underline underline-offset-2 hover:text-blue-800">運営者情報</Link>をご覧ください。
             サイト内容へのご意見・誤りのご指摘は
-            <Link href="/contact" className="text-blue-600 hover:underline">お問い合わせページ</Link>
+            <Link href="/contact" className="text-blue-600 underline underline-offset-2 hover:text-blue-800">お問い合わせページ</Link>
             からお願いします。
           </p>
         </section>
@@ -150,10 +150,10 @@ export default function AboutPage() {
       <nav className="mt-12 pt-6 border-t border-gray-200 text-sm text-gray-600">
         <p className="mb-2 font-medium text-gray-700">関連ページ</p>
         <ul className="space-y-1">
-          <li><Link href="/operator" className="text-blue-600 hover:underline">運営者情報</Link></li>
-          <li><Link href="/privacy" className="text-blue-600 hover:underline">プライバシーポリシー</Link></li>
-          <li><Link href="/disclaimer" className="text-blue-600 hover:underline">免責事項</Link></li>
-          <li><Link href="/contact" className="text-blue-600 hover:underline">お問い合わせ</Link></li>
+          <li><Link href="/operator" className="text-blue-600 underline underline-offset-2 hover:text-blue-800">運営者情報</Link></li>
+          <li><Link href="/privacy" className="text-blue-600 underline underline-offset-2 hover:text-blue-800">プライバシーポリシー</Link></li>
+          <li><Link href="/disclaimer" className="text-blue-600 underline underline-offset-2 hover:text-blue-800">免責事項</Link></li>
+          <li><Link href="/contact" className="text-blue-600 underline underline-offset-2 hover:text-blue-800">お問い合わせ</Link></li>
         </ul>
       </nav>
     </div>

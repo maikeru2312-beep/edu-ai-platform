@@ -16,9 +16,9 @@ export default function EditorialPolicy() {
       </p>
       <p className="mt-2 text-sm text-gray-600 leading-relaxed">
         誤り・リンク切れのご指摘は
-        <Link href="/contact" className="text-blue-600 hover:underline">お問い合わせ</Link>
+        <Link href="/contact" className="text-blue-600 underline underline-offset-2 hover:text-blue-800">お問い合わせ</Link>
         からお願いします。編集方針の詳細は
-        <Link href="/about" className="text-blue-600 hover:underline">このサイトについて</Link>
+        <Link href="/about" className="text-blue-600 underline underline-offset-2 hover:text-blue-800">このサイトについて</Link>
         をご覧ください。
       </p>
     </div>

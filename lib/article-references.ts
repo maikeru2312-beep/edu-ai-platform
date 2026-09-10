@@ -36,6 +36,9 @@ const threeViewpointCheckedAt = '2026-08-29';
 // 学習評価参考資料・改善等通知と別紙1・中教審報告・国立特別支援教育総合研究所のガイドブックを確認した日
 const goalSpecificityCheckedAt = '2026-09-10';
 
+// サイト改善監査（2026-09-10）で、本文が引いているのに未登録だった資料を確認した日
+const siteAuditCheckedAt = '2026-09-10';
+
 const sources = {
   generativeAiGuideline: {
     title: '初等中等教育段階における生成AIの利活用に関するガイドライン（Ver.2.0）',
@@ -68,6 +71,16 @@ const sources = {
     url: 'https://www.mext.go.jp/a_menu/shotou/kyoukasho/seido/1407731.htm',
     checkedAt,
     supports: '制度上の位置付け、紙との併用、2024年度からの段階的導入',
+  },
+  digitalTextbookGuideline: {
+    title: '学習者用デジタル教科書の効果的な活用の在り方等に関するガイドライン',
+    publisher: '文部科学省',
+    publishedOrUpdatedAt: '2021-03（令和3年3月改訂）',
+    url: 'https://www.mext.go.jp/content/20210325-mxt_kyokasyo01-100002550_02.pdf',
+    checkedAt: siteAuditCheckedAt,
+    supports:
+      '学習者用デジタル教科書を使用する際の健康面への配慮（「児童生徒の健康に留意してICTを活用するためのガイドブック」の留意点を含む）と、'
+      + '各教科等での活用の例・留意事項。本サイトの「最初の単元は機能を一つに絞る」という手順は同ガイドラインが定めるものではない',
   },
   digitalTextbookNotice: {
     title: '学校教育法第三十四条第二項に規定する教材の使用について定める件の一部改正に関する通知',
@@ -160,6 +173,16 @@ const sources = {
     checkedAt: parentCollaborationCheckedAt,
     supports:
       '合理的配慮は「意思の表明があった場合」に「負担が過重でないとき」に提供義務が生じるという構造。面談の場で即答せず校内確認へ持ち帰る判断手順の根拠',
+  },
+  localIndependentAdminCorpAct: {
+    title: '地方独立行政法人法 第二十一条・第六十八条',
+    publisher: 'e-Gov 法令検索（デジタル庁）',
+    publishedOrUpdatedAt: '2003-07-16（平成15年法律第118号。条文はe-Gov掲載の現行版を確認）',
+    url: 'https://laws.e-gov.go.jp/law/415AC0000000118',
+    checkedAt: siteAuditCheckedAt,
+    supports:
+      '地方独立行政法人の業務として大学等の設置・管理を掲げる規定（第21条第2号）と、公立大学法人の定義（第68条）。'
+      + '保護者面談記事が、公立大学法人立の学校に適用される個人情報保護法の規定を整理する表で引いている条文',
   },
   childAbusePreventionAct: {
     title: '児童虐待の防止等に関する法律 第六条（児童虐待に係る通告）',
@@ -550,7 +573,11 @@ export const ARTICLE_REFERENCES: Record<string, ArticleReference[]> = {
     sources.aiCopyright,
   ],
   'chatgpt-tsuchihyo-shoken': [sources.generativeAiGuideline, sources.ppcAiNotice],
-  'digital-textbook-introduction-school-changes': [sources.digitalTextbook, sources.digitalTextbookNotice],
+  'digital-textbook-introduction-school-changes': [
+    sources.digitalTextbook,
+    sources.digitalTextbookGuideline,
+    sources.digitalTextbookNotice,
+  ],
   'education-ai-service-checklist-before-use': [sources.ppcAiNotice, sources.generativeAiGuideline, sources.aiCopyright],
   'giga-device-lesson-use-guide': [sources.studx, sources.safeDevices],
   'individual-education-plan-writing-guide': [
@@ -579,6 +606,7 @@ export const ARTICLE_REFERENCES: Record<string, ArticleReference[]> = {
     sources.individualPlan,
   ],
   'reasonable-accommodation-school-record': [
+    sources.disabilityDiscriminationAct,
     sources.disabilityBasicPolicy,
     sources.accommodationGuideline,
     sources.individualPlan,
@@ -600,6 +628,7 @@ export const ARTICLE_REFERENCES: Record<string, ArticleReference[]> = {
     sources.disabilityBasicPolicy,
     sources.schoolEducationRule134,
     sources.personalInfoAct,
+    sources.localIndependentAdminCorpAct,
     sources.childAbusePreventionAct,
     sources.accommodationGuideline,
     sources.individualPlan,

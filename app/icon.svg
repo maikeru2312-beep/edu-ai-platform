@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="教育DXナビ">
+  <rect width="64" height="64" rx="14" fill="#1d4ed8"/>
+  <path d="M13 17h15a6 6 0 0 1 6 6v25a5 5 0 0 0-5-5H13z" fill="#ffffff"/>
+  <path d="M51 17H36a6 6 0 0 0-6 6v25a5 5 0 0 1 5-5h16z" fill="#bfdbfe"/>
+  <rect x="17" y="24" width="10" height="2.5" rx="1.25" fill="#93c5fd"/>
+  <rect x="17" y="30" width="10" height="2.5" rx="1.25" fill="#93c5fd"/>
+  <rect x="37" y="24" width="10" height="2.5" rx="1.25" fill="#1d4ed8" opacity="0.5"/>
+  <rect x="37" y="30" width="10" height="2.5" rx="1.25" fill="#1d4ed8" opacity="0.5"/>
+</svg>

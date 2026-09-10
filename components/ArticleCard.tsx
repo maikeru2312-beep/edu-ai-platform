@@ -18,12 +18,12 @@ export default function ArticleCard({ article }: { article: ArticleMeta }) {
         <p className="text-gray-500 text-sm line-clamp-2 mb-4">{article.description}</p>
         <div className="flex flex-wrap gap-1 mb-3">
           {article.tags.slice(0, 3).map((tag) => (
-            <span key={tag} className="text-xs text-gray-400 bg-gray-100 px-2 py-0.5 rounded">
+            <span key={tag} className="text-xs text-gray-600 bg-gray-100 px-2 py-0.5 rounded">
               #{tag}
             </span>
           ))}
         </div>
-        <time className="text-xs text-gray-400 mt-auto block">{article.publishedAt}</time>
+        <time className="text-xs text-gray-600 mt-auto block">{article.publishedAt}</time>
       </article>
     </Link>
   );
