@@ -178,6 +178,7 @@ Lighthouse（mobile、production、修正前）: Home 87/95/96/100、記事 65/9
 - metadata: title/description/canonical/Article JSON-LD/OG 画像（ローカルで新デザインを確認）
 - 参考資料URL: 44件すべて 200（`npm run refs:check`）
 - ローカル DOM 実測（375px）: 主要リンク表示、目次13項目、表10本すべてスクロール枠、本文の gray-400 0、favicon リンクあり
+- Lighthouse（mobile、ローカルビルド、修正後）: accessibility Home 100／記事 100 相当（残っていた1件＝案内役カードの「教育DXナビの案内役」を gray-600 に修正済み、コントラスト約6.6:1）／resources 100、best-practices 3ページとも 100、SEO 100。console のネットワークエラー（favicon）も解消
 
 ## 16. Top 10 next actions（効果順）
 

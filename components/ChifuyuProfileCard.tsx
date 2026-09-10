@@ -45,7 +45,7 @@ export default function ChifuyuProfileCard({ variant = 'full' }: Props) {
         <Avatar size="sm" />
         <div className="min-w-0">
           <p className="text-sm font-semibold text-gray-900">千冬先生＠教育DX</p>
-          <p className="text-xs text-gray-500 leading-tight">教育DXナビの案内役</p>
+          <p className="text-xs text-gray-600 leading-tight">教育DXナビの案内役</p>
           {/* 記事の著者は運営者であり、千冬先生は編集キャラクターである。
               収益化対象ページで著者名と誤読されないよう、compact でも必ず開示する。 */}
           <p className="mt-1 text-xs text-gray-600 leading-tight">
