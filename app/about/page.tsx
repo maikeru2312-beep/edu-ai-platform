@@ -111,8 +111,11 @@ export default function AboutPage() {
         <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">収益化・広告について</h2>
           <p className="text-sm leading-relaxed mb-3">
-            当サイトでは、今後、記事ページにおいて Google AdSense 等による広告を掲載する場合があります。
-            現時点で広告の掲載は開始していません。掲載を開始した際は、本ページと
+            当サイトは、記事ページにおいて Google AdSense による広告の掲載を予定しており、
+            記事ページには現在、Google AdSense の広告配信用コードを設置しています。
+            現時点で広告枠は設けておらず、広告は表示されていませんが、
+            広告が表示されていない状態でも、このコードが Google と通信し、Cookie が設定される場合があります。
+            広告の表示を開始した際は、本ページと
             <Link href="/privacy" className="text-blue-600 underline underline-offset-2 hover:text-blue-800">プライバシーポリシー</Link>
             の記載を更新してお知らせします。広告配信に伴う Cookie の利用や
             第三者配信事業者の取り扱いについても、プライバシーポリシーに定めています。
