@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { getAllArticles } from '@/lib/articles';
 import { PRACTICAL_RESOURCES } from '@/lib/practical-resources';
 import { headingId } from '@/lib/heading-id';
-import { CATEGORIES } from '@/lib/categories';
+import { getResourceGroups, getStepResource, journeyAnchor } from '@/lib/reader-journeys';
 import CategoryBadge from '@/components/CategoryBadge';
 
 const PAGE_DESCRIPTION =
@@ -26,41 +26,104 @@ export const metadata: Metadata = {
 export default function ResourcesPage() {
   const articles = getAllArticles();
   const bySlug = new Map(articles.map((a) => [a.slug, a]));
-  // 一覧はカテゴリ順（サイトの専門軸である特別支援教育が先頭に来る）でまとめる。
-  // 公開記事に対応しないエントリは表示しない（データ側の取り残しを公開面に出さない）。
-  const grouped = CATEGORIES.map((category) => ({
-    category,
-    items: PRACTICAL_RESOURCES.filter((r) => bySlug.get(r.slug)?.category === category),
-  })).filter((g) => g.items.length > 0);
+
+  // 並びは読者ジャーニー順（lib/reader-journeys.ts が唯一の真実）。様式は主ジャーニーの下に1回だけ出す。
+  // 記事へのリンク先アンカーは従来どおり headingId(resource.anchor) で、既存の deep link は変わらない。
+  const groups = getResourceGroups()
+    .map(({ journey, steps }) => ({
+      journey,
+      items: steps
+        .map((step) => ({ step, resource: getStepResource(step) }))
+        .filter((entry) => entry.resource && bySlug.has(entry.step.slug)),
+    }))
+    .filter((group) => group.items.length > 0);
+
+  // ジャーニーに載っていない様式は取り残さず末尾にまとめる（データ側の抜けを公開面で隠さない）。
+  const grouped = new Set(groups.flatMap((g) => g.items.map((i) => i.step.slug)));
+  const ungrouped = PRACTICAL_RESOURCES.filter(
+    (resource) => !grouped.has(resource.slug) && bySlug.has(resource.slug),
+  );
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">様式・チェックリスト一覧</h1>
         <p className="text-gray-600 text-sm leading-relaxed max-w-3xl">
-          各記事が持つ「そのまま使える様式・チェックリスト・判定表」を、場面から探せるように並べた一覧です。
+          各記事が持つ「そのまま使える様式・チェックリスト・判定表」を、やりたいことの順に並べた一覧です。
           様式の実体と使い方・記入例は、それぞれの記事の中にあります。
           いずれも本サイト作成の参考様式であり、公的機関の定める様式ではありません。
           所属校・設置者の様式がある場合はそちらが優先です。
         </p>
       </div>
 
+      {/* 資産が増えても目的の束へ直接飛べるようにする（JSなしのページ内リンク） */}
+      <nav aria-label="やりたいことから探す" className="mb-10">
+        <p className="text-sm font-semibold text-gray-900 mb-2">やりたいことから探す</p>
+        <ul className="flex flex-wrap gap-2">
+          {groups.map(({ journey, items }) => (
+            <li key={journey.id}>
+              <a
+                href={`#${journeyAnchor(journey.id)}`}
+                className="inline-block text-xs text-blue-600 underline underline-offset-2 hover:text-blue-800 bg-white border border-gray-200 rounded-full px-3 py-1.5"
+              >
+                {journey.title}（{items.length}）
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
       <div className="space-y-10">
-        {grouped.map(({ category, items }) => (
-          <section key={category}>
-            <div className="mb-4">
-              <CategoryBadge category={category} linked />
-            </div>
+        {groups.map(({ journey, items }) => (
+          <section key={journey.id} aria-labelledby={journeyAnchor(journey.id)}>
+            <h2
+              id={journeyAnchor(journey.id)}
+              className="text-xl font-bold text-gray-900 mb-1 scroll-mt-24"
+            >
+              {journey.title}
+            </h2>
+            <p className="text-sm text-gray-600 mb-4 leading-relaxed">{journey.shortDescription}</p>
+            <ol className="space-y-4">
+              {items.map(({ step, resource }, index) => {
+                const article = bySlug.get(step.slug)!;
+                return (
+                  <li key={step.slug} className="bg-white border border-gray-200 rounded-xl p-5">
+                    <p className="text-xs font-semibold text-gray-700 mb-1">
+                      {index + 1}. {step.label}
+                    </p>
+                    <p className="font-semibold text-gray-900 leading-snug mb-1">{resource!.asset}</p>
+                    <p className="text-sm text-gray-600 leading-relaxed mb-3">{resource!.useWhen}</p>
+                    <Link
+                      href={`/articles/${resource!.slug}#${encodeURIComponent(headingId(resource!.anchor))}`}
+                      className="text-sm text-blue-600 underline underline-offset-2 hover:text-blue-800 font-medium"
+                    >
+                      使い方と記入例を見る：{article.title} →
+                    </Link>
+                  </li>
+                );
+              })}
+            </ol>
+          </section>
+        ))}
+
+        {ungrouped.length > 0 && (
+          <section aria-labelledby="resources-other">
+            <h2 id="resources-other" className="text-xl font-bold text-gray-900 mb-4 scroll-mt-24">
+              そのほかの様式
+            </h2>
             <ul className="space-y-4">
-              {items.map((resource) => {
+              {ungrouped.map((resource) => {
                 const article = bySlug.get(resource.slug)!;
                 return (
                   <li key={resource.slug} className="bg-white border border-gray-200 rounded-xl p-5">
+                    <div className="mb-2">
+                      <CategoryBadge category={article.category} linked />
+                    </div>
                     <p className="font-semibold text-gray-900 leading-snug mb-1">{resource.asset}</p>
                     <p className="text-sm text-gray-600 leading-relaxed mb-3">{resource.useWhen}</p>
                     <Link
                       href={`/articles/${resource.slug}#${encodeURIComponent(headingId(resource.anchor))}`}
-                      className="text-sm text-blue-600 hover:text-blue-800 font-medium"
+                      className="text-sm text-blue-600 underline underline-offset-2 hover:text-blue-800 font-medium"
                     >
                       使い方と記入例を見る：{article.title} →
                     </Link>
@@ -69,7 +132,7 @@ export default function ResourcesPage() {
               })}
             </ul>
           </section>
-        ))}
+        )}
       </div>
 
       <div className="mt-12 pt-6 border-t border-gray-200 text-sm text-gray-500">

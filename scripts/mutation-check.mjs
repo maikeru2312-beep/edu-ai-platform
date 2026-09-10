@@ -17,7 +17,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const root = process.cwd();
-const TEST_FILES = ['scripts/adsense-audit.test.mjs', 'scripts/sixth-review-original-value.test.mjs'];
+const TEST_FILES = [
+  'scripts/adsense-audit.test.mjs',
+  'scripts/sixth-review-original-value.test.mjs',
+  'scripts/reader-journey.test.mjs',
+];
 
 const red = (s) => `\x1b[31m${s}\x1b[0m`;
 const green = (s) => `\x1b[32m${s}\x1b[0m`;
@@ -228,6 +232,39 @@ const MUTATIONS = [
         'content/articles/individual-plan-three-viewpoint-evaluation.md',
         '確認表です（本サイト作成の参考様式）。',
         '確認表です。',
+      ),
+  },
+  {
+    name: 'ジャーニーのステップを未公開記事の slug へ差し替える',
+    files: ['lib/reader-journeys.ts'],
+    expect: 'published article',
+    apply: () =>
+      patch(
+        'lib/reader-journeys.ts',
+        "slug: 'special-needs-behavior-record-guide',",
+        "slug: 'school-generative-ai-privacy-security',",
+      ),
+  },
+  {
+    name: '記事末尾の「次」を自己リンクにする（同じ記事を隣り合う段に置く）',
+    files: ['lib/reader-journeys.ts'],
+    expect: 'self-link',
+    apply: () =>
+      patch(
+        'lib/reader-journeys.ts',
+        "slug: 'individual-plan-three-viewpoint-evaluation',",
+        "slug: 'individual-plan-goal-specificity-evaluation',",
+      ),
+  },
+  {
+    name: 'ジャーニー名を描画側へ直書きする（定義と表示の二重管理）',
+    files: ['app/page.tsx'],
+    expect: 'same journey source',
+    apply: () =>
+      patch(
+        'app/page.tsx',
+        '        <JourneyFinder />',
+        '        <p>個別の指導計画を書く</p><JourneyFinder />',
       ),
   },
 ];

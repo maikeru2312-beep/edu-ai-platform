@@ -11,6 +11,8 @@ import ArticleReferences from '@/components/ArticleReferences';
 import ArticleExperienceNote from '@/components/ArticleExperienceNote';
 import ArticleBody from '@/components/ArticleBody';
 import ArticleToc, { extractToc } from '@/components/ArticleToc';
+import ArticleJourneyNav from '@/components/ArticleJourneyNav';
+import { getPrimaryJourneyPosition } from '@/lib/reader-journeys';
 
 export function generateStaticParams() {
   return getPublishedArticleSlugs().map((slug) => ({ slug }));
@@ -63,9 +65,14 @@ export default async function ArticleDetailPage({
     notFound();
   }
 
-  const relatedArticles = getArticlesByCategory(article.category)
-    .filter((a) => a.slug !== slug)
-    .slice(0, 3);
+  // 読者ジャーニーに属する記事は、同カテゴリの新着ではなく前後の段を出す（次の判断につながる方）。
+  // 属さない記事だけ、従来の関連記事に戻す。
+  const journeyPosition = getPrimaryJourneyPosition(slug);
+  const relatedArticles = journeyPosition
+    ? []
+    : getArticlesByCategory(article.category)
+        .filter((a) => a.slug !== slug)
+        .slice(0, 3);
 
   // Article の構造化データ。運営者は匿名の個人のため、author は個人名ではなく
   // サイト名の Organization として表す（About・運営者情報の開示方針と一致させる）。
@@ -141,6 +148,8 @@ export default async function ArticleDetailPage({
       <div className="mt-4">
         <ChifuyuProfileCard variant="compact" />
       </div>
+
+      <ArticleJourneyNav slug={article.slug} />
 
       {relatedArticles.length > 0 && (
         <aside className="mt-12 pt-8 border-t border-gray-200" aria-labelledby="related-articles">
