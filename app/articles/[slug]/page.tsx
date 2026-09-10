@@ -10,6 +10,7 @@ import AdSenseScript from '@/components/AdSenseScript';
 import ArticleReferences from '@/components/ArticleReferences';
 import ArticleExperienceNote from '@/components/ArticleExperienceNote';
 import ArticleBody from '@/components/ArticleBody';
+import ArticleToc, { extractToc } from '@/components/ArticleToc';
 
 export function generateStaticParams() {
   return getPublishedArticleSlugs().map((slug) => ({ slug }));
@@ -90,7 +91,7 @@ export default async function ArticleDetailPage({
       />
       <AdSenseScript />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10">
-      <nav className="text-sm text-gray-500 mb-6 flex items-center gap-2 flex-wrap">
+      <nav aria-label="パンくずリスト" className="text-sm text-gray-500 mb-6 flex items-center gap-2 flex-wrap">
         <Link href="/" className="hover:text-blue-600">
           ホーム
         </Link>
@@ -110,18 +111,21 @@ export default async function ArticleDetailPage({
           {article.title}
         </h1>
         <p className="text-gray-600 text-lg mb-4 leading-relaxed">{article.description}</p>
-        <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400">
+        <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
           <time>公開: {article.publishedAt}</time>
           <time>最終確認: {article.updatedAt ?? article.publishedAt}</time>
         </div>
         <div className="flex flex-wrap gap-1 mt-3">
           {article.tags.map((tag) => (
-            <span key={tag} className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded">
+            <span key={tag} className="text-xs text-gray-600 bg-gray-100 px-2 py-0.5 rounded">
               #{tag}
             </span>
           ))}
         </div>
       </header>
+
+      {/* 長い記事の目次。見出し id は本文と /resources で共有する headingId() 由来 */}
+      <ArticleToc entries={extractToc(article.contentHtml)} />
 
       <ArticleBody contentHtml={article.contentHtml} />
       <ArticleReferences slug={article.slug} />
@@ -139,8 +143,8 @@ export default async function ArticleDetailPage({
       </div>
 
       {relatedArticles.length > 0 && (
-        <aside className="mt-12 pt-8 border-t border-gray-200">
-          <h2 className="text-lg font-bold text-gray-900 mb-4">関連記事</h2>
+        <aside className="mt-12 pt-8 border-t border-gray-200" aria-labelledby="related-articles">
+          <h2 id="related-articles" className="text-lg font-bold text-gray-900 mb-4">関連記事</h2>
           <ul className="space-y-3">
             {relatedArticles.map((r) => (
               <li key={r.slug}>
@@ -151,7 +155,7 @@ export default async function ArticleDetailPage({
                   <span className="text-sm font-medium text-gray-800 group-hover:text-blue-600 leading-snug">
                     {r.title}
                   </span>
-                  <span className="text-xs text-gray-400 shrink-0">{r.publishedAt}</span>
+                  <span className="text-xs text-gray-600 shrink-0">{r.publishedAt}</span>
                 </Link>
               </li>
             ))}

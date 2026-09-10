@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  /* 記事本文の表（lib/articles.ts の withResponsiveTables が付ける枠）。
+     枠の中だけを横スクロールさせ、ページ全体は横に動かさない。 */
+  .table-scroll {
+    @apply my-8 -mx-1 overflow-x-auto px-1;
+    -webkit-overflow-scrolling: touch;
+  }
+  .table-scroll > table {
+    @apply my-0;
+  }
+}

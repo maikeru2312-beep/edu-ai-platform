@@ -11,7 +11,7 @@ export default function PrivacyPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
       <h1 className="text-3xl font-bold text-gray-900 mb-2">プライバシーポリシー</h1>
-      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年8月29日</p>
+      <p className="text-sm text-gray-600 mb-10">最終更新日：2026年9月10日</p>
 
       <div className="space-y-10 text-gray-700 leading-relaxed">
         <section>
@@ -54,7 +54,9 @@ export default function PrivacyPage() {
           <h2 className="text-xl font-bold text-gray-900 mb-3">3. Cookieについて</h2>
           <p>
             当サイトでは、Google Analytics 4 によるアクセス解析のために Cookie を使用しています。
-            第5節に記載する広告配信を開始した場合は、広告配信のための Cookie も使用されます。
+            また、記事ページには第5節に記載する Google AdSense の広告配信用コードを設置しており、
+            広告が表示されていない状態でも、このコードが Google の広告配信サーバーと通信し、
+            Google の Cookie が設定される場合があります。
             ブラウザの設定でCookieを無効にしても当サイトの閲覧に支障はありませんが、
             アクセス計測が行われなくなります。
           </p>
@@ -73,9 +75,13 @@ export default function PrivacyPage() {
         <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">5. 広告配信について</h2>
           <p className="mb-3">
-            当サイトは、今後、記事ページにおいて Google AdSense による広告配信を行う場合があります。
-            現時点で広告の掲載は開始していません。掲載を開始した場合は本ページの記載を更新します。
-            掲載を開始した場合、以下の内容が適用されます。
+            当サイトは、記事ページにおいて Google AdSense による広告配信を予定しており、
+            記事ページには現在、Google AdSense の広告配信用コード（スクリプト）を設置しています。
+            現時点で広告枠は設けておらず、広告は表示されていません。
+            ただし、このコードは広告が表示されていない状態でも Google の広告配信サーバーと通信することがあり、
+            Google による Cookie の設定や情報の取得が行われる場合があります。
+            広告の表示を開始した場合は本ページの記載を更新します。
+            以下の内容は、現在設置している広告配信用コードと、今後の広告の表示の双方に適用されます。
           </p>
           <p className="mb-3">
             Google を含む第三者配信事業者は、Cookie を使用して、利用者の過去の当サイトや
@@ -176,7 +182,7 @@ export default function PrivacyPage() {
           <h2 className="text-xl font-bold text-gray-900 mb-3">10. お問い合わせ</h2>
           <p>
             プライバシーに関するご質問がある場合は、
-            <a href="/contact" className="text-blue-600 hover:underline">お問い合わせページ</a>
+            <a href="/contact" className="text-blue-600 underline underline-offset-2 hover:text-blue-800">お問い合わせページ</a>
             よりご連絡ください。
           </p>
         </section>

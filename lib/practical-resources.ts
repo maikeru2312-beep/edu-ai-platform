@@ -19,7 +19,7 @@ export type PracticalResource = {
 export const PRACTICAL_RESOURCES: PracticalResource[] = [
   {
     slug: 'individual-education-plan-writing-guide',
-    asset: '共有・引継ぎ前の確認チェックリスト（5区分14項目）',
+    asset: '共有・引継ぎ前の確認チェックリスト（5区分15項目）',
     useWhen: '個別の教育支援計画・個別の指導計画を書き上げて、共有・保管・引継ぎへ回す前の最終確認に',
     anchor: '共有・引継ぎ前の確認チェックリスト（本サイト作成の参考様式）',
   },
@@ -37,7 +37,7 @@ export const PRACTICAL_RESOURCES: PracticalResource[] = [
   },
   {
     slug: 'special-needs-behavior-record-guide',
-    asset: 'ABC行動記録シート（6列の空欄表＋完全な架空の記入例）',
+    asset: 'ABC行動記録シート（8列の空欄表＋完全な架空の記入例）',
     useWhen: '行動の記録を明日から取り始めるとき、粒度を決めて1枚目を書くために',
     anchor: 'そのまま使えるABC行動記録シート（本サイト作成の参考様式）',
   },
@@ -63,7 +63,7 @@ export const PRACTICAL_RESOURCES: PracticalResource[] = [
     slug: 'special-needs-ict-reasonable-accommodation',
     asset: '評価場面で使ってよいかの仕分け表（三つの問い＋4列の判定表）',
     useWhen: '読み上げ・音声入力などを、テスト等の評価場面でも使ってよいかを校内で確認する前に',
-    anchor: '評価場面で使ってよいかの仕分け表',
+    anchor: '評価場面で使ってよいかの仕分け表（本サイト作成の参考様式）',
   },
   {
     slug: 'special-needs-ict-support-tools-checklist',

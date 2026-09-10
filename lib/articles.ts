@@ -22,6 +22,23 @@ function withHeadingIds(html: string): string {
   });
 }
 
+/**
+ * 表をスクロール可能な枠で包む。スマートフォンでは3列以上の表の各列が数文字幅まで潰れて
+ * 縦に大きく伸びるため、列数に応じた最小幅を与えて枠の中だけを横スクロールさせる
+ * （本文全体は横に動かさない）。あわせて見出し行の th に scope="col" を付ける。
+ */
+function withResponsiveTables(html: string): string {
+  return html.replace(/<table>([\s\S]*?)<\/table>/g, (_whole, inner: string) => {
+    const firstRow = inner.match(/<tr>([\s\S]*?)<\/tr>/);
+    const cols = firstRow ? (firstRow[1].match(/<t[hd][\s>]/g) ?? []).length : 0;
+    const body = inner.replace(/<thead>([\s\S]*?)<\/thead>/, (head) =>
+      head.replace(/<th(\s[^>]*)?>/g, (_m, attrs: string | undefined) => `<th scope="col"${attrs ?? ''}>`),
+    );
+    const minWidth = cols >= 3 ? ` style="min-width:${cols * 9}rem"` : '';
+    return `<div class="table-scroll"><table${minWidth}>${body}</table></div>`;
+  });
+}
+
 export function getAllArticleSlugs(): string[] {
   if (!fs.existsSync(ARTICLES_DIR)) return [];
   return fs
@@ -58,7 +75,11 @@ export async function getArticle(slug: string): Promise<Article> {
     .use(remarkGfm)
     .use(remarkHtml, { sanitize: false })
     .process(content);
-  const article = { slug, ...data, contentHtml: withHeadingIds(processed.toString()) } as Article;
+  const article = {
+    slug,
+    ...data,
+    contentHtml: withResponsiveTables(withHeadingIds(processed.toString())),
+  } as Article;
   if (!isArticlePublished(article)) {
     throw new Error(`Article is not published: ${slug}`);
   }

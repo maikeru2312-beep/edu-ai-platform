@@ -14,7 +14,7 @@ export default function ContactPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
       <h1 className="text-3xl font-bold text-gray-900 mb-2">お問い合わせ</h1>
-      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年7月8日</p>
+      <p className="text-sm text-gray-600 mb-10">最終更新日：2026年7月8日</p>
 
       <div className="space-y-8 text-gray-700 leading-relaxed">
         <section>
@@ -73,9 +73,9 @@ export default function ContactPage() {
           </ul>
           <p className="mt-4 text-sm text-gray-500">
             お問い合わせいただいた内容は、当サイトの
-            <Link href="/privacy" className="text-blue-600 hover:underline">プライバシーポリシー</Link>
+            <Link href="/privacy" className="text-blue-600 underline underline-offset-2 hover:text-blue-800">プライバシーポリシー</Link>
             に従って取り扱います。また、当サイトの情報の利用・免責については
-            <Link href="/disclaimer" className="text-blue-600 hover:underline">免責事項</Link>
+            <Link href="/disclaimer" className="text-blue-600 underline underline-offset-2 hover:text-blue-800">免責事項</Link>
             をご確認ください。
           </p>
         </section>

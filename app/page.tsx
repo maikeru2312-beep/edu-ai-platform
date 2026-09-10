@@ -92,9 +92,9 @@ export default function HomePage() {
           <div className="flex-1 min-w-0">
             <p className="text-sm font-semibold text-gray-900 mb-1">千冬先生からのひとこと</p>
             <p className="text-sm text-gray-700 leading-relaxed">
-              ICTや生成AIは、使うこと自体が目的ではありません。授業や校務で安心して使えるように、まずは「何に使うか」「何を入力しないか」を一緒に整理していきましょう。
+              計画も記録も、ICTや生成AIも、書くこと・使うこと自体が目的ではありません。次の一手が決まるように、まずは「何を確認するか」「どこで止まるか」を一緒に整理していきましょう。
             </p>
-            <p className="mt-2 text-xs text-gray-400">
+            <p className="mt-2 text-xs text-gray-600">
               ※ 千冬先生は教育DXナビの編集キャラクターです。実在の学校・教員個人を代表するものではありません。
             </p>
           </div>
@@ -140,7 +140,7 @@ export default function HomePage() {
                     <span className="text-sm font-medium text-gray-800 group-hover:text-blue-600 leading-snug line-clamp-1">
                       {article.title}
                     </span>
-                    <span className="text-xs text-gray-400 shrink-0">
+                    <span className="text-xs text-gray-600 shrink-0">
                       更新: {article.updatedAt ?? article.publishedAt}
                     </span>
                   </Link>

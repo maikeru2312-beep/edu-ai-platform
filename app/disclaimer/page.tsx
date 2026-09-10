@@ -11,7 +11,7 @@ export default function DisclaimerPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
       <h1 className="text-3xl font-bold text-gray-900 mb-2">免責事項</h1>
-      <p className="text-sm text-gray-400 mb-10">最終更新日：2026年7月8日</p>
+      <p className="text-sm text-gray-600 mb-10">最終更新日：2026年7月8日</p>
 
       <div className="space-y-10 text-gray-700 leading-relaxed">
         <section>
@@ -133,7 +133,7 @@ export default function DisclaimerPage() {
             その場合も、記事の構成・教育現場への適用可否の判断・安全性の確認は人間（運営者）が行い、
             公開前に一次情報との突き合わせを行っています。
             それでも誤りが含まれる可能性はあります。
-            誤情報を発見された場合は、<a href="/contact" className="text-blue-600 hover:underline">お問い合わせページ</a>よりお知らせください。確認のうえ修正します。
+            誤情報を発見された場合は、<a href="/contact" className="text-blue-600 underline underline-offset-2 hover:text-blue-800">お問い合わせページ</a>よりお知らせください。確認のうえ修正します。
           </p>
         </section>
 
@@ -148,10 +148,10 @@ export default function DisclaimerPage() {
         <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">12. お問い合わせ</h2>
           <p>
-            免責事項に関するご質問は<a href="/contact" className="text-blue-600 hover:underline">お問い合わせページ</a>よりご連絡ください。
+            免責事項に関するご質問は<a href="/contact" className="text-blue-600 underline underline-offset-2 hover:text-blue-800">お問い合わせページ</a>よりご連絡ください。
             なお、個別の法的・医療的・行政的相談への回答はできません。専門家にご相談ください。
-            また、<a href="/privacy" className="text-blue-600 hover:underline">プライバシーポリシー</a>および
-            <a href="/operator" className="text-blue-600 hover:underline">運営者情報</a>もあわせてご確認ください。
+            また、<a href="/privacy" className="text-blue-600 underline underline-offset-2 hover:text-blue-800">プライバシーポリシー</a>および
+            <a href="/operator" className="text-blue-600 underline underline-offset-2 hover:text-blue-800">運営者情報</a>もあわせてご確認ください。
           </p>
         </section>
       </div>

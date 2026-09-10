@@ -17,7 +17,7 @@ export default function Footer() {
             </p>
           </div>
           <div>
-            <h3 className="text-white font-semibold mb-3 text-sm">コンテンツ</h3>
+            <h2 className="text-white font-semibold mb-3 text-sm">コンテンツ</h2>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/articles" className="hover:text-white transition-colors">
@@ -32,7 +32,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="text-white font-semibold mb-3 text-sm">サイト情報</h3>
+            <h2 className="text-white font-semibold mb-3 text-sm">サイト情報</h2>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/about" className="hover:text-white transition-colors">

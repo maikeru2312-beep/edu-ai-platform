@@ -76,7 +76,7 @@ export default function ResourcesPage() {
         <p>
           様式は記事本文の文脈（何を確認し、どこで止まり、誰につなぐか）とあわせて使うことを前提にしています。
           一覧にない場面の様式が必要な場合は、
-          <Link href="/contact" className="text-blue-600 hover:underline">お問い合わせページ</Link>
+          <Link href="/contact" className="text-blue-600 underline underline-offset-2 hover:text-blue-800">お問い合わせページ</Link>
           からご要望をお寄せください。
         </p>
       </div>
