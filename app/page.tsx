@@ -61,7 +61,7 @@ export default function HomePage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         <h2 className="text-2xl font-bold text-gray-900 mb-1">やりたいことから探す</h2>
         <p className="text-sm text-gray-600 mb-6">
-          いま手が止まっている場面を選んでください。順番に決めていくもの、起点から場面に合わせて選ぶもの、状況によって入口が変わるものがあります。
+          いま手が止まっている場面から、自分の入口を選んでください。判断の中身と次に読む記事は、各記事の末尾で案内しています。
         </p>
         <JourneyFinder />
       </section>

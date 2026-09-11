@@ -5,8 +5,9 @@
  *   - ジャーニーの定義が壊れた状態（未公開 slug・自己リンク・重複）で公開されないこと
  *   - ジャーニーの形（kind）が宣言どおりに描かれること。順番の無い形を番号や矢印で並べないこと
  *       sequence    前の段の結論が次の段の前提になる。前後リンク・番号を出す
- *       hub         起点1つ＋場面で選ぶ選択肢。選択肢に順番を付けない
+ *       hub         場面に合わせて選ぶ選択肢の束。共通の関門があるときだけ起点を1つ置く
  *       conditional 状況（when）で選ぶ。起点も順番もない
+ *   - Home は「入口を選ぶ」層にとどめ、条件・決めること・記事タイトルは記事末尾に任せること
  *   - Home / 記事末尾 / /resources が同じ定義を参照し、並びを別々に持たないこと
  *   - 記事が増えたとき、ジャーニーに入れる・入れないの判断を必ず明示させること
  *
@@ -69,8 +70,9 @@ const publishedSlugs = new Set(
   [...articles.values()].filter((a) => a.published !== false).map((a) => a.slug),
 );
 
-// Human Review（2026-09-11）で決めた形。順番が本当にあるものだけを sequence にする。
-// 形を変える・ジャーニーを足すときは、この表も更新して判断を残す。
+// Human Review（2026-09-11）で決めた形と、hub の起点の有無。順番が本当にあるものだけを sequence にし、
+// 起点は「全員が先に通る共通の関門」があるときだけ置く（ICT には共通の前提が無い）。
+// 形や起点を変える・ジャーニーを足すときは、この表も更新して判断を残す。
 const REVIEWED_KINDS = {
   plan: 'sequence',
   family: 'sequence',
@@ -78,11 +80,17 @@ const REVIEWED_KINDS = {
   ict: 'hub',
   ai: 'hub',
 };
+const REVIEWED_HUB_ENTRY = {
+  ai: 'ai-koomu-kaizen-nyumon',
+  ict: null,
+};
 
 /** 記事末尾が実際にリンクする記事（形ごとに持つ情報が違う）。 */
 function linkedSteps(position) {
   if (position.kind === 'sequence') return [position.previous, position.next].filter(Boolean);
-  if (position.kind === 'hub') return position.isEntry ? position.choices : [position.entry, ...position.choices];
+  if (position.kind === 'hub') {
+    return position.isEntry ? position.choices : [position.entry, ...position.choices].filter(Boolean);
+  }
   return position.others;
 }
 
@@ -110,8 +118,14 @@ test('journey registry has unique ids and well-formed steps', () => {
     assert.ok(journey.shortDescription.length >= 10, `${journey.id}: 説明が空でないこと`);
     for (const step of journey.steps) {
       assert.ok(step.label.length > 0 && step.label.length <= 14, `${journey.id}/${step.slug}: ラベルは14字以内`);
+      assert.ok(
+        typeof step.short === 'string' && step.short.length > 0 && step.short.length <= 10,
+        `${journey.id}/${step.slug}: Home 用の短い呼び名（short）が10字以内で書かれていること`,
+      );
       assert.ok(step.decision.length >= 10, `${journey.id}/${step.slug}: 決めることが書かれていること`);
     }
+    const shorts = journey.steps.map((s) => s.short);
+    assert.deepEqual([...new Set(shorts)], shorts, `${journey.id}: 短い呼び名が重複している`);
   }
 });
 
@@ -207,7 +221,7 @@ test('resources referenced through journeys resolve to a real heading', () => {
   assert.deepEqual(problems, [], 'ジャーニーから辿る様式が記事の見出しに着地すること');
 });
 
-// ─── 7. 形（kind）が宣言どおりの構造を持つこと ─────────────────────────────
+// ─── 7. 形（kind）と起点が宣言どおりの構造を持つこと ───────────────────────
 test('journey kind semantics are declared, not implied by order', () => {
   assert.deepEqual(
     journeys.map((j) => j.id).sort(),
@@ -220,6 +234,7 @@ test('journey kind semantics are declared, not implied by order', () => {
 
     if (journey.kind === 'sequence') {
       assert.equal(entries.length, 0, `${journey.id}: sequence に起点（entry）を置かない`);
+      assert.equal(journey.homePrompt, undefined, `${journey.id}: sequence は Home で順序のボタンを使い、homePrompt を持たない`);
       for (const step of journey.steps) {
         assert.equal(step.when, undefined, `${journey.id}/${step.slug}: sequence では when を使わない（順番が「いつ読むか」を表す）`);
       }
@@ -227,12 +242,22 @@ test('journey kind semantics are declared, not implied by order', () => {
     }
 
     if (journey.kind === 'hub') {
-      assert.equal(entries.length, 1, `${journey.id}: hub の起点はちょうど1つ`);
-      assert.equal(journey.steps[0].entry, true, `${journey.id}: hub の起点は先頭に置く`);
-      assert.ok(journey.steps.length - 1 >= 2, `${journey.id}: hub には選択肢が2つ以上あること`);
+      assert.ok(journey.id in REVIEWED_HUB_ENTRY, `${journey.id}: hub の起点の有無が Human Review 済みであること`);
+      assert.ok(entries.length <= 1, `${journey.id}: hub の起点は0か1つ`);
+      if (entries.length === 1) assert.equal(journey.steps[0].entry, true, `${journey.id}: hub の起点は先頭に置く`);
+      assert.equal(
+        entries[0]?.slug ?? null,
+        REVIEWED_HUB_ENTRY[journey.id],
+        `${journey.id}: 起点の有無と起点の記事が Human Review の決定と違う（共通の前提が無い hub に起点を置かない）`,
+      );
+      assert.ok(journey.steps.length - entries.length >= 2, `${journey.id}: hub には選択肢が2つ以上あること`);
     } else {
       assert.equal(entries.length, 0, `${journey.id}: conditional に起点を置かない`);
     }
+    assert.ok(
+      typeof journey.homePrompt === 'string' && journey.homePrompt.length > 0 && journey.homePrompt.length <= 20,
+      `${journey.id}: Home で何を選ぶかを促す一言（homePrompt）が20字以内で書かれていること`,
+    );
     for (const step of journey.steps) {
       assert.ok(
         typeof step.when === 'string' && step.when.length > 0 && step.when.length <= 28,
@@ -272,8 +297,13 @@ test('article footer navigation follows the journey kind', () => {
 
     if (position.kind === 'hub') {
       const entry = journey.steps.find((s) => s.entry);
-      assert.equal(position.entry.slug, entry.slug, `${slug}: hub の起点が違う`);
-      assert.equal(position.isEntry, slug === entry.slug, `${slug}: 起点かどうかの判定が違う`);
+      if (entry) {
+        assert.equal(position.entry?.slug, entry.slug, `${slug}: hub の起点が違う`);
+        assert.equal(position.isEntry, slug === entry.slug, `${slug}: 起点かどうかの判定が違う`);
+      } else {
+        assert.equal(position.entry, undefined, `${slug}: 起点の無い hub で起点を返している`);
+        assert.equal(position.isEntry, false, `${slug}: 起点の無い hub で起点扱いにしている`);
+      }
       assert.deepEqual(
         position.choices.map((s) => s.slug),
         journey.steps.filter((s) => !s.entry && s.slug !== slug).map((s) => s.slug),
@@ -298,7 +328,8 @@ test('home, article footer and resources all read the same journey source', () =
   assert.match(read('app/page.tsx'), /JourneyFinder/);
   assert.match(read('app/articles/[slug]/page.tsx'), /ArticleJourneyNav/);
 
-  // ジャーニー名・ステップラベルを描画側へ書き写していないこと（写すと片方だけ古くなる）。
+  // ジャーニー名・ステップラベル・Home の促し文を描画側へ書き写していないこと（写すと片方だけ古くなる）。
+  // 短い呼び名（short）は「面談」「所見」のような一般語で誤検出するため対象にしない。
   const renderers = [
     'app/page.tsx',
     'app/resources/page.tsx',
@@ -306,7 +337,11 @@ test('home, article footer and resources all read the same journey source', () =
     'components/JourneyFinder.tsx',
     'components/ArticleJourneyNav.tsx',
   ];
-  const literals = [...journeys.map((j) => j.title), ...journeys.flatMap((j) => j.steps.map((s) => s.label))];
+  const literals = [
+    ...journeys.map((j) => j.title),
+    ...journeys.map((j) => j.homePrompt).filter(Boolean),
+    ...journeys.flatMap((j) => j.steps.map((s) => s.label)),
+  ];
   const duplicated = [];
   for (const file of renderers) {
     const source = read(file);
@@ -363,7 +398,24 @@ test('hub and conditional journeys never render a fake linear order', () => {
   assert.match(sequenceGroup, /<ol/);
 });
 
-// ─── 11. ジャーニー UI がサーバー描画のままであること ───────────────────────
+// ─── 11. Home のカードは入口を選ぶ層にとどめること ─────────────────────────
+test('home journey cards stay a compact entry layer', () => {
+  const finder = read('components/JourneyFinder.tsx');
+  // 条件（when）・決めること（decision）・記事タイトルは記事末尾と /resources に任せる。
+  assert.doesNotMatch(finder, /\.when\b/, 'Home カードに「どんなときに読むか」を出している');
+  assert.doesNotMatch(finder, /\.decision\b/, 'Home カードに「決めること」を出している');
+  assert.doesNotMatch(finder, /getAllArticles|titles?\.get\(/, 'Home カードに記事タイトルを出している');
+  assert.match(finder, /\.short\b/, 'Home カードは短い呼び名で入口を示すこと');
+  // 起点のある hub は起点をボタンにし、場面別の記事は控えめなリンクにする（安全の関門と同格に見せない）。
+  const hub = functionBody(finder, 'HubCard');
+  assert.match(hub, /className=\{primaryButton\}/, '起点をボタンとして目立たせること');
+  assert.match(hub, /subdued/, '場面別の記事を控えめなリンクにすること');
+  // 起点の無い hub と conditional は、何を選ぶかの一言（homePrompt）で選択肢を示す。
+  assert.match(hub, /journey\.homePrompt/);
+  assert.match(functionBody(finder, 'ConditionalCard'), /journey\.homePrompt/);
+});
+
+// ─── 12. ジャーニー UI がサーバー描画のままであること ───────────────────────
 test('journey UI stays server-rendered, with no client JavaScript', () => {
   for (const file of ['components/JourneyFinder.tsx', 'components/ArticleJourneyNav.tsx', 'app/resources/page.tsx']) {
     const source = read(file);
@@ -376,7 +428,7 @@ test('journey UI stays server-rendered, with no client JavaScript', () => {
   assert.match(card, /step\.decision/);
 });
 
-// ─── 12. Home のカテゴリ導線を残し、重複した記事一覧を戻さないこと ───────────
+// ─── 13. Home のカテゴリ導線を残し、重複した記事一覧を戻さないこと ───────────
 test('home keeps category navigation and drops duplicated article lists', () => {
   const home = read('app/page.tsx');
   assert.match(home, /分野から探す/, 'Home にカテゴリの入口が残っていること');

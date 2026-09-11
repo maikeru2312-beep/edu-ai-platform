@@ -109,18 +109,23 @@ function HubNav({ position, titles }: { position: HubPosition; titles: Titles })
   return (
     <>
       <p className="text-sm text-gray-600 mb-4">
-        「{journey.title}」の中で、場面に合わせて選ぶ記事のひとつです（順番はありません）。起点が当てはまる場面なら、先にそちらを確かめます。
+        「{journey.title}」の中で、場面に合わせて選ぶ記事のひとつです（順番はありません）。
+        {entry
+          ? '起点が当てはまる場面なら、先にそちらを確かめます。'
+          : '共通の前提はないので、ほかの場面の記事もそれぞれ単独で読めます。'}
       </p>
-      <ul className="grid grid-cols-1 gap-3">
-        <StepCard
-          step={entry}
-          titles={titles}
-          kicker={`起点：${entry.label}（${entry.when ?? ''}）`}
-        />
-      </ul>
+      {entry && (
+        <ul className="grid grid-cols-1 gap-3 mb-4">
+          <StepCard
+            step={entry}
+            titles={titles}
+            kicker={`起点：${entry.label}（${entry.when ?? ''}）`}
+          />
+        </ul>
+      )}
       {choices.length > 0 && (
         <>
-          <h3 className="text-sm font-semibold text-gray-900 mt-4 mb-2">ほかの場面</h3>
+          <h3 className="text-sm font-semibold text-gray-900 mb-2">ほかの場面</h3>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {choices.map((choice) => (
               <StepCard

@@ -295,6 +295,23 @@ const MUTATIONS = [
         "note: '何が起きているかを整理したいとき',",
       ),
   },
+  {
+    name: '共通の前提が無い ICT に起点を戻す（未導入サービスの確認を全員の入口にする）',
+    files: ['lib/reader-journeys.ts'],
+    expect: 'journey kind',
+    apply: () =>
+      patch(
+        'lib/reader-journeys.ts',
+        "label: '未導入サービスを確認する',",
+        "label: '未導入サービスを確認する', entry: true,",
+      ),
+  },
+  {
+    name: 'Home の入口カードに「どんなときに読むか」を戻す（詳細を Home に積む）',
+    files: ['components/JourneyFinder.tsx'],
+    expect: 'compact entry layer',
+    apply: () => patch('components/JourneyFinder.tsx', '{step.short}', '{step.short}（{step.when}）'),
+  },
 ];
 
 console.log('\n\x1b[1m🧬 受入ゲートの mutation test\x1b[0m');
