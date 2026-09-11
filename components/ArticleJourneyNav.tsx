@@ -190,7 +190,7 @@ export default function ArticleJourneyNav({ slug }: { slug: string }) {
       <p className="mt-2 text-sm">
         <Link
           href={`/resources#${journeyAnchor(position.journey.id)}`}
-          className="text-blue-600 underline underline-offset-2 hover:text-blue-800"
+          className="inline-block py-2 text-blue-600 underline underline-offset-2 hover:text-blue-800"
         >
           様式・チェックリスト一覧を見る
         </Link>
