@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { getAllArticles, getArticlesByCategory } from '@/lib/articles';
+import { getAllArticles } from '@/lib/articles';
 import {
   CATEGORIES,
   CATEGORY_TO_SLUG,
@@ -21,10 +21,11 @@ export default function HomePage() {
   const activeCategories = CATEGORIES.filter((cat) =>
     allArticles.some((article) => article.category === cat),
   );
-  const specialNeedsArticles = getArticlesByCategory('特別支援教育').slice(0, 3);
-  // 「最近更新した記事」は置かない。本サイトは記事をまとめて再確認するため最終確認日が
-  // 数種類しかなく、並べても新しさを伝えない。最新記事と半分以上が重複していた。
-  // 最終確認日は各記事のヘッダーで開示しており、Home で順位づけする情報ではない。
+  // Home に置く記事一覧は「最新記事」の1つだけにする。
+  //   - 最終更新日順の一覧は置かない。本サイトは記事をまとめて再確認するため最終確認日が
+  //     数種類しかなく、並べても新しさを伝えない（最終確認日は各記事のヘッダーで開示している）。
+  //   - 特別支援教育カテゴリの新着3件の面も置かない。3件とも最新記事と重複していた。
+  //     分野からの入口は「分野から探す」、場面からの入口は「やりたいことから探す」が担う。
 
   return (
     <div>
@@ -60,7 +61,7 @@ export default function HomePage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         <h2 className="text-2xl font-bold text-gray-900 mb-1">やりたいことから探す</h2>
         <p className="text-sm text-gray-600 mb-6">
-          いま手が止まっている場面を選ぶと、最初に読む記事から順に、必要な判断と使う様式まで進めます。
+          いま手が止まっている場面を選んでください。順番に決めていくもの、起点から場面に合わせて選ぶもの、状況によって入口が変わるものがあります。
         </p>
         <JourneyFinder />
       </section>
@@ -121,30 +122,6 @@ export default function HomePage() {
           </div>
         )}
       </section>
-
-      {/* 特別支援教育 × ICT */}
-      {specialNeedsArticles.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
-          <div className="flex items-center justify-between mb-2">
-            <h2 className="text-2xl font-bold text-gray-900">このサイトの中心：特別支援教育の学校実務</h2>
-            <Link
-              href="/categories/tokubetsu-shien"
-              className="text-blue-600 hover:text-blue-800 text-sm font-medium"
-            >
-              すべて見る →
-            </Link>
-          </div>
-          <p className="text-sm text-gray-500 mb-6">
-            計画を書く、記録を取る、保護者と話す、配慮を決めて残す——
-            公的資料と実務上の確認手順をつなぎ、判断が分かれる場面と、校内確認へ回す条件まで整理しています。
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {specialNeedsArticles.map((article) => (
-              <ArticleCard key={article.slug} article={article} />
-            ))}
-          </div>
-        </section>
-      )}
 
     </div>
   );

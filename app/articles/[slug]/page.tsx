@@ -65,7 +65,8 @@ export default async function ArticleDetailPage({
     notFound();
   }
 
-  // 読者ジャーニーに属する記事は、同カテゴリの新着ではなく前後の段を出す（次の判断につながる方）。
+  // 読者ジャーニーに属する記事は、同カテゴリの新着ではなくジャーニーの中での位置を出す
+  // （順番のあるものは前後の段、選ぶものは起点と選択肢、状況で選ぶものは条件つきのほかの記事）。
   // 属さない記事だけ、従来の関連記事に戻す。
   const journeyPosition = getPrimaryJourneyPosition(slug);
   const relatedArticles = journeyPosition

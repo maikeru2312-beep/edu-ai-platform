@@ -267,6 +267,34 @@ const MUTATIONS = [
         '        <p>個別の指導計画を書く</p><JourneyFinder />',
       ),
   },
+  {
+    name: '起点から選ぶジャーニー（hub）を順番のあるもの（sequence）に偽装する',
+    files: ['lib/reader-journeys.ts'],
+    expect: 'journey kind',
+    apply: () => patch('lib/reader-journeys.ts', "kind: 'hub',", "kind: 'sequence',"),
+  },
+  {
+    name: '/resources で兄弟の選択肢に番号を振る（必須の順番に見せる）',
+    files: ['app/resources/page.tsx'],
+    expect: 'fake linear order',
+    apply: () =>
+      patch(
+        'app/resources/page.tsx',
+        '${choicePrefix(kind, Boolean(item.step.entry))}',
+        '${index + 1}. ${choicePrefix(kind, Boolean(item.step.entry))}',
+      ),
+  },
+  {
+    name: '状況で選ぶジャーニー（conditional）の記事から「どんなときに読むか」を落とす',
+    files: ['lib/reader-journeys.ts'],
+    expect: 'journey kind',
+    apply: () =>
+      patch(
+        'lib/reader-journeys.ts',
+        "when: '何が起きているかを整理したいとき',",
+        "note: '何が起きているかを整理したいとき',",
+      ),
+  },
 ];
 
 console.log('\n\x1b[1m🧬 受入ゲートの mutation test\x1b[0m');

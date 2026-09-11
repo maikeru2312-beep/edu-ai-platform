@@ -1,9 +1,15 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllArticles } from '@/lib/articles';
-import { PRACTICAL_RESOURCES } from '@/lib/practical-resources';
+import { PRACTICAL_RESOURCES, type PracticalResource } from '@/lib/practical-resources';
 import { headingId } from '@/lib/heading-id';
-import { getResourceGroups, getStepResource, journeyAnchor } from '@/lib/reader-journeys';
+import {
+  getResourceGroups,
+  getStepResource,
+  journeyAnchor,
+  type JourneyKind,
+  type JourneyStep,
+} from '@/lib/reader-journeys';
 import CategoryBadge from '@/components/CategoryBadge';
 
 const PAGE_DESCRIPTION =
@@ -23,18 +29,76 @@ export const metadata: Metadata = {
   },
 };
 
+type Item = { step: JourneyStep; resource: PracticalResource; title: string };
+
+function ResourceCard({ kicker, resource, title }: { kicker: string; resource: PracticalResource; title: string }) {
+  return (
+    <li className="bg-white border border-gray-200 rounded-xl p-5">
+      <p className="text-xs font-semibold text-gray-700 mb-1">{kicker}</p>
+      <p className="font-semibold text-gray-900 leading-snug mb-1">{resource.asset}</p>
+      <p className="text-sm text-gray-600 leading-relaxed mb-3">{resource.useWhen}</p>
+      <Link
+        href={`/articles/${resource.slug}#${encodeURIComponent(headingId(resource.anchor))}`}
+        className="text-sm text-blue-600 underline underline-offset-2 hover:text-blue-800 font-medium"
+      >
+        使い方と記入例を見る：{title} →
+      </Link>
+    </li>
+  );
+}
+
+/** 順番の無いグループで、各様式の前に置く一言。hub は起点／場面、conditional は状況。 */
+function choicePrefix(kind: JourneyKind, isEntry: boolean): string {
+  if (kind === 'hub') return isEntry ? '起点' : '場面';
+  return 'こんなとき';
+}
+
+/** 前の様式の結論を次で使う、順番のあるグループ（sequence）だけを番号つきにする。 */
+function SequenceGroup({ items }: { items: Item[] }) {
+  return (
+    <ol className="space-y-4">
+      {items.map((item, index) => (
+        <ResourceCard
+          key={item.step.slug}
+          kicker={`${index + 1}. ${item.step.label}`}
+          resource={item.resource}
+          title={item.title}
+        />
+      ))}
+    </ol>
+  );
+}
+
+/** 兄弟の選択肢（hub）と状況で選ぶもの（conditional）。番号を振らない。 */
+function ChoiceGroup({ kind, items }: { kind: JourneyKind; items: Item[] }) {
+  return (
+    <ul className="space-y-4">
+      {items.map((item) => (
+        <ResourceCard
+          key={item.step.slug}
+          kicker={`${choicePrefix(kind, Boolean(item.step.entry))}：${item.step.when ?? ''}`}
+          resource={item.resource}
+          title={item.title}
+        />
+      ))}
+    </ul>
+  );
+}
+
 export default function ResourcesPage() {
   const articles = getAllArticles();
   const bySlug = new Map(articles.map((a) => [a.slug, a]));
 
   // 並びは読者ジャーニー順（lib/reader-journeys.ts が唯一の真実）。様式は主ジャーニーの下に1回だけ出す。
-  // 記事へのリンク先アンカーは従来どおり headingId(resource.anchor) で、既存の deep link は変わらない。
+  // 記事へのリンク先アンカーは従来どおり見出しから作るので、既存の deep link は変わらない。
   const groups = getResourceGroups()
     .map(({ journey, steps }) => ({
       journey,
-      items: steps
-        .map((step) => ({ step, resource: getStepResource(step) }))
-        .filter((entry) => entry.resource && bySlug.has(entry.step.slug)),
+      items: steps.flatMap((step): Item[] => {
+        const resource = getStepResource(step);
+        const article = bySlug.get(step.slug);
+        return resource && article ? [{ step, resource, title: article.title }] : [];
+      }),
     }))
     .filter((group) => group.items.length > 0);
 
@@ -49,7 +113,8 @@ export default function ResourcesPage() {
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">様式・チェックリスト一覧</h1>
         <p className="text-gray-600 text-sm leading-relaxed max-w-3xl">
-          各記事が持つ「そのまま使える様式・チェックリスト・判定表」を、やりたいことの順に並べた一覧です。
+          各記事が持つ「そのまま使える様式・チェックリスト・判定表」を、やりたいことごとにまとめた一覧です。
+          番号がついているのは、前の様式の結論を次の様式で使う、順番のあるものだけです。
           様式の実体と使い方・記入例は、それぞれの記事の中にあります。
           いずれも本サイト作成の参考様式であり、公的機関の定める様式ではありません。
           所属校・設置者の様式がある場合はそちらが優先です。
@@ -83,26 +148,11 @@ export default function ResourcesPage() {
               {journey.title}
             </h2>
             <p className="text-sm text-gray-600 mb-4 leading-relaxed">{journey.shortDescription}</p>
-            <ol className="space-y-4">
-              {items.map(({ step, resource }, index) => {
-                const article = bySlug.get(step.slug)!;
-                return (
-                  <li key={step.slug} className="bg-white border border-gray-200 rounded-xl p-5">
-                    <p className="text-xs font-semibold text-gray-700 mb-1">
-                      {index + 1}. {step.label}
-                    </p>
-                    <p className="font-semibold text-gray-900 leading-snug mb-1">{resource!.asset}</p>
-                    <p className="text-sm text-gray-600 leading-relaxed mb-3">{resource!.useWhen}</p>
-                    <Link
-                      href={`/articles/${resource!.slug}#${encodeURIComponent(headingId(resource!.anchor))}`}
-                      className="text-sm text-blue-600 underline underline-offset-2 hover:text-blue-800 font-medium"
-                    >
-                      使い方と記入例を見る：{article.title} →
-                    </Link>
-                  </li>
-                );
-              })}
-            </ol>
+            {journey.kind === 'sequence' ? (
+              <SequenceGroup items={items} />
+            ) : (
+              <ChoiceGroup kind={journey.kind} items={items} />
+            )}
           </section>
         ))}
 

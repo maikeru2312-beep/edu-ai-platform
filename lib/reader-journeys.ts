@@ -1,6 +1,6 @@
-// 読者ジャーニー（「今やりたいこと」から入って、判断を順に進めるための並び）の単一の真実。
+// 読者ジャーニー（「今やりたいこと」から入って判断を進めるための道筋）の単一の真実。
 //
-// Home の「やりたいことから探す」、記事末尾の「次に確認すること」、/resources のグループ分けは
+// Home の「やりたいことから探す」、記事末尾の案内、/resources のグループ分けは
 // すべてこのファイルを参照する。3箇所で同じ並びを別々に持たないこと（二重管理をテストで検出する）。
 //
 // ここに置くのはジャーニー固有の情報だけにとどめる。
@@ -8,33 +8,48 @@
 //   - 様式の名前・使う場面・見出しアンカー → lib/practical-resources.ts
 // どちらもこのファイルには写さず、slug で引く。写すと真実が2つになる。
 //
-// 並びの根拠は記事どうしの本文リンク（委譲）に置いている。本文が「次はこちら」と書いている
-// 向きをそのまま順序にしているので、記事を読み進めた読者と、この並びで進む読者が同じ道を通る。
+// ジャーニーには3つの形（kind）がある。形によって「並び」の意味が違うので、描画も分ける。
+//   sequence    前の段の結論が次の段の前提になる。順番が意味を持つので、前後リンクと番号を出す。
+//   hub         起点の判断を1つ持ち、そこから先は場面に合わせて選ぶ。選択肢どうしに順番はない。
+//   conditional 困りごとや状況によって入口が変わる。起点も順番もなく、条件（when）で選ぶ。
+// hub と conditional を番号や矢印で並べると、実際には無い順番を読者に強いることになる。
+//
+// 順番・起点・条件の根拠は、記事どうしの本文リンク（委譲）に置いている。
 
 import { PRACTICAL_RESOURCES, type PracticalResource } from '@/lib/practical-resources';
 
 export type JourneyId = 'plan' | 'support' | 'family' | 'ict' | 'ai';
 
+export type JourneyKind = 'sequence' | 'hub' | 'conditional';
+
 export type JourneyStep = {
   /** 公開記事の slug。未公開・存在しない slug はテストで落ちる。 */
   slug: string;
-  /** 一覧で順序を見せるための短いラベル（記事タイトルの短縮ではなく、その段で決めること）。 */
+  /** その段で決めることの短いラベル（記事タイトルの短縮ではない）。 */
   label: string;
-  /** この段で決めることを1文で。記事末尾の前後リンクの補助説明に使う。 */
+  /** この記事で決めることを1文で。 */
   decision: string;
   /**
-   * この記事の「主ジャーニー」がこのジャーニーであることを表す。
-   * 記事末尾はこの1件だけを描画する（複数ジャーニーに属する記事を二重に案内しない）。
-   * 複数に属する記事は、先に進める余地が大きい側を primary にしている。
+   * この記事の主ジャーニーがこのジャーニーであること。記事末尾はこの1件だけを描画する
+   * （複数ジャーニーに属する記事を二重に案内しない）。
+   * 複数に属する記事は、先へ進める余地が大きい側を primary にしている。
    */
   primary?: boolean;
+  /** hub の起点。1ジャーニーに1件だけ、先頭に置く。sequence と conditional では使わない。 */
+  entry?: boolean;
+  /**
+   * どんな場面・状況でこの記事へ進むか。hub と conditional では全段で必須。
+   * sequence では使わない（順番そのものが「いつ読むか」を表すため）。
+   */
+  when?: string;
 };
 
 export type ReaderJourney = {
   id: JourneyId;
-  /** 読者のやりたいこと。見出しになるので体言止めにしない。 */
+  kind: JourneyKind;
+  /** 読者のやりたいこと。見出しになる。 */
   title: string;
-  /** そのジャーニーで何を決め終わるかの1文。 */
+  /** そのジャーニーで何を決めるか。順番があるのか、選ぶのかが伝わる書き方にする。 */
   shortDescription: string;
   steps: JourneyStep[];
 };
@@ -42,9 +57,10 @@ export type ReaderJourney = {
 export const READER_JOURNEYS: ReaderJourney[] = [
   {
     id: 'plan',
+    kind: 'sequence',
     title: '個別の指導計画を書く',
     shortDescription:
-      '計画の型から目標の具体化、評価欄の決め方、評価場面で支援を使ってよいかまでを順に決めます。',
+      '計画の型から目標の具体化、評価欄の決め方、評価場面で支援を使ってよいかまでを、この順に決めます。前の段の結論が次の段の前提になります。',
     steps: [
       {
         slug: 'individual-education-plan-writing-guide',
@@ -77,25 +93,29 @@ export const READER_JOURNEYS: ReaderJourney[] = [
   },
   {
     id: 'support',
+    kind: 'conditional',
     title: '支援を決めて記録する',
     shortDescription:
-      '困っている場面の記録から、支援ツールと見通し支援を決め、合意した配慮を残すまでを扱います。',
+      '困りごとによって入口が変わります。決まった順番はないので、いまの状況に合う記事から読みます。',
     steps: [
       {
         slug: 'special-needs-behavior-record-guide',
         label: '行動を記録する',
+        when: '何が起きているかを整理したいとき',
         decision: '何を・どの粒度で記録するかを決め、ABC記録の1枚目を書く。',
         primary: true,
       },
       {
         slug: 'special-needs-ict-support-tools-checklist',
         label: '支援ツールを選ぶ',
+        when: '支援機能で参加を補えるか試すとき',
         decision: '参加できていない場面から必要な機能を決め、試用の条件と判定の基準を決める。',
         primary: true,
       },
       {
         slug: 'special-needs-visual-schedule-support',
         label: '見通しを支える',
+        when: '予定や手順の見通しを持ちにくいとき',
         decision: 'スケジュールや手順表の形式と情報量を決め、作り替えの履歴を残す。',
         primary: true,
       },
@@ -103,14 +123,17 @@ export const READER_JOURNEYS: ReaderJourney[] = [
         // 主ジャーニーは family 側（面談で合意してから記録するほうが、この記事の前段が揃う）。
         slug: 'reasonable-accommodation-school-record',
         label: '配慮を記録する',
+        when: '支援を合理的配慮として合意したとき',
         decision: '合意した合理的配慮を、引き継ぎと見直しに使える記録の文面に直す。',
       },
     ],
   },
   {
     id: 'family',
+    kind: 'sequence',
     title: '保護者と確認して残す',
-    shortDescription: '面談の準備と保留の扱いから、合意した配慮の記録、計画への転記までを扱います。',
+    shortDescription:
+      '面談の準備と保留の扱いから、合意した配慮の記録、計画への転記までを、この順に進めます。',
     steps: [
       {
         slug: 'special-needs-parent-collaboration',
@@ -135,13 +158,17 @@ export const READER_JOURNEYS: ReaderJourney[] = [
   },
   {
     id: 'ict',
+    kind: 'hub',
     title: 'ICTを授業で使う',
     shortDescription:
-      'そのサービスを使ってよいかの確認から、端末の当日運用、デジタル教科書とフォームの設計まで。',
+      '使うものによって入口が変わります。未導入のサービスはまず使ってよいかを確かめ、端末・デジタル教科書・フォームは場面に合わせて選びます。',
     steps: [
       {
+        // 起点。外部サービス全般に共通する判断を持ち、フォーム記事・端末記事が本文でここへ委譲している。
         slug: 'free-ict-tools-safety-checklist',
         label: '使ってよいか',
+        entry: true,
+        when: '未導入のサービスを授業で使いたいとき',
         decision:
           '学校・設置者のルール、アカウント、外部へ出る情報を順に見て、使う・確認待ち・使わないを決める。',
         primary: true,
@@ -149,12 +176,14 @@ export const READER_JOURNEYS: ReaderJourney[] = [
       {
         slug: 'giga-device-lesson-use-guide',
         label: '授業当日の運用',
+        when: '端末を使う授業の前日と当日',
         decision: '前日に実機で確かめる項目と、当日トラブルで代替へ切り替える基準を決める。',
         primary: true,
       },
       {
         slug: 'digital-textbook-introduction-school-changes',
         label: '教科書の単元設計',
+        when: 'デジタル教科書を初めて使う単元',
         decision:
           '学習者用デジタル教科書を初めて使う単元で、何を確かめ、授業後に続けるかをどう判定するかを決める。',
         primary: true,
@@ -162,6 +191,7 @@ export const READER_JOURNEYS: ReaderJourney[] = [
       {
         slug: 'google-forms-school-use-guide',
         label: 'フォームを配る',
+        when: '保護者や児童生徒にフォームを配る前',
         decision: 'ログイン要求・記名の粒度・2か所の権限・削除する場所を、配る前に確定させる。',
         primary: true,
       },
@@ -169,19 +199,24 @@ export const READER_JOURNEYS: ReaderJourney[] = [
   },
   {
     id: 'ai',
+    kind: 'hub',
     title: '生成AIを校務で使う',
     shortDescription:
-      '校務ゲートで使えるかを決め、所見・学級通信での使い方と、新しいサービスの一次判定まで。',
+      'まず校務ゲートで使ってよいかと入力してよい情報を決め、そこから先は所見・学級通信・新しいサービスの判定のうち、いまの場面に合うものを選びます。',
     steps: [
       {
+        // 起点。所見・学級通信・サービス判定の3記事すべてへ本文で委譲している。
         slug: 'ai-koomu-kaizen-nyumon',
         label: '校務ゲートを通す',
+        entry: true,
+        when: '校務で生成AIを使い始める前',
         decision: '利用可否・入力情報・AIの役割・人の確認の4ゲートを通し、止まった位置と理由を残す。',
         primary: true,
       },
       {
         slug: 'chatgpt-tsuchihyo-shoken',
         label: '所見に使う',
+        when: '通知表所見の下書きに使うとき',
         decision:
           '通知表所見で生成AIを使う子・使わない子を先に決め、入力前と提出前に見るところを固定する。',
         primary: true,
@@ -189,12 +224,14 @@ export const READER_JOURNEYS: ReaderJourney[] = [
       {
         slug: 'ai-class-newsletter-prompt',
         label: '学級通信に使う',
+        when: '学級通信・学年だよりの下書きに使うとき',
         decision: '下書きに足された事実・落ちた事実を原資料と突き合わせ、配布できる原稿に戻す。',
         primary: true,
       },
       {
         slug: 'education-ai-service-checklist-before-use',
         label: '新しいサービス',
+        when: '新しいAIサービスの案内が届いたとき',
         decision:
           '新しいAIサービスの案内が届いたとき、導入候補に載せてよいかを候補にする・保留・載せないで一次判定する。',
         primary: true,
@@ -212,15 +249,38 @@ export const JOURNEY_UNASSIGNED: { slug: string; reason: string }[] = [];
 
 // ─── 参照ヘルパ（Home / 記事末尾 / /resources はここだけを使う） ─────────────
 
-export type JourneyPosition = {
-  journey: ReaderJourney;
-  step: JourneyStep;
-  /** 1 始まり。「4段のうち2段目」の表示に使う。 */
-  index: number;
-  total: number;
-  previous?: JourneyStep;
-  next?: JourneyStep;
-};
+/**
+ * 記事末尾に出す、主ジャーニーの中での位置。形ごとに持つ情報が違う。
+ * 順番の無い形（hub / conditional）は、前後（previous / next）をそもそも持たない。
+ */
+export type JourneyPosition =
+  | {
+      kind: 'sequence';
+      journey: ReaderJourney;
+      step: JourneyStep;
+      /** 1 始まり。「4段のうち2段目」の表示に使う。 */
+      index: number;
+      total: number;
+      previous?: JourneyStep;
+      next?: JourneyStep;
+    }
+  | {
+      kind: 'hub';
+      journey: ReaderJourney;
+      step: JourneyStep;
+      /** この記事が起点かどうか。 */
+      isEntry: boolean;
+      entry: JourneyStep;
+      /** 場面に合わせて選ぶ記事（この記事自身は含めない）。 */
+      choices: JourneyStep[];
+    }
+  | {
+      kind: 'conditional';
+      journey: ReaderJourney;
+      step: JourneyStep;
+      /** 状況に応じて読むほかの記事（この記事自身は含めない）。 */
+      others: JourneyStep[];
+    };
 
 const resourceBySlug = new Map<string, PracticalResource>(
   PRACTICAL_RESOURCES.map((resource) => [resource.slug, resource]),
@@ -231,13 +291,10 @@ export function getStepResource(step: JourneyStep): PracticalResource | undefine
   return resourceBySlug.get(step.slug);
 }
 
-export function getJourney(id: JourneyId): ReaderJourney | undefined {
-  return READER_JOURNEYS.find((journey) => journey.id === id);
-}
-
-/** その記事を含むすべてのジャーニー（本文リンクの補助や検証に使う）。 */
-export function getJourneysForArticle(slug: string): ReaderJourney[] {
-  return READER_JOURNEYS.filter((journey) => journey.steps.some((step) => step.slug === slug));
+/** hub の起点と選択肢。起点は entry 指定の1件（先頭にあることをテストで保証している）。 */
+export function splitHub(journey: ReaderJourney): { entry: JourneyStep; choices: JourneyStep[] } {
+  const entry = journey.steps.find((step) => step.entry) ?? journey.steps[0];
+  return { entry, choices: journey.steps.filter((step) => step !== entry) };
 }
 
 /**
@@ -248,19 +305,43 @@ export function getPrimaryJourneyPosition(slug: string): JourneyPosition | undef
   for (const journey of READER_JOURNEYS) {
     const index = journey.steps.findIndex((step) => step.slug === slug && step.primary);
     if (index === -1) continue;
+    const step = journey.steps[index];
+
+    if (journey.kind === 'sequence') {
+      return {
+        kind: 'sequence',
+        journey,
+        step,
+        index: index + 1,
+        total: journey.steps.length,
+        previous: journey.steps[index - 1],
+        next: journey.steps[index + 1],
+      };
+    }
+
+    if (journey.kind === 'hub') {
+      const { entry, choices } = splitHub(journey);
+      return {
+        kind: 'hub',
+        journey,
+        step,
+        isEntry: entry.slug === slug,
+        entry,
+        choices: choices.filter((choice) => choice.slug !== slug),
+      };
+    }
+
     return {
+      kind: 'conditional',
       journey,
-      step: journey.steps[index],
-      index: index + 1,
-      total: journey.steps.length,
-      previous: journey.steps[index - 1],
-      next: journey.steps[index + 1],
+      step,
+      others: journey.steps.filter((other) => other.slug !== slug),
     };
   }
   return undefined;
 }
 
-/** /resources のグループ分け。各様式は主ジャーニーの下に1回だけ出す。 */
+/** /resources のグループ分け。各様式は主ジャーニーの下に1回だけ、ジャーニーの並びどおりに出す。 */
 export function getResourceGroups(): { journey: ReaderJourney; steps: JourneyStep[] }[] {
   return READER_JOURNEYS.map((journey) => ({
     journey,
@@ -268,7 +349,7 @@ export function getResourceGroups(): { journey: ReaderJourney; steps: JourneySte
   })).filter((group) => group.steps.length > 0);
 }
 
-/** /resources 内のジャーニー見出しにつける id（Home からの着地先）。 */
+/** /resources 内のジャーニー見出しにつける id（Home と記事末尾からの着地先）。 */
 export function journeyAnchor(id: JourneyId): string {
   return `journey-${id}`;
 }

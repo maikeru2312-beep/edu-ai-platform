@@ -3,6 +3,10 @@
  *
  * 守りたい性質:
  *   - ジャーニーの定義が壊れた状態（未公開 slug・自己リンク・重複）で公開されないこと
+ *   - ジャーニーの形（kind）が宣言どおりに描かれること。順番の無い形を番号や矢印で並べないこと
+ *       sequence    前の段の結論が次の段の前提になる。前後リンク・番号を出す
+ *       hub         起点1つ＋場面で選ぶ選択肢。選択肢に順番を付けない
+ *       conditional 状況（when）で選ぶ。起点も順番もない
  *   - Home / 記事末尾 / /resources が同じ定義を参照し、並びを別々に持たないこと
  *   - 記事が増えたとき、ジャーニーに入れる・入れないの判断を必ず明示させること
  *
@@ -11,15 +15,43 @@
 
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
+import { pathToFileURL } from 'node:url';
 import matter from 'gray-matter';
+import ts from 'typescript';
 
 const root = process.cwd();
 const read = (relativePath) => fs.readFileSync(path.join(root, relativePath), 'utf8');
 
-const JOURNEY_PATH = 'lib/reader-journeys.ts';
-const journeySource = read(JOURNEY_PATH);
+// ─── lib/reader-journeys.ts を実モジュールとして読み込む ─────────────────────
+// 正規表現でソースを写し取るとテストがソースの写しになり、書き方の変化で壊れる。
+// TypeScript の transpile だけを通して import し、記事末尾が使うヘルパの振る舞いまで検証する。
+async function loadJourneyModules() {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'reader-journey-test-'));
+  process.on('exit', () => fs.rmSync(dir, { recursive: true, force: true }));
+  const transpile = (relativePath) =>
+    ts.transpileModule(read(relativePath), {
+      compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
+    }).outputText;
+
+  fs.writeFileSync(path.join(dir, 'practical-resources.mjs'), transpile('lib/practical-resources.ts'));
+  const journeyJs = transpile('lib/reader-journeys.ts').replace(
+    /from ['"]@\/lib\/practical-resources['"]/g,
+    "from './practical-resources.mjs'",
+  );
+  assert.doesNotMatch(journeyJs, /from ['"]@\//, 'reader-journeys が想定外のモジュールに依存していないこと');
+  fs.writeFileSync(path.join(dir, 'reader-journeys.mjs'), journeyJs);
+
+  const load = (file) => import(pathToFileURL(path.join(dir, file)).href);
+  return { journeyModule: await load('reader-journeys.mjs'), resourceModule: await load('practical-resources.mjs') };
+}
+
+const { journeyModule, resourceModule } = await loadJourneyModules();
+const { READER_JOURNEYS: journeys, JOURNEY_UNASSIGNED, getPrimaryJourneyPosition } = journeyModule;
+const { PRACTICAL_RESOURCES } = resourceModule;
+const unassigned = JOURNEY_UNASSIGNED.map((entry) => entry.slug);
 
 // ─── 記事 ────────────────────────────────────────────────────────────────
 const articleDir = path.join(root, 'content/articles');
@@ -37,60 +69,43 @@ const publishedSlugs = new Set(
   [...articles.values()].filter((a) => a.published !== false).map((a) => a.slug),
 );
 
-// ─── reader-journeys.ts の解析 ────────────────────────────────────────────
-// TypeScript をそのまま import できないため、ソースから構造を読み取る。
-// 「テストがソースの写しになる」ことを避けるため、値の中身ではなく関係だけを検証する。
-function parseJourneys(source) {
-  const body = source.slice(source.indexOf('export const READER_JOURNEYS'));
-  const end = body.indexOf('\n];');
-  assert.notEqual(end, -1, 'READER_JOURNEYS の終端が見つかること');
-  const list = body.slice(0, end);
+// Human Review（2026-09-11）で決めた形。順番が本当にあるものだけを sequence にする。
+// 形を変える・ジャーニーを足すときは、この表も更新して判断を残す。
+const REVIEWED_KINDS = {
+  plan: 'sequence',
+  family: 'sequence',
+  support: 'conditional',
+  ict: 'hub',
+  ai: 'hub',
+};
 
-  const journeys = [];
-  const journeyRe = /\{\s*\n\s*id: '([a-z]+)',\s*\n\s*title: '([^']+)',/g;
-  const starts = [];
-  let m;
-  while ((m = journeyRe.exec(list)) !== null) {
-    starts.push({ id: m[1], title: m[2], at: m.index });
-  }
-  for (let i = 0; i < starts.length; i += 1) {
-    const chunk = list.slice(starts[i].at, i + 1 < starts.length ? starts[i + 1].at : list.length);
-    const steps = [];
-    const stepRe =
-      /slug: '([a-z0-9-]+)',\s*\n\s*label: '([^']+)',\s*\n\s*decision:\s*\n?\s*'([^']+)',(\s*\n\s*primary: true,)?/g;
-    let s;
-    while ((s = stepRe.exec(chunk)) !== null) {
-      steps.push({ slug: s[1], label: s[2], decision: s[3], primary: Boolean(s[4]) });
-    }
-    const description = /shortDescription:\s*\n?\s*'([^']+)'/.exec(chunk);
-    journeys.push({
-      id: starts[i].id,
-      title: starts[i].title,
-      shortDescription: description ? description[1] : '',
-      steps,
-    });
-  }
-  return journeys;
+/** 記事末尾が実際にリンクする記事（形ごとに持つ情報が違う）。 */
+function linkedSteps(position) {
+  if (position.kind === 'sequence') return [position.previous, position.next].filter(Boolean);
+  if (position.kind === 'hub') return position.isEntry ? position.choices : [position.entry, ...position.choices];
+  return position.others;
 }
 
-const journeys = parseJourneys(journeySource);
-const unassigned = [
-  ...journeySource
-    .slice(journeySource.indexOf('JOURNEY_UNASSIGNED'))
-    .matchAll(/slug: '([a-z0-9-]+)'/g),
-].map((m) => m[1]);
+/** 描画側ソースから、名前つき関数1つ分の本文を取り出す（次の関数宣言の手前まで）。 */
+function functionBody(source, name) {
+  const start = source.indexOf(`function ${name}(`);
+  assert.notEqual(start, -1, `${name} が見つかること`);
+  const rest = source.slice(start + 1);
+  const end = rest.search(/\n(?:export default )?function \w+\(/);
+  return end === -1 ? source.slice(start) : source.slice(start, start + 1 + end);
+}
 
 // ─── 1. registry の整合性 ─────────────────────────────────────────────────
 test('journey registry has unique ids and well-formed steps', () => {
-  assert.ok(journeys.length >= 3, `ジャーニーが解析できていること（${journeys.length} 件）`);
+  assert.ok(journeys.length >= 3, `ジャーニーが読み込めていること（${journeys.length} 件）`);
 
   const ids = journeys.map((j) => j.id);
   assert.deepEqual([...new Set(ids)], ids, 'ジャーニー id が重複していないこと');
-
   const titles = journeys.map((j) => j.title);
   assert.deepEqual([...new Set(titles)], titles, 'ジャーニー名が重複していないこと');
 
   for (const journey of journeys) {
+    assert.ok(['sequence', 'hub', 'conditional'].includes(journey.kind), `${journey.id}: kind が3つの形のどれかであること`);
     assert.ok(journey.steps.length >= 2, `${journey.id}: 2段以上あること`);
     assert.ok(journey.shortDescription.length >= 10, `${journey.id}: 説明が空でないこと`);
     for (const step of journey.steps) {
@@ -105,11 +120,8 @@ test('every journey step points at a published article', () => {
   const broken = [];
   for (const journey of journeys) {
     for (const step of journey.steps) {
-      if (!articles.has(step.slug)) {
-        broken.push(`${journey.id}: 記事が存在しない slug「${step.slug}」`);
-      } else if (!publishedSlugs.has(step.slug)) {
-        broken.push(`${journey.id}: 未公開記事へのステップ「${step.slug}」`);
-      }
+      if (!articles.has(step.slug)) broken.push(`${journey.id}: 記事が存在しない slug「${step.slug}」`);
+      else if (!publishedSlugs.has(step.slug)) broken.push(`${journey.id}: 未公開記事へのステップ「${step.slug}」`);
     }
   }
   assert.deepEqual(broken, [], 'ジャーニーの参照先が公開記事であること');
@@ -120,34 +132,28 @@ test('every journey step points at a published article', () => {
   );
   for (const journey of journeys) {
     for (const step of journey.steps) {
-      assert.equal(
-        redirectSources.has(step.slug),
-        false,
-        `${journey.id}: redirect 元 slug をステップにしている（${step.slug}）`,
-      );
+      assert.equal(redirectSources.has(step.slug), false, `${journey.id}: redirect 元 slug をステップにしている（${step.slug}）`);
     }
   }
 });
 
-// ─── 3. 同じジャーニー内で重複・自己リンクが起きないこと ────────────────────
+// ─── 3. 重複・自己リンクが起きないこと ────────────────────────────────────
 test('journey steps do not repeat, so previous and next never self-link', () => {
   for (const journey of journeys) {
     const slugs = journey.steps.map((s) => s.slug);
-    assert.deepEqual(
-      [...new Set(slugs)],
-      slugs,
-      `${journey.id}: 同じ記事が2回現れている（前後リンクが自己リンクになる）`,
-    );
+    assert.deepEqual([...new Set(slugs)], slugs, `${journey.id}: 同じ記事が2回現れている（自己リンクになる）`);
     const labels = journey.steps.map((s) => s.label);
     assert.deepEqual([...new Set(labels)], labels, `${journey.id}: ステップラベルが重複している`);
-
-    // 隣り合う段が同じ記事を指していないこと（自己リンクの直接検査）。
     for (let i = 1; i < journey.steps.length; i += 1) {
-      assert.notEqual(
-        journey.steps[i].slug,
-        journey.steps[i - 1].slug,
-        `${journey.id}: ${i + 1}段目が前の段と同じ記事`,
-      );
+      assert.notEqual(journey.steps[i].slug, journey.steps[i - 1].slug, `${journey.id}: ${i + 1}段目が前の段と同じ記事`);
+    }
+  }
+  // 記事末尾のヘルパが、どの形でも自分自身へのリンクを返さないこと。
+  for (const slug of publishedSlugs) {
+    const position = getPrimaryJourneyPosition(slug);
+    if (!position) continue;
+    for (const linked of linkedSteps(position)) {
+      assert.notEqual(linked.slug, slug, `${slug}: 記事末尾が自分自身へリンクしている（self-link）`);
     }
   }
 });
@@ -163,11 +169,10 @@ test('each article in a journey has exactly one primary step', () => {
     }
   }
   const problems = [];
-  for (const [slug, count] of anyCount) {
+  for (const [slug] of anyCount) {
     const primary = primaryCount.get(slug) ?? 0;
     if (primary === 0) problems.push(`${slug}: primary のジャーニーが無い（記事末尾に何も出ない）`);
     if (primary > 1) problems.push(`${slug}: primary が ${primary} 本ある（案内が二重になる）`);
-    if (count > 1 && primary !== 1) problems.push(`${slug}: 複数ジャーニーに属するのに primary が1本でない`);
   }
   assert.deepEqual(problems, [], '記事ごとの主ジャーニーが1本に定まること');
 });
@@ -175,15 +180,8 @@ test('each article in a journey has exactly one primary step', () => {
 // ─── 5. 公開記事が黙って取り残されないこと ────────────────────────────────
 test('every published article is either on a journey or explicitly excluded', () => {
   const onJourney = new Set(journeys.flatMap((j) => j.steps.map((s) => s.slug)));
-  const missing = [...publishedSlugs].filter(
-    (slug) => !onJourney.has(slug) && !unassigned.includes(slug),
-  );
-  assert.deepEqual(
-    missing,
-    [],
-    'ジャーニーに入れない記事は JOURNEY_UNASSIGNED に理由つきで宣言すること',
-  );
-  // 逆に、宣言だけ残ってジャーニーにも入っている状態を許さない。
+  const missing = [...publishedSlugs].filter((slug) => !onJourney.has(slug) && !unassigned.includes(slug));
+  assert.deepEqual(missing, [], 'ジャーニーに入れない記事は JOURNEY_UNASSIGNED に理由つきで宣言すること');
   const both = unassigned.filter((slug) => onJourney.has(slug));
   assert.deepEqual(both, [], 'JOURNEY_UNASSIGNED とステップの両方に現れる記事が無いこと');
   for (const slug of unassigned) {
@@ -193,11 +191,7 @@ test('every published article is either on a journey or explicitly excluded', ()
 
 // ─── 6. ステップの様式が実在し、着地先の見出しに一致すること ────────────────
 test('resources referenced through journeys resolve to a real heading', () => {
-  const resourceSource = read('lib/practical-resources.ts');
-  const entries = [...resourceSource.matchAll(/slug: '([a-z0-9-]+)',[\s\S]*?anchor: '([^']+)',/g)]
-    .map((m) => ({ slug: m[1], anchor: m[2] }));
-  const anchorBySlug = new Map(entries.map((e) => [e.slug, e.anchor]));
-
+  const anchorBySlug = new Map(PRACTICAL_RESOURCES.map((r) => [r.slug, r.anchor]));
   const problems = [];
   for (const journey of journeys) {
     for (const step of journey.steps.filter((s) => s.primary)) {
@@ -206,19 +200,98 @@ test('resources referenced through journeys resolve to a real heading', () => {
         problems.push(`${journey.id}/${step.slug}: 様式が practical-resources に無い`);
         continue;
       }
-      const article = articles.get(step.slug);
-      const headings = [...article.content.matchAll(/^#{2,3}\s+(.+)$/gm)].map((m) => m[1].trim());
-      if (!headings.includes(anchor)) {
-        problems.push(`${journey.id}/${step.slug}: 見出し「${anchor}」が本文に無い`);
-      }
+      const headings = [...articles.get(step.slug).content.matchAll(/^#{2,3}\s+(.+)$/gm)].map((m) => m[1].trim());
+      if (!headings.includes(anchor)) problems.push(`${journey.id}/${step.slug}: 見出し「${anchor}」が本文に無い`);
     }
   }
   assert.deepEqual(problems, [], 'ジャーニーから辿る様式が記事の見出しに着地すること');
 });
 
-// ─── 7. 3箇所が同じ定義を参照していること（二重管理の検出） ─────────────────
+// ─── 7. 形（kind）が宣言どおりの構造を持つこと ─────────────────────────────
+test('journey kind semantics are declared, not implied by order', () => {
+  assert.deepEqual(
+    journeys.map((j) => j.id).sort(),
+    Object.keys(REVIEWED_KINDS).sort(),
+    '全ジャーニーの形が Human Review 済みであること（ジャーニーを足したら REVIEWED_KINDS も更新する）',
+  );
+  for (const journey of journeys) {
+    assert.equal(journey.kind, REVIEWED_KINDS[journey.id], `${journey.id}: 形が Human Review の決定（${REVIEWED_KINDS[journey.id]}）と違う`);
+    const entries = journey.steps.filter((s) => s.entry);
+
+    if (journey.kind === 'sequence') {
+      assert.equal(entries.length, 0, `${journey.id}: sequence に起点（entry）を置かない`);
+      for (const step of journey.steps) {
+        assert.equal(step.when, undefined, `${journey.id}/${step.slug}: sequence では when を使わない（順番が「いつ読むか」を表す）`);
+      }
+      continue;
+    }
+
+    if (journey.kind === 'hub') {
+      assert.equal(entries.length, 1, `${journey.id}: hub の起点はちょうど1つ`);
+      assert.equal(journey.steps[0].entry, true, `${journey.id}: hub の起点は先頭に置く`);
+      assert.ok(journey.steps.length - 1 >= 2, `${journey.id}: hub には選択肢が2つ以上あること`);
+    } else {
+      assert.equal(entries.length, 0, `${journey.id}: conditional に起点を置かない`);
+    }
+    for (const step of journey.steps) {
+      assert.ok(
+        typeof step.when === 'string' && step.when.length > 0 && step.when.length <= 28,
+        `${journey.id}/${step.slug}: どんなときに読むか（when）が28字以内で書かれていること`,
+      );
+    }
+  }
+});
+
+// ─── 8. 記事末尾の案内が形に従うこと（ヘルパの振る舞い） ───────────────────
+test('article footer navigation follows the journey kind', () => {
+  let checked = 0;
+  for (const slug of publishedSlugs) {
+    const position = getPrimaryJourneyPosition(slug);
+    if (!position) continue;
+    checked += 1;
+    const { journey } = position;
+    assert.equal(position.kind, journey.kind, `${slug}: 記事末尾の形がジャーニーの形と違う`);
+
+    const members = new Set(journey.steps.map((s) => s.slug));
+    const linked = linkedSteps(position);
+    for (const step of linked) assert.ok(members.has(step.slug), `${slug}: 記事末尾がジャーニー外の記事へリンクしている`);
+    assert.equal(new Set(linked.map((s) => s.slug)).size, linked.length, `${slug}: 同じ記事へ二重にリンクしている`);
+
+    if (position.kind === 'sequence') {
+      const i = journey.steps.findIndex((s) => s.slug === slug && s.primary);
+      assert.equal(position.index, i + 1, `${slug}: 段の位置が違う`);
+      assert.equal(position.previous?.slug, journey.steps[i - 1]?.slug, `${slug}: 前の段が隣の段でない`);
+      assert.equal(position.next?.slug, journey.steps[i + 1]?.slug, `${slug}: 次の段が隣の段でない`);
+      assert.ok(linked.length <= 2, `${slug}: sequence の記事末尾は前後の2件まで`);
+      continue;
+    }
+
+    // 順番の無い形では、前後という概念そのものを返さない。
+    assert.equal('previous' in position, false, `${slug}: ${position.kind} で前の段を返している`);
+    assert.equal('next' in position, false, `${slug}: ${position.kind} で次の段を返している`);
+
+    if (position.kind === 'hub') {
+      const entry = journey.steps.find((s) => s.entry);
+      assert.equal(position.entry.slug, entry.slug, `${slug}: hub の起点が違う`);
+      assert.equal(position.isEntry, slug === entry.slug, `${slug}: 起点かどうかの判定が違う`);
+      assert.deepEqual(
+        position.choices.map((s) => s.slug),
+        journey.steps.filter((s) => !s.entry && s.slug !== slug).map((s) => s.slug),
+        `${slug}: hub の選択肢が「起点以外・自分以外」になっていない`,
+      );
+    } else {
+      assert.deepEqual(
+        position.others.map((s) => s.slug),
+        journey.steps.filter((s) => s.slug !== slug).map((s) => s.slug),
+        `${slug}: conditional のほかの記事が「自分以外の全員」になっていない`,
+      );
+    }
+  }
+  assert.equal(checked, publishedSlugs.size - unassigned.length, 'ジャーニーに載る全記事で記事末尾の案内を検証したこと');
+});
+
+// ─── 9. 3箇所が同じ定義を参照していること（二重管理の検出） ─────────────────
 test('home, article footer and resources all read the same journey source', () => {
-  // それぞれがジャーニー定義を import していること。
   assert.match(read('components/JourneyFinder.tsx'), /from '@\/lib\/reader-journeys'/);
   assert.match(read('components/ArticleJourneyNav.tsx'), /from '@\/lib\/reader-journeys'/);
   assert.match(read('app/resources/page.tsx'), /from '@\/lib\/reader-journeys'/);
@@ -243,37 +316,76 @@ test('home, article footer and resources all read the same journey source', () =
   }
   assert.deepEqual(duplicated, [], 'ジャーニーの文言は lib/reader-journeys.ts だけが持つこと');
 
-  // 様式の名前・アンカーもジャーニー側へ写していないこと（practical-resources が唯一の真実）。
-  const resourceAssets = [...read('lib/practical-resources.ts').matchAll(/asset: '([^']+)'/g)].map((m) => m[1]);
-  for (const asset of resourceAssets) {
-    assert.equal(journeySource.includes(asset), false, `reader-journeys に様式名を写している：${asset}`);
+  // 様式の名前もジャーニー側へ写していないこと（practical-resources が唯一の真実）。
+  const journeySource = read('lib/reader-journeys.ts');
+  for (const resource of PRACTICAL_RESOURCES) {
+    assert.equal(journeySource.includes(resource.asset), false, `reader-journeys に様式名を写している：${resource.asset}`);
   }
 });
 
-// ─── 8. ジャーニー UI が読者の判断以外のリンクを増やしていないこと ───────────
-test('journey navigation adds decision links only, and stays server-rendered', () => {
+// ─── 10. 順番の無い形を、番号・矢印・前後で並べないこと ────────────────────
+test('hub and conditional journeys never render a fake linear order', () => {
   const finder = read('components/JourneyFinder.tsx');
   const nav = read('components/ArticleJourneyNav.tsx');
-  for (const [name, source] of [['JourneyFinder', finder], ['ArticleJourneyNav', nav]]) {
-    assert.doesNotMatch(source, /'use client'/, `${name}: クライアントコンポーネントにしないこと`);
-    assert.doesNotMatch(source, /useState|useEffect|onClick/, `${name}: 不要な JS を持たないこと`);
+  const resources = read('app/resources/page.tsx');
+
+  // 3箇所とも、形で描き分けていること。
+  for (const kind of ['sequence', 'hub', 'conditional']) {
+    assert.match(finder, new RegExp(`journey\\.kind === '${kind}'`), `Home が ${kind} を描き分けていること`);
+    assert.match(nav, new RegExp(`position\\.kind === '${kind}'`), `記事末尾が ${kind} を描き分けていること`);
   }
-  // 記事末尾は前後の段と様式だけを出す（記事一覧の量産にしない）。
-  const articleLinks = [...nav.matchAll(/href=\{`\/articles\//g)].length;
-  assert.ok(articleLinks <= 2, `記事末尾から出る記事リンクは前後の2件まで（現在 ${articleLinks} 箇所）`);
-  // 前後リンクは記事タイトルを必ず表示する（「前へ」「次へ」だけにしない）。
-  assert.match(nav, /\{title\}/);
-  assert.match(nav, /step\.decision/);
+  assert.match(resources, /journey\.kind === 'sequence'/, '/resources が順番のあるものだけを番号つきにしていること');
+
+  // Home: 順番の無いカードに、番号（<ol>）・矢印・「この順」を出さない。
+  for (const name of ['HubCard', 'ConditionalCard', 'ChoiceList']) {
+    const body = functionBody(finder, name);
+    assert.doesNotMatch(body, /<ol/, `${name}: 順番の無い選択肢を <ol> にしている`);
+    assert.doesNotMatch(body, /→/, `${name}: 矢印で順番を示している`);
+    assert.doesNotMatch(body, /この順|（1\//, `${name}: 「この順」で順番を強いている`);
+  }
+  assert.match(functionBody(finder, 'SequenceCard'), /<ol/);
+  assert.match(functionBody(finder, 'SequenceCard'), /この順/);
+
+  // 記事末尾: 「前の段・次の段・段目」は sequence だけが使う。
+  for (const name of ['HubNav', 'ConditionalNav', 'StepCard']) {
+    assert.doesNotMatch(functionBody(nav, name), /前の段|次の段|段目/, `${name}: 順番の無い形で前後の段を示している`);
+  }
+  const sequenceNav = functionBody(nav, 'SequenceNav');
+  assert.match(sequenceNav, /前の段/);
+  assert.match(sequenceNav, /次の段/);
+
+  // /resources: 兄弟の選択肢は番号なしの <ul>。番号は sequence のグループだけ。
+  const choiceGroup = functionBody(resources, 'ChoiceGroup');
+  assert.doesNotMatch(choiceGroup, /index \+ 1|<ol/, 'ChoiceGroup: 兄弟の選択肢に番号を振っている');
+  assert.match(choiceGroup, /<ul/);
+  const sequenceGroup = functionBody(resources, 'SequenceGroup');
+  assert.match(sequenceGroup, /index \+ 1/);
+  assert.match(sequenceGroup, /<ol/);
 });
 
-// ─── 9. カテゴリ導線を壊していないこと ────────────────────────────────────
-test('category navigation survives the journey redesign', () => {
+// ─── 11. ジャーニー UI がサーバー描画のままであること ───────────────────────
+test('journey UI stays server-rendered, with no client JavaScript', () => {
+  for (const file of ['components/JourneyFinder.tsx', 'components/ArticleJourneyNav.tsx', 'app/resources/page.tsx']) {
+    const source = read(file);
+    assert.doesNotMatch(source, /'use client'/, `${file}: クライアントコンポーネントにしないこと`);
+    assert.doesNotMatch(source, /useState|useEffect|onClick/, `${file}: 不要な JS を持たないこと`);
+  }
+  // 記事末尾のリンクは、記事タイトルとその記事で決めることを必ず添える（「前へ」「次へ」だけにしない）。
+  const card = functionBody(read('components/ArticleJourneyNav.tsx'), 'StepCard');
+  assert.match(card, /\{title\}/);
+  assert.match(card, /step\.decision/);
+});
+
+// ─── 12. Home のカテゴリ導線を残し、重複した記事一覧を戻さないこと ───────────
+test('home keeps category navigation and drops duplicated article lists', () => {
   const home = read('app/page.tsx');
   assert.match(home, /分野から探す/, 'Home にカテゴリの入口が残っていること');
   assert.match(home, /categories\/\$\{CATEGORY_TO_SLUG\[cat\]\}/, 'カテゴリページへのリンクが残っていること');
   assert.match(read('components/Header.tsx'), /categories\//, 'ヘッダーのカテゴリ導線が残っていること');
-  // 「最近更新した記事」の面を復活させない（最新記事と重複し、鮮度を演出する面になる）。
-  // 判断の理由をコメントで残すのは許すため、描画される見出しだけを見る。
+  assert.match(home, /最新記事/, '記事一覧は最新記事の1つを残すこと');
+  // 最新記事と重複していた面を戻さない（判断の理由をコメントで残すのは許すため、描画と変数だけを見る）。
   assert.doesNotMatch(home, />\s*最近更新した記事\s*</);
   assert.doesNotMatch(home, /recentlyUpdated/);
+  assert.doesNotMatch(home, /このサイトの中心/, '特別支援教育の新着3件の面（最新記事と全件重複）を戻さない');
+  assert.doesNotMatch(home, /specialNeedsArticles/);
 });
