@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { getAllArticles, getArticlesByCategory } from '@/lib/articles';
+import { getAllArticles } from '@/lib/articles';
 import {
   CATEGORIES,
   CATEGORY_TO_SLUG,
@@ -8,6 +8,7 @@ import {
   CATEGORY_ICONS,
 } from '@/lib/categories';
 import ArticleCard from '@/components/ArticleCard';
+import JourneyFinder from '@/components/JourneyFinder';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
@@ -20,18 +21,11 @@ export default function HomePage() {
   const activeCategories = CATEGORIES.filter((cat) =>
     allArticles.some((article) => article.category === cat),
   );
-  const specialNeedsArticles = getArticlesByCategory('特別支援教育').slice(0, 3);
-  // 全記事の最終確認日が同じとき（サイト全体を見直した直後など）、この一覧は
-  // 「最近更新した」という情報を何も伝えないので出さない。
-  const updateDates = new Set(allArticles.map((a) => a.updatedAt ?? a.publishedAt));
-  const recentlyUpdated =
-    updateDates.size < 2
-      ? []
-      : [...allArticles]
-          .sort((a, b) =>
-            (b.updatedAt ?? b.publishedAt).localeCompare(a.updatedAt ?? a.publishedAt),
-          )
-          .slice(0, 4);
+  // Home に置く記事一覧は「最新記事」の1つだけにする。
+  //   - 最終更新日順の一覧は置かない。本サイトは記事をまとめて再確認するため最終確認日が
+  //     数種類しかなく、並べても新しさを伝えない（最終確認日は各記事のヘッダーで開示している）。
+  //   - 特別支援教育カテゴリの新着3件の面も置かない。3件とも最新記事と重複していた。
+  //     分野からの入口は「分野から探す」、場面からの入口は「やりたいことから探す」が担う。
 
   return (
     <div>
@@ -63,10 +57,19 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* カテゴリ */}
+      {/* やりたいことから探す（読者ジャーニー）。定義は lib/reader-journeys.ts */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
-        <h2 className="text-2xl font-bold text-gray-900 mb-1">場面から探す</h2>
-        <p className="text-sm text-gray-500 mb-6">
+        <h2 className="text-2xl font-bold text-gray-900 mb-1">やりたいことから探す</h2>
+        <p className="text-sm text-gray-600 mb-6">
+          いま手が止まっている場面から、自分の入口を選んでください。判断の中身と次に読む記事は、各記事の末尾で案内しています。
+        </p>
+        <JourneyFinder />
+      </section>
+
+      {/* 分野から探す（カテゴリ。ジャーニーとは別軸なので残す） */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-12">
+        <h2 className="text-2xl font-bold text-gray-900 mb-1">分野から探す</h2>
+        <p className="text-sm text-gray-600 mb-6">
           いずれも「特別支援教育を含む学校実務での判断」を扱う区分です。
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
@@ -119,61 +122,6 @@ export default function HomePage() {
           </div>
         )}
       </section>
-
-      {/* 最近更新した記事 */}
-      {recentlyUpdated.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
-          <div className="bg-white border border-gray-100 rounded-2xl p-5">
-            <div className="flex items-center justify-between mb-3">
-              <h2 className="text-lg font-semibold text-gray-700">最近更新した記事</h2>
-              <Link href="/articles" className="text-blue-600 hover:text-blue-800 text-sm font-medium">
-                記事一覧 →
-              </Link>
-            </div>
-            <ul className="divide-y divide-gray-100">
-              {recentlyUpdated.map((article) => (
-                <li key={article.slug}>
-                  <Link
-                    href={`/articles/${article.slug}`}
-                    className="group flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-3 py-2 hover:text-blue-600 transition-colors"
-                  >
-                    <span className="text-sm font-medium text-gray-800 group-hover:text-blue-600 leading-snug line-clamp-1">
-                      {article.title}
-                    </span>
-                    <span className="text-xs text-gray-600 shrink-0">
-                      更新: {article.updatedAt ?? article.publishedAt}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-      )}
-
-      {/* 特別支援教育 × ICT */}
-      {specialNeedsArticles.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
-          <div className="flex items-center justify-between mb-2">
-            <h2 className="text-2xl font-bold text-gray-900">このサイトの中心：特別支援教育の学校実務</h2>
-            <Link
-              href="/categories/tokubetsu-shien"
-              className="text-blue-600 hover:text-blue-800 text-sm font-medium"
-            >
-              すべて見る →
-            </Link>
-          </div>
-          <p className="text-sm text-gray-500 mb-6">
-            計画を書く、記録を取る、保護者と話す、配慮を決めて残す——
-            公的資料と実務上の確認手順をつなぎ、判断が分かれる場面と、校内確認へ回す条件まで整理しています。
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {specialNeedsArticles.map((article) => (
-              <ArticleCard key={article.slug} article={article} />
-            ))}
-          </div>
-        </section>
-      )}
 
     </div>
   );

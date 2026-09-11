@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "test": "node --test scripts/adsense-audit.test.mjs scripts/sixth-review-original-value.test.mjs",
+    "test": "node --test scripts/adsense-audit.test.mjs scripts/sixth-review-original-value.test.mjs scripts/reader-journey.test.mjs",
     "test:mutation": "node scripts/mutation-check.mjs",
     "validate": "node scripts/validate.mjs",
     "refs:check": "node scripts/check-references.mjs",

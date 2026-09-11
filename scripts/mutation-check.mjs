@@ -17,7 +17,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const root = process.cwd();
-const TEST_FILES = ['scripts/adsense-audit.test.mjs', 'scripts/sixth-review-original-value.test.mjs'];
+const TEST_FILES = [
+  'scripts/adsense-audit.test.mjs',
+  'scripts/sixth-review-original-value.test.mjs',
+  'scripts/reader-journey.test.mjs',
+];
 
 const red = (s) => `\x1b[31m${s}\x1b[0m`;
 const green = (s) => `\x1b[32m${s}\x1b[0m`;
@@ -229,6 +233,84 @@ const MUTATIONS = [
         '確認表です（本サイト作成の参考様式）。',
         '確認表です。',
       ),
+  },
+  {
+    name: 'ジャーニーのステップを未公開記事の slug へ差し替える',
+    files: ['lib/reader-journeys.ts'],
+    expect: 'published article',
+    apply: () =>
+      patch(
+        'lib/reader-journeys.ts',
+        "slug: 'special-needs-behavior-record-guide',",
+        "slug: 'school-generative-ai-privacy-security',",
+      ),
+  },
+  {
+    name: '記事末尾の「次」を自己リンクにする（同じ記事を隣り合う段に置く）',
+    files: ['lib/reader-journeys.ts'],
+    expect: 'self-link',
+    apply: () =>
+      patch(
+        'lib/reader-journeys.ts',
+        "slug: 'individual-plan-three-viewpoint-evaluation',",
+        "slug: 'individual-plan-goal-specificity-evaluation',",
+      ),
+  },
+  {
+    name: 'ジャーニー名を描画側へ直書きする（定義と表示の二重管理）',
+    files: ['app/page.tsx'],
+    expect: 'same journey source',
+    apply: () =>
+      patch(
+        'app/page.tsx',
+        '        <JourneyFinder />',
+        '        <p>個別の指導計画を書く</p><JourneyFinder />',
+      ),
+  },
+  {
+    name: '起点から選ぶジャーニー（hub）を順番のあるもの（sequence）に偽装する',
+    files: ['lib/reader-journeys.ts'],
+    expect: 'journey kind',
+    apply: () => patch('lib/reader-journeys.ts', "kind: 'hub',", "kind: 'sequence',"),
+  },
+  {
+    name: '/resources で兄弟の選択肢に番号を振る（必須の順番に見せる）',
+    files: ['app/resources/page.tsx'],
+    expect: 'fake linear order',
+    apply: () =>
+      patch(
+        'app/resources/page.tsx',
+        '${choicePrefix(kind, Boolean(item.step.entry))}',
+        '${index + 1}. ${choicePrefix(kind, Boolean(item.step.entry))}',
+      ),
+  },
+  {
+    name: '状況で選ぶジャーニー（conditional）の記事から「どんなときに読むか」を落とす',
+    files: ['lib/reader-journeys.ts'],
+    expect: 'journey kind',
+    apply: () =>
+      patch(
+        'lib/reader-journeys.ts',
+        "when: '何が起きているかを整理したいとき',",
+        "note: '何が起きているかを整理したいとき',",
+      ),
+  },
+  {
+    name: '共通の前提が無い ICT に起点を戻す（未導入サービスの確認を全員の入口にする）',
+    files: ['lib/reader-journeys.ts'],
+    expect: 'journey kind',
+    apply: () =>
+      patch(
+        'lib/reader-journeys.ts',
+        "label: '未導入サービスを確認する',",
+        "label: '未導入サービスを確認する', entry: true,",
+      ),
+  },
+  {
+    name: 'Home の入口カードに「どんなときに読むか」を戻す（詳細を Home に積む）',
+    files: ['components/JourneyFinder.tsx'],
+    expect: 'compact entry layer',
+    apply: () => patch('components/JourneyFinder.tsx', '{step.short}', '{step.short}（{step.when}）'),
   },
 ];
 
