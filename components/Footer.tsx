@@ -62,6 +62,18 @@ export default function Footer() {
             </ul>
           </div>
         </div>
+        <div className="border-t border-gray-800 mt-8 pt-6 text-sm">
+          <h2 className="text-white font-semibold mb-2">関連する専門サイト</h2>
+          <a
+            href="https://special-support-navi.vercel.app/"
+            className="text-gray-200 underline underline-offset-4 hover:text-white"
+          >
+            特別支援教育ナビ（指導・評価・支援）
+          </a>
+          <p className="mt-2 text-gray-400">
+            自立活動や授業づくりの実践を、根拠と様式から整理しています。
+          </p>
+        </div>
         <div className="border-t border-gray-800 mt-8 pt-8 text-xs">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
             <p>
