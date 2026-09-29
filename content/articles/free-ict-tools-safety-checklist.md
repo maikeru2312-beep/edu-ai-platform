@@ -15,7 +15,7 @@ updatedAt: "2026-08-22"
 
 **扱わないもの**（それぞれ別の記事が担当します）
 
-- **どのツールを選ぶか**（子どもの困りごとと目的からの選定）→ [特別支援教育の支援ツールを選ぶ手順](/articles/special-needs-ict-support-tools-checklist)
+- **どのツールを選ぶか**（子どもの困りごとと目的からの選定）→ [特別支援教育の支援ツールを選ぶ手順](https://special-support-navi.vercel.app/articles/special-needs-ict-support-tools-checklist)
 - **AIサービス固有の確認**（学習利用、生成物の扱い、出力の責任）→ [そのAIサービスを導入候補に載せてよいか：一次判定シートと規約の見どころ](/articles/education-ai-service-checklist-before-use)
 - **生成AIに何を入力するか**の線引き → [学校の校務で生成AIを使う前の判断ガイド](/articles/ai-koomu-kaizen-nyumon)
 

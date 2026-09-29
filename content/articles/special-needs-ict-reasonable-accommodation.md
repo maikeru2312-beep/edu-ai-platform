@@ -20,7 +20,7 @@ ICTを「できないことの補助」とだけ捉えると、この二つが�
 
 > 本記事は一般的な考え方の整理です。合理的配慮の具体的な決定や支援内容は、本人・保護者・関係機関と連携のうえ、**所属校・教育委員会の方針に従って**判断してください。制度・運用は地域や学校により異なります。
 
-→ どのツールを選ぶか（困りごとの観察、目的別の分類、試用と見直しまで）は[特別支援教育の支援ツールを選ぶ手順](/articles/special-needs-ict-support-tools-checklist)にまとめています。本記事はその手前の「位置づけ」だけを扱います。
+→ どのツールを選ぶか（困りごとの観察、目的別の分類、試用と見直しまで）は[特別支援教育の支援ツールを選ぶ手順](https://special-support-navi.vercel.app/articles/special-needs-ict-support-tools-checklist)にまとめています。本記事はその手前の「位置づけ」だけを扱います。
 
 ---
 
@@ -119,7 +119,7 @@ ICTを「できないことの補助」とだけ捉えると、この二つが�
 
 ICTの配慮について校内で相談するときに持っていくのは、目的を言葉にしたもの（アクセスの保障か、力を育てる指導か）と、試してみた記録（どの場面で・どう使い・本人がどうだったか）の二つです。この二つがあると、相談が「認めるか認めないか」ではなく「どちらの位置づけで扱うか」の話になります。
 
-→ 誰に・どの順で相談し、どこまでを校内で共有するかは[特別支援教育における行動記録の取り方](/articles/special-needs-behavior-record-guide)の「共有・相談の順番」に一本化しています。
+→ 記録を共有する前に何を確かめるかは[特別支援教育における行動記録の取り方](https://special-support-navi.vercel.app/articles/special-needs-behavior-record-guide)の「共有前に確認すること」にまとめています。
 
 ---
 
@@ -140,7 +140,7 @@ ICTの配慮について校内で相談するときに持っていくのは、�
 - [ ] 指導の手立てと整理した場合、個別の指導計画に記載したか
 - [ ] 実際の様子（反応・うまくいった点・課題）を記録に残しているか
 
-→ 使ってよいかの確認・本人に合うかの判断・継続と引き継ぎの見通しを含む導入前の確認は[特別支援教育の支援ツールを選ぶ手順](/articles/special-needs-ict-support-tools-checklist)の確認様式にまとめています。
+→ 使ってよいかの確認・本人に合うかの判断・継続と引き継ぎの見通しを含む導入前の確認は[特別支援教育の支援ツールを選ぶ手順](https://special-support-navi.vercel.app/articles/special-needs-ict-support-tools-checklist)の確認様式にまとめています。
 
 → 校内で承認されていない外部サービスやアプリを使う場合の安全確認は[無料ICTツールを授業で使う前の確認手順](/articles/free-ict-tools-safety-checklist)を先に通してください。
 
@@ -148,10 +148,10 @@ ICTの配慮について校内で相談するときに持っていくのは、�
 
 ## 関連記事
 
-- [特別支援教育の支援ツールを選ぶ手順：困りごとの観察から試用・見直しまで](/articles/special-needs-ict-support-tools-checklist)
+- [特別支援教育の支援ツールを選ぶ手順：困りごとの観察から試用・見直しまで](https://special-support-navi.vercel.app/articles/special-needs-ict-support-tools-checklist)
 - [合理的配慮の記録の書き方：避けたい書き方をよい書き方へ直す書き換え表](/articles/reasonable-accommodation-school-record)
 - [個別の教育支援計画・個別の指導計画の書き方：学校現場で使える基本ガイド](/articles/individual-education-plan-writing-guide)
-- [特別支援教育における行動記録の取り方：支援に生かす観察と記録の基本](/articles/special-needs-behavior-record-guide)
+- [特別支援教育における行動記録の取り方：支援に生かす観察と記録の基本](https://special-support-navi.vercel.app/articles/special-needs-behavior-record-guide)
 - [デジタル教科書を初めて使う単元の組み立て方：導入前の校内確認から授業後の判定まで](/articles/digital-textbook-introduction-school-changes)
 - [端末を使う授業の前日準備と当日のトラブル判断：実機確認10項目と切り上げの基準](/articles/giga-device-lesson-use-guide)
 - [カテゴリ：特別支援教育](/categories/tokubetsu-shien)

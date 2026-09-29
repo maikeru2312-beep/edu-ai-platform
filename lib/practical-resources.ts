@@ -36,12 +36,6 @@ export const PRACTICAL_RESOURCES: PracticalResource[] = [
     anchor: '目標具体化チェックシート（本サイト作成の参考様式）',
   },
   {
-    slug: 'special-needs-behavior-record-guide',
-    asset: 'ABC行動記録シート（8列の空欄表＋完全な架空の記入例）',
-    useWhen: '行動の記録を明日から取り始めるとき、粒度を決めて1枚目を書くために',
-    anchor: 'そのまま使えるABC行動記録シート（本サイト作成の参考様式）',
-  },
-  {
     slug: 'reasonable-accommodation-school-record',
     asset: '配慮記録の書き換え表（6欄の空欄様式＋3類型の書き換え対応表）',
     useWhen: '合意した合理的配慮を、次の担当者が読んで使える記録の文面に直すときに',
@@ -54,22 +48,10 @@ export const PRACTICAL_RESOURCES: PracticalResource[] = [
     anchor: '面談1回分の記録シート（本サイト作成の参考様式）',
   },
   {
-    slug: 'special-needs-visual-schedule-support',
-    asset: '視覚支援の見直し記録シート（9欄・1ツール1枚）',
-    useWhen: 'スケジュールや手順表を作ったあと、変更の履歴を残して次に見直す日を決めるために',
-    anchor: '視覚支援の見直し記録シート（本サイト作成の参考様式）',
-  },
-  {
     slug: 'special-needs-ict-reasonable-accommodation',
     asset: '評価場面で使ってよいかの仕分け表（三つの問い＋4列の判定表）',
     useWhen: '読み上げ・音声入力などを、テスト等の評価場面でも使ってよいかを校内で確認する前に',
     anchor: '評価場面で使ってよいかの仕分け表（本サイト作成の参考様式）',
-  },
-  {
-    slug: 'special-needs-ict-support-tools-checklist',
-    asset: '試用の条件と決める前の確認シート（16行）＋試用後の判定表',
-    useWhen: '支援ツールを試すとき、観察する事実と「続ける・調整する・変える・やめる」の判定を決めておくために',
-    anchor: '試用の条件と、決める前の確認を一枚にする',
   },
   {
     slug: 'giga-device-lesson-use-guide',

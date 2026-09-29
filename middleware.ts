@@ -13,9 +13,7 @@ export const ARTICLE_MERGE_REDIRECTS: Record<string, string> = {
   'generative-ai-guideline-v2-school-reading': 'ai-koomu-kaizen-nyumon',
   'school-generative-ai-privacy-security': 'ai-koomu-kaizen-nyumon',
   'ai-lesson-preparation-prompt': 'ai-koomu-kaizen-nyumon',
-  // 第6回審査で統合したもの（支援ツールの選定は特別支援の選定ガイドへ集約）
-  'ict-teaching-tools-selection-guide': 'special-needs-ict-support-tools-checklist',
-  'tokubetsu-shien-ict': 'special-needs-ict-support-tools-checklist',
+  // 支援ツールの旧別名は B1 切替後、next.config.mjs から Special へ直接転送する。
   // information-morals-education-themes は意味的に正しい統合先が無いため 301 を張らない（404）。
 };
 

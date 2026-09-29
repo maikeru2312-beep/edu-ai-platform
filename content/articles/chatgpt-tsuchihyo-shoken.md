@@ -166,5 +166,5 @@ updatedAt: "2026-08-22"
 
 - [学校の校務で生成AIを使う前の判断ガイド：4つの校務ゲートと判断シート](/articles/ai-koomu-kaizen-nyumon)
 - [生成AIで学級通信・学年だよりを下書きする手順：入力前の整理から配布前確認まで](/articles/ai-class-newsletter-prompt)
-- [特別支援教育の支援ツールを選ぶ手順：困りごとの観察から試用・見直しまで](/articles/special-needs-ict-support-tools-checklist)
+- [特別支援教育の支援ツールを選ぶ手順：困りごとの観察から試用・見直しまで](https://special-support-navi.vercel.app/articles/special-needs-ict-support-tools-checklist)
 - [カテゴリ：AI校務改善](/categories/ai-koomu)

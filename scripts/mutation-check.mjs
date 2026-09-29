@@ -92,8 +92,8 @@ const MUTATIONS = [
     apply: () =>
       patch(
         'middleware.ts',
-        "  'tokubetsu-shien-ict': 'special-needs-ict-support-tools-checklist',",
-        "  'tokubetsu-shien-ict': 'special-needs-ict-support-tools-checklist',\n"
+        "  'ai-lesson-preparation-prompt': 'ai-koomu-kaizen-nyumon',",
+        "  'ai-lesson-preparation-prompt': 'ai-koomu-kaizen-nyumon',\n"
         + "  'information-morals-education-themes': 'giga-device-lesson-use-guide',",
       ),
   },
@@ -104,8 +104,8 @@ const MUTATIONS = [
     apply: () =>
       patch(
         'middleware.ts',
-        "  'tokubetsu-shien-ict': 'special-needs-ict-support-tools-checklist',",
-        "  'tokubetsu-shien-ict': 'giga-device-lesson-use-guide',",
+        "  'school-generative-ai-privacy-security': 'ai-koomu-kaizen-nyumon',",
+        "  'school-generative-ai-privacy-security': 'giga-device-lesson-use-guide',",
       ),
   },
   {
@@ -116,7 +116,7 @@ const MUTATIONS = [
       patch(
         'middleware.ts',
         "  'ai-lesson-preparation-prompt': 'ai-koomu-kaizen-nyumon',",
-        "  'ai-lesson-preparation-prompt': 'tokubetsu-shien-ict',",
+        "  'ai-lesson-preparation-prompt': 'school-generative-ai-privacy-security',",
       ),
   },
   {
@@ -186,7 +186,7 @@ const MUTATIONS = [
     apply: () =>
       patch(
         'content/articles/giga-device-lesson-use-guide.md',
-        '](/articles/special-needs-ict-support-tools-checklist)',
+        '](https://special-support-navi.vercel.app/articles/special-needs-ict-support-tools-checklist)',
         '](/articles/tokubetsu-shien-ict)',
       ),
   },
@@ -241,7 +241,7 @@ const MUTATIONS = [
     apply: () =>
       patch(
         'lib/reader-journeys.ts',
-        "slug: 'special-needs-behavior-record-guide',",
+        "slug: 'individual-plan-goal-specificity-evaluation',",
         "slug: 'school-generative-ai-privacy-security',",
       ),
   },
@@ -282,17 +282,6 @@ const MUTATIONS = [
         'app/resources/page.tsx',
         '${choicePrefix(kind, Boolean(item.step.entry))}',
         '${index + 1}. ${choicePrefix(kind, Boolean(item.step.entry))}',
-      ),
-  },
-  {
-    name: '状況で選ぶジャーニー（conditional）の記事から「どんなときに読むか」を落とす',
-    files: ['lib/reader-journeys.ts'],
-    expect: 'journey kind',
-    apply: () =>
-      patch(
-        'lib/reader-journeys.ts',
-        "when: '何が起きているかを整理したいとき',",
-        "note: '何が起きているかを整理したいとき',",
       ),
   },
   {

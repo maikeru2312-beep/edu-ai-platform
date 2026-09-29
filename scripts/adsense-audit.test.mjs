@@ -94,7 +94,7 @@ test('the review scope is deliberately reduced and focused', () => {
   // 2026-09-10 に目標設定の記事（individual-plan-goal-specificity-evaluation）を、同じ専門軸で
   // 「目標の抽象度と評価可能性の両立」を扱う旗艦記事として1件だけ追加し 17 とした。
   // それ以外の「記事を増やす方向の変更」は引き続きこの assert で検出する。
-  assert.equal(published.length, 17);
+  assert.equal(published.length, 14);
   const categories = new Set(published.map((article) => article.category));
   assert.equal(categories.has('助成金・補助金'), false);
   assert.equal(categories.has('研修・セミナー'), false);
@@ -126,8 +126,6 @@ test('all MERGE articles have exact 301 targets and UNPUBLISH articles do not', 
     'generative-ai-guideline-v2-school-reading': 'ai-koomu-kaizen-nyumon',
     'school-generative-ai-privacy-security': 'ai-koomu-kaizen-nyumon',
     'ai-lesson-preparation-prompt': 'ai-koomu-kaizen-nyumon',
-    'ict-teaching-tools-selection-guide': 'special-needs-ict-support-tools-checklist',
-    'tokubetsu-shien-ict': 'special-needs-ict-support-tools-checklist',
   };
   // RESTORE_REBUILD により公開へ戻した slug は 301 を持たない。
   const restoredSlugs = [
@@ -159,7 +157,7 @@ test('all MERGE articles have exact 301 targets and UNPUBLISH articles do not', 
     );
     assert.notEqual(targetArticle.published, false, `${slug} -> unpublished target: ${target}`);
   }
-  // middleware に載る legacy redirect は上記の 5 件だけ。
+  // middleware に載る legacy redirect は上記の 8 件だけ。B1の旧別名は外部直行308へ移す。
   assert.deepEqual(
     [...middleware.matchAll(/'([a-z0-9-]+)': '([a-z0-9-]+)'/g)].map((m) => m[1]).sort(),
     Object.keys(mergeTargets).sort(),
@@ -254,9 +252,7 @@ test('operator experience notes match confirmed experience (C articles excluded)
     'ai-koomu-kaizen-nyumon', 'chatgpt-tsuchihyo-shoken',
     'education-ai-service-checklist-before-use', 'giga-device-lesson-use-guide',
     'individual-education-plan-writing-guide', 'reasonable-accommodation-school-record',
-    'special-needs-behavior-record-guide', 'special-needs-ict-reasonable-accommodation',
-    'special-needs-ict-support-tools-checklist', 'special-needs-parent-collaboration',
-    'special-needs-visual-schedule-support',
+    'special-needs-ict-reasonable-accommodation', 'special-needs-parent-collaboration',
   ];
   // 経験C（資料でのみ確認）・SOURCE_ONLY の記事には実務経験注記を付けない。
   // individual-plan-three-viewpoint-evaluation は制度整理の記事であり、運営者の確認回答を

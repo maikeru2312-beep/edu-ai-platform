@@ -16,6 +16,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
 import matter from 'gray-matter';
+import nextConfig from '../next.config.mjs';
 
 const root = process.cwd();
 const read = (relativePath) => fs.readFileSync(path.join(root, relativePath), 'utf8');
@@ -63,16 +64,23 @@ function parseCsv(text) {
   return body.map((r) => Object.fromEntries(header.map((h, i) => [h.trim(), (r[i] ?? '').trim()])));
 }
 
-const registry = parseCsv(read(REGISTRY_PATH));
-const matrix = parseCsv(read(MATRIX_PATH));
+const historicalRegistry = parseCsv(read(REGISTRY_PATH));
+const historicalMatrix = parseCsv(read(MATRIX_PATH));
+// The review CSVs remain immutable history; only current DX owners enter live-set checks.
+const registry = historicalRegistry.filter((row) => publishedSlugs.has(row.slug));
+const matrix = historicalMatrix.filter((row) => publishedSlugs.has(row.a) && publishedSlugs.has(row.b));
+const externalRedirects = await nextConfig.redirects();
 
 // 統合により 301 を張った旧 slug（middleware.ts が真実）
 const redirectSources = new Set(
-  [...read('middleware.ts').matchAll(/'([a-z0-9-]+)': '([a-z0-9-]+)'/g)].map((m) => m[1]),
+  [
+    ...[...read('middleware.ts').matchAll(/'([a-z0-9-]+)': '([a-z0-9-]+)'/g)].map((m) => m[1]),
+    ...externalRedirects.map((item) => item.source.replace('/articles/', '')),
+  ],
 );
 
 // ─── 1. canonical セットが期待どおりであること ────────────────────────────
-test('the canonical article set is exactly the 17 intended pages', () => {
+test('the canonical article set is exactly the 14 DX-owned pages after B1', () => {
   // 15 件は第6回審査で確定した canonical セット。individual-plan-three-viewpoint-evaluation は
   // 2026-08-29 に特別支援教育の専門軸（目標・評価）を深めるため追加した16件目。
   // individual-plan-goal-specificity-evaluation は 2026-09-10 に同じ専門軸で、目標の抽象度と
@@ -90,13 +98,23 @@ test('the canonical article set is exactly the 17 intended pages', () => {
     'individual-plan-goal-specificity-evaluation',
     'individual-plan-three-viewpoint-evaluation',
     'reasonable-accommodation-school-record',
-    'special-needs-behavior-record-guide',
     'special-needs-ict-reasonable-accommodation',
-    'special-needs-ict-support-tools-checklist',
     'special-needs-parent-collaboration',
-    'special-needs-visual-schedule-support',
   ].sort();
   assert.deepEqual([...publishedSlugs].sort(), expected);
+});
+
+test('B1 editorial registry and pair history remain archived without becoming DX canonical', () => {
+  for (const slug of [
+    'special-needs-behavior-record-guide',
+    'special-needs-ict-support-tools-checklist',
+    'special-needs-visual-schedule-support',
+  ]) {
+    assert.ok(historicalRegistry.some((row) => row.slug === slug));
+    assert.equal(publishedSlugs.has(slug), false);
+    assert.equal(registry.some((row) => row.slug === slug), false);
+  }
+  assert.equal(historicalMatrix.length, 136);
 });
 
 // ─── 2. 統合・退役した記事が審査面に出ないこと ───────────────────────────
@@ -123,7 +141,7 @@ test('merged and retired articles are unpublished and absent from the review sur
   for (const slug of retired) {
     assert.equal(redirectSources.has(slug), false, `${slug} に fake redirect が張られている`);
   }
-  // 統合記事はすべて 301 を持つ。
+  // 統合記事はすべて直接 redirect を持つ。
   for (const slug of merged) {
     assert.equal(redirectSources.has(slug), true, `${slug} の 301 が無い`);
   }
@@ -136,20 +154,23 @@ test('sixth-review merges redirect to their exact intended target in one hop', (
     'generative-ai-guideline-v2-school-reading': 'ai-koomu-kaizen-nyumon',
     'school-generative-ai-privacy-security': 'ai-koomu-kaizen-nyumon',
     'ai-lesson-preparation-prompt': 'ai-koomu-kaizen-nyumon',
-    'ict-teaching-tools-selection-guide': 'special-needs-ict-support-tools-checklist',
-    'tokubetsu-shien-ict': 'special-needs-ict-support-tools-checklist',
   };
   for (const [slug, target] of Object.entries(intended)) {
     assert.match(middleware, new RegExp(`'${slug}': '${target}'`), `${slug} の 301 先が違う`);
     assert.equal(redirectSources.has(target), false, `${slug} -> ${target} が多段 redirect`);
     assert.equal(publishedSlugs.has(target), true, `${slug} -> ${target} が未公開`);
   }
+  for (const slug of ['ict-teaching-tools-selection-guide', 'tokubetsu-shien-ict']) {
+    const redirect = externalRedirects.find((item) => item.source === `/articles/${slug}`);
+    assert.equal(redirect?.destination, 'https://special-support-navi.vercel.app/articles/special-needs-ict-support-tools-checklist');
+    assert.equal(redirect?.permanent, true);
+  }
 });
 
 // ─── 4. 全 redirect が 1 ホップで公開記事に着地すること ───────────────────
 test('every redirect in middleware lands on a published article in one hop', () => {
   const pairs = [...read('middleware.ts').matchAll(/'([a-z0-9-]+)': '([a-z0-9-]+)'/g)];
-  assert.ok(pairs.length >= 10, `redirect 件数が想定より少ない: ${pairs.length}`);
+  assert.ok(pairs.length >= 8, `redirect 件数が想定より少ない: ${pairs.length}`);
   for (const [, source, target] of pairs) {
     assert.equal(redirectSources.has(target), false, `${source} -> ${target} が redirect 連鎖`);
     assert.equal(publishedSlugs.has(target), true, `${source} -> ${target} が未公開へ着地`);
