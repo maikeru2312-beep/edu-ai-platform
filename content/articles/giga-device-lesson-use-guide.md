@@ -45,7 +45,7 @@ updatedAt: "2026-08-22"
 
 ### 支援の手立てとして端末を使うとき
 
-読み書き・見通し・コミュニケーションの支援として端末を使う場合、どのツールをどの困りごとに当てるかの検討は本記事の範囲外です。目的別のツールの選び方は[特別支援教育の支援ツールを選ぶ手順](/articles/special-needs-ict-support-tools-checklist)、合理的配慮としての位置づけは[そのICT利用は合理的配慮か、教育課程上の指導か](/articles/special-needs-ict-reasonable-accommodation)を参照してください。本記事が扱うのは、そこで決めた使い方を当日の授業で動かすための準備とトラブル時の判断です。
+読み書き・見通し・コミュニケーションの支援として端末を使う場合、どのツールをどの困りごとに当てるかの検討は本記事の範囲外です。目的別のツールの選び方は[特別支援教育の支援ツールを選ぶ手順](https://special-support-navi.vercel.app/articles/special-needs-ict-support-tools-checklist)、合理的配慮としての位置づけは[そのICT利用は合理的配慮か、教育課程上の指導か](/articles/special-needs-ict-reasonable-accommodation)を参照してください。本記事が扱うのは、そこで決めた使い方を当日の授業で動かすための準備とトラブル時の判断です。
 
 ---
 
@@ -239,7 +239,7 @@ updatedAt: "2026-08-22"
 「なぜこのルールが必要か」を考える活動自体が、情報モラル教育の一部になります。「もし誰かが自分の写真を勝手にネットに載せたらどう感じる？」など、具体的な場面を想定して話し合うと、ルールの意味を理解したうえで守りやすくなります。
 ## 関連記事
 
-- [特別支援教育の支援ツールを選ぶ手順：困りごとの観察から試用・見直しまで](/articles/special-needs-ict-support-tools-checklist) - 目的別に支援ツールを選ぶ手順
+- [特別支援教育の支援ツールを選ぶ手順：困りごとの観察から試用・見直しまで](https://special-support-navi.vercel.app/articles/special-needs-ict-support-tools-checklist) - 目的別に支援ツールを選ぶ手順
 - [そのICT利用は合理的配慮か、教育課程上の指導か：仕分けから計画・評価場面までの筋道](/articles/special-needs-ict-reasonable-accommodation) - 合理的配慮としての端末活用の位置づけ
 - [デジタル教科書を初めて使う単元の組み立て方：導入前の校内確認から授業後の判定まで](/articles/digital-textbook-introduction-school-changes) - 初回単元の組み立てと紙との併用範囲
 - [無料ICTツールを授業で使う前の確認手順](/articles/free-ict-tools-safety-checklist) - 保存先・共有範囲・回収と削除の確認

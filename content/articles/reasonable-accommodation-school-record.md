@@ -65,7 +65,7 @@ updatedAt: "2026-08-22"
 
 ### 困難さの欄は、推測ではなく観察できた事実で書く
 
-6欄のうち最も書きにくいのが困難さの欄です。ここに本人の内面の推測を書いてしまうと、次の担当者はその推測ごと引き継ぐことになり、あとから事実に戻せなくなります。解釈と事実を分けて書く方法そのものは[特別支援教育における行動記録の取り方](/articles/special-needs-behavior-record-guide)の「記録様式に最低限入れる項目」（事実の欄と「気づき・仮説」の欄を分ける）にまとめています。ここでは、配慮記録の困難さの欄で起きやすい置き換えだけを挙げます。
+6欄のうち最も書きにくいのが困難さの欄です。ここに本人の内面の推測を書いてしまうと、次の担当者はその推測ごと引き継ぐことになり、あとから事実に戻せなくなります。解釈と事実を分けて書く方法そのものは[特別支援教育における行動記録の取り方](https://special-support-navi.vercel.app/articles/special-needs-behavior-record-guide)の「何のために、どの粒度で残すか」にまとめています。ここでは、配慮記録の困難さの欄で起きやすい置き換えだけを挙げます。
 
 | 推測が混じった書き方 | 観察できた事実に置き換えた書き方 |
 |---|---|
@@ -107,7 +107,7 @@ updatedAt: "2026-08-22"
 
 そのうえで、続ける・内容を変える・終了するのいずれかを書きます。「継続」の二文字だけが並ぶ記録は、見直した事実そのものが残らず、次の担当者には何年前からそのままなのかも分かりません。
 
-→ 配慮に使う支援ツールの分類と選び方は[特別支援教育の支援ツールを選ぶ手順：困りごとの観察から試用・見直しまで](/articles/special-needs-ict-support-tools-checklist)にまとめています。この記事では、選んだ手立てを記録の文にする部分だけを扱います。
+→ 配慮に使う支援ツールの分類と選び方は[特別支援教育の支援ツールを選ぶ手順：困りごとの観察から試用・見直しまで](https://special-support-navi.vercel.app/articles/special-needs-ict-support-tools-checklist)にまとめています。この記事では、選んだ手立てを記録の文にする部分だけを扱います。
 
 ---
 
@@ -145,7 +145,7 @@ updatedAt: "2026-08-22"
 
 「できない」だけで終わった記録は、次年度に同じ相談を最初からやり直させます。代替案まで書いてあれば、その案が合わなかったという事実そのものが、次の検討の出発点になります。
 
-→ その場で即答できない要望を校内確認へつなぐ手順と言い方の例は[特別支援教育の保護者面談：準備・その場の整理・校内確認・記録の手順](/articles/special-needs-parent-collaboration)に、校内で誰にどの順で相談するかは[特別支援教育における行動記録の取り方：支援に生かす観察と記録の基本](/articles/special-needs-behavior-record-guide)の校内共有の項にまとめています。
+→ その場で即答できない要望を校内確認へつなぐ手順と言い方の例は[特別支援教育の保護者面談：準備・その場の整理・校内確認・記録の手順](/articles/special-needs-parent-collaboration)に、記録を共有する前の確認事項は[特別支援教育における行動記録の取り方：支援に生かす観察と記録の基本](https://special-support-navi.vercel.app/articles/special-needs-behavior-record-guide)の「共有前に確認すること」にまとめています。
 
 ---
 
@@ -181,9 +181,9 @@ updatedAt: "2026-08-22"
 
 - 相談から合意までの進め方と、答えられない要望の扱い：[特別支援教育の保護者面談：準備・その場の整理・校内確認・記録の手順](/articles/special-needs-parent-collaboration)
 - 計画への位置づけと、個人情報・共有範囲の扱い：[個別の教育支援計画・個別の指導計画の書き方：学校現場で使える基本ガイド](/articles/individual-education-plan-writing-guide)
-- 支援ツールの分類・比較・試用と、続ける／調整する／やめるの判定：[特別支援教育の支援ツールを選ぶ手順：困りごとの観察から試用・見直しまで](/articles/special-needs-ict-support-tools-checklist)
+- 支援ツールの分類・比較・試用と、続ける／調整する／やめるの判定：[特別支援教育の支援ツールを選ぶ手順：困りごとの観察から試用・見直しまで](https://special-support-navi.vercel.app/articles/special-needs-ict-support-tools-checklist)
 - ICTを配慮として使うときの切り分けと、評価場面の確認：[そのICT利用は合理的配慮か、教育課程上の指導か：仕分けから計画・評価場面までの筋道](/articles/special-needs-ict-reasonable-accommodation)
-- 校内での相談の順番と、行動を観察して記録する方法：[特別支援教育における行動記録の取り方：支援に生かす観察と記録の基本](/articles/special-needs-behavior-record-guide)
+- 行動を観察して記録する方法と、共有前の確認事項：[特別支援教育における行動記録の取り方：支援に生かす観察と記録の基本](https://special-support-navi.vercel.app/articles/special-needs-behavior-record-guide)
 - [カテゴリ：特別支援教育](/categories/tokubetsu-shien)
 - [カテゴリ：ICT活用](/categories/ict)
 

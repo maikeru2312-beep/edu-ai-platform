@@ -34,7 +34,7 @@ updatedAt: "2026-08-22"
 
 この記事で扱うのは、児童生徒が自分の端末で使う**学習者用デジタル教科書**です。紙の置き換えというより、音声読み上げ・拡大・書き込みなど紙にはできない操作が加わる点が、授業の組み立てに影響します。
 
-読み上げや拡大などの機能を「その子の支援手段」として選ぶ手順（困りごとの観察から試用・見直しまで）は、[特別支援教育の支援ツールを選ぶ手順](/articles/special-needs-ict-support-tools-checklist)が扱っています。この記事では機能の分類は繰り返しません。
+読み上げや拡大などの機能を「その子の支援手段」として選ぶ手順（困りごとの観察から試用・見直しまで）は、[特別支援教育の支援ツールを選ぶ手順](https://special-support-navi.vercel.app/articles/special-needs-ict-support-tools-checklist)が扱っています。この記事では機能の分類は繰り返しません。
 
 デジタル教科書に固有の注意として、本サイトの整理では、次の2点に絞っています。紙のほうがページの位置関係をつかみやすい児童生徒がいること、そして**最初の単元は使う機能を一つに絞る**こと。
 
@@ -164,7 +164,7 @@ updatedAt: "2026-08-22"
 ## 関連記事
 
 - [端末を使う授業の前日準備と当日のトラブル判断：実機確認10項目と切り上げの基準](/articles/giga-device-lesson-use-guide)
-- [特別支援教育の支援ツールを選ぶ手順：困りごとの観察から試用・見直しまで](/articles/special-needs-ict-support-tools-checklist)
+- [特別支援教育の支援ツールを選ぶ手順：困りごとの観察から試用・見直しまで](https://special-support-navi.vercel.app/articles/special-needs-ict-support-tools-checklist)
 - [合理的配慮の記録の書き方：避けたい書き方をよい書き方へ直す書き換え表](/articles/reasonable-accommodation-school-record)
 - [そのICT利用は合理的配慮か、教育課程上の指導か：仕分けから計画・評価場面までの筋道](/articles/special-needs-ict-reasonable-accommodation)
 - [個別の教育支援計画・個別の指導計画の書き方](/articles/individual-education-plan-writing-guide)

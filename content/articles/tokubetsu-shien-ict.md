@@ -251,7 +251,7 @@ ICTの導入によって、操作に時間がかかり学習の本題に集中�
 - [カテゴリ：特別支援教育](/categories/tokubetsu-shien)
 - [カテゴリ：ICT活用](/categories/ict)
 - [ICT教材・支援ツールの選び方](/articles/ict-teaching-tools-selection-guide)
-- [特別支援教育における見通し支援](/articles/special-needs-visual-schedule-support)
+- [特別支援教育における見通し支援](https://special-support-navi.vercel.app/articles/special-needs-visual-schedule-support)
 
 ---
 

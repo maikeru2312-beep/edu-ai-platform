@@ -634,17 +634,10 @@ export const ARTICLE_REFERENCES: Record<string, ArticleReference[]> = {
     sources.accommodationGuideline,
     sources.individualPlan,
   ],
-  'special-needs-behavior-record-guide': [sources.behaviorResearch, sources.individualPlan],
   'special-needs-ict-reasonable-accommodation': [
     sources.disabilityBasicPolicy,
     sources.accommodationGuideline,
     sources.specialNeedsIct,
-  ],
-  'special-needs-ict-support-tools-checklist': [
-    sources.specialNeedsIct,
-    sources.accommodationGuideline,
-    sources.safeDevices,
-    sources.individualPlan,
   ],
   'special-needs-parent-collaboration': [
     sources.disabilityDiscriminationAct,
@@ -657,7 +650,6 @@ export const ARTICLE_REFERENCES: Record<string, ArticleReference[]> = {
     sources.individualPlan,
     sources.ppcPublicSchoolFaq,
   ],
-  'special-needs-visual-schedule-support': [sources.tsukyuGuide, sources.behaviorResearch],
 };
 
 export function getArticleReferences(slug: string): ArticleReference[] {

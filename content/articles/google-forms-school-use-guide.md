@@ -16,7 +16,7 @@ updatedAt: "2026-08-22"
 - 外部サービスを学校で使ってよいかの導入前確認 → [無料ICTツールを授業で使う前の確認手順](/articles/free-ict-tools-safety-checklist)の Gate 1〜5
 - 情報が外部に出るか、終わるときに回収・削除できるか（保管期間・削除・個人アカウントの扱いを含む） → [無料ICTツールを授業で使う前の確認手順](/articles/free-ict-tools-safety-checklist)の Gate 3・Gate 5
 - 要配慮個人情報や匿名加工情報・仮名加工情報といった法令上の枠組み → [学校の校務で生成AIを使う前の判断ガイド](/articles/ai-koomu-kaizen-nyumon)の校務ゲート2
-- そもそもどのツールを選ぶか → [特別支援教育の支援ツールを選ぶ手順](/articles/special-needs-ict-support-tools-checklist)
+- そもそもどのツールを選ぶか → [特別支援教育の支援ツールを選ぶ手順](https://special-support-navi.vercel.app/articles/special-needs-ict-support-tools-checklist)
 - 授業で端末をどう使うか、紙と端末の使い分け → [端末を使う授業の前日準備と当日のトラブル判断：実機確認10項目と切り上げの基準](/articles/giga-device-lesson-use-guide)
 
 **操作手順書ではありません。** ボタンの位置や画面の見た目は変わります。この記事の中心は「何を決めるか」で、現在の設定名とその挙動は末尾の1章にまとめ、確認日を付けています。

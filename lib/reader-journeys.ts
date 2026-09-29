@@ -20,7 +20,7 @@
 
 import { PRACTICAL_RESOURCES, type PracticalResource } from '@/lib/practical-resources';
 
-export type JourneyId = 'plan' | 'support' | 'family' | 'ict' | 'ai';
+export type JourneyId = 'plan' | 'family' | 'ict' | 'ai';
 
 export type JourneyKind = 'sequence' | 'hub' | 'conditional';
 
@@ -104,48 +104,6 @@ export const READER_JOURNEYS: ReaderJourney[] = [
         decision:
           '読み上げなどの支援を評価場面でも使ってよいかを、合理的配慮か教育課程上の指導かの仕分けから決める。',
         primary: true,
-      },
-    ],
-  },
-  {
-    id: 'support',
-    kind: 'conditional',
-    title: '支援を決めて記録する',
-    shortDescription:
-      '困りごとによって入口が変わります。決まった順番はないので、いまの状況に合う記事から読みます。',
-    homePrompt: '今の困りごとから選ぶ',
-    steps: [
-      {
-        slug: 'special-needs-behavior-record-guide',
-        label: '行動を記録する',
-        short: '行動記録',
-        when: '何が起きているかを整理したいとき',
-        decision: '何を・どの粒度で記録するかを決め、ABC記録の1枚目を書く。',
-        primary: true,
-      },
-      {
-        slug: 'special-needs-ict-support-tools-checklist',
-        label: '支援ツールを選ぶ',
-        short: '支援ツール',
-        when: '支援機能で参加を補えるか試すとき',
-        decision: '参加できていない場面から必要な機能を決め、試用の条件と判定の基準を決める。',
-        primary: true,
-      },
-      {
-        slug: 'special-needs-visual-schedule-support',
-        label: '見通しを支える',
-        short: '視覚支援',
-        when: '予定や手順の見通しを持ちにくいとき',
-        decision: 'スケジュールや手順表の形式と情報量を決め、作り替えの履歴を残す。',
-        primary: true,
-      },
-      {
-        // 主ジャーニーは family 側（面談で合意してから記録するほうが、この記事の前段が揃う）。
-        slug: 'reasonable-accommodation-school-record',
-        label: '配慮を記録する',
-        short: '合理的配慮',
-        when: '支援を合理的配慮として合意したとき',
-        decision: '合意した合理的配慮を、引き継ぎと見直しに使える記録の文面に直す。',
       },
     ],
   },

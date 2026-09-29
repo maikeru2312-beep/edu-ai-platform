@@ -76,7 +76,6 @@ const publishedSlugs = new Set(
 const REVIEWED_KINDS = {
   plan: 'sequence',
   family: 'sequence',
-  support: 'conditional',
   ict: 'hub',
   ai: 'hub',
 };
