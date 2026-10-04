@@ -13,16 +13,15 @@ export default function AboutPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
       <h1 className="text-3xl font-bold text-gray-900 mb-2">このサイトについて</h1>
-      <p className="text-sm text-gray-600 mb-10">最終更新日：2026年9月10日</p>
+      <p className="text-sm text-gray-600 mb-10">最終更新日：2026年10月4日</p>
 
       <div className="space-y-10 text-gray-700 leading-relaxed">
         <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">サイトの目的</h2>
           <p>
-            教育DXナビは、特別支援教育を中心とした学校実務において、
-            ICT・生成AI・支援・記録を<strong>どう判断し、どう実行するか</strong>を扱うサイトです。
-            対象は、特別支援学校・特別支援学級・通級による指導の担当者と、
-            通常の学級で支援を必要とする児童生徒を受け持つ教員、および校内の情報担当です。
+            教育DXナビは、学校でのICT・生成AIの利用と、校務文書・計画・評価・相談の記録を<strong>どう判断し、どう実行するか</strong>を扱うサイトです。
+            対象は、学校の教員と校内の情報担当です。
+            特別支援学校・特別支援学級・通級による指導や、通常の学級で支援を必要とする児童生徒に関わる実務も扱います。
           </p>
           <p className="mt-3">
             扱うのは「何が新しいか」ではありません。公的資料と実務上の確認手順をつなぎ、
@@ -44,12 +43,12 @@ export default function AboutPage() {
           </p>
           <ul className="list-disc list-inside space-y-2 text-sm">
             <li>
-              <strong>特別支援教育の学校実務</strong>：個別の教育支援計画・個別の指導計画、
-              行動記録、保護者面談、合理的配慮の相談と記録、見通し支援
+              <strong>特別支援教育の計画・評価・相談記録</strong>：個別の教育支援計画・個別の指導計画、
+              目標の具体化と三観点の評価、保護者面談、合理的配慮の判断と記録
             </li>
             <li>
-              <strong>ICT・支援技術の導入と判断</strong>：支援ツールの選定と試用・見直し、
-              1人1台端末を使う授業の準備とトラブル時の判断、デジタル教科書の導入
+              <strong>学校でのICT利用と運用判断</strong>：1人1台端末を使う授業の準備とトラブル時の判断、
+              デジタル教科書の導入、Googleフォームの配布前設計、外部ICTサービスの利用前確認
             </li>
             <li>
               <strong>学校での生成AI利用と校務判断</strong>：校務で使ってよいかの判断手順、
@@ -57,6 +56,11 @@ export default function AboutPage() {
               AIサービスを導入候補に載せてよいかの一次判定
             </li>
           </ul>
+          <p className="mt-3 text-sm">
+            行動記録、見通し支援、支援ツールの選定・試用の手順は、姉妹サイト
+            <a href="https://special-support-navi.vercel.app/" className="text-blue-600 underline underline-offset-2 hover:text-blue-800">特別支援教育ナビ</a>
+            で案内しています。教育DXナビでは、上記のICT・生成AIと計画・評価・相談記録を扱います。
+          </p>
         </section>
 
         <section>
@@ -89,7 +93,9 @@ export default function AboutPage() {
             <strong>2026年8月22日に、掲載記事の全体を見直しました。</strong>
             読者の目的が重なっていた記事を統合し、残した記事から重複する説明を外して、それぞれが扱う判断を1つに絞っています。
             公開記事は、公開・更新時に内容と参照資料を確認しています。
-            各記事の「最終確認」の日付は、内容に影響する訂正や追加を行ったときに更新します。
+            各記事の「内容更新」の日付は、本文に影響する訂正や追加を行った日です。
+            参照資料の確認日は、記事末尾の資料一覧に別記しています。資料を確認しただけで本文の更新日を変えることはありません。
+            変更内容は、今回の改訂以降、記事内の「今回の変更」に記載します。過去の変更については、確認できる記録があるものだけを記載します。
           </p>
           <p className="mt-3 text-sm leading-relaxed">
             なお、当サイトの記事は情報提供を目的としており、医療・法律・行政上の判断を代替するものではありません。

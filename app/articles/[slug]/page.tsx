@@ -121,7 +121,7 @@ export default async function ArticleDetailPage({
         <p className="text-gray-600 text-lg mb-4 leading-relaxed">{article.description}</p>
         <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
           <time>公開: {article.publishedAt}</time>
-          <time>最終確認: {article.updatedAt ?? article.publishedAt}</time>
+          <time>内容更新: {article.updatedAt ?? article.publishedAt}</time>
         </div>
         <div className="flex flex-wrap gap-1 mt-3">
           {article.tags.map((tag) => (

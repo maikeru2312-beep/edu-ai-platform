@@ -11,14 +11,14 @@ export default function OperatorPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
       <h1 className="text-3xl font-bold text-gray-900 mb-2">運営者情報</h1>
-      <p className="text-sm text-gray-600 mb-10">最終更新日：2026年8月22日</p>
+      <p className="text-sm text-gray-600 mb-10">最終更新日：2026年10月4日</p>
 
       <div className="space-y-10 text-gray-700 leading-relaxed">
 
         <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">運営者について</h2>
           <p className="mb-3">
-            教育DXナビは、特別支援教育を中心とした学校実務の判断手順を扱う、個人運営のサイトです。
+            教育DXナビは、学校のICT・生成AI利用と、校務文書・計画・評価・相談記録の判断手順を扱う、個人運営のサイトです。
             運営者は、掲載記事の選定、一次資料の確認、編集、訂正、公開範囲の判断に責任を持ちます。
           </p>
           <p className="mb-3">
@@ -40,8 +40,8 @@ export default function OperatorPage() {
         <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">サイトの目的</h2>
           <p className="mb-3">
-            教育DXナビは、特別支援学校・特別支援学級・通級による指導の担当者と、
-            通常の学級で支援を必要とする児童生徒を受け持つ教員、校内の情報担当を主な対象として、
+            教育DXナビは、学校の教員と校内の情報担当を対象として、
+            特別支援教育を含む
             学校実務における判断手順を扱います。
           </p>
           <p>
@@ -55,12 +55,12 @@ export default function OperatorPage() {
           <h2 className="text-xl font-bold text-gray-900 mb-3">扱うテーマ</h2>
           <ul className="list-disc list-inside space-y-2 text-sm">
             <li>
-              <strong>特別支援教育の学校実務</strong>：個別の教育支援計画・個別の指導計画、行動記録、
-              保護者面談、合理的配慮の相談と記録、見通し支援
+              <strong>特別支援教育の計画・評価・相談記録</strong>：個別の教育支援計画・個別の指導計画、
+              目標の具体化と三観点の評価、保護者面談、合理的配慮の判断と記録
             </li>
             <li>
-              <strong>ICT・支援技術の導入と判断</strong>：支援ツールの選定・試用・見直し、
-              1人1台端末を使う授業の準備とトラブル時の判断、デジタル教科書の導入
+              <strong>学校でのICT利用と運用判断</strong>：1人1台端末を使う授業の準備とトラブル時の判断、
+              デジタル教科書の導入、Googleフォームの配布前設計、外部ICTサービスの利用前確認
             </li>
             <li>
               <strong>学校での生成AI利用と校務判断</strong>：校務での利用可否、入力してよい情報の線引き、

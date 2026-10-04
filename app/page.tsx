@@ -33,12 +33,12 @@ export default function HomePage() {
       <section className="bg-gradient-to-br from-blue-700 to-indigo-800 text-white py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <h1 className="text-4xl sm:text-5xl font-bold mb-4 leading-tight">
-            特別支援教育と学校実務の判断を、<br className="sm:hidden" />現場で使える形に。
+            学校のICT・生成AIと校務の判断を、<br className="sm:hidden" />現場で使える形に。
           </h1>
           <p className="text-blue-100 text-lg mb-8 leading-relaxed">
-            公的資料と実務上の確認手順をつなぎ、ICT・生成AI・支援・記録について
+            特別支援教育を含む学校実務を対象に、公的資料と確認手順をつなぎ、
             <br className="hidden sm:inline" />
-            「何を確認し、どこで止まり、次に何をするか」まで整理します。
+            ICT・生成AIの利用、計画・評価・相談の記録で、次に何をするかを整理します。
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
