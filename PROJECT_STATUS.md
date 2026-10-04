@@ -1,5 +1,15 @@
 # 教育DXナビ — PROJECT_STATUS
 
+## 2026-10-04 Codex・Claude Code記事の未公開準備
+
+- `codex-claude-code-teacher-small-tools` を `published: false` で追加。`publishedAt` は下書き用の日付であり、公開時に実際の公開日を確認する
+- 原稿の実例は架空の設計例。実務経験注記は追加せず、出典確認資料の10件を記事別参考資料へ登録
+- 公開14記事、canonical台帳、既存の経験分類、ジャーニーと実用資料の導線は維持。未公開記事への既存記事からのリンクは追加しない
+- 依存パッケージのない隔離Linux作業場所での準備。元のWindows作業場所とその未コミット変更は取り込まず、変更しない
+- 全体の lint・typecheck・test・validate・build は未完了。公開前に依存関係のある正規作業環境で検証し、公開日・公開対象追加の承認と関連ゲートの更新を別途行う
+- この準備ではGit変更操作・外部へのアップロード・公開・デプロイは未実施
+
+
 ## 2026-07-24 AdSense 第3段階：ads.txt設置・本番反映
 
 - 運営者提供の正確な行を `public/ads.txt` に設置（`google.com, pub-3801092904087307, DIRECT, f08c47fec0942fa0`、UTF-8/BOMなし/末尾改行/1行）。

@@ -86,8 +86,8 @@ test('published articles do not link to themselves', () => {
 });
 
 test('the review scope is deliberately reduced and focused', () => {
-  // 記事ファイルの総数（未公開の統合・退役分を含む）。2026-09-10 の17件目追加で 31 → 32。
-  assert.equal(articles.size, 32);
+  // 記事ファイルの総数（未公開の統合・退役分を含む）。2026-10-04 に未公開の下書きを1件追加。
+  assert.equal(articles.size, 33);
   // 第6回審査で 21 → 15 へ絞った（統合5件・退役1件）。
   // 2026-08-29 に三観点評価の記事（individual-plan-three-viewpoint-evaluation）を
   // 特別支援教育の専門軸を深める新規 canonical として1件だけ追加し 16 とした。
@@ -276,4 +276,17 @@ test('operator experience notes match confirmed experience (C articles excluded)
   );
   // 注記は記事詳細で描画される。
   assert.match(read('app/articles/[slug]/page.tsx'), /<ArticleExperienceNote slug=\{article\.slug\} \/>/);
+});
+
+test('the coding-agent preparation stays unpublished and makes no experience claim', () => {
+  const slug = 'codex-claude-code-teacher-small-tools';
+  const article = articles.get(slug);
+  assert.ok(article, '準備中の記事が存在すること');
+  assert.equal(article.published, false, 'status: draft だけでなく公開判定を false にすること');
+  assert.equal(article.status, 'draft');
+  assert.equal(published.some((entry) => entry.slug === slug), false);
+  assert.doesNotMatch(article.content, /^# /m, '記事詳細のタイトルと本文の h1 を重複させないこと');
+  assert.match(article.content, /授業実践や製品比較、時短効果の実測報告ではありません/);
+  assert.doesNotMatch(read('lib/article-experience-notes.ts'), new RegExp(`'${slug}':`));
+  assert.match(read('lib/article-references.ts'), new RegExp(`'${slug}':`));
 });
