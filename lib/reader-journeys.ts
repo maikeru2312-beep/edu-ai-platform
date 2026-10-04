@@ -189,7 +189,7 @@ export const READER_JOURNEYS: ReaderJourney[] = [
     kind: 'hub',
     title: '生成AIを校務で使う',
     shortDescription:
-      'まず校務ゲートで使ってよいかと入力してよい情報を決め、そこから先は所見・学級通信・新しいサービスの判定のうち、いまの場面に合うものを選びます。',
+      'まず校務ゲートで使ってよいかと入力してよい情報を決め、そこから先は所見・学級通信・小さな教材づくり・新しいサービスの判定のうち、いまの場面に合うものを選びます。',
     homePrompt: 'まず利用可否を確認する',
     steps: [
       {
@@ -217,6 +217,14 @@ export const READER_JOURNEYS: ReaderJourney[] = [
         short: '学級通信',
         when: '学級通信・学年だよりの下書きに使うとき',
         decision: '下書きに足された事実・落ちた事実を原資料と突き合わせ、配布できる原稿に戻す。',
+        primary: true,
+      },
+      {
+        slug: 'codex-claude-code-teacher-small-tools',
+        label: '小さな教材を作る',
+        short: '教材づくり',
+        when: '個人情報を使わず小さな授業用ツールを試作したいとき',
+        decision: '依頼文で試作し、使用端末で動作を確かめ、費用・個人情報・配布条件を点検する。',
         primary: true,
       },
       {

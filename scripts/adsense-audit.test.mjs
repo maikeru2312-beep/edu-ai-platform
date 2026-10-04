@@ -86,15 +86,15 @@ test('published articles do not link to themselves', () => {
 });
 
 test('the review scope is deliberately reduced and focused', () => {
-  // 記事ファイルの総数（未公開の統合・退役分を含む）。2026-09-10 の17件目追加で 31 → 32。
-  assert.equal(articles.size, 32);
+  // 記事ファイルの総数（未公開の統合・退役分を含む）。2026-10-04 に未公開の下書きを1件追加。
+  assert.equal(articles.size, 33);
   // 第6回審査で 21 → 15 へ絞った（統合5件・退役1件）。
   // 2026-08-29 に三観点評価の記事（individual-plan-three-viewpoint-evaluation）を
   // 特別支援教育の専門軸を深める新規 canonical として1件だけ追加し 16 とした。
   // 2026-09-10 に目標設定の記事（individual-plan-goal-specificity-evaluation）を、同じ専門軸で
   // 「目標の抽象度と評価可能性の両立」を扱う旗艦記事として1件だけ追加し 17 とした。
   // それ以外の「記事を増やす方向の変更」は引き続きこの assert で検出する。
-  assert.equal(published.length, 14);
+  assert.equal(published.length, 15);
   const categories = new Set(published.map((article) => article.category));
   assert.equal(categories.has('助成金・補助金'), false);
   assert.equal(categories.has('研修・セミナー'), false);
@@ -260,6 +260,7 @@ test('operator experience notes match confirmed experience (C articles excluded)
   // individual-plan-goal-specificity-evaluation も一次資料の整理と完全な架空例で構成し、
   // 運営者の確認回答を経ていないため同様に SOURCE_ONLY とする。
   const withoutNote = [
+    'codex-claude-code-teacher-small-tools',
     'digital-textbook-introduction-school-changes', 'ai-class-newsletter-prompt',
     'free-ict-tools-safety-checklist', 'google-forms-school-use-guide',
     'individual-plan-three-viewpoint-evaluation', 'individual-plan-goal-specificity-evaluation',
@@ -276,4 +277,17 @@ test('operator experience notes match confirmed experience (C articles excluded)
   );
   // 注記は記事詳細で描画される。
   assert.match(read('app/articles/[slug]/page.tsx'), /<ArticleExperienceNote slug=\{article\.slug\} \/>/);
+});
+
+test('the coding-agent publication is source-only and makes no experience claim', () => {
+  const slug = 'codex-claude-code-teacher-small-tools';
+  const article = articles.get(slug);
+  assert.ok(article, '準備中の記事が存在すること');
+  assert.equal(article.published, true);
+  assert.equal(article.status, 'published');
+  assert.equal(published.some((entry) => entry.slug === slug), true);
+  assert.doesNotMatch(article.content, /^# /m, '記事詳細のタイトルと本文の h1 を重複させないこと');
+  assert.match(article.content, /授業実践や製品比較、時短効果の実測報告ではありません/);
+  assert.doesNotMatch(read('lib/article-experience-notes.ts'), new RegExp(`'${slug}':`));
+  assert.match(read('lib/article-references.ts'), new RegExp(`'${slug}':`));
 });

@@ -101,4 +101,10 @@ export const PRACTICAL_RESOURCES: PracticalResource[] = [
     useWhen: '学級通信・学年だよりの下書きに生成AIを使い、配布前に原資料と突き合わせるために',
     anchor: 'AI下書き前シート',
   },
+  {
+    slug: 'codex-claude-code-teacher-small-tools',
+    asset: 'Codex・Claude Code使用前の最終チェック（5項目）',
+    useWhen: '架空の授業用ツールを試作したあと、使用端末での確認と配布・公開の扱いを点検するときに',
+    anchor: '10. 使用前の最終チェック',
+  },
 ];

@@ -67,8 +67,8 @@ function parseCsv(text) {
 const historicalRegistry = parseCsv(read(REGISTRY_PATH));
 const historicalMatrix = parseCsv(read(MATRIX_PATH));
 // The review CSVs remain immutable history; only current DX owners enter live-set checks.
-const registry = historicalRegistry.filter((row) => publishedSlugs.has(row.slug));
-const matrix = historicalMatrix.filter((row) => publishedSlugs.has(row.a) && publishedSlugs.has(row.b));
+const registry = [...historicalRegistry, ...parseCsv(read('docs/publication-codex-claude-code/registry.csv'))].filter((row) => publishedSlugs.has(row.slug));
+const matrix = [...historicalMatrix, ...parseCsv(read('docs/publication-codex-claude-code/matrix.csv'))].filter((row) => publishedSlugs.has(row.a) && publishedSlugs.has(row.b));
 const externalRedirects = await nextConfig.redirects();
 
 // 統合により 301 を張った旧 slug（middleware.ts が真実）
@@ -80,12 +80,13 @@ const redirectSources = new Set(
 );
 
 // ─── 1. canonical セットが期待どおりであること ────────────────────────────
-test('the canonical article set is exactly the 14 DX-owned pages after B1', () => {
+test('the canonical article set is exactly the 15 DX-owned pages with the approved coding guide', () => {
   // 15 件は第6回審査で確定した canonical セット。individual-plan-three-viewpoint-evaluation は
   // 2026-08-29 に特別支援教育の専門軸（目標・評価）を深めるため追加した16件目。
   // individual-plan-goal-specificity-evaluation は 2026-09-10 に同じ専門軸で、目標の抽象度と
   // 評価可能性の両立（評価できる目標と行動だけの目標の区別）を扱う17件目として追加した。
   const expected = [
+    'codex-claude-code-teacher-small-tools',
     'ai-class-newsletter-prompt',
     'ai-koomu-kaizen-nyumon',
     'chatgpt-tsuchihyo-shoken',
@@ -201,6 +202,10 @@ test('no canonical article is orphaned from the internal link graph', () => {
       if (inbound.has(target)) inbound.set(target, inbound.get(target) + 1);
     }
   }
+  // Shared journey choices render incoming links on existing article pages.
+  assert.match(read('lib/reader-journeys.ts'), /slug: 'codex-claude-code-teacher-small-tools'/);
+  assert.match(read('app/articles/[slug]/page.tsx'), /ArticleJourneyNav/);
+  inbound.set('codex-claude-code-teacher-small-tools', inbound.get('codex-claude-code-teacher-small-tools') + 1);
   const orphans = [...inbound].filter(([, count]) => count === 0).map(([slug]) => slug);
   assert.deepEqual(orphans, [], 'canonical 記事は他の canonical 記事から最低1本リンクされること');
 });
