@@ -37,7 +37,7 @@ test('exact B1 old URLs redirect permanently and directly to Special', () => {
 
 test('the active DX catalog and article links do not rely on B1 redirects', () => {
   const published = articles.filter((item) => item.data.published !== false);
-  assert.equal(published.length, 15);
+  assert.equal(published.length, 16);
   for (const article of published) {
     for (const slug of slugs) {
       assert.doesNotMatch(article.content, new RegExp(`\\]\\(/articles/${slug}(?:[)#?])`), `${article.slug} links through redirect`);

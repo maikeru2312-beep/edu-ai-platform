@@ -189,7 +189,7 @@ export const READER_JOURNEYS: ReaderJourney[] = [
     kind: 'hub',
     title: '生成AIを校務で使う',
     shortDescription:
-      'まず校務ゲートで使ってよいかと入力してよい情報を決め、そこから先は所見・学級通信・小さな教材づくり・新しいサービスの判定のうち、いまの場面に合うものを選びます。',
+      'まず校務ゲートで使ってよいかと入力してよい情報を決め、そこから先は所見・学級通信・小さな教材づくり・教育情報の原典確認・新しいサービスの判定のうち、いまの場面に合うものを選びます。',
     homePrompt: 'まず利用可否を確認する',
     steps: [
       {
@@ -225,6 +225,14 @@ export const READER_JOURNEYS: ReaderJourney[] = [
         short: '教材づくり',
         when: '個人情報を使わず小さな授業用ツールを試作したいとき',
         decision: '依頼文で試作し、使用端末で動作を確かめ、費用・個人情報・配布条件を点検する。',
+        primary: true,
+      },
+      {
+        slug: 'ai-education-information-source-check',
+        label: '教育情報の原典を確かめる',
+        short: '原典確認',
+        when: '生成AIが示した教育情報を研修資料や授業準備に使う前',
+        decision: '主張を一文ずつ原典と照合し、対象・条件・版を確認して確認済み・条件付き・未確認を残す。',
         primary: true,
       },
       {

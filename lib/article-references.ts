@@ -559,6 +559,32 @@ const sources = {
 } satisfies Record<string, ArticleReference>;
 
 export const ARTICLE_REFERENCES: Record<string, ArticleReference[]> = {
+  'ai-education-information-source-check': [
+    {
+        "title": "学校現場における生成AIの利用について",
+        "publishedOrUpdatedAt": "Ver.2.0：2024-12-26公表",
+        "url": "https://www.mext.go.jp/zyoukatsu/ai/",
+        "supports": "公表サイトで正式なガイドラインの版と公表日を確かめる",
+        "publisher": "文部科学省",
+        "checkedAt": "2026-10-07"
+    },
+    {
+        "title": "デジタル学習基盤特別委員会（第11回）配布資料",
+        "publishedOrUpdatedAt": "2026-10-01",
+        "url": "https://www.mext.go.jp/b_menu/shingi/chukyo/chukyo3/093/siryo/mext_00005.html",
+        "supports": "資料3-3が改定に向けた検討資料であること",
+        "publisher": "文部科学省",
+        "checkedAt": "2026-10-07"
+    },
+    {
+        "title": "初等中等教育段階における生成AIの利活用に関するガイドライン（Ver.2.0）",
+        "publishedOrUpdatedAt": "2024-12-26",
+        "url": "https://www.mext.go.jp/content/20241226-mxt_shuukyo02-000030823_001.pdf#page=13",
+        "supports": "13ページ3-1（1）（2）：内容を判断できる範囲で利用し、教職員自身がチェック・推敲・完成する前提",
+        "publisher": "文部科学省",
+        "checkedAt": "2026-10-07"
+    }
+],
   // 下書き原稿と出典確認資料（2026-10-04）の確認記録に基づく。実務経験の根拠とはしない。
   'codex-claude-code-teacher-small-tools': [
     {

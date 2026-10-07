@@ -107,4 +107,10 @@ export const PRACTICAL_RESOURCES: PracticalResource[] = [
     useWhen: '架空の授業用ツールを試作したあと、使用端末での確認と配布・公開の扱いを点検するときに',
     anchor: '10. 使用前の最終チェック',
   },
+  {
+    slug: 'ai-education-information-source-check',
+    asset: '教育情報の原典確認チェックリスト（6項目）',
+    useWhen: '生成AIが示した教育情報を公開資料の本文と照合し、未確認事項を残すときに',
+    anchor: '確認チェックリスト',
+  },
 ];

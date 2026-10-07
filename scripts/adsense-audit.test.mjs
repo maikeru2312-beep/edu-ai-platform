@@ -87,14 +87,14 @@ test('published articles do not link to themselves', () => {
 
 test('the review scope is deliberately reduced and focused', () => {
   // 記事ファイルの総数（未公開の統合・退役分を含む）。2026-10-04 に未公開の下書きを1件追加。
-  assert.equal(articles.size, 33);
+  assert.equal(articles.size, 34);
   // 第6回審査で 21 → 15 へ絞った（統合5件・退役1件）。
   // 2026-08-29 に三観点評価の記事（individual-plan-three-viewpoint-evaluation）を
   // 特別支援教育の専門軸を深める新規 canonical として1件だけ追加し 16 とした。
   // 2026-09-10 に目標設定の記事（individual-plan-goal-specificity-evaluation）を、同じ専門軸で
   // 「目標の抽象度と評価可能性の両立」を扱う旗艦記事として1件だけ追加し 17 とした。
   // それ以外の「記事を増やす方向の変更」は引き続きこの assert で検出する。
-  assert.equal(published.length, 15);
+  assert.equal(published.length, 16);
   const categories = new Set(published.map((article) => article.category));
   assert.equal(categories.has('助成金・補助金'), false);
   assert.equal(categories.has('研修・セミナー'), false);
@@ -260,6 +260,7 @@ test('operator experience notes match confirmed experience (C articles excluded)
   // individual-plan-goal-specificity-evaluation も一次資料の整理と完全な架空例で構成し、
   // 運営者の確認回答を経ていないため同様に SOURCE_ONLY とする。
   const withoutNote = [
+    'ai-education-information-source-check',
     'codex-claude-code-teacher-small-tools',
     'digital-textbook-introduction-school-changes', 'ai-class-newsletter-prompt',
     'free-ict-tools-safety-checklist', 'google-forms-school-use-guide',
@@ -290,4 +291,16 @@ test('the coding-agent publication is source-only and makes no experience claim'
   assert.match(article.content, /授業実践や製品比較、時短効果の実測報告ではありません/);
   assert.doesNotMatch(read('lib/article-experience-notes.ts'), new RegExp(`'${slug}':`));
   assert.match(read('lib/article-references.ts'), new RegExp(`'${slug}':`));
+});
+
+
+test('the source-check guide has the approved fictional example and six checks', () => {
+  const article = articles.get('ai-education-information-source-check');
+  assert.equal(article.published, true);
+  assert.doesNotMatch(article.content, /^# /m);
+  assert.match(article.content, /これは実際のAIの出力ではありません/);
+  assert.match(article.content, /公的機関の公式様式ではありません/);
+  const checklist = article.content.split('## 確認チェックリスト')[1];
+  assert.equal([...checklist.matchAll(/^- /gm)].length, 6);
+  assert.doesNotMatch(read('lib/article-experience-notes.ts'), /'ai-education-information-source-check':/);
 });
