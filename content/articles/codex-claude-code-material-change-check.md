@@ -4,7 +4,7 @@ description: "架空の教材を修正する前後に、変更範囲・権限・
 category: "AI校務改善"
 tags: ["Codex", "Claude Code", "教材作成", "安全な試行"]
 # 公開日（JST）
-publishedAt: "2026-10-10"
+publishedAt: "2026-10-11"
 published: true
 status: "published"
 lastVerifiedAt: "2026-10-10"
