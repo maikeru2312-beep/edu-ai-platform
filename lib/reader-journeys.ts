@@ -189,7 +189,7 @@ export const READER_JOURNEYS: ReaderJourney[] = [
     kind: 'hub',
     title: '生成AIを校務で使う',
     shortDescription:
-      'まず校務ゲートで使ってよいかと入力してよい情報を決め、そこから先は所見・学級通信・小さな教材づくり・教育情報の原典確認・新しいサービスの判定のうち、いまの場面に合うものを選びます。',
+      'まず校務ゲートで使ってよいかと入力してよい情報を決め、そこから先は所見・学級通信・小さな教材づくり・教材修正の確認・教育情報の原典確認・新しいサービスの判定のうち、いまの場面に合うものを選びます。',
     homePrompt: 'まず利用可否を確認する',
     steps: [
       {
@@ -233,6 +233,14 @@ export const READER_JOURNEYS: ReaderJourney[] = [
         short: '原典確認',
         when: '生成AIが示した教育情報を研修資料や授業準備に使う前',
         decision: '主張を一文ずつ原典と照合し、対象・条件・版を確認して確認済み・条件付き・未確認を残す。',
+        primary: true,
+      },
+      {
+        slug: 'codex-claude-code-material-change-check',
+        label: '教材の修正を確認する',
+        short: '修正確認',
+        when: 'CodexやClaude Codeで架空の教材を直す前後',
+        decision: '変更範囲と権限を確かめ、ファイル一覧・差分・元の動作・復旧対象を確認して採用を判断する。',
         primary: true,
       },
       {

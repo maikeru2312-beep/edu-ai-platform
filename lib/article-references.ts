@@ -559,6 +559,56 @@ const sources = {
 } satisfies Record<string, ArticleReference>;
 
 export const ARTICLE_REFERENCES: Record<string, ArticleReference[]> = {
+  'codex-claude-code-material-change-check': [
+    {
+        "title": "ChatGPT Work local security",
+        "publisher": "OpenAI",
+        "url": "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-local-security",
+        "supports": "ローカル実行と外部への情報送信",
+        "publishedOrUpdatedAt": "更新日未確認",
+        "checkedAt": "2026-10-10"
+    },
+    {
+        "title": "Data usage",
+        "publisher": "Anthropic",
+        "url": "https://code.claude.com/docs/en/data-usage",
+        "supports": "ローカル実行のデータフロー",
+        "publishedOrUpdatedAt": "更新日未確認",
+        "checkedAt": "2026-10-10"
+    },
+    {
+        "title": "Permissions",
+        "publisher": "OpenAI",
+        "url": "https://learn.chatgpt.com/docs/permission-modes",
+        "supports": "作業領域内の動作と境界を越える承認",
+        "publishedOrUpdatedAt": "更新日未確認",
+        "checkedAt": "2026-10-10"
+    },
+    {
+        "title": "Configure permissions",
+        "publisher": "Anthropic",
+        "url": "https://code.claude.com/docs/en/permissions",
+        "supports": "モード・ルールによる操作権限",
+        "publishedOrUpdatedAt": "更新日未確認",
+        "checkedAt": "2026-10-10"
+    },
+    {
+        "title": "Code review",
+        "publisher": "OpenAI",
+        "url": "https://learn.chatgpt.com/docs/code-review",
+        "supports": "他者編集・既存未commit変更も含まれるレビュー範囲",
+        "publishedOrUpdatedAt": "更新日未確認",
+        "checkedAt": "2026-10-10"
+    },
+    {
+        "title": "Checkpointing",
+        "publisher": "Anthropic",
+        "url": "https://code.claude.com/docs/en/checkpointing",
+        "supports": "Bash・外部編集など復旧機能の限界",
+        "publishedOrUpdatedAt": "更新日未確認",
+        "checkedAt": "2026-10-10"
+    }
+],
   'ai-education-information-source-check': [
     {
         "title": "学校現場における生成AIの利用について",

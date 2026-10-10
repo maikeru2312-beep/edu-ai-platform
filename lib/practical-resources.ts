@@ -113,4 +113,10 @@ export const PRACTICAL_RESOURCES: PracticalResource[] = [
     useWhen: '生成AIが示した教育情報を公開資料の本文と照合し、未確認事項を残すときに',
     anchor: '確認チェックリスト',
   },
+  {
+    slug: 'codex-claude-code-material-change-check',
+    asset: '教材修正前後の使用前チェックリスト（8項目）',
+    useWhen: '架空の教材を直した後、依頼外の差分と元の動作を点検して採用を判断するときに',
+    anchor: '使用前のチェックリスト',
+  },
 ];
