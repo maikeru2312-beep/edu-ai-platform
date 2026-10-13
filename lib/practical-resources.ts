@@ -97,7 +97,7 @@ export const PRACTICAL_RESOURCES: PracticalResource[] = [
   },
   {
     slug: 'ai-class-newsletter-prompt',
-    asset: 'AI下書き前シート＋原資料照合表＋配布前チェックリスト',
+    asset: 'AI下書き前シート＋AI下書き用シート（空欄様式・照合の架空例）＋原資料照合表＋配布前チェックリスト',
     useWhen: '学級通信・学年だよりの下書きに生成AIを使い、配布前に原資料と突き合わせるために',
     anchor: 'AI下書き前シート',
   },
