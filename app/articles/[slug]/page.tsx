@@ -135,7 +135,13 @@ export default async function ArticleDetailPage({
       {/* 長い記事の目次。見出し id は本文と /resources で共有する headingId() 由来 */}
       <ArticleToc entries={extractToc(article.contentHtml)} />
 
-      <ArticleBody contentHtml={article.contentHtml} />
+      {article.slug === 'ai-teaching-tool-handover-note' ? (
+        <div style={{ overflowWrap: 'anywhere' }}>
+          <ArticleBody contentHtml={article.contentHtml} />
+        </div>
+      ) : (
+        <ArticleBody contentHtml={article.contentHtml} />
+      )}
       <ArticleReferences slug={article.slug} />
       <ArticleExperienceNote slug={article.slug} />
 

@@ -559,6 +559,64 @@ const sources = {
 } satisfies Record<string, ArticleReference>;
 
 export const ARTICLE_REFERENCES: Record<string, ArticleReference[]> = {
+  'ai-teaching-tool-handover-note': [
+  {
+    "title": "文部科学省 学校現場における生成AIの利用について",
+    "publisher": "文部科学省",
+    "url": "https://www.mext.go.jp/zyoukatsu/ai/",
+    "publishedOrUpdatedAt": "2024-12-26",
+    "supports": "掲載版Ver.2.0・学校の利用環境と人による確認",
+    "checkedAt": "2026-10-16"
+  },
+  {
+    "title": "初等中等教育段階における生成AIの利活用に関するガイドライン Ver.2.0",
+    "publisher": "文部科学省",
+    "url": "https://www.mext.go.jp/content/20241226-mxt_shuukyo02-000030823_001.pdf",
+    "publishedOrUpdatedAt": "2024-12-26",
+    "supports": "教職員による確認・判断と情報管理",
+    "checkedAt": "2026-10-16"
+  },
+  {
+    "title": "ChatGPT Work local security",
+    "publisher": "OpenAI",
+    "url": "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-local-security",
+    "publishedOrUpdatedAt": "更新日未確認",
+    "supports": "Where local tasks run：ローカル実行とサービスへの情報送信",
+    "checkedAt": "2026-10-16"
+  },
+  {
+    "title": "Code review",
+    "publisher": "OpenAI",
+    "url": "https://learn.chatgpt.com/docs/code-review",
+    "publishedOrUpdatedAt": "更新日未確認",
+    "supports": "What changes it shows：AI以外の未コミット変更",
+    "checkedAt": "2026-10-16"
+  },
+  {
+    "title": "Permissions",
+    "publisher": "OpenAI",
+    "url": "https://learn.chatgpt.com/docs/permission-modes",
+    "publishedOrUpdatedAt": "更新日未確認",
+    "supports": "How permissions work：サンドボックスと承認",
+    "checkedAt": "2026-10-16"
+  },
+  {
+    "title": "Configure permissions",
+    "publisher": "Anthropic",
+    "url": "https://code.claude.com/docs/en/permissions",
+    "publishedOrUpdatedAt": "更新日未確認",
+    "supports": "権限モードと許可ルール",
+    "checkedAt": "2026-10-16"
+  },
+  {
+    "title": "Checkpointing",
+    "publisher": "Anthropic",
+    "url": "https://code.claude.com/docs/en/checkpointing",
+    "publishedOrUpdatedAt": "更新日未確認",
+    "supports": "Limitations：Bash変更を追跡しない制限",
+    "checkedAt": "2026-10-16"
+  }
+],
   'codex-claude-code-material-change-check': [
     {
         "title": "ChatGPT Work local security",

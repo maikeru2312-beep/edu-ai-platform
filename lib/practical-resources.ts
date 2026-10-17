@@ -119,4 +119,6 @@ export const PRACTICAL_RESOURCES: PracticalResource[] = [
     useWhen: '架空の教材を直した後、依頼外の差分と元の動作を点検して採用を判断するときに',
     anchor: '使用前のチェックリスト',
   },
+  {"slug":"ai-teaching-tool-handover-note","asset":"教材の引継ぎメモ（12項目）","useWhen":"個人情報を含まない練習用教材を、後日見直すための版・確認結果・未確認事項を残すとき","anchor":"引継ぎメモの空欄様式"},
+  {"slug":"ai-teaching-tool-handover-note","asset":"引継ぎメモ保存前チェックリスト（8項目）","useWhen":"確認済みと未確認、使用と共有の判断を分けて保存するとき","anchor":"保存前のチェックリスト"},
 ];

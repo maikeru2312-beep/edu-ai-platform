@@ -87,14 +87,14 @@ test('published articles do not link to themselves', () => {
 
 test('the review scope is deliberately reduced and focused', () => {
   // 記事ファイルの総数（未公開の統合・退役分を含む）。2026-10-04 に未公開の下書きを1件追加。
-  assert.equal(articles.size, 35);
+  assert.equal(articles.size, 36);
   // 第6回審査で 21 → 15 へ絞った（統合5件・退役1件）。
   // 2026-08-29 に三観点評価の記事（individual-plan-three-viewpoint-evaluation）を
   // 特別支援教育の専門軸を深める新規 canonical として1件だけ追加し 16 とした。
   // 2026-09-10 に目標設定の記事（individual-plan-goal-specificity-evaluation）を、同じ専門軸で
   // 「目標の抽象度と評価可能性の両立」を扱う旗艦記事として1件だけ追加し 17 とした。
   // それ以外の「記事を増やす方向の変更」は引き続きこの assert で検出する。
-  assert.equal(published.length, 17);
+  assert.equal(published.length, 18);
   const categories = new Set(published.map((article) => article.category));
   assert.equal(categories.has('助成金・補助金'), false);
   assert.equal(categories.has('研修・セミナー'), false);
@@ -106,9 +106,39 @@ test('the review scope is deliberately reduced and focused', () => {
   }
   // Owner承認（2026-10-10）：最多の同数を許容し、他カテゴリの単独超過は許容しない。
   const largest = Math.max(...byCategory.values());
+  // Owner承認（2026-10-17）：引継ぎメモ追加後のこの18稿だけ、AI7/特支6を許容。
+  // 恒久的な最多条件は維持し、別稿の追加・置換や件数増加には適用しない。
+  const approvedOct17Slugs = [
+    "ai-class-newsletter-prompt",
+    "ai-education-information-source-check",
+    "ai-koomu-kaizen-nyumon",
+    "ai-teaching-tool-handover-note",
+    "chatgpt-tsuchihyo-shoken",
+    "codex-claude-code-material-change-check",
+    "codex-claude-code-teacher-small-tools",
+    "digital-textbook-introduction-school-changes",
+    "education-ai-service-checklist-before-use",
+    "free-ict-tools-safety-checklist",
+    "giga-device-lesson-use-guide",
+    "google-forms-school-use-guide",
+    "individual-education-plan-writing-guide",
+    "individual-plan-goal-specificity-evaluation",
+    "individual-plan-three-viewpoint-evaluation",
+    "reasonable-accommodation-school-record",
+    "special-needs-ict-reasonable-accommodation",
+    "special-needs-parent-collaboration"
+  ];
+  const approvedOct17Exception =
+    JSON.stringify(published.map((article) => article.slug).sort()) ===
+      JSON.stringify(approvedOct17Slugs) &&
+    byCategory.size === 4 &&
+    byCategory.get('AI校務改善') === 7 &&
+    byCategory.get('特別支援教育') === 6 &&
+    byCategory.get('ICT活用') === 3 &&
+    byCategory.get('教材・支援ツール') === 2;
   assert.ok(
-    byCategory.get('特別支援教育') === largest,
-    `特別支援教育が最多（同数を許容）であること: ${JSON.stringify([...byCategory])}`,
+    byCategory.get('特別支援教育') === largest || approvedOct17Exception,
+    `特別支援教育が最多（同数またはOwner承認の2026-10-17限定例外）であること: ${JSON.stringify([...byCategory])}`,
   );
 });
 
@@ -260,6 +290,7 @@ test('operator experience notes match confirmed experience (C articles excluded)
   // individual-plan-goal-specificity-evaluation も一次資料の整理と完全な架空例で構成し、
   // 運営者の確認回答を経ていないため同様に SOURCE_ONLY とする。
   const withoutNote = [
+    'ai-teaching-tool-handover-note',
     'codex-claude-code-material-change-check',
     'ai-education-information-source-check',
     'codex-claude-code-teacher-small-tools',

@@ -236,6 +236,14 @@ export const READER_JOURNEYS: ReaderJourney[] = [
         primary: true,
       },
       {
+        slug: 'ai-teaching-tool-handover-note',
+        label: '後日見直すメモを残す',
+        short: '引継ぎメモ',
+        when: '個人情報を含まない練習用教材の試作後、後日再開する前',
+        decision: '対象ファイル・版・操作確認・未確認事項と、維持する動作を参考メモに残す。',
+        primary: true,
+      },
+      {
         slug: 'codex-claude-code-material-change-check',
         label: '教材の修正を確認する',
         short: '修正確認',
