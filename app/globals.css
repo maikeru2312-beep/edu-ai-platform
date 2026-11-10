@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 @layer components {
+  /* 冒頭・目次のリンク先見出しを、固定ヘッダーの下へ表示する。 */
+  .prose h2[id],
+  .prose h3[id] {
+    scroll-margin-top: 8rem;
+  }
+
   /* 記事本文の表（lib/articles.ts の withResponsiveTables が付ける枠）。
      枠の中だけを横スクロールさせ、ページ全体は横に動かさない。 */
   .table-scroll {
