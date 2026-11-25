@@ -148,6 +148,8 @@ ICTの配慮について校内で相談するときに持っていくのは、�
 
 ## 関連記事
 
+- [書字に困難があるとき、音声入力とかな入力をどう試す？](/articles/special-needs-voice-kana-input-trial)
+
 - [特別支援教育の支援ツールを選ぶ手順：困りごとの観察から試用・見直しまで](https://special-support-navi.vercel.app/articles/special-needs-ict-support-tools-checklist)
 - [合理的配慮の記録の書き方：避けたい書き方をよい書き方へ直す書き換え表](/articles/reasonable-accommodation-school-record)
 - [個別の教育支援計画・個別の指導計画の書き方：学校現場で使える基本ガイド](/articles/individual-education-plan-writing-guide)

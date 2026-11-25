@@ -877,6 +877,11 @@ export const ARTICLE_REFERENCES: Record<string, ArticleReference[]> = {
     sources.accommodationGuideline,
     sources.specialNeedsIct,
   ],
+  'special-needs-voice-kana-input-trial': [
+    {"title":"令和8年・新年度の対応依頼（デジタル学習基盤の活用）","publisher":"文部科学省","publishedOrUpdatedAt":"2026-03-26","url":"https://www.mext.go.jp/content/20260326-mext-tokubetu01-100002896_00.pdf","checkedAt":"2026-11-24","supports":"書くことに困難のある児童生徒へのデジタル学習基盤の活用例。入力手段の一般的な優劣は示さない。"},
+    {"title":"StuDX Style ICT活用事例","publisher":"文部科学省","publishedOrUpdatedAt":"公表日未確認","url":"https://www.mext.go.jp/content/20230420-mxt_syoto01-000020637-2.pdf","checkedAt":"2026-11-24","supports":"書字に困難がある場面でのキーボード利用例。音声入力との比較ではない。"},
+    {"title":"特別支援教育教材ポータル 授業実践例","publisher":"国立特別支援教育総合研究所","publishedOrUpdatedAt":"公表日未確認","url":"https://kyozai.nise.go.jp/index.php/plugin/databases/detail/3/25/3487","checkedAt":"2026-11-24","supports":"障害のある児童生徒に合わせて入力方法を検討した個別事例。"},
+  ],
   'special-needs-parent-collaboration': [
     sources.disabilityDiscriminationAct,
     sources.disabilityBasicPolicy,
