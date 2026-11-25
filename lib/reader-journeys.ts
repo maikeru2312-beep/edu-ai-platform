@@ -269,7 +269,7 @@ export const READER_JOURNEYS: ReaderJourney[] = [
  * 「17記事すべてをどこかへ入れる」ことは目的ではないので、外す判断はここに明示して残す。
  * 記事が増えてここにも steps にも無い状態は、テストで検出する（黙って落ちないようにする）。
  */
-export const JOURNEY_UNASSIGNED: { slug: string; reason: string }[] = [];
+export const JOURNEY_UNASSIGNED: { slug: string; reason: string }[] = [{ slug: 'special-needs-voice-kana-input-trial', reason: '授業中の入力手段の小試行で、既存の評価・計画の読順とは独立' }];
 
 // ─── 参照ヘルパ（Home / 記事末尾 / /resources はここだけを使う） ─────────────
 
